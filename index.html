@@ -231,7 +231,67 @@
 </footer>
 <script>
 function complaint() {
-    alert("Complaint form yaha open hoga.");
+    const form = document.createElement("div");
+
+    form.innerHTML = `
+        <div style="position:fixed; inset:0; background:white; z-index:9999; overflow:auto; padding:20px;">
+            <h2>📝 ग्राम समस्या नोंदणी</h2>
+            <p>SmartGram – Digital Village</p>
+
+            <label>नाव</label>
+            <input id="cname" type="text" placeholder="तुमचे पूर्ण नाव">
+
+            <label>मोबाइल नंबर</label>
+            <input id="cmobile" type="tel" placeholder="10 अंकी मोबाइल नंबर">
+
+            <label>गाव</label>
+            <input id="cvillage" type="text" placeholder="गावाचे नाव">
+
+            <label>समस्येचा प्रकार</label>
+            <select id="ctype">
+                <option>रस्ता</option>
+                <option>पाणी</option>
+                <option>वीज</option>
+                <option>स्वच्छता</option>
+                <option>गटार</option>
+                <option>शासकीय सेवा</option>
+                <option>इतर</option>
+            </select>
+
+            <label>समस्येचे वर्णन</label>
+            <textarea id="cdesc" rows="5" placeholder="तुमची समस्या सविस्तर लिहा"></textarea>
+
+            <button onclick="submitComplaint()">📤 समस्या नोंदवा</button>
+            <button onclick="this.parentElement.remove()">❌ बंद करा</button>
+
+            <div id="result"></div>
+        </div>
+    `;
+
+    document.body.appendChild(form);
+}
+
+function submitComplaint() {
+    const name = document.getElementById("cname").value;
+    const mobile = document.getElementById("cmobile").value;
+    const village = document.getElementById("cvillage").value;
+    const desc = document.getElementById("cdesc").value;
+
+    if (!name || !mobile || !village || !desc) {
+        alert("कृपया सर्व आवश्यक माहिती भरा.");
+        return;
+    }
+
+    const id = "SG-" + Math.floor(100000 + Math.random() * 900000);
+
+    document.getElementById("result").innerHTML = `
+        <div style="margin-top:20px; padding:15px; border:2px solid green;">
+            <h3>✅ समस्या यशस्वीरित्या नोंदवली!</h3>
+            <p>तुमचा Complaint ID:</p>
+            <h2>${id}</h2>
+            <p>हा ID जपून ठेवा. पुढे समस्या Track करण्यासाठी उपयोगी पडेल.</p>
+        </div>
+    `;
 }
 
 function trackComplaint() {
