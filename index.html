@@ -295,7 +295,54 @@ function submitComplaint() {
 }
 
 function trackComplaint() {
-    alert("Complaint tracking yaha open hoga.");
+    const box = document.createElement("div");
+
+    box.innerHTML = `
+        <div style="position:fixed; inset:0; background:white; z-index:9999; padding:20px;">
+            <h2>🔍 Track Complaint</h2>
+            <p>तुमचा Complaint ID टाका</p>
+
+            <input id="trackId" type="text"
+                   placeholder="उदा. SG-570934"
+                   style="padding:12px; width:90%;">
+
+            <button onclick="checkComplaint()"
+                    style="margin-top:15px; padding:12px;">
+                🔎 Track
+            </button>
+
+            <div id="trackResult" style="margin-top:20px;"></div>
+
+            <button onclick="this.parentElement.remove()"
+                    style="margin-top:15px; padding:10px;">
+                ❌ बंद करा
+            </button>
+        </div>
+    `;
+
+    document.body.appendChild(box);
+}
+
+function checkComplaint() {
+    const id = document.getElementById("trackId").value.trim();
+
+    if (id === "SG-570934") {
+        document.getElementById("trackResult").innerHTML = `
+            <div style="border:2px solid green; padding:15px;">
+                <h3>✅ Complaint Found</h3>
+                <p><b>Complaint ID:</b> SG-570934</p>
+                <p><b>Status:</b> 🟡 Pending</p>
+                <p><b>Department:</b> ग्रामपंचायत</p>
+                <p><b>Action:</b> तपासणीसाठी पाठवण्यात आली आहे.</p>
+            </div>
+        `;
+    } else {
+        document.getElementById("trackResult").innerHTML = `
+            <p style="color:red;">
+                ❌ Complaint ID सापडली नाही.
+            </p>
+        `;
+    }
 }
 
 function villageOfficials() {
