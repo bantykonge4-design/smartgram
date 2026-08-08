@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SmartGram - Digital Village</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f5f7f6;
+            color: #222;
+        }
+
+        header {
+            background: #176b3a;
+            color: white;
+            padding: 18px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 28px;
+        }
+
+        header p {
+            margin-top: 6px;
+            font-size: 14px;
+        }
+
+        .hero {
+            background: white;
+            text-align: center;
+            padding: 45px 20px;
+        }
+
+        .hero h2 {
+            font-size: 30px;
+            color: #176b3a;
+            margin-bottom: 12px;
+        }
+
+        .hero p {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #176b3a;
+            color: white;
+            padding: 13px 22px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .section {
+            padding: 30px 18px;
+        }
+
+        .section h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #176b3a;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+
+        .card {
+            background: white;
+            padding: 20px 12px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .card .icon {
+            font-size: 30px;
+            margin-bottom: 8px;
+        }
+
+        .card h3 {
+            font-size: 16px;
+            margin-bottom: 6px;
+        }
+
+        .card p {
+            font-size: 12px;
+            color: #666;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .stat {
+            background: #176b3a;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .stat h3 {
+            font-size: 25px;
+        }
+
+        footer {
+            background: #123d27;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 20px;
+            font-size: 13px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>🌾 SmartGram</h1>
+    <p>Digital Village Grievance & Development System</p>
+</header>
+
+<section class="hero">
+    <h2>आपल्या गावासाठी डिजिटल व्यासपीठ</h2>
+
+    <p>
+        गावातील समस्या नोंदवा, तक्रारीचा status पाहा,
+        अधिकृत माहिती मिळवा आणि गावाच्या विकासात सहभागी व्हा.
+    </p>
+
+    <a href="#" class="btn">🔴 समस्या नोंदवा</a>
+</section>
+
+<section class="section">
+
+    <h2>SmartGram Services</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="icon">📝</div>
+            <h3>Complaint</h3>
+            <p>गावातील समस्या online नोंदवा.</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🔎</div>
+            <h3>Track Complaint</h3>
+            <p>तुमच्या complaint चा status पाहा.</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">👥</div>
+            <h3>Village Officials</h3>
+            <p>गावातील अधिकृत पदाधिकारी माहिती.</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🗺️</div>
+            <h3>Village Map</h3>
+            <p>गावातील महत्त्वाच्या ठिकाणांची माहिती.</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">📢</div>
+            <h3>Village Notices</h3>
+            <p>गावातील महत्त्वाच्या सूचना पाहा.</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">💡</div>
+            <h3>Village Ideas</h3>
+            <p>गावाच्या विकासासाठी ideas द्या.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="section">
+
+    <h2>Village Complaint Overview</h2>
+
+    <div class="stats">
+
+        <div class="stat">
+            <h3>128</h3>
+            <p>Total Complaints</p>
+        </div>
+
+        <div class="stat">
+            <h3>75</h3>
+            <p>Resolved</p>
+        </div>
+
+        <div class="stat">
+            <h3>32</h3>
+            <p>Pending</p>
+        </div>
+
+        <div class="stat">
+            <h3>21</h3>
+            <p>In Progress</p>
+        </div>
+
+    </div>
+
+</section>
+
+<footer>
+    <p>© 2026 SmartGram</p>
+    <p>Digital Village Development Initiative</p>
+</footer>
+
+</body>
+</html>
