@@ -1117,123 +1117,381 @@ function submitIdea() {
 }
     function generateBirthPDF(applicationNo) {
 
-    const name = document.getElementById("birthName")?.value || "";
-    const date = document.getElementById("birthDate")?.value || "";
-    const place = document.getElementById("birthPlace")?.value || "";
-    const father = document.getElementById("fatherName")?.value || "";
-    const mother = document.getElementById("motherName")?.value || "";
-    const address = document.getElementById("birthAddress")?.value || "";
+    const name =
+        document.getElementById("birthName")?.value || "";
+
+    const date =
+        document.getElementById("birthDate")?.value || "";
+
+    const place =
+        document.getElementById("birthPlace")?.value || "";
+
+    const father =
+        document.getElementById("fatherName")?.value || "";
+
+    const mother =
+        document.getElementById("motherName")?.value || "";
+
+    const address =
+        document.getElementById("birthAddress")?.value || "";
+
+    const today = new Date().toLocaleDateString("en-IN");
 
     const printWindow = window.open("", "_blank");
 
     printWindow.document.write(`
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-<title>Birth Certificate - ${applicationNo}</title>
+
+<meta charset="UTF-8">
+
+<title>SmartGram Birth Certificate - ${applicationNo}</title>
 
 <style>
+
+@page {
+    size: A4;
+    margin: 15mm;
+}
+
+* {
+    box-sizing: border-box;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    padding: 40px;
+    margin: 0;
+    background: #eeeeee;
+    font-family: Arial, Helvetica, sans-serif;
     color: #222;
 }
 
-.certificate {
-    border: 5px double #176b3a;
-    padding: 35px;
-    max-width: 750px;
-    margin: auto;
+.toolbar {
+    text-align: center;
+    padding: 15px;
 }
 
-h1 {
+.print-btn {
+    background: #176b3a;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 7px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.certificate {
+    width: 210mm;
+    min-height: 297mm;
+    margin: auto;
+    background: white;
+    padding: 18mm;
+    border: 5px double #176b3a;
+    position: relative;
+}
+
+.inner-border {
+    border: 1px solid #176b3a;
+    min-height: 255mm;
+    padding: 15mm;
+}
+
+.header {
+    text-align: center;
+}
+
+.logo {
+    font-size: 42px;
+}
+
+.title {
+    color: #176b3a;
+    font-size: 30px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-top: 5px;
+}
+
+.subtitle {
+    font-size: 15px;
+    margin-top: 5px;
+}
+
+.demo {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 7px 16px;
+    border: 2px solid #b52b27;
+    color: #b52b27;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.line {
+    border-top: 2px solid #176b3a;
+    margin: 20px 0;
+}
+
+.application {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+}
+
+.heading {
     text-align: center;
     color: #176b3a;
+    font-size: 21px;
+    margin: 20px 0;
+    font-weight: bold;
 }
 
-h2 {
+.info-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.info-table td {
+    border: 1px solid #999;
+    padding: 12px;
+    font-size: 15px;
+}
+
+.label {
+    width: 38%;
+    font-weight: bold;
+    background: #f1f7f3;
+}
+
+.declaration {
+    margin-top: 25px;
+    line-height: 1.7;
+    font-size: 14px;
+    text-align: justify;
+}
+
+.signature-area {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 70px;
     text-align: center;
 }
 
-.info {
-    margin-top: 25px;
-    line-height: 2;
+.signature {
+    width: 180px;
+    border-top: 1px solid #333;
+    padding-top: 8px;
 }
 
 .footer {
-    margin-top: 50px;
-    text-align: right;
+    text-align: center;
+    margin-top: 35px;
+    font-size: 12px;
+    color: #666;
 }
 
-button {
-    padding: 12px 20px;
-    background: #176b3a;
-    color: white;
-    border: 0;
-    border-radius: 6px;
+.watermark {
+    position: absolute;
+    top: 47%;
+    left: 18%;
+    transform: rotate(-30deg);
+    font-size: 42px;
+    color: rgba(23,107,58,0.08);
+    font-weight: bold;
+    pointer-events: none;
 }
+
+@media print {
+
+    body {
+        background: white;
+    }
+
+    .toolbar {
+        display: none;
+    }
+
+    .certificate {
+        margin: 0;
+        border: 5px double #176b3a;
+    }
+
+}
+
 </style>
+
 </head>
 
 <body>
 
+<div class="toolbar">
+
+    <button class="print-btn" onclick="window.print()">
+        📄 Save / Print PDF
+    </button>
+
+</div>
+
 <div class="certificate">
 
-<h1>🌾 SMARTGRAM</h1>
+    <div class="watermark">
+        SMARTGRAM DEMO
+    </div>
 
-<h2>BIRTH CERTIFICATE APPLICATION</h2>
+    <div class="inner-border">
 
-<hr>
+        <div class="header">
 
-<div class="info">
+            <div class="logo">🌾</div>
 
-<p><b>Application No:</b> ${applicationNo}</p>
+            <div class="title">
+                SMARTGRAM
+            </div>
 
-<p><b>Child Name:</b> ${name}</p>
+            <div class="subtitle">
+                Digital Village Development Initiative
+            </div>
 
-<p><b>Date of Birth:</b> ${date}</p>
+            <div class="demo">
+                DEMO / PROJECT COPY
+            </div>
 
-<p><b>Place of Birth:</b> ${place}</p>
+        </div>
 
-<p><b>Father's Name:</b> ${father}</p>
+        <div class="line"></div>
 
-<p><b>Mother's Name:</b> ${mother}</p>
+        <div class="application">
 
-<p><b>Address:</b> ${address}</p>
+            <div>
+                <b>Application No:</b>
+                ${applicationNo}
+            </div>
 
-</div>
+            <div>
+                <b>Application Date:</b>
+                ${today}
+            </div>
 
-<div class="footer">
+        </div>
 
-<p>Authorized Officer</p>
-<p>SmartGram Digital Village</p>
+        <div class="heading">
+            BIRTH CERTIFICATE
+        </div>
 
-</div>
+        <table class="info-table">
 
-<br>
+            <tr>
+                <td class="label">
+                    Child Name
+                </td>
 
-<button onclick="window.print()">
-📄 Save / Print PDF
-</button>
+                <td>
+                    ${name}
+                </td>
+            </tr>
+
+            <tr>
+                <td class="label">
+                    Date of Birth
+                </td>
+
+                <td>
+                    ${date}
+                </td>
+            </tr>
+
+            <tr>
+                <td class="label">
+                    Place of Birth
+                </td>
+
+                <td>
+                    ${place}
+                </td>
+            </tr>
+
+            <tr>
+                <td class="label">
+                    Father's Name
+                </td>
+
+                <td>
+                    ${father}
+                </td>
+            </tr>
+
+            <tr>
+                <td class="label">
+                    Mother's Name
+                </td>
+
+                <td>
+                    ${mother}
+                </td>
+            </tr>
+
+            <tr>
+                <td class="label">
+                    Address
+                </td>
+
+                <td>
+                    ${address}
+                </td>
+            </tr>
+
+        </table>
+
+        <div class="declaration">
+
+            <b>Declaration:</b>
+
+            <p>
+                This document has been generated through the
+                SmartGram digital village project for demonstration
+                and academic purposes. The information shown above
+                is based on the application submitted by the applicant.
+            </p>
+
+        </div>
+
+        <div class="signature-area">
+
+            <div class="signature">
+                Applicant
+            </div>
+
+            <div class="signature">
+                Authorized Officer
+            </div>
+
+        </div>
+
+        <div class="footer">
+
+            <p>
+                SMARTGRAM DIGITAL VILLAGE
+            </p>
+
+            <p>
+                DEMO / NOT A GOVERNMENT CERTIFICATE
+            </p>
+
+        </div>
+
+    </div>
 
 </div>
 
 </body>
+
 </html>
 `);
 
     printWindow.document.close();
-    }
-    function adminLogin() {
-    const user = prompt("Admin Username:");
-    const pass = prompt("Admin Password:");
-
-    if (user === "admin" && pass === "1234") {
-        alert("✅ Admin Login Successful");
-        adminDashboard();
-    } else {
-        alert("❌ Wrong Username or Password");
-    }
 }
 
 function adminDashboard() {
