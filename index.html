@@ -1504,7 +1504,128 @@ body {
 
     printWindow.document.close();
 }
+function adminLogin() {
 
+    const box = document.createElement("div");
+
+    box.innerHTML = `
+        <div style="
+            position:fixed;
+            inset:0;
+            background:#f5f7f6;
+            z-index:99999;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            padding:20px;
+        ">
+
+            <div style="
+                background:white;
+                width:100%;
+                max-width:400px;
+                padding:25px;
+                border-radius:15px;
+                box-shadow:0 4px 20px rgba(0,0,0,0.15);
+            ">
+
+                <h2 style="
+                    text-align:center;
+                    color:#176b3a;
+                    margin-bottom:8px;
+                ">
+                    🔐 SmartGram Login
+                </h2>
+
+                <p style="
+                    text-align:center;
+                    color:#666;
+                    margin-bottom:20px;
+                ">
+                    Admin / Officer Login
+                </p>
+
+                <label>Username</label>
+
+                <input id="adminUsername"
+                    type="text"
+                    placeholder="Username"
+                    style="
+                        width:100%;
+                        padding:13px;
+                        margin:8px 0 15px;
+                        border:1px solid #ccc;
+                        border-radius:8px;
+                    ">
+
+                <label>Password</label>
+
+                <input id="adminPassword"
+                    type="password"
+                    placeholder="Password"
+                    style="
+                        width:100%;
+                        padding:13px;
+                        margin:8px 0 20px;
+                        border:1px solid #ccc;
+                        border-radius:8px;
+                    ">
+
+                <button onclick="checkAdminLogin()"
+                    style="
+                        width:100%;
+                        padding:13px;
+                        background:#176b3a;
+                        color:white;
+                        border:0;
+                        border-radius:8px;
+                        font-size:16px;
+                        font-weight:bold;
+                    ">
+                    🔓 Login
+                </button>
+
+                <button onclick="this.parentElement.parentElement.remove()"
+                    style="
+                        width:100%;
+                        padding:11px;
+                        margin-top:10px;
+                        background:#ddd;
+                        border:0;
+                        border-radius:8px;
+                    ">
+                    ❌ बंद करा
+                </button>
+
+            </div>
+        </div>
+    `;
+
+    document.body.appendChild(box);
+}
+
+
+function checkAdminLogin() {
+
+    const username =
+        document.getElementById("adminUsername").value.trim();
+
+    const password =
+        document.getElementById("adminPassword").value.trim();
+
+
+    if (username === "admin" && password === "1234") {
+
+        document.body.lastElementChild.remove();
+
+        adminDashboard();
+
+    } else {
+
+        alert("❌ चुकीचे Username किंवा Password!");
+
+    }
+}
 function adminDashboard() {
 
     const box = document.createElement("div");
