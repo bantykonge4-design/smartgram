@@ -1100,7 +1100,57 @@ function submitIdea() {
 
     `;
 }
+function generateBirthPDF(applicationNo) {
 
+    const name = document.getElementById("birthName").value;
+    const date = document.getElementById("birthDate").value;
+    const place = document.getElementById("birthPlace").value;
+    const father = document.getElementById("fatherName").value;
+    const mother = document.getElementById("motherName").value;
+    const address = document.getElementById("birthAddress").value;
+
+    const certificate = `
+SMARTGRAM
+DIGITAL VILLAGE
+
+BIRTH CERTIFICATE APPLICATION
+
+Application No: ${applicationNo}
+
+Child Name: ${name}
+Date of Birth: ${date}
+Place of Birth: ${place}
+
+Father's Name: ${father}
+Mother's Name: ${mother}
+
+Address:
+${address}
+
+----------------------------------
+
+This is a SmartGram project
+application document.
+Final government certificate
+must be issued by the authorized authority.
+`;
+
+    const blob = new Blob([certificate], {
+        type: "application/pdf"
+    });
+
+    const url = URL.createObjectURL(blob);
+
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = applicationNo + "-Birth-Certificate.pdf";
+
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
+    URL.revokeObjectURL(url);
+}
 </script>
 
 </body>
