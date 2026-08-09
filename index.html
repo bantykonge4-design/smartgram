@@ -360,7 +360,185 @@ function villageNotices() {
 function villageIdeas() {
     alert("Village Ideas yaha submit kar sakte hain.");
 }
+<script>
+function complaint() {
+    const form = document.createElement("div");
+
+    form.innerHTML = `
+        <div style="position:fixed; inset:0; background:white; z-index:9999; overflow:auto; padding:20px;">
+            <h2>📝 ग्राम समस्या नोंदणी</h2>
+            <p>SmartGram – Digital Village</p>
+
+            <label>नाव</label><br>
+            <input id="cname" type="text" placeholder="तुमचे पूर्ण नाव"
+                   style="padding:12px; width:100%; margin:8px 0;"><br>
+
+            <label>मोबाइल नंबर</label><br>
+            <input id="cmobile" type="tel" placeholder="10 अंकी मोबाइल नंबर"
+                   style="padding:12px; width:100%; margin:8px 0;"><br>
+
+            <label>गाव</label><br>
+            <input id="cvillage" type="text" placeholder="गावाचे नाव"
+                   style="padding:12px; width:100%; margin:8px 0;"><br>
+
+            <label>समस्येचा प्रकार</label><br>
+            <select id="ctype" style="padding:12px; width:100%; margin:8px 0;">
+                <option>रस्ता</option>
+                <option>पाणी</option>
+                <option>वीज</option>
+                <option>स्वच्छता</option>
+                <option>गटार</option>
+                <option>शासकीय सेवा</option>
+                <option>इतर</option>
+            </select><br>
+
+            <label>समस्येचे वर्णन</label><br>
+            <textarea id="cdesc" rows="5"
+                      placeholder="तुमची समस्या सविस्तर लिहा"
+                      style="padding:12px; width:100%; margin:8px 0;"></textarea><br>
+
+            <button onclick="submitComplaint()"
+                    style="padding:12px; margin:5px;">
+                📤 समस्या नोंदवा
+            </button>
+
+            <button onclick="this.parentElement.parentElement.remove()"
+                    style="padding:12px; margin:5px;">
+                ❌ बंद करा
+            </button>
+
+            <div id="result"></div>
+        </div>
+    `;
+
+    document.body.appendChild(form);
+}
+
+function submitComplaint() {
+    const name = document.getElementById("cname").value.trim();
+    const mobile = document.getElementById("cmobile").value.trim();
+    const village = document.getElementById("cvillage").value.trim();
+    const desc = document.getElementById("cdesc").value.trim();
+
+    if (!name || !mobile || !village || !desc) {
+        alert("कृपया सर्व आवश्यक माहिती भरा.");
+        return;
+    }
+
+    const id = "SG-" + Math.floor(100000 + Math.random() * 900000);
+
+    document.getElementById("result").innerHTML = `
+        <div style="margin-top:20px; padding:15px; border:2px solid green;">
+            <h3>✅ समस्या यशस्वीरित्या नोंदवली!</h3>
+            <p>तुमचा Complaint ID:</p>
+            <h2>${id}</h2>
+            <p>हा ID जपून ठेवा.</p>
+        </div>
+    `;
+}
+
+function trackComplaint() {
+    const box = document.createElement("div");
+
+    box.innerHTML = `
+        <div style="position:fixed; inset:0; background:white; z-index:9999; padding:20px;">
+            <h2>🔍 Track Complaint</h2>
+            <p>तुमचा Complaint ID टाका</p>
+
+            <input id="trackId" type="text"
+                   placeholder="उदा. SG-570934"
+                   style="padding:12px; width:100%;">
+
+            <button onclick="checkComplaint()"
+                    style="margin-top:15px; padding:12px;">
+                🔎 Track
+            </button>
+
+            <div id="trackResult" style="margin-top:20px;"></div>
+
+            <button onclick="this.parentElement.remove()"
+                    style="margin-top:15px; padding:10px;">
+                ❌ बंद करा
+            </button>
+        </div>
+    `;
+
+    document.body.appendChild(box);
+}
+
+function checkComplaint() {
+    const id = document.getElementById("trackId").value.trim();
+
+    if (id === "SG-570934") {
+        document.getElementById("trackResult").innerHTML = `
+            <div style="border:2px solid green; padding:15px;">
+                <h3>✅ Complaint Found</h3>
+                <p><b>Complaint ID:</b> SG-570934</p>
+                <p><b>Status:</b> 🟡 Pending</p>
+                <p><b>Department:</b> ग्रामपंचायत</p>
+                <p><b>Action:</b> तपासणीसाठी पाठवण्यात आली आहे.</p>
+            </div>
+        `;
+    } else {
+        document.getElementById("trackResult").innerHTML = `
+            <p style="color:red;">❌ Complaint ID सापडली नाही.</p>
+        `;
+    }
+}
+
+function villageOfficials() {
+    const box = document.createElement("div");
+
+    box.innerHTML = `
+        <div style="position:fixed; inset:0; background:#f5f7f6; z-index:9999; overflow:auto; padding:20px;">
+
+            <h2 style="text-align:center;">👥 ग्रामपंचायत अधिकारी</h2>
+            <p style="text-align:center;">SmartGram – Digital Village</p>
+
+            <div style="background:white;padding:15px;margin:12px 0;border-radius:12px;">
+                <h3>👨‍💼 सरपंच</h3>
+                <p><b>नाव:</b> ग्रामपंचायत सरपंच</p>
+                <p><b>मोबाइल:</b> XXXXXXXXXX</p>
+            </div>
+
+            <div style="background:white;padding:15px;margin:12px 0;border-radius:12px;">
+                <h3>👨‍💼 उपसरपंच</h3>
+                <p><b>नाव:</b> ग्रामपंचायत उपसरपंच</p>
+                <p><b>मोबाइल:</b> XXXXXXXXXX</p>
+            </div>
+
+            <div style="background:white;padding:15px;margin:12px 0;border-radius:12px;">
+                <h3>👨‍💼 ग्रामसेवक</h3>
+                <p><b>नाव:</b> ग्रामसेवक</p>
+                <p><b>मोबाइल:</b> XXXXXXXXXX</p>
+            </div>
+
+            <div style="background:white;padding:15px;margin:12px 0;border-radius:12px;">
+                <h3>👨‍💼 तलाठी</h3>
+                <p><b>नाव:</b> तलाठी</p>
+                <p><b>मोबाइल:</b> XXXXXXXXXX</p>
+            </div>
+
+            <button onclick="this.parentElement.remove()"
+                    style="width:100%;padding:14px;margin-top:10px;background:#176b3a;color:white;border:0;border-radius:10px;">
+                ❌ बंद करा
+            </button>
+
+        </div>
+    `;
+
+    document.body.appendChild(box);
+}
+
+function villageMap() {
+    alert("Village Map लवकरच उपलब्ध होईल.");
+}
+
+function villageNotices() {
+    alert("Village Notices लवकरच उपलब्ध होतील.");
+}
+
+function villageIdeas() {
+    alert("Village Ideas लवकरच उपलब्ध होतील.");
+}
 </script>
-</body>
-</html>
-__
