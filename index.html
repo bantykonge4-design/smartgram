@@ -1626,6 +1626,24 @@ function checkAdminLogin() {
 
     }
 }
+    function approveBirthApplication(button) {
+
+    const card = button.parentElement.parentElement;
+
+    const status = card.querySelector(".birthStatus");
+
+    if (status) {
+        status.innerHTML = "🟢 Approved";
+        status.style.color = "#198754";
+        status.style.fontWeight = "bold";
+    }
+
+    button.disabled = true;
+    button.innerHTML = "✅ Approved";
+    button.style.background = "#6c757d";
+
+    alert("✅ Birth Certificate Application Approved Successfully!");
+    }
 function adminDashboard() {
 
     const box = document.createElement("div");
