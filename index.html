@@ -1128,377 +1128,154 @@ function submitIdea() {
 }
     function generateBirthPDF(applicationNo) {
 
-    const name =
-        document.getElementById("birthName")?.value || "";
-
-    const date =
-        document.getElementById("birthDate")?.value || "";
-
-    const place =
-        document.getElementById("birthPlace")?.value || "";
-
-    const father =
-        document.getElementById("fatherName")?.value || "";
-
-    const mother =
-        document.getElementById("motherName")?.value || "";
-
-    const address =
-        document.getElementById("birthAddress")?.value || "";
-
-    const today = new Date().toLocaleDateString("en-IN");
+    const name = document.getElementById("birthName")?.value || "";
+    const date = document.getElementById("birthDate")?.value || "";
+    const place = document.getElementById("birthPlace")?.value || "";
+    const father = document.getElementById("fatherName")?.value || "";
+    const mother = document.getElementById("motherName")?.value || "";
+    const address = document.getElementById("birthAddress")?.value || "";
 
     const printWindow = window.open("", "_blank");
 
+    if (!printWindow) {
+        alert("PDF window उघडण्यासाठी browser popup allow करा.");
+        return;
+    }
+
     printWindow.document.write(`
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="mr">
 <head>
-
 <meta charset="UTF-8">
-
-<title>SmartGram Birth Certificate - ${applicationNo}</title>
+<title>Birth Certificate Application</title>
 
 <style>
-
-@page {
-    size: A4;
-    margin: 15mm;
-}
-
-* {
-    box-sizing: border-box;
-}
-
 body {
+    font-family: Arial, sans-serif;
     margin: 0;
-    background: #eeeeee;
-    font-family: Arial, Helvetica, sans-serif;
-    color: #222;
-}
-
-.toolbar {
-    text-align: center;
-    padding: 15px;
-}
-
-.print-btn {
-    background: #176b3a;
-    color: white;
-    border: none;
-    padding: 12px 24px;
-    border-radius: 7px;
-    font-size: 15px;
-    cursor: pointer;
-}
-
-.certificate {
-    width: 210mm;
-    min-height: 297mm;
-    margin: auto;
+    padding: 30px;
     background: white;
-    padding: 18mm;
-    border: 5px double #176b3a;
-    position: relative;
 }
 
-.inner-border {
-    border: 1px solid #176b3a;
-    min-height: 255mm;
-    padding: 15mm;
+.page {
+    max-width: 800px;
+    margin: auto;
+    border: 2px solid #176b3a;
+    padding: 35px;
 }
 
-.header {
+h1, h2 {
     text-align: center;
 }
 
-.logo {
-    font-size: 42px;
-}
-
-.title {
-    color: #176b3a;
-    font-size: 30px;
-    font-weight: bold;
-    letter-spacing: 2px;
-    margin-top: 5px;
-}
-
-.subtitle {
-    font-size: 15px;
-    margin-top: 5px;
-}
-
-.demo {
-    display: inline-block;
-    margin-top: 15px;
-    padding: 7px 16px;
-    border: 2px solid #b52b27;
-    color: #b52b27;
-    font-weight: bold;
-    font-size: 13px;
-}
-
-.line {
-    border-top: 2px solid #176b3a;
-    margin: 20px 0;
-}
-
-.application {
-    display: flex;
-    justify-content: space-between;
-    font-size: 14px;
-}
-
-.heading {
+.notice {
     text-align: center;
-    color: #176b3a;
-    font-size: 21px;
-    margin: 20px 0;
-    font-weight: bold;
-}
-
-.info-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 15px;
-}
-
-.info-table td {
     border: 1px solid #999;
-    padding: 12px;
-    font-size: 15px;
+    padding: 8px;
+    margin: 15px 0;
+    font-weight: bold;
+}
+
+.row {
+    display: flex;
+    margin: 14px 0;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 8px;
 }
 
 .label {
-    width: 38%;
+    width: 220px;
     font-weight: bold;
-    background: #f1f7f3;
 }
 
-.declaration {
-    margin-top: 25px;
-    line-height: 1.7;
-    font-size: 14px;
-    text-align: justify;
-}
-
-.signature-area {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 70px;
-    text-align: center;
-}
-
-.signature {
-    width: 180px;
-    border-top: 1px solid #333;
-    padding-top: 8px;
+.value {
+    flex: 1;
 }
 
 .footer {
+    margin-top: 50px;
     text-align: center;
-    margin-top: 35px;
-    font-size: 12px;
-    color: #666;
-}
-
-.watermark {
-    position: absolute;
-    top: 47%;
-    left: 18%;
-    transform: rotate(-30deg);
-    font-size: 42px;
-    color: rgba(23,107,58,0.08);
-    font-weight: bold;
-    pointer-events: none;
+    font-size: 13px;
 }
 
 @media print {
-
     body {
-        background: white;
+        padding: 0;
     }
 
-    .toolbar {
-        display: none;
+    .page {
+        border: 2px solid #176b3a;
     }
-
-    .certificate {
-        margin: 0;
-        border: 5px double #176b3a;
-    }
-
 }
-
 </style>
-
 </head>
 
 <body>
 
-<div class="toolbar">
+<div class="page">
 
-    <button class="print-btn" onclick="window.print()">
-        📄 Save / Print PDF
-    </button>
+<h1>SMARTGRAM</h1>
+
+<h2>जन्म प्रमाणपत्र अर्जाची प्रत</h2>
+
+<div class="notice">
+ही नमुना / अर्जाची प्रत आहे — अधिकृत शासकीय प्रमाणपत्र नाही
+</div>
+
+<p><b>Application No.:</b> ${applicationNo}</p>
+
+<hr>
+
+<div class="row">
+    <div class="label">बालकाचे नाव:</div>
+    <div class="value">${name}</div>
+</div>
+
+<div class="row">
+    <div class="label">जन्म तारीख:</div>
+    <div class="value">${date}</div>
+</div>
+
+<div class="row">
+    <div class="label">जन्म ठिकाण:</div>
+    <div class="value">${place}</div>
+</div>
+
+<div class="row">
+    <div class="label">वडिलांचे नाव:</div>
+    <div class="value">${father}</div>
+</div>
+
+<div class="row">
+    <div class="label">आईचे नाव:</div>
+    <div class="value">${mother}</div>
+</div>
+
+<div class="row">
+    <div class="label">पत्ता:</div>
+    <div class="value">${address}</div>
+</div>
+
+<br>
+
+<p>
+हा दस्तऐवज SmartGram प्रणालीतील अर्जाची printable प्रत आहे.
+अधिकृत प्रमाणपत्र संबंधित सक्षम शासकीय प्राधिकरणाकडूनच जारी केले जाऊ शकते.
+</p>
+
+<div class="footer">
+    SmartGram Digital Village Development Initiative
+</div>
 
 </div>
 
-<div class="certificate">
-
-    <div class="watermark">
-        SMARTGRAM DEMO
-    </div>
-
-    <div class="inner-border">
-
-        <div class="header">
-
-            <div class="logo">🌾</div>
-
-            <div class="title">
-                SMARTGRAM
-            </div>
-
-            <div class="subtitle">
-                Digital Village Development Initiative
-            </div>
-
-            <div class="demo">
-                DEMO / PROJECT COPY
-            </div>
-
-        </div>
-
-        <div class="line"></div>
-
-        <div class="application">
-
-            <div>
-                <b>Application No:</b>
-                ${applicationNo}
-            </div>
-
-            <div>
-                <b>Application Date:</b>
-                ${today}
-            </div>
-
-        </div>
-
-        <div class="heading">
-            BIRTH CERTIFICATE
-        </div>
-
-        <table class="info-table">
-
-            <tr>
-                <td class="label">
-                    Child Name
-                </td>
-
-                <td>
-                    ${name}
-                </td>
-            </tr>
-
-            <tr>
-                <td class="label">
-                    Date of Birth
-                </td>
-
-                <td>
-                    ${date}
-                </td>
-            </tr>
-
-            <tr>
-                <td class="label">
-                    Place of Birth
-                </td>
-
-                <td>
-                    ${place}
-                </td>
-            </tr>
-
-            <tr>
-                <td class="label">
-                    Father's Name
-                </td>
-
-                <td>
-                    ${father}
-                </td>
-            </tr>
-
-            <tr>
-                <td class="label">
-                    Mother's Name
-                </td>
-
-                <td>
-                    ${mother}
-                </td>
-            </tr>
-
-            <tr>
-                <td class="label">
-                    Address
-                </td>
-
-                <td>
-                    ${address}
-                </td>
-            </tr>
-
-        </table>
-
-        <div class="declaration">
-
-            <b>Declaration:</b>
-
-            <p>
-                This document has been generated through the
-                SmartGram digital village project for demonstration
-                and academic purposes. The information shown above
-                is based on the application submitted by the applicant.
-            </p>
-
-        </div>
-
-        <div class="signature-area">
-
-            <div class="signature">
-                Applicant
-            </div>
-
-            <div class="signature">
-                Authorized Officer
-            </div>
-
-        </div>
-
-        <div class="footer">
-
-            <p>
-                SMARTGRAM DIGITAL VILLAGE
-            </p>
-
-            <p>
-                DEMO / NOT A GOVERNMENT CERTIFICATE
-            </p>
-
-        </div>
-
-    </div>
-
-</div>
+<script>
+window.onload = function() {
+    window.print();
+};
+</script>
 
 </body>
-
 </html>
 `);
 
