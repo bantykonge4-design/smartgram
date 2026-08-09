@@ -918,34 +918,38 @@ function birthCertificate() {
 
 function submitBirth() {
 
-    const name =
-        document.getElementById("birthName").value.trim();
-
-    const date =
-        document.getElementById("birthDate").value;
-
-    const father =
-        document.getElementById("fatherName").value.trim();
-
-    const mother =
-        document.getElementById("motherName").value.trim();
-
+    const name = document.getElementById("birthName").value.trim();
+    const date = document.getElementById("birthDate").value;
+    const place = document.getElementById("birthPlace").value.trim();
+    const father = document.getElementById("fatherName").value.trim();
+    const mother = document.getElementById("motherName").value.trim();
+    const address = document.getElementById("birthAddress").value.trim();
 
     if (!name || !date || !father || !mother) {
-
         alert("कृपया आवश्यक माहिती भरा.");
-
         return;
     }
 
-
     const applicationNo =
-        "BC-" +
-        Math.floor(100000 + Math.random() * 900000);
+        "BC-" + Math.floor(100000 + Math.random() * 900000);
 
+    const application = {
+        applicationNo: applicationNo,
+        name: name,
+        date: date,
+        place: place,
+        father: father,
+        mother: mother,
+        address: address,
+        status: "Pending"
+    };
+
+    localStorage.setItem(
+        "birthApplication",
+        JSON.stringify(application)
+    );
 
     document.getElementById("birthResult").innerHTML = `
-
         <div style="
             margin-top:20px;
             padding:15px;
@@ -953,20 +957,26 @@ function submitBirth() {
             border-radius:10px;
             background:#f0fff0;
         ">
-
             <h3>✅ अर्ज यशस्वीरित्या Submit झाला!</h3>
 
-            <p>Application Number:</p>
-
+            <p><b>Application Number:</b></p>
             <h2>${applicationNo}</h2>
 
             <p>
-                अर्जाची तपासणी अधिकारी करतील.
+                तुमचा अर्ज Officer verification साठी पाठवण्यात आला आहे.
             </p>
-<button onclick="generateBirthPDF('BC-534433')"
-        style="background:#176b3a;color:white;padding:12px 18px;border:0;border-radius:8px;margin-top:10px;">
-    📄 Download Birth Certificate PDF
-</button>
+
+            <button onclick="generateBirthPDF('${applicationNo}')"
+                style="
+                background:#176b3a;
+                color:white;
+                padding:12px 18px;
+                border:0;
+                border-radius:8px;
+                margin-top:10px;
+                ">
+                📄 Download Birth Certificate PDF
+            </button>
         </div>
     `;
 }
