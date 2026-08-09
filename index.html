@@ -834,7 +834,228 @@ function villageIdeas() {
     `);
 }
 
+function certificates() {
 
+    createPopup(`
+        <h2>📄 Certificate Services</h2>
+
+        <p class="popup-subtitle">
+            प्रमाणपत्रासाठी online अर्ज
+        </p>
+
+        <div class="official-box" onclick="birthCertificate()"
+             style="cursor:pointer;">
+            <h3>🍼 Birth Certificate</h3>
+            <p>जन्म प्रमाणपत्रासाठी अर्ज करा.</p>
+        </div>
+
+        <div class="official-box" onclick="deathCertificate()"
+             style="cursor:pointer;">
+            <h3>⚰️ Death Certificate</h3>
+            <p>मृत्यू प्रमाणपत्रासाठी अर्ज करा.</p>
+        </div>
+
+        <button class="close-btn"
+                onclick="closePopup()">
+            ❌ बंद करा
+        </button>
+    `);
+}
+
+
+function birthCertificate() {
+
+    createPopup(`
+        <h2>🍼 Birth Certificate Application</h2>
+
+        <p class="popup-subtitle">
+            जन्म प्रमाणपत्रासाठी माहिती भरा
+        </p>
+
+        <label>बाळाचे नाव</label>
+        <input id="birthName" type="text"
+               placeholder="बाळाचे पूर्ण नाव">
+
+        <label>जन्म तारीख</label>
+        <input id="birthDate" type="date">
+
+        <label>जन्म ठिकाण</label>
+        <input id="birthPlace" type="text"
+               placeholder="जन्म ठिकाण">
+
+        <label>वडिलांचे नाव</label>
+        <input id="fatherName" type="text"
+               placeholder="वडिलांचे नाव">
+
+        <label>आईचे नाव</label>
+        <input id="motherName" type="text"
+               placeholder="आईचे नाव">
+
+        <label>पत्ता</label>
+        <textarea id="birthAddress"
+                  rows="4"
+                  placeholder="पूर्ण पत्ता"></textarea>
+
+        <button class="green-btn"
+                onclick="submitBirth()">
+            📤 अर्ज Submit करा
+        </button>
+
+        <button class="close-btn"
+                onclick="closePopup()">
+            ❌ बंद करा
+        </button>
+
+        <div id="birthResult"></div>
+    `);
+}
+
+
+function submitBirth() {
+
+    const name =
+        document.getElementById("birthName").value.trim();
+
+    const date =
+        document.getElementById("birthDate").value;
+
+    const father =
+        document.getElementById("fatherName").value.trim();
+
+    const mother =
+        document.getElementById("motherName").value.trim();
+
+
+    if (!name || !date || !father || !mother) {
+
+        alert("कृपया आवश्यक माहिती भरा.");
+
+        return;
+    }
+
+
+    const applicationNo =
+        "BC-" +
+        Math.floor(100000 + Math.random() * 900000);
+
+
+    document.getElementById("birthResult").innerHTML = `
+
+        <div style="
+            margin-top:20px;
+            padding:15px;
+            border:2px solid green;
+            border-radius:10px;
+            background:#f0fff0;
+        ">
+
+            <h3>✅ अर्ज यशस्वीरित्या Submit झाला!</h3>
+
+            <p>Application Number:</p>
+
+            <h2>${applicationNo}</h2>
+
+            <p>
+                अर्जाची तपासणी अधिकारी करतील.
+            </p>
+
+        </div>
+    `;
+}
+
+
+function deathCertificate() {
+
+    createPopup(`
+        <h2>⚰️ Death Certificate Application</h2>
+
+        <p class="popup-subtitle">
+            मृत्यू प्रमाणपत्रासाठी माहिती भरा
+        </p>
+
+        <label>मृत व्यक्तीचे नाव</label>
+        <input id="deathName" type="text"
+               placeholder="पूर्ण नाव">
+
+        <label>मृत्यू तारीख</label>
+        <input id="deathDate" type="date">
+
+        <label>मृत्यू ठिकाण</label>
+        <input id="deathPlace" type="text"
+               placeholder="मृत्यू ठिकाण">
+
+        <label>नातेवाईकाचे नाव</label>
+        <input id="relativeName" type="text"
+               placeholder="अर्जदाराचे नाव">
+
+        <label>पत्ता</label>
+        <textarea id="deathAddress"
+                  rows="4"
+                  placeholder="पूर्ण पत्ता"></textarea>
+
+        <button class="green-btn"
+                onclick="submitDeath()">
+            📤 अर्ज Submit करा
+        </button>
+
+        <button class="close-btn"
+                onclick="closePopup()">
+            ❌ बंद करा
+        </button>
+
+        <div id="deathResult"></div>
+    `);
+}
+
+
+function submitDeath() {
+
+    const name =
+        document.getElementById("deathName").value.trim();
+
+    const date =
+        document.getElementById("deathDate").value;
+
+    const relative =
+        document.getElementById("relativeName").value.trim();
+
+
+    if (!name || !date || !relative) {
+
+        alert("कृपया आवश्यक माहिती भरा.");
+
+        return;
+    }
+
+
+    const applicationNo =
+        "DC-" +
+        Math.floor(100000 + Math.random() * 900000);
+
+
+    document.getElementById("deathResult").innerHTML = `
+
+        <div style="
+            margin-top:20px;
+            padding:15px;
+            border:2px solid green;
+            border-radius:10px;
+            background:#f0fff0;
+        ">
+
+            <h3>✅ अर्ज यशस्वीरित्या Submit झाला!</h3>
+
+            <p>Application Number:</p>
+
+            <h2>${applicationNo}</h2>
+
+            <p>
+                अर्जाची तपासणी अधिकारी करतील.
+            </p>
+
+        </div>
+    `;
+}
 function submitIdea() {
 
     const name =
