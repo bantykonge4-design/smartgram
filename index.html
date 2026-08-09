@@ -1227,12 +1227,154 @@ button {
 }
 
 function adminDashboard() {
-    alert(
-        "ADMIN DASHBOARD\n\n" +
-        "Birth Applications: BC-534433\n" +
-        "Status: Pending\n\n" +
-        "Officer can verify applications."
-    );
+
+    const box = document.createElement("div");
+
+    box.innerHTML = `
+        <div style="
+            position:fixed;
+            inset:0;
+            background:#f5f7f6;
+            z-index:9999;
+            overflow:auto;
+            padding:20px;
+        ">
+
+            <h2 style="text-align:center;color:#176b3a;">
+                🔐 SmartGram Admin Dashboard
+            </h2>
+
+            <p style="text-align:center;">
+                Authorized Officer Panel
+            </p>
+
+            <hr style="margin:20px 0;">
+
+            <div style="
+                background:white;
+                padding:18px;
+                margin:12px 0;
+                border-radius:12px;
+                box-shadow:0 2px 8px rgba(0,0,0,.1);
+            ">
+                <h3>📄 Birth Certificate Applications</h3>
+
+                <p>
+                    <b>Application No:</b> BC-534433
+                </p>
+
+                <p>
+                    <b>Applicant:</b> Pending verification
+                </p>
+
+                <p>
+                    <b>Status:</b>
+                    <span style="color:#d68910;">
+                    🟡 Pending
+                    </span>
+                </p>
+
+                <button onclick="alert('Birth application approved')"
+                    style="
+                    background:#176b3a;
+                    color:white;
+                    border:0;
+                    padding:10px 15px;
+                    border-radius:7px;
+                    margin:5px;
+                    ">
+                    ✅ Approve
+                </button>
+
+                <button onclick="alert('Birth application rejected')"
+                    style="
+                    background:#b52b27;
+                    color:white;
+                    border:0;
+                    padding:10px 15px;
+                    border-radius:7px;
+                    margin:5px;
+                    ">
+                    ❌ Reject
+                </button>
+
+                <button onclick="alert('PDF download option')"
+                    style="
+                    background:#444;
+                    color:white;
+                    border:0;
+                    padding:10px 15px;
+                    border-radius:7px;
+                    margin:5px;
+                    ">
+                    📄 PDF
+                </button>
+            </div>
+
+            <div style="
+                background:white;
+                padding:18px;
+                margin:12px 0;
+                border-radius:12px;
+                box-shadow:0 2px 8px rgba(0,0,0,.1);
+            ">
+                <h3>⚰️ Death Certificate Applications</h3>
+
+                <p><b>Status:</b> 🟡 Pending</p>
+
+                <button onclick="alert('Death application approved')"
+                    style="
+                    background:#176b3a;
+                    color:white;
+                    border:0;
+                    padding:10px 15px;
+                    border-radius:7px;
+                    ">
+                    ✅ Approve
+                </button>
+
+                <button onclick="alert('Death application rejected')"
+                    style="
+                    background:#b52b27;
+                    color:white;
+                    border:0;
+                    padding:10px 15px;
+                    border-radius:7px;
+                    ">
+                    ❌ Reject
+                </button>
+            </div>
+
+            <div style="
+                background:white;
+                padding:18px;
+                margin:12px 0;
+                border-radius:12px;
+            ">
+                <h3>📝 Village Complaints</h3>
+
+                <p>Pending Complaints: <b>32</b></p>
+                <p>Resolved Complaints: <b>75</b></p>
+            </div>
+
+            <button onclick="this.parentElement.remove()"
+                style="
+                width:100%;
+                padding:14px;
+                margin-top:15px;
+                background:#123d27;
+                color:white;
+                border:0;
+                border-radius:10px;
+                font-size:16px;
+                ">
+                🚪 Logout / Close
+            </button>
+
+        </div>
+    `;
+
+    document.body.appendChild(box);
 }
 </script>
 
