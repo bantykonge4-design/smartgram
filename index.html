@@ -61,6 +61,7 @@
             border-radius: 8px;
             text-decoration: none;
             font-weight: bold;
+            cursor: pointer;
         }
 
         .section {
@@ -85,6 +86,12 @@
             border-radius: 12px;
             text-align: center;
             box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .card:active {
+            transform: scale(0.97);
         }
 
         .card .icon {
@@ -128,6 +135,82 @@
             margin-top: 20px;
             font-size: 13px;
         }
+
+        .popup {
+            position: fixed;
+            inset: 0;
+            background: #f5f7f6;
+            z-index: 9999;
+            overflow: auto;
+            padding: 20px;
+        }
+
+        .popup h2 {
+            color: #176b3a;
+            text-align: center;
+            margin-bottom: 8px;
+        }
+
+        .popup-subtitle {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .popup input,
+        .popup select,
+        .popup textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 7px 0 14px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+
+        .popup button {
+            padding: 12px 18px;
+            border: 0;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        .green-btn {
+            background: #176b3a;
+            color: white;
+        }
+
+        .close-btn {
+            background: #ddd;
+        }
+
+        .official-box {
+            background: white;
+            padding: 15px;
+            margin: 12px 0;
+            border-radius: 12px;
+            box-shadow: 0 2px 7px rgba(0,0,0,0.08);
+        }
+
+        .official-box h3 {
+            color: #176b3a;
+            margin-bottom: 8px;
+        }
+
+        .notice-box,
+        .idea-box {
+            background: white;
+            padding: 16px;
+            margin: 12px 0;
+            border-radius: 12px;
+        }
+
+        @media (max-width: 500px) {
+            .hero h2 {
+                font-size: 25px;
+            }
+        }
     </style>
 </head>
 
@@ -146,12 +229,14 @@
         अधिकृत माहिती मिळवा आणि गावाच्या विकासात सहभागी व्हा.
     </p>
 
-    <a href="#" class="btn">🔴 समस्या नोंदवा</a>
+    <a class="btn" onclick="complaint()">🔴 समस्या नोंदवा</a>
 </section>
 
 <section class="section">
 
     <h2>SmartGram Services</h2>
+
+    <div class="cards">
 
         <div class="card" onclick="complaint()">
             <div class="icon">📝</div>
@@ -227,319 +312,568 @@
     <p>© 2026 SmartGram</p>
     <p>Digital Village Development Initiative</p>
 </footer>
+
+
 <script>
-function complaint() {
-    const form = document.createElement("div");
 
-    form.innerHTML = `
-        <div style="position:fixed; inset:0; background:white; z-index:9999; overflow:auto; padding:20px;">
-            <h2>📝 ग्राम समस्या नोंदणी</h2>
-            <p>SmartGram – Digital Village</p>
+function createPopup(content) {
 
-            <label>नाव</label>
-            <input id="cname" type="text" placeholder="तुमचे पूर्ण नाव">
+    const oldPopup = document.querySelector(".popup");
 
-            <label>मोबाइल नंबर</label>
-            <input id="cmobile" type="tel" placeholder="10 अंकी मोबाइल नंबर">
-
-            <label>गाव</label>
-            <input id="cvillage" type="text" placeholder="गावाचे नाव">
-
-            <label>समस्येचा प्रकार</label>
-            <select id="ctype">
-                <option>रस्ता</option>
-                <option>पाणी</option>
-                <option>वीज</option>
-                <option>स्वच्छता</option>
-                <option>गटार</option>
-                <option>शासकीय सेवा</option>
-                <option>इतर</option>
-            </select>
-
-            <label>समस्येचे वर्णन</label>
-            <textarea id="cdesc" rows="5" placeholder="तुमची समस्या सविस्तर लिहा"></textarea>
-
-            <button onclick="submitComplaint()">📤 समस्या नोंदवा</button>
-            <button onclick="this.parentElement.remove()">❌ बंद करा</button>
-
-            <div id="result"></div>
-        </div>
-    `;
-
-    document.body.appendChild(form);
-}
-
-function submitComplaint() {
-    const name = document.getElementById("cname").value;
-    const mobile = document.getElementById("cmobile").value;
-    const village = document.getElementById("cvillage").value;
-    const desc = document.getElementById("cdesc").value;
-
-    if (!name || !mobile || !village || !desc) {
-        alert("कृपया सर्व आवश्यक माहिती भरा.");
-        return;
+    if (oldPopup) {
+        oldPopup.remove();
     }
 
-    const id = "SG-" + Math.floor(100000 + Math.random() * 900000);
-
-    document.getElementById("result").innerHTML = `
-        <div style="margin-top:20px; padding:15px; border:2px solid green;">
-            <h3>✅ समस्या यशस्वीरित्या नोंदवली!</h3>
-            <p>तुमचा Complaint ID:</p>
-            <h2>${id}</h2>
-            <p>हा ID जपून ठेवा. पुढे समस्या Track करण्यासाठी उपयोगी पडेल.</p>
-        </div>
-    `;
-}
-
-function trackComplaint() {
     const box = document.createElement("div");
 
-    box.innerHTML = `
-        <div style="position:fixed; inset:0; background:white; z-index:9999; padding:20px;">
-            <h2>🔍 Track Complaint</h2>
-            <p>तुमचा Complaint ID टाका</p>
+    box.className = "popup";
 
-            <input id="trackId" type="text"
-                   placeholder="उदा. SG-570934"
-                   style="padding:12px; width:90%;">
-
-            <button onclick="checkComplaint()"
-                    style="margin-top:15px; padding:12px;">
-                🔎 Track
-            </button>
-
-            <div id="trackResult" style="margin-top:20px;"></div>
-
-            <button onclick="this.parentElement.remove()"
-                    style="margin-top:15px; padding:10px;">
-                ❌ बंद करा
-            </button>
-        </div>
-    `;
+    box.innerHTML = content;
 
     document.body.appendChild(box);
 }
 
+
+function closePopup() {
+
+    const popup = document.querySelector(".popup");
+
+    if (popup) {
+        popup.remove();
+    }
+}
+
+
+/* COMPLAINT */
+
+function complaint() {
+
+    createPopup(`
+
+        <h2>📝 ग्राम समस्या नोंदणी</h2>
+
+        <p class="popup-subtitle">
+            SmartGram – Digital Village
+        </p>
+
+        <label>नाव</label>
+
+        <input id="cname"
+               type="text"
+               placeholder="तुमचे पूर्ण नाव">
+
+
+        <label>मोबाइल नंबर</label>
+
+        <input id="cmobile"
+               type="tel"
+               placeholder="10 अंकी मोबाइल नंबर">
+
+
+        <label>गाव</label>
+
+        <input id="cvillage"
+               type="text"
+               placeholder="गावाचे नाव">
+
+
+        <label>समस्येचा प्रकार</label>
+
+        <select id="ctype">
+
+            <option>रस्ता</option>
+            <option>पाणी</option>
+            <option>वीज</option>
+            <option>स्वच्छता</option>
+            <option>गटार</option>
+            <option>शासकीय सेवा</option>
+            <option>इतर</option>
+
+        </select>
+
+
+        <label>समस्येचे वर्णन</label>
+
+        <textarea id="cdesc"
+                  rows="5"
+                  placeholder="तुमची समस्या सविस्तर लिहा"></textarea>
+
+
+        <button class="green-btn"
+                onclick="submitComplaint()">
+
+            📤 समस्या नोंदवा
+
+        </button>
+
+
+        <button class="close-btn"
+                onclick="closePopup()">
+
+            ❌ बंद करा
+
+        </button>
+
+
+        <div id="result"></div>
+
+    `);
+}
+
+
+function submitComplaint() {
+
+    const name =
+        document.getElementById("cname").value.trim();
+
+    const mobile =
+        document.getElementById("cmobile").value.trim();
+
+    const village =
+        document.getElementById("cvillage").value.trim();
+
+    const desc =
+        document.getElementById("cdesc").value.trim();
+
+
+    if (!name || !mobile || !village || !desc) {
+
+        alert("कृपया सर्व आवश्यक माहिती भरा.");
+
+        return;
+    }
+
+
+    const id =
+        "SG-" +
+        Math.floor(100000 + Math.random() * 900000);
+
+
+    document.getElementById("result").innerHTML = `
+
+        <div style="
+            margin-top:20px;
+            padding:15px;
+            border:2px solid green;
+            border-radius:10px;
+            background:#f0fff0;
+        ">
+
+            <h3>✅ समस्या यशस्वीरित्या नोंदवली!</h3>
+
+            <p>तुमचा Complaint ID:</p>
+
+            <h2>${id}</h2>
+
+            <p>
+                हा ID जपून ठेवा.
+                पुढे समस्या Track करण्यासाठी उपयोगी पडेल.
+            </p>
+
+        </div>
+
+    `;
+}
+
+
+/* TRACK COMPLAINT */
+
+function trackComplaint() {
+
+    createPopup(`
+
+        <h2>🔍 Track Complaint</h2>
+
+        <p class="popup-subtitle">
+            तुमचा Complaint ID टाका
+        </p>
+
+
+        <input id="trackId"
+               type="text"
+               placeholder="उदा. SG-570934">
+
+
+        <button class="green-btn"
+                onclick="checkComplaint()">
+
+            🔎 Track
+
+        </button>
+
+
+        <button class="close-btn"
+                onclick="closePopup()">
+
+            ❌ बंद करा
+
+        </button>
+
+
+        <div id="trackResult"
+             style="margin-top:20px;">
+        </div>
+
+    `);
+}
+
+
 function checkComplaint() {
-    const id = document.getElementById("trackId").value.trim();
+
+    const id =
+        document.getElementById("trackId").value.trim();
+
 
     if (id === "SG-570934") {
+
         document.getElementById("trackResult").innerHTML = `
-            <div style="border:2px solid green; padding:15px;">
+
+            <div style="
+                border:2px solid green;
+                padding:15px;
+                border-radius:10px;
+            ">
+
                 <h3>✅ Complaint Found</h3>
-                <p><b>Complaint ID:</b> SG-570934</p>
-                <p><b>Status:</b> 🟡 Pending</p>
-                <p><b>Department:</b> ग्रामपंचायत</p>
-                <p><b>Action:</b> तपासणीसाठी पाठवण्यात आली आहे.</p>
+
+                <p>
+                    <b>Complaint ID:</b>
+                    SG-570934
+                </p>
+
+                <p>
+                    <b>Status:</b>
+                    🟡 Pending
+                </p>
+
+                <p>
+                    <b>Department:</b>
+                    ग्रामपंचायत
+                </p>
+
+                <p>
+                    <b>Action:</b>
+                    तपासणीसाठी पाठवण्यात आली आहे.
+                </p>
+
             </div>
+
         `;
+
     } else {
+
         document.getElementById("trackResult").innerHTML = `
+
             <p style="color:red;">
                 ❌ Complaint ID सापडली नाही.
             </p>
+
         `;
+
     }
 }
 
+
+/* VILLAGE OFFICIALS */
+
 function villageOfficials() {
-    alert("Village Officials ki information yaha milegi.");
+
+    createPopup(`
+
+        <h2>👥 ग्रामपंचायत अधिकारी</h2>
+
+        <p class="popup-subtitle">
+            Gogari – Mangrulpir, Washim
+        </p>
+
+
+        <div class="official-box">
+
+            <h3>👨‍💼 सरपंच</h3>
+
+            <p>
+                <b>नाव:</b>
+                श्री केशव ज्ञानदेव जटाळे
+            </p>
+
+            <p>
+                <b>मोबाइल:</b>
+                लवकरच उपलब्ध
+            </p>
+
+        </div>
+
+
+        <div class="official-box">
+
+            <h3>👩‍💼 उपसरपंच</h3>
+
+            <p>
+                <b>नाव:</b>
+                सौ. कविता पंकज इंगोले
+            </p>
+
+            <p>
+                <b>मोबाइल:</b>
+                लवकरच उपलब्ध
+            </p>
+
+        </div>
+
+
+        <div class="official-box">
+
+            <h3>👨‍💼 ग्रामसेवक</h3>
+
+            <p>
+                <b>नाव:</b>
+                श्री संजय पाचरणे
+            </p>
+
+            <p>
+                <b>मोबाइल:</b>
+                लवकरच उपलब्ध
+            </p>
+
+        </div>
+
+
+        <div class="official-box">
+
+            <h3>👨‍💼 तलाठी</h3>
+
+            <p>
+                <b>नाव:</b>
+                श्री अमोल भुरकाडे
+            </p>
+
+            <p>
+                <b>मोबाइल:</b>
+                लवकरच उपलब्ध
+            </p>
+
+        </div>
+
+
+        <div class="official-box">
+
+            <h3>👤 सदस्य</h3>
+
+            <p>नंदू पावसे</p>
+
+            <p>डीगांबर बोथे</p>
+
+            <p>मधुकर इंगोले</p>
+
+        </div>
+
+
+        <button class="green-btn"
+                onclick="closePopup()">
+
+            ❌ बंद करा
+
+        </button>
+
+    `);
 }
+
+
+/* VILLAGE MAP */
 
 function villageMap() {
-    alert("Village Map yaha open hoga.");
+
+    createPopup(`
+
+        <h2>🗺️ Village Map</h2>
+
+        <p class="popup-subtitle">
+            गावातील महत्त्वाची ठिकाणे
+        </p>
+
+
+        <div class="official-box">
+
+            <h3>🏫 शाळा</h3>
+
+            <p>
+                गावातील शाळांची माहिती येथे उपलब्ध होईल.
+            </p>
+
+        </div>
+
+
+        <div class="official-box">
+
+            <h3>🏛️ ग्रामपंचायत</h3>
+
+            <p>
+                ग्रामपंचायत कार्यालयाची माहिती येथे उपलब्ध होईल.
+            </p>
+
+        </div>
+
+
+        <div class="official-box">
+
+            <h3>🏥 आरोग्य केंद्र</h3>
+
+            <p>
+                आरोग्य सुविधांची माहिती येथे उपलब्ध होईल.
+            </p>
+
+        </div>
+
+
+        <button class="close-btn"
+                onclick="closePopup()">
+
+            ❌ बंद करा
+
+        </button>
+
+    `);
 }
+
+
+/* VILLAGE NOTICES */
 
 function villageNotices() {
-    alert("Village Notices yaha dikhenge.");
+
+    createPopup(`
+
+        <h2>📢 Village Notices</h2>
+
+        <p class="popup-subtitle">
+            गावातील महत्त्वाच्या सूचना
+        </p>
+
+
+        <div class="notice-box">
+
+            <h3>📌 ग्रामपंचायत सूचना</h3>
+
+            <p>
+                नवीन सूचना लवकरच येथे प्रकाशित केली जाईल.
+            </p>
+
+        </div>
+
+
+        <div class="notice-box">
+
+            <h3>📢 नागरिकांसाठी सूचना</h3>
+
+            <p>
+                गावातील नागरिकांनी नियमितपणे सूचना तपासाव्यात.
+            </p>
+
+        </div>
+
+
+        <button class="close-btn"
+                onclick="closePopup()">
+
+            ❌ बंद करा
+
+        </button>
+
+    `);
 }
+
+
+/* VILLAGE IDEAS */
 
 function villageIdeas() {
-    alert("Village Ideas yaha submit kar sakte hain.");
-}
-<script>
-function complaint() {
-    const form = document.createElement("div");
 
-    form.innerHTML = `
-        <div style="position:fixed; inset:0; background:white; z-index:9999; overflow:auto; padding:20px;">
-            <h2>📝 ग्राम समस्या नोंदणी</h2>
-            <p>SmartGram – Digital Village</p>
+    createPopup(`
 
-            <label>नाव</label><br>
-            <input id="cname" type="text" placeholder="तुमचे पूर्ण नाव"
-                   style="padding:12px; width:100%; margin:8px 0;"><br>
+        <h2>💡 Village Ideas</h2>
 
-            <label>मोबाइल नंबर</label><br>
-            <input id="cmobile" type="tel" placeholder="10 अंकी मोबाइल नंबर"
-                   style="padding:12px; width:100%; margin:8px 0;"><br>
+        <p class="popup-subtitle">
+            गावाच्या विकासासाठी तुमची कल्पना द्या
+        </p>
 
-            <label>गाव</label><br>
-            <input id="cvillage" type="text" placeholder="गावाचे नाव"
-                   style="padding:12px; width:100%; margin:8px 0;"><br>
 
-            <label>समस्येचा प्रकार</label><br>
-            <select id="ctype" style="padding:12px; width:100%; margin:8px 0;">
-                <option>रस्ता</option>
-                <option>पाणी</option>
-                <option>वीज</option>
-                <option>स्वच्छता</option>
-                <option>गटार</option>
-                <option>शासकीय सेवा</option>
-                <option>इतर</option>
-            </select><br>
+        <label>तुमचे नाव</label>
 
-            <label>समस्येचे वर्णन</label><br>
-            <textarea id="cdesc" rows="5"
-                      placeholder="तुमची समस्या सविस्तर लिहा"
-                      style="padding:12px; width:100%; margin:8px 0;"></textarea><br>
+        <input id="ideaName"
+               type="text"
+               placeholder="तुमचे नाव">
 
-            <button onclick="submitComplaint()"
-                    style="padding:12px; margin:5px;">
-                📤 समस्या नोंदवा
-            </button>
 
-            <button onclick="this.parentElement.parentElement.remove()"
-                    style="padding:12px; margin:5px;">
-                ❌ बंद करा
-            </button>
+        <label>तुमची कल्पना</label>
 
-            <div id="result"></div>
-        </div>
-    `;
+        <textarea id="ideaText"
+                  rows="5"
+                  placeholder="गावाच्या विकासासाठी तुमची कल्पना लिहा"></textarea>
 
-    document.body.appendChild(form);
+
+        <button class="green-btn"
+                onclick="submitIdea()">
+
+            📤 Idea Submit करा
+
+        </button>
+
+
+        <button class="close-btn"
+                onclick="closePopup()">
+
+            ❌ बंद करा
+
+        </button>
+
+
+        <div id="ideaResult"></div>
+
+    `);
 }
 
-function submitComplaint() {
-    const name = document.getElementById("cname").value.trim();
-    const mobile = document.getElementById("cmobile").value.trim();
-    const village = document.getElementById("cvillage").value.trim();
-    const desc = document.getElementById("cdesc").value.trim();
 
-    if (!name || !mobile || !village || !desc) {
-        alert("कृपया सर्व आवश्यक माहिती भरा.");
+function submitIdea() {
+
+    const name =
+        document.getElementById("ideaName").value.trim();
+
+    const idea =
+        document.getElementById("ideaText").value.trim();
+
+
+    if (!name || !idea) {
+
+        alert("कृपया नाव आणि idea भरा.");
+
         return;
     }
 
-    const id = "SG-" + Math.floor(100000 + Math.random() * 900000);
 
-    document.getElementById("result").innerHTML = `
-        <div style="margin-top:20px; padding:15px; border:2px solid green;">
-            <h3>✅ समस्या यशस्वीरित्या नोंदवली!</h3>
-            <p>तुमचा Complaint ID:</p>
-            <h2>${id}</h2>
-            <p>हा ID जपून ठेवा.</p>
-        </div>
-    `;
-}
+    document.getElementById("ideaResult").innerHTML = `
 
-function trackComplaint() {
-    const box = document.createElement("div");
+        <div style="
+            margin-top:20px;
+            padding:15px;
+            border:2px solid green;
+            border-radius:10px;
+            background:#f0fff0;
+        ">
 
-    box.innerHTML = `
-        <div style="position:fixed; inset:0; background:white; z-index:9999; padding:20px;">
-            <h2>🔍 Track Complaint</h2>
-            <p>तुमचा Complaint ID टाका</p>
+            <h3>✅ Idea Successfully Submitted!</h3>
 
-            <input id="trackId" type="text"
-                   placeholder="उदा. SG-570934"
-                   style="padding:12px; width:100%;">
+            <p>
+                धन्यवाद ${name}!
+            </p>
 
-            <button onclick="checkComplaint()"
-                    style="margin-top:15px; padding:12px;">
-                🔎 Track
-            </button>
-
-            <div id="trackResult" style="margin-top:20px;"></div>
-
-            <button onclick="this.parentElement.remove()"
-                    style="margin-top:15px; padding:10px;">
-                ❌ बंद करा
-            </button>
-        </div>
-    `;
-
-    document.body.appendChild(box);
-}
-
-function checkComplaint() {
-    const id = document.getElementById("trackId").value.trim();
-
-    if (id === "SG-570934") {
-        document.getElementById("trackResult").innerHTML = `
-            <div style="border:2px solid green; padding:15px;">
-                <h3>✅ Complaint Found</h3>
-                <p><b>Complaint ID:</b> SG-570934</p>
-                <p><b>Status:</b> 🟡 Pending</p>
-                <p><b>Department:</b> ग्रामपंचायत</p>
-                <p><b>Action:</b> तपासणीसाठी पाठवण्यात आली आहे.</p>
-            </div>
-        `;
-    } else {
-        document.getElementById("trackResult").innerHTML = `
-            <p style="color:red;">❌ Complaint ID सापडली नाही.</p>
-        `;
-    }
-}
-
-function villageOfficials() {
-    const box = document.createElement("div");
-
-    box.innerHTML = `
-        <div style="position:fixed; inset:0; background:#f5f7f6; z-index:9999; overflow:auto; padding:20px;">
-
-            <h2 style="text-align:center;">👥 ग्रामपंचायत अधिकारी</h2>
-            <p style="text-align:center;">SmartGram – Digital Village</p>
-
-            <div style="background:white;padding:15px;margin:12px 0;border-radius:12px;">
-                <h3>👨‍💼 सरपंच</h3>
-                <p><b>नाव:</b> ग्रामपंचायत सरपंच</p>
-                <p><b>मोबाइल:</b> XXXXXXXXXX</p>
-            </div>
-
-            <div style="background:white;padding:15px;margin:12px 0;border-radius:12px;">
-                <h3>👨‍💼 उपसरपंच</h3>
-                <p><b>नाव:</b> ग्रामपंचायत उपसरपंच</p>
-                <p><b>मोबाइल:</b> XXXXXXXXXX</p>
-            </div>
-
-            <div style="background:white;padding:15px;margin:12px 0;border-radius:12px;">
-                <h3>👨‍💼 ग्रामसेवक</h3>
-                <p><b>नाव:</b> ग्रामसेवक</p>
-                <p><b>मोबाइल:</b> XXXXXXXXXX</p>
-            </div>
-
-            <div style="background:white;padding:15px;margin:12px 0;border-radius:12px;">
-                <h3>👨‍💼 तलाठी</h3>
-                <p><b>नाव:</b> तलाठी</p>
-                <p><b>मोबाइल:</b> XXXXXXXXXX</p>
-            </div>
-
-            <button onclick="this.parentElement.remove()"
-                    style="width:100%;padding:14px;margin-top:10px;background:#176b3a;color:white;border:0;border-radius:10px;">
-                ❌ बंद करा
-            </button>
+            <p>
+                तुमची कल्पना SmartGram मध्ये नोंदवली आहे.
+            </p>
 
         </div>
+
     `;
-
-    document.body.appendChild(box);
-}
-
-function villageMap() {
-    alert("Village Map लवकरच उपलब्ध होईल.");
-}
-
-function villageNotices() {
-    alert("Village Notices लवकरच उपलब्ध होतील.");
-}
-
-function villageIdeas() {
-    alert("Village Ideas लवकरच उपलब्ध होतील.");
 }
 
 </script>
+
 </body>
 </html>
