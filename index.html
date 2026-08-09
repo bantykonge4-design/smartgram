@@ -1100,57 +1100,115 @@ function submitIdea() {
 
     `;
 }
-function generateBirthPDF(applicationNo) {
+    function generateBirthPDF(applicationNo) {
 
-    const name = document.getElementById("birthName").value;
-    const date = document.getElementById("birthDate").value;
-    const place = document.getElementById("birthPlace").value;
-    const father = document.getElementById("fatherName").value;
-    const mother = document.getElementById("motherName").value;
-    const address = document.getElementById("birthAddress").value;
+    const name = document.getElementById("birthName")?.value || "";
+    const date = document.getElementById("birthDate")?.value || "";
+    const place = document.getElementById("birthPlace")?.value || "";
+    const father = document.getElementById("fatherName")?.value || "";
+    const mother = document.getElementById("motherName")?.value || "";
+    const address = document.getElementById("birthAddress")?.value || "";
 
-    const certificate = `
-SMARTGRAM
-DIGITAL VILLAGE
+    const printWindow = window.open("", "_blank");
 
-BIRTH CERTIFICATE APPLICATION
+    printWindow.document.write(`
+<!DOCTYPE html>
+<html>
+<head>
+<title>Birth Certificate - ${applicationNo}</title>
 
-Application No: ${applicationNo}
-
-Child Name: ${name}
-Date of Birth: ${date}
-Place of Birth: ${place}
-
-Father's Name: ${father}
-Mother's Name: ${mother}
-
-Address:
-${address}
-
-----------------------------------
-
-This is a SmartGram project
-application document.
-Final government certificate
-must be issued by the authorized authority.
-`;
-
-    const blob = new Blob([certificate], {
-        type: "application/pdf"
-    });
-
-    const url = URL.createObjectURL(blob);
-
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = applicationNo + "-Birth-Certificate.pdf";
-
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-
-    URL.revokeObjectURL(url);
+<style>
+body {
+    font-family: Arial, sans-serif;
+    padding: 40px;
+    color: #222;
 }
+
+.certificate {
+    border: 5px double #176b3a;
+    padding: 35px;
+    max-width: 750px;
+    margin: auto;
+}
+
+h1 {
+    text-align: center;
+    color: #176b3a;
+}
+
+h2 {
+    text-align: center;
+}
+
+.info {
+    margin-top: 25px;
+    line-height: 2;
+}
+
+.footer {
+    margin-top: 50px;
+    text-align: right;
+}
+
+button {
+    padding: 12px 20px;
+    background: #176b3a;
+    color: white;
+    border: 0;
+    border-radius: 6px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="certificate">
+
+<h1>🌾 SMARTGRAM</h1>
+
+<h2>BIRTH CERTIFICATE APPLICATION</h2>
+
+<hr>
+
+<div class="info">
+
+<p><b>Application No:</b> ${applicationNo}</p>
+
+<p><b>Child Name:</b> ${name}</p>
+
+<p><b>Date of Birth:</b> ${date}</p>
+
+<p><b>Place of Birth:</b> ${place}</p>
+
+<p><b>Father's Name:</b> ${father}</p>
+
+<p><b>Mother's Name:</b> ${mother}</p>
+
+<p><b>Address:</b> ${address}</p>
+
+</div>
+
+<div class="footer">
+
+<p>Authorized Officer</p>
+<p>SmartGram Digital Village</p>
+
+</div>
+
+<br>
+
+<button onclick="window.print()">
+📄 Save / Print PDF
+</button>
+
+</div>
+
+</body>
+</html>
+`);
+
+    printWindow.document.close();
+    }
 </script>
 
 </body>
