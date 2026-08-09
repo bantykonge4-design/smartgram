@@ -1209,6 +1209,26 @@ button {
 
     printWindow.document.close();
     }
+    function adminLogin() {
+    const user = prompt("Admin Username:");
+    const pass = prompt("Admin Password:");
+
+    if (user === "admin" && pass === "1234") {
+        alert("✅ Admin Login Successful");
+        adminDashboard();
+    } else {
+        alert("❌ Wrong Username or Password");
+    }
+}
+
+function adminDashboard() {
+    alert(
+        "ADMIN DASHBOARD\n\n" +
+        "Birth Applications: BC-534433\n" +
+        "Status: Pending\n\n" +
+        "Officer can verify applications."
+    );
+}
 </script>
 
 </body>
