@@ -346,7 +346,69 @@ function checkComplaint() {
 }
 
 function villageOfficials() {
-    alert("Village Officials ki information yaha milegi.");
+    const box = document.createElement("div");
+
+    box.innerHTML = `
+        <div style="
+            position:fixed;
+            inset:0;
+            background:#f5f7fa;
+            z-index:9999;
+            overflow:auto;
+            padding:20px;
+        ">
+
+            <h2 style="text-align:center;">👥 ग्रामपंचायत अधिकारी</h2>
+            <p style="text-align:center;">
+                SmartGram – Digital Village
+            </p>
+
+            <div style="background:white;padding:15px;margin:12px 0;border-radius:12px;">
+                <h3>👨‍💼 सरपंच</h3>
+                <p><b>नाव:</b> ग्रामपंचायत सरपंच</p>
+                <p><b>मोबाइल:</b> XXXXXXXXXX</p>
+            </div>
+
+            <div style="background:white;padding:15px;margin:12px 0;border-radius:12px;">
+                <h3>👨‍💼 उपसरपंच</h3>
+                <p><b>नाव:</b> ग्रामपंचायत उपसरपंच</p>
+                <p><b>मोबाइल:</b> XXXXXXXXXX</p>
+            </div>
+
+            <div style="background:white;padding:15px;margin:12px 0;border-radius:12px;">
+                <h3>👨‍💼 ग्रामसेवक</h3>
+                <p><b>नाव:</b> ग्रामसेवक</p>
+                <p><b>मोबाइल:</b> XXXXXXXXXX</p>
+            </div>
+
+            <div style="background:white;padding:15px;margin:12px 0;border-radius:12px;">
+                <h3>👨‍💼 तलाठी</h3>
+                <p><b>नाव:</b> तलाठी</p>
+                <p><b>मोबाइल:</b> XXXXXXXXXX</p>
+            </div>
+
+            <div style="background:white;padding:15px;margin:12px 0;border-radius:12px;">
+                <h3>👥 ग्रामपंचायत सदस्य</h3>
+                <p><b>सदस्य 1:</b> ग्रामपंचायत सदस्य</p>
+                <p><b>मोबाइल:</b> XXXXXXXXXX</p>
+            </div>
+
+            <button
+                onclick="this.parentElement.remove()"
+                style="
+                    width:100%;
+                    padding:14px;
+                    margin-top:10px;
+                    border:0;
+                    border-radius:10px;
+                ">
+                ❌ बंद करा
+            </button>
+
+        </div>
+    `;
+
+    document.body.appendChild(box);
 }
 
 function villageMap() {
