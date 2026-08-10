@@ -1,217 +1,228 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="mr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>SmartGram - Digital Village</title>
+<title>SmartGram - Digital Village</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
 
-        body {
-            background: #f5f7f6;
-            color: #222;
-        }
+body{
+    background:#f5f7f6;
+    color:#222;
+}
 
-        header {
-            background: #176b3a;
-            color: white;
-            padding: 18px 20px;
-            text-align: center;
-        }
+header{
+    background:#176b3a;
+    color:white;
+    padding:20px;
+    text-align:center;
+}
 
-        header h1 {
-            font-size: 28px;
-        }
+header h1{
+    font-size:30px;
+}
 
-        header p {
-            margin-top: 6px;
-            font-size: 14px;
-        }
+header p{
+    margin-top:6px;
+}
 
-        .hero {
-            background: white;
-            text-align: center;
-            padding: 45px 20px;
-        }
+.hero{
+    background:white;
+    text-align:center;
+    padding:45px 20px;
+}
 
-        .hero h2 {
-            font-size: 30px;
-            color: #176b3a;
-            margin-bottom: 12px;
-        }
+.hero h2{
+    color:#176b3a;
+    font-size:29px;
+    margin-bottom:12px;
+}
 
-        .hero p {
-            color: #555;
-            line-height: 1.6;
-            margin-bottom: 25px;
-        }
+.hero p{
+    color:#555;
+    line-height:1.6;
+    margin-bottom:22px;
+}
 
-        .btn {
-            display: inline-block;
-            background: #176b3a;
-            color: white;
-            padding: 13px 22px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
-            cursor: pointer;
-        }
+.btn{
+    display:inline-block;
+    background:#176b3a;
+    color:white;
+    padding:13px 22px;
+    border-radius:8px;
+    font-weight:bold;
+    cursor:pointer;
+    border:0;
+}
 
-        .section {
-            padding: 30px 18px;
-        }
+.section{
+    padding:30px 18px;
+}
 
-        .section h2 {
-            text-align: center;
-            margin-bottom: 20px;
-            color: #176b3a;
-        }
+.section h2{
+    text-align:center;
+    color:#176b3a;
+    margin-bottom:20px;
+}
 
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 14px;
-        }
+.cards{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:14px;
+}
 
-        .card {
-            background: white;
-            padding: 20px 12px;
-            border-radius: 12px;
-            text-align: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            cursor: pointer;
-            transition: 0.2s;
-        }
+.card{
+    background:white;
+    padding:20px 12px;
+    border-radius:12px;
+    text-align:center;
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
+    cursor:pointer;
+    transition:.2s;
+}
 
-        .card:active {
-            transform: scale(0.97);
-        }
+.card:active{
+    transform:scale(.97);
+}
 
-        .card .icon {
-            font-size: 30px;
-            margin-bottom: 8px;
-        }
+.icon{
+    font-size:30px;
+    margin-bottom:8px;
+}
 
-        .card h3 {
-            font-size: 16px;
-            margin-bottom: 6px;
-        }
+.card h3{
+    font-size:16px;
+    margin-bottom:6px;
+}
 
-        .card p {
-            font-size: 12px;
-            color: #666;
-        }
+.card p{
+    font-size:12px;
+    color:#666;
+}
 
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-        }
+.stats{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+}
 
-        .stat {
-            background: #176b3a;
-            color: white;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-        }
+.stat{
+    background:#176b3a;
+    color:white;
+    padding:20px;
+    border-radius:10px;
+    text-align:center;
+}
 
-        .stat h3 {
-            font-size: 25px;
-        }
+.stat h3{
+    font-size:25px;
+}
 
-        footer {
-            background: #123d27;
-            color: white;
-            text-align: center;
-            padding: 20px;
-            margin-top: 20px;
-            font-size: 13px;
-        }
+footer{
+    background:#123d27;
+    color:white;
+    text-align:center;
+    padding:20px;
+    margin-top:20px;
+    font-size:13px;
+}
 
-        .popup {
-            position: fixed;
-            inset: 0;
-            background: #f5f7f6;
-            z-index: 9999;
-            overflow: auto;
-            padding: 20px;
-        }
+.popup{
+    position:fixed;
+    inset:0;
+    background:#f5f7f6;
+    z-index:9999;
+    overflow:auto;
+    padding:20px;
+}
 
-        .popup h2 {
-            color: #176b3a;
-            text-align: center;
-            margin-bottom: 8px;
-        }
+.popup h2{
+    color:#176b3a;
+    text-align:center;
+    margin-bottom:8px;
+}
 
-        .popup-subtitle {
-            text-align: center;
-            margin-bottom: 20px;
-            color: #555;
-        }
+.popup-subtitle{
+    text-align:center;
+    color:#555;
+    margin-bottom:20px;
+}
 
-        .popup input,
-        .popup select,
-        .popup textarea {
-            width: 100%;
-            padding: 12px;
-            margin: 7px 0 14px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            font-size: 15px;
-        }
+.popup input,
+.popup select,
+.popup textarea{
+    width:100%;
+    padding:12px;
+    margin:7px 0 14px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    font-size:15px;
+}
 
-        .popup button {
-            padding: 12px 18px;
-            border: 0;
-            border-radius: 8px;
-            cursor: pointer;
-            margin: 5px;
-        }
+.popup button{
+    padding:12px 18px;
+    border:0;
+    border-radius:8px;
+    cursor:pointer;
+    margin:5px;
+}
 
-        .green-btn {
-            background: #176b3a;
-            color: white;
-        }
+.green-btn{
+    background:#176b3a;
+    color:white;
+}
 
-        .close-btn {
-            background: #ddd;
-        }
+.close-btn{
+    background:#ddd;
+}
 
-        .official-box {
-            background: white;
-            padding: 15px;
-            margin: 12px 0;
-            border-radius: 12px;
-            box-shadow: 0 2px 7px rgba(0,0,0,0.08);
-        }
+.red-btn{
+    background:#b52b27;
+    color:white;
+}
 
-        .official-box h3 {
-            color: #176b3a;
-            margin-bottom: 8px;
-        }
+.official-box,
+.notice-box,
+.idea-box{
+    background:white;
+    padding:16px;
+    margin:12px 0;
+    border-radius:12px;
+    box-shadow:0 2px 7px rgba(0,0,0,.08);
+}
 
-        .notice-box,
-        .idea-box {
-            background: white;
-            padding: 16px;
-            margin: 12px 0;
-            border-radius: 12px;
-        }
+.official-box h3,
+.notice-box h3{
+    color:#176b3a;
+    margin-bottom:8px;
+}
 
-        @media (max-width: 500px) {
-            .hero h2 {
-                font-size: 25px;
-            }
-        }
-    </style>
+.success{
+    margin-top:20px;
+    padding:15px;
+    border:2px solid #198754;
+    border-radius:10px;
+    background:#f0fff0;
+}
+
+@media(max-width:500px){
+    .cards{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .hero h2{
+        font-size:25px;
+    }
+}
+</style>
 </head>
 
 <body>
@@ -222,6 +233,7 @@
 </header>
 
 <section class="hero">
+
     <h2>आपल्या गावासाठी डिजिटल व्यासपीठ</h2>
 
     <p>
@@ -229,117 +241,138 @@
         अधिकृत माहिती मिळवा आणि गावाच्या विकासात सहभागी व्हा.
     </p>
 
-    <a class="btn" onclick="complaint()">🔴 समस्या नोंदवा</a>
+    <button class="btn" onclick="complaint()">
+        🔴 समस्या नोंदवा
+    </button>
+
 </section>
 
 <section class="section">
 
-    <h2>SmartGram Services</h2>
+<h2>SmartGram Services</h2>
 
-    <div class="cards">
+<div class="cards">
 
-        <div class="card" onclick="complaint()">
-            <div class="icon">📝</div>
-            <h3>Complaint</h3>
-            <p>गावातील समस्या online नोंदवा.</p>
-        </div>
+<div class="card" onclick="complaint()">
+    <div class="icon">📝</div>
+    <h3>Complaint</h3>
+    <p>गावातील समस्या online नोंदवा.</p>
+</div>
 
-        <div class="card" onclick="trackComplaint()">
-            <div class="icon">🔎</div>
-            <h3>Track Complaint</h3>
-            <p>तुमच्या complaint चा status पाहा.</p>
-        </div>
+<div class="card" onclick="trackComplaint()">
+    <div class="icon">🔎</div>
+    <h3>Track Complaint</h3>
+    <p>तुमच्या complaint चा status पाहा.</p>
+</div>
 
-        <div class="card" onclick="villageOfficials()">
-            <div class="icon">👥</div>
-            <h3>Village Officials</h3>
-            <p>गावातील अधिकृत पदाधिकारी माहिती.</p>
-        </div>
+<div class="card" onclick="villageOfficials()">
+    <div class="icon">👥</div>
+    <h3>Village Officials</h3>
+    <p>गावातील अधिकृत पदाधिकारी माहिती.</p>
+</div>
+
 <div class="card" onclick="citizenRegistration()">
-    <div class="card" onclick="citizenLogin()">
-    <div class="icon">🔐</div>
-    <h3>Citizen Login</h3>
-    <p>Registration केल्यानंतर Login करा.</p>
-    </div>
     <div class="icon">👤</div>
     <h3>Citizen Registration</h3>
     <p>नागरिक म्हणून Registration करा.</p>
 </div>
-        <div class="card" onclick="villageMap()">
-            <div class="icon">🗺️</div>
-            <h3>Village Map</h3>
-            <p>गावातील महत्त्वाच्या ठिकाणांची माहिती.</p>
-        </div>
 
-        <div class="card" onclick="villageNotices()">
-            <div class="icon">📢</div>
-            <h3>Village Notices</h3>
-            <p>गावातील महत्त्वाच्या सूचना पाहा.</p>
-        </div>
+<div class="card" onclick="citizenLogin()">
+    <div class="icon">🔐</div>
+    <h3>Citizen Login</h3>
+    <p>Citizen account मध्ये Login करा.</p>
+</div>
 
-        <div class="card" onclick="villageIdeas()">
-            <div class="icon">💡</div>
-            <h3>Village Ideas</h3>
-            <p>गावाच्या विकासासाठी ideas द्या.</p>
-        </div>
+<div class="card" onclick="villageMap()">
+    <div class="icon">🗺️</div>
+    <h3>Village Map</h3>
+    <p>गावातील महत्त्वाच्या ठिकाणांची माहिती.</p>
+</div>
+
+<div class="card" onclick="villageNotices()">
+    <div class="icon">📢</div>
+    <h3>Village Notices</h3>
+    <p>गावातील महत्त्वाच्या सूचना पाहा.</p>
+</div>
+
+<div class="card" onclick="villageIdeas()">
+    <div class="icon">💡</div>
+    <h3>Village Ideas</h3>
+    <p>गावाच्या विकासासाठी ideas द्या.</p>
+</div>
+
 <div class="card" onclick="certificates()">
     <div class="icon">📄</div>
     <h3>Certificates</h3>
     <p>जन्म व मृत्यू प्रमाणपत्रासाठी अर्ज करा.</p>
 </div>
-    </div>
 
-</section>
-<div style="text-align:center; padding:15px;">
-    <button onclick="adminLogin()"
-            style="background:#123d27;color:white;padding:13px 25px;border:0;border-radius:8px;font-weight:bold;">
-        🔐 Admin / Officer Login
-    </button>
 </div>
+</section>
+
+<div style="text-align:center;padding:15px;">
+
+<button onclick="adminLogin()"
+style="
+background:#123d27;
+color:white;
+padding:13px 25px;
+border:0;
+border-radius:8px;
+font-weight:bold;
+cursor:pointer;
+">
+🔐 Admin / Officer Login
+</button>
+
+</div>
+
 <section class="section">
 
-    <h2>Village Complaint Overview</h2>
+<h2>Village Complaint Overview</h2>
 
-    <div class="stats">
+<div class="stats">
 
-        <div class="stat">
-            <h3>128</h3>
-            <p>Total Complaints</p>
-        </div>
+<div class="stat">
+<h3 id="totalComplaints">0</h3>
+<p>Total Complaints</p>
+</div>
 
-        <div class="stat">
-            <h3>75</h3>
-            <p>Resolved</p>
-        </div>
+<div class="stat">
+<h3>75</h3>
+<p>Resolved</p>
+</div>
 
-        <div class="stat">
-            <h3>32</h3>
-            <p>Pending</p>
-        </div>
+<div class="stat">
+<h3 id="pendingComplaints">0</h3>
+<p>Pending</p>
+</div>
 
-        <div class="stat">
-            <h3>21</h3>
-            <p>In Progress</p>
-        </div>
+<div class="stat">
+<h3>21</h3>
+<p>In Progress</p>
+</div>
 
-    </div>
-
+</div>
 </section>
 
 <footer>
-    <p>© 2026 SmartGram</p>
-    <p>Digital Village Development Initiative</p>
+<p>© 2026 SmartGram</p>
+<p>Digital Village Development Initiative</p>
 </footer>
-
 
 <script>
 
-function createPopup(content) {
+/* =========================
+   BASIC POPUP
+========================= */
 
-    const oldPopup = document.querySelector(".popup");
+function createPopup(content){
 
-    if (oldPopup) {
-        oldPopup.remove();
+    const old = document.querySelector(".popup");
+
+    if(old){
+        old.remove();
     }
 
     const box = document.createElement("div");
@@ -351,1776 +384,934 @@ function createPopup(content) {
     document.body.appendChild(box);
 }
 
-
-function closePopup() {
+function closePopup(){
 
     const popup = document.querySelector(".popup");
 
-    if (popup) {
+    if(popup){
         popup.remove();
     }
 }
 
 
-/* COMPLAINT */
+/* =========================
+   COMPLAINT
+========================= */
 
-function complaint() {
+function complaint(){
 
-    createPopup(`
+createPopup(`
 
-        <h2>📝 ग्राम समस्या नोंदणी</h2>
+<h2>📝 ग्राम समस्या नोंदणी</h2>
 
-        <p class="popup-subtitle">
-            SmartGram – Digital Village
-        </p>
-
-        <label>नाव</label>
-
-        <input id="cname"
-               type="text"
-               placeholder="तुमचे पूर्ण नाव">
-
-
-        <label>मोबाइल नंबर</label>
-
-        <input id="cmobile"
-               type="tel"
-               placeholder="10 अंकी मोबाइल नंबर">
-
-
-        <label>गाव</label>
-
-        <input id="cvillage"
-               type="text"
-               placeholder="गावाचे नाव">
-
-
-        <label>समस्येचा प्रकार</label>
-
-        <select id="ctype">
-
-            <option>रस्ता</option>
-            <option>पाणी</option>
-            <option>वीज</option>
-            <option>स्वच्छता</option>
-            <option>गटार</option>
-            <option>शासकीय सेवा</option>
-            <option>इतर</option>
-
-        </select>
-
-
-        <label>समस्येचे वर्णन</label>
-
-        <textarea id="cdesc"
-                  rows="5"
-                  placeholder="तुमची समस्या सविस्तर लिहा"></textarea>
-
-
-        <button class="green-btn"
-                onclick="submitComplaint()">
-
-            📤 समस्या नोंदवा
-
-        </button>
-
-
-        <button class="close-btn"
-                onclick="closePopup()">
-
-            ❌ बंद करा
-
-        </button>
-
-
-        <div id="result"></div>
-
-    `);
-}
-
-
-function submitComplaint() {
-
-    const name =
-        document.getElementById("cname").value.trim();
-
-    const mobile =
-        document.getElementById("cmobile").value.trim();
-
-    const village =
-        document.getElementById("cvillage").value.trim();
-
-    const desc =
-        document.getElementById("cdesc").value.trim();
-
-
-    if (!name || !mobile || !village || !desc) {
-
-        alert("कृपया सर्व आवश्यक माहिती भरा.");
-
-        return;
-    }
-
-
-    const id =
-        "SG-" +
-        Math.floor(100000 + Math.random() * 900000);
-
-
-    document.getElementById("result").innerHTML = `
-
-        <div style="
-            margin-top:20px;
-            padding:15px;
-            border:2px solid green;
-            border-radius:10px;
-            background:#f0fff0;
-        ">
-
-            <h3>✅ समस्या यशस्वीरित्या नोंदवली!</h3>
-
-            <p>तुमचा Complaint ID:</p>
-
-            <h2>${id}</h2>
-
-            <p>
-                हा ID जपून ठेवा.
-                पुढे समस्या Track करण्यासाठी उपयोगी पडेल.
-            </p>
-
-        </div>
-
-    `;
-}
-
-
-/* TRACK COMPLAINT */
-
-function trackComplaint() {
-
-    createPopup(`
-
-        <h2>🔍 Track Complaint</h2>
-
-        <p class="popup-subtitle">
-            तुमचा Complaint ID टाका
-        </p>
-
-
-        <input id="trackId"
-               type="text"
-               placeholder="उदा. SG-570934">
-
-
-        <button class="green-btn"
-                onclick="checkComplaint()">
-
-            🔎 Track
-
-        </button>
-
-
-        <button class="close-btn"
-                onclick="closePopup()">
-
-            ❌ बंद करा
-
-        </button>
-
-
-        <div id="trackResult"
-             style="margin-top:20px;">
-        </div>
-
-    `);
-}
-
-
-function checkComplaint() {
-
-    const id =
-        document.getElementById("trackId").value.trim();
-
-
-    if (id === "SG-570934") {
-
-        document.getElementById("trackResult").innerHTML = `
-
-            <div style="
-                border:2px solid green;
-                padding:15px;
-                border-radius:10px;
-            ">
-
-                <h3>✅ Complaint Found</h3>
-
-                <p>
-                    <b>Complaint ID:</b>
-                    SG-570934
-                </p>
-
-                <p>
-                    <b>Status:</b>
-                    🟡 Pending
-                </p>
-
-                <p>
-                    <b>Department:</b>
-                    ग्रामपंचायत
-                </p>
-
-                <p>
-                    <b>Action:</b>
-                    तपासणीसाठी पाठवण्यात आली आहे.
-                </p>
-
-            </div>
-
-        `;
-
-    } else {
-
-        document.getElementById("trackResult").innerHTML = `
-
-            <p style="color:red;">
-                ❌ Complaint ID सापडली नाही.
-            </p>
-
-        `;
-
-    }
-}
-function citizenLogin() {
-
-    const box = document.createElement("div");
-
-    box.innerHTML = `
-        <div style="
-            position:fixed;
-            inset:0;
-            background:#f5f7f6;
-            z-index:99999;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            padding:20px;
-        ">
-
-            <div style="
-                background:white;
-                width:100%;
-                max-width:400px;
-                padding:25px;
-                border-radius:15px;
-                box-shadow:0 4px 20px rgba(0,0,0,.15);
-            ">
-
-                <h2 style="text-align:center;color:#176b3a;">
-                    🔐 Citizen Login
-                </h2>
-
-                <p style="text-align:center;color:#666;">
-                    SmartGram Digital Village
-                </p>
-
-                <label>Username</label>
-
-                <input id="citizenUsername"
-                    type="text"
-                    placeholder="Username"
-                    style="
-                    width:100%;
-                    padding:13px;
-                    margin:8px 0 15px;
-                    border:1px solid #ccc;
-                    border-radius:8px;
-                    ">
-
-                <label>Password</label>
-
-                <input id="citizenPassword"
-                    type="password"
-                    placeholder="Password"
-                    style="
-                    width:100%;
-                    padding:13px;
-                    margin:8px 0 20px;
-                    border:1px solid #ccc;
-                    border-radius:8px;
-                    ">
-
-                <button onclick="checkCitizenLogin()"
-                    style="
-                    width:100%;
-                    padding:13px;
-                    background:#176b3a;
-                    color:white;
-                    border:0;
-                    border-radius:8px;
-                    font-size:16px;
-                    font-weight:bold;
-                    ">
-                    🔓 Login
-                </button>
-
-                <button onclick="this.parentElement.parentElement.remove()"
-                    style="
-                    width:100%;
-                    padding:11px;
-                    margin-top:10px;
-                    border:0;
-                    border-radius:8px;
-                    ">
-                    ❌ बंद करा
-                </button>
-
-            </div>
-        </div>
-    `;
-
-    document.body.appendChild(box);
-}
-
-
-function checkCitizenLogin() {
-
-    const username =
-        document.getElementById("citizenUsername").value.trim();
-
-    const password =
-        document.getElementById("citizenPassword").value;
-
-    const saved =
-        JSON.parse(localStorage.getItem("smartgramCitizen"));
-
-    if (!saved) {
-        alert("❌ आधी Citizen Registration करा.");
-        return;
-    }
-
-    if (
-        username === saved.username &&
-        password === saved.password
-    ) {
-
-        document.body.lastElementChild.remove();
-
-        citizenDashboard();
-
-    } else {
-
-        alert("❌ चुकीचे Username किंवा Password.");
-    }
-}
-function citizenRegistration() {
-
-    const box = document.createElement("div");
-
-    box.innerHTML = `
-        <div style="
-            position:fixed;
-            inset:0;
-            background:#f5f7f6;
-            z-index:9999;
-            overflow:auto;
-            padding:20px;
-        ">
-
-            <div style="
-                background:white;
-                max-width:450px;
-                margin:auto;
-                padding:25px;
-                border-radius:15px;
-                box-shadow:0 4px 15px rgba(0,0,0,0.15);
-            ">
-
-                <h2 style="
-                    text-align:center;
-                    color:#176b3a;
-                ">
-                    👤 Citizen Registration
-                </h2>
-
-                <p style="text-align:center;color:#666;">
-                    SmartGram Digital Village
-                </p>
-
-                <label>पूर्ण नाव</label>
-                <input id="regName"
-                    type="text"
-                    placeholder="तुमचे पूर्ण नाव"
-                    style="width:100%;padding:12px;margin:8px 0 15px;">
-
-                <label>मोबाइल नंबर</label>
-                <input id="regMobile"
-                    type="tel"
-                    placeholder="10 अंकी मोबाइल नंबर"
-                    style="width:100%;padding:12px;margin:8px 0 15px;">
-
-                <label>गाव</label>
-                <input id="regVillage"
-                    type="text"
-                    value="गोगरी"
-                    style="width:100%;padding:12px;margin:8px 0 15px;">
-
-                <label>Username</label>
-                <input id="regUsername"
-                    type="text"
-                    placeholder="Username तयार करा"
-                    style="width:100%;padding:12px;margin:8px 0 15px;">
-
-                <label>Password</label>
-                <input id="regPassword"
-                    type="password"
-                    placeholder="Password तयार करा"
-                    style="width:100%;padding:12px;margin:8px 0 15px;">
-
-                <label>Confirm Password</label>
-                <input id="regConfirm"
-                    type="password"
-                    placeholder="Password पुन्हा टाका"
-                    style="width:100%;padding:12px;margin:8px 0 20px;">
-
-                <button onclick="saveCitizenRegistration()"
-                    style="
-                    width:100%;
-                    padding:13px;
-                    background:#176b3a;
-                    color:white;
-                    border:0;
-                    border-radius:8px;
-                    font-size:16px;
-                    font-weight:bold;
-                    ">
-                    📝 Register
-                </button>
-
-                <button onclick="this.parentElement.parentElement.remove()"
-                    style="
-                    width:100%;
-                    padding:11px;
-                    margin-top:10px;
-                    border:0;
-                    border-radius:8px;
-                    ">
-                    ❌ बंद करा
-                </button>
-
-                <div id="registrationResult"></div>
-
-            </div>
-        </div>
-    `;
-
-    document.body.appendChild(box);
-}
-
-
-function saveCitizenRegistration() {
-
-    const name =
-        document.getElementById("regName").value.trim();
-
-    const mobile =
-        document.getElementById("regMobile").value.trim();
-
-    const village =
-        document.getElementById("regVillage").value.trim();
-
-    const username =
-        document.getElementById("regUsername").value.trim();
-
-    const password =
-        document.getElementById("regPassword").value;
-
-    const confirm =
-        document.getElementById("regConfirm").value;
-
-
-    if (!name || !mobile || !village || !username || !password) {
-        alert("कृपया सर्व माहिती भरा.");
-        return;
-    }
-
-    if (password !== confirm) {
-        alert("Password आणि Confirm Password समान नाहीत.");
-        return;
-    }
-
-    const citizen = {
-        name: name,
-        mobile: mobile,
-        village: village,
-        username: username,
-        password: password
-    };
-
-    localStorage.setItem(
-        "smartgramCitizen",
-        JSON.stringify(citizen)
-    );
-
-    document.getElementById("registrationResult").innerHTML = `
-        <div style="
-            margin-top:20px;
-            padding:15px;
-            background:#f0fff0;
-            border:2px solid #198754;
-            border-radius:10px;
-        ">
-            <h3 style="color:#198754;">
-                ✅ Registration Successful
-            </h3>
-
-            <p>
-                तुमचे SmartGram Registration यशस्वी झाले.
-            </p>
-
-            <p>
-                <b>Username:</b> ${username}
-            </p>
-
-            <p>
-                आता Citizen Login करून services वापरता येतील.
-            </p>
-        </div>
-    `;
-            }
-/* VILLAGE OFFICIALS */
-
-function villageOfficials() {
-
-    createPopup(`
-
-        <h2>👥 ग्रामपंचायत अधिकारी</h2>
-
-        <p class="popup-subtitle">
-            Gogari – Mangrulpir, Washim
-        </p>
-
-
-        <div class="official-box">
-
-            <h3>👨‍💼 सरपंच</h3>
-
-            <p>
-                <b>नाव:</b>
-                श्री केशव ज्ञानदेव जटाळे
-            </p>
-
-            <p>
-                <b>मोबाइल:</b>
-                लवकरच उपलब्ध
-            </p>
-
-        </div>
-
-
-        <div class="official-box">
-
-            <h3>👩‍💼 उपसरपंच</h3>
-
-            <p>
-                <b>नाव:</b>
-                सौ. कविता पंकज इंगोले
-            </p>
-
-            <p>
-                <b>मोबाइल:</b>
-                लवकरच उपलब्ध
-            </p>
-
-        </div>
-
-
-        <div class="official-box">
-
-            <h3>👨‍💼 ग्रामसेवक</h3>
-
-            <p>
-                <b>नाव:</b>
-                श्री संजय पाचरणे
-            </p>
-
-            <p>
-                <b>मोबाइल:</b>
-                लवकरच उपलब्ध
-            </p>
-
-        </div>
-
-
-        <div class="official-box">
-
-            <h3>👨‍💼 तलाठी</h3>
-
-            <p>
-                <b>नाव:</b>
-                श्री अमोल भुरकाडे
-            </p>
-
-            <p>
-                <b>मोबाइल:</b>
-                लवकरच उपलब्ध
-            </p>
-
-        </div>
-
-
-        <div class="official-box">
-
-            <h3>👤 सदस्य</h3>
-
-            <p>नंदू पावसे</p>
-
-            <p>डीगांबर बोथे</p>
-
-            <p>मधुकर इंगोले</p>
-
-        </div>
-
-
-        <button class="green-btn"
-                onclick="closePopup()">
-
-            ❌ बंद करा
-
-        </button>
-
-    `);
-}
-
-
-/* VILLAGE MAP */
-
-function villageMap() {
-
-    const box = document.createElement("div");
-
-    box.innerHTML = `
-        <div style="
-            position:fixed;
-            inset:0;
-            background:#f5f7f6;
-            z-index:9999;
-            overflow:auto;
-            padding:20px;
-        ">
-
-            <div style="
-                background:white;
-                padding:20px;
-                border-radius:15px;
-                max-width:700px;
-                margin:auto;
-            ">
-
-                <h2 style="text-align:center;color:#176b3a;">
-                    🏫 शाळेची माहिती
-                </h2>
-
-                <hr>
-
-                <h3>
-                    राष्ट्रसंत तुकडोजी महाराज विद्यालय
-                </h3>
-
-                <p>
-                    <b>संस्था:</b> जिल्हा परिषद गोगरी
-                </p>
-
-                <p>
-                    <b>📍 पत्ता:</b><br>
-                    गोगरी, ता. मंगरूळपीर,<br>
-                    जि. वाशिम, महाराष्ट्र
-                </p>
-
-                <h3 style="color:#176b3a;">
-                    🗺️ Google Map
-                </h3>
-
-                <iframe
-                    src="https://www.google.com/maps?q=Gogari,Mangrulpir,Washim,Maharashtra&output=embed"
-                    width="100%"
-                    height="350"
-                    style="border:0;border-radius:12px;"
-                    loading="lazy">
-                </iframe>
-
-                <button
-                    onclick="this.parentElement.parentElement.remove()"
-                    style="
-                    width:100%;
-                    padding:13px;
-                    margin-top:15px;
-                    background:#176b3a;
-                    color:white;
-                    border:0;
-                    border-radius:8px;
-                    font-size:16px;">
-                    ❌ बंद करा
-                </button>
-
-            </div>
-        </div>
-    `;
-
-    document.body.appendChild(box);
-}
-
-
-/* VILLAGE NOTICES */
-
-function villageNotices() {
-
-    createPopup(`
-
-        <h2>📢 Village Notices</h2>
-
-        <p class="popup-subtitle">
-            गावातील महत्त्वाच्या सूचना
-        </p>
-
-
-        <div class="notice-box">
-
-            <h3>📌 ग्रामपंचायत सूचना</h3>
-
-            <p>
-                नवीन सूचना लवकरच येथे प्रकाशित केली जाईल.
-            </p>
-
-        </div>
-
-
-        <div class="notice-box">
-
-            <h3>📢 नागरिकांसाठी सूचना</h3>
-
-            <p>
-                गावातील नागरिकांनी नियमितपणे सूचना तपासाव्यात.
-            </p>
-
-        </div>
-
-
-        <button class="close-btn"
-                onclick="closePopup()">
-
-            ❌ बंद करा
-
-        </button>
-
-    `);
-}
-
-
-/* VILLAGE IDEAS */
-
-function villageIdeas() {
-
-    createPopup(`
-
-        <h2>💡 Village Ideas</h2>
-
-        <p class="popup-subtitle">
-            गावाच्या विकासासाठी तुमची कल्पना द्या
-        </p>
-
-
-        <label>तुमचे नाव</label>
-
-        <input id="ideaName"
-               type="text"
-               placeholder="तुमचे नाव">
-
-
-        <label>तुमची कल्पना</label>
-
-        <textarea id="ideaText"
-                  rows="5"
-                  placeholder="गावाच्या विकासासाठी तुमची कल्पना लिहा"></textarea>
-
-
-        <button class="green-btn"
-                onclick="submitIdea()">
-
-            📤 Idea Submit करा
-
-        </button>
-
-
-        <button class="close-btn"
-                onclick="closePopup()">
-
-            ❌ बंद करा
-
-        </button>
-
-
-        <div id="ideaResult"></div>
-
-    `);
-}
-
-function certificates() {
-
-    createPopup(`
-        <h2>📄 Certificate Services</h2>
-
-        <p class="popup-subtitle">
-            प्रमाणपत्रासाठी online अर्ज
-        </p>
-
-        <div class="official-box" onclick="birthCertificate()"
-             style="cursor:pointer;">
-            <h3>🍼 Birth Certificate</h3>
-            <p>जन्म प्रमाणपत्रासाठी अर्ज करा.</p>
-        </div>
-
-        <div class="official-box" onclick="deathCertificate()"
-             style="cursor:pointer;">
-            <h3>⚰️ Death Certificate</h3>
-            <p>मृत्यू प्रमाणपत्रासाठी अर्ज करा.</p>
-        </div>
-
-        <button class="close-btn"
-                onclick="closePopup()">
-            ❌ बंद करा
-        </button>
-    `);
-}
-
-
-function birthCertificate() {
-
-    createPopup(`
-        <h2>🍼 Birth Certificate Application</h2>
-
-        <p class="popup-subtitle">
-            जन्म प्रमाणपत्रासाठी माहिती भरा
-        </p>
-
-        <label>बाळाचे नाव</label>
-        <input id="birthName" type="text"
-               placeholder="बाळाचे पूर्ण नाव">
-
-        <label>जन्म तारीख</label>
-        <input id="birthDate" type="date">
-
-        <label>जन्म ठिकाण</label>
-        <input id="birthPlace" type="text"
-               placeholder="जन्म ठिकाण">
-
-        <label>वडिलांचे नाव</label>
-        <input id="fatherName" type="text"
-               placeholder="वडिलांचे नाव">
-
-        <label>आईचे नाव</label>
-        <input id="motherName" type="text"
-               placeholder="आईचे नाव">
-
-        <label>पत्ता</label>
-        <textarea id="birthAddress"
-                  rows="4"
-                  placeholder="पूर्ण पत्ता"></textarea>
-
-        <button class="green-btn"
-                onclick="submitBirth()">
-            📤 अर्ज Submit करा
-        </button>
-
-        <button class="close-btn"
-                onclick="closePopup()">
-            ❌ बंद करा
-        </button>
-
-        <div id="birthResult"></div>
-    `);
-}
-
-
-function submitBirth() {
-
-    const name = document.getElementById("birthName").value.trim();
-    const date = document.getElementById("birthDate").value;
-    const place = document.getElementById("birthPlace").value.trim();
-    const father = document.getElementById("fatherName").value.trim();
-    const mother = document.getElementById("motherName").value.trim();
-    const address = document.getElementById("birthAddress").value.trim();
-
-    if (!name || !date || !father || !mother) {
-        alert("कृपया आवश्यक माहिती भरा.");
-        return;
-    }
-
-    const applicationNo =
-        "BC-" + Math.floor(100000 + Math.random() * 900000);
-
-    const application = {
-        applicationNo: applicationNo,
-        name: name,
-        date: date,
-        place: place,
-        father: father,
-        mother: mother,
-        address: address,
-        status: "Pending"
-    };
-
-    localStorage.setItem(
-        "birthApplication",
-        JSON.stringify(application)
-    );
-
-    document.getElementById("birthResult").innerHTML = `
-        <div style="
-            margin-top:20px;
-            padding:15px;
-            border:2px solid green;
-            border-radius:10px;
-            background:#f0fff0;
-        ">
-            <h3>✅ अर्ज यशस्वीरित्या Submit झाला!</h3>
-
-            <p><b>Application Number:</b></p>
-            <h2>${applicationNo}</h2>
-
-            <p>
-                तुमचा अर्ज Officer verification साठी पाठवण्यात आला आहे.
-            </p>
-
-            <button onclick="generateBirthPDF('${applicationNo}')"
-                style="
-                background:#176b3a;
-                color:white;
-                padding:12px 18px;
-                border:0;
-                border-radius:8px;
-                margin-top:10px;
-                ">
-                📄 Download Birth Certificate PDF
-            </button>
-        </div>
-    `;
-}
-
-
-function deathCertificate() {
-
-    createPopup(`
-        <h2>⚰️ Death Certificate Application</h2>
-
-        <p class="popup-subtitle">
-            मृत्यू प्रमाणपत्रासाठी माहिती भरा
-        </p>
-
-        <label>मृत व्यक्तीचे नाव</label>
-        <input id="deathName" type="text"
-               placeholder="पूर्ण नाव">
-
-        <label>मृत्यू तारीख</label>
-        <input id="deathDate" type="date">
-
-        <label>मृत्यू ठिकाण</label>
-        <input id="deathPlace" type="text"
-               placeholder="मृत्यू ठिकाण">
-
-        <label>नातेवाईकाचे नाव</label>
-        <input id="relativeName" type="text"
-               placeholder="अर्जदाराचे नाव">
-
-        <label>पत्ता</label>
-        <textarea id="deathAddress"
-                  rows="4"
-                  placeholder="पूर्ण पत्ता"></textarea>
-
-        <button class="green-btn"
-                onclick="submitDeath()">
-            📤 अर्ज Submit करा
-        </button>
-
-        <button class="close-btn"
-                onclick="closePopup()">
-            ❌ बंद करा
-        </button>
-
-        <div id="deathResult"></div>
-    `);
-}
-
-
-function submitDeath() {
-
-    const name =
-        document.getElementById("deathName").value.trim();
-
-    const date =
-        document.getElementById("deathDate").value;
-
-    const relative =
-        document.getElementById("relativeName").value.trim();
-
-
-    if (!name || !date || !relative) {
-
-        alert("कृपया आवश्यक माहिती भरा.");
-
-        return;
-    }
-
-
-    const applicationNo =
-        "DC-" +
-        Math.floor(100000 + Math.random() * 900000);
-
-
-    document.getElementById("deathResult").innerHTML = `
-
-        <div style="
-            margin-top:20px;
-            padding:15px;
-            border:2px solid green;
-            border-radius:10px;
-            background:#f0fff0;
-        ">
-
-            <h3>✅ अर्ज यशस्वीरित्या Submit झाला!</h3>
-
-            <p>Application Number:</p>
-
-            <h2>${applicationNo}</h2>
-<button onclick="generateDeathPDF(applicationNo)"
-style="
-background:#176b3a;
-color:white;
-padding:12px 18px;
-border:0;
-border-radius:8px;
-font-size:16px;
-margin:10px 0;
-">
-📄 Death Certificate PDF
-</button>
-            <p>
-                अर्जाची तपासणी अधिकारी करतील.
-            </p>
-
-        </div>
-    `;
-}
-function submitIdea() {
-
-    const name =
-        document.getElementById("ideaName").value.trim();
-
-    const idea =
-        document.getElementById("ideaText").value.trim();
-
-
-    if (!name || !idea) {
-
-        alert("कृपया नाव आणि idea भरा.");
-
-        return;
-    }
-
-
-    document.getElementById("ideaResult").innerHTML = `
-
-        <div style="
-            margin-top:20px;
-            padding:15px;
-            border:2px solid green;
-            border-radius:10px;
-            background:#f0fff0;
-        ">
-
-            <h3>✅ Idea Successfully Submitted!</h3>
-
-            <p>
-                धन्यवाद ${name}!
-            </p>
-
-            <p>
-                तुमची कल्पना SmartGram मध्ये नोंदवली आहे.
-            </p>
-
-        </div>
-
-    `;
-}
-    function generateBirthPDF(applicationNo) {
-
-    const name = document.getElementById("birthName")?.value || "";
-    const date = document.getElementById("birthDate")?.value || "";
-    const place = document.getElementById("birthPlace")?.value || "";
-    const father = document.getElementById("fatherName")?.value || "";
-    const mother = document.getElementById("motherName")?.value || "";
-    const address = document.getElementById("birthAddress")?.value || "";
-
-    const printWindow = window.open("", "_blank");
-
-    if (!printWindow) {
-        alert("PDF window उघडण्यासाठी browser popup allow करा.");
-        return;
-    }
-
-    printWindow.document.write(`
-<!DOCTYPE html>
-<html lang="mr">
-<head>
-<meta charset="UTF-8">
-<title>Birth Certificate Application</title>
-
-<style>
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 30px;
-    background: white;
-}
-
-.page {
-    max-width: 800px;
-    margin: auto;
-    border: 2px solid #176b3a;
-    padding: 35px;
-}
-
-h1, h2 {
-    text-align: center;
-}
-
-.notice {
-    text-align: center;
-    border: 1px solid #999;
-    padding: 8px;
-    margin: 15px 0;
-    font-weight: bold;
-}
-
-.row {
-    display: flex;
-    margin: 14px 0;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 8px;
-}
-
-.label {
-    width: 220px;
-    font-weight: bold;
-}
-
-.value {
-    flex: 1;
-}
-
-.footer {
-    margin-top: 50px;
-    text-align: center;
-    font-size: 13px;
-}
-
-@media print {
-    body {
-        padding: 0;
-    }
-
-    .page {
-        border: 2px solid #176b3a;
-    }
-}
-</style>
-</head>
-
-<body>
-
-<div class="page">
-
-<h1>SMARTGRAM</h1>
-
-<h2>जन्म प्रमाणपत्र अर्जाची प्रत</h2>
-
-<div class="notice">
-ही नमुना / अर्जाची प्रत आहे — अधिकृत शासकीय प्रमाणपत्र नाही
-</div>
-
-<p><b>Application No.:</b> ${applicationNo}</p>
-
-<hr>
-
-<div class="row">
-    <div class="label">बालकाचे नाव:</div>
-    <div class="value">${name}</div>
-</div>
-
-<div class="row">
-    <div class="label">जन्म तारीख:</div>
-    <div class="value">${date}</div>
-</div>
-
-<div class="row">
-    <div class="label">जन्म ठिकाण:</div>
-    <div class="value">${place}</div>
-</div>
-
-<div class="row">
-    <div class="label">वडिलांचे नाव:</div>
-    <div class="value">${father}</div>
-</div>
-
-<div class="row">
-    <div class="label">आईचे नाव:</div>
-    <div class="value">${mother}</div>
-</div>
-
-<div class="row">
-    <div class="label">पत्ता:</div>
-    <div class="value">${address}</div>
-</div>
-
-<br>
-
-<p>
-हा दस्तऐवज SmartGram प्रणालीतील अर्जाची printable प्रत आहे.
-अधिकृत प्रमाणपत्र संबंधित सक्षम शासकीय प्राधिकरणाकडूनच जारी केले जाऊ शकते.
+<p class="popup-subtitle">
+SmartGram – Digital Village
 </p>
 
-<div class="footer">
-    SmartGram Digital Village Development Initiative
-</div>
+<label>नाव</label>
 
-</div>
+<input id="cname"
+type="text"
+placeholder="तुमचे पूर्ण नाव">
 
-<script>
-window.onload = function() {
-    window.print();
-};
-<\/script>
+<label>मोबाइल नंबर</label>
 
-</body>
-</html>
+<input id="cmobile"
+type="tel"
+maxlength="10"
+placeholder="10 अंकी मोबाइल नंबर">
+
+<label>गाव</label>
+
+<input id="cvillage"
+type="text"
+value="गोगरी">
+
+<label>समस्येचा प्रकार</label>
+
+<select id="ctype">
+<option>रस्ता</option>
+<option>पाणी</option>
+<option>वीज</option>
+<option>स्वच्छता</option>
+<option>गटार</option>
+<option>शासकीय सेवा</option>
+<option>इतर</option>
+</select>
+
+<label>समस्येचे वर्णन</label>
+
+<textarea id="cdesc"
+rows="5"
+placeholder="तुमची समस्या सविस्तर लिहा"></textarea>
+
+<button class="green-btn"
+onclick="submitComplaint()">
+📤 समस्या नोंदवा
+</button>
+
+<button class="close-btn"
+onclick="closePopup()">
+❌ बंद करा
+</button>
+
+<div id="result"></div>
+
 `);
-
-    printWindow.document.close();
-}
-function adminLogin() {
-
-    const box = document.createElement("div");
-
-    box.innerHTML = `
-        <div style="
-            position:fixed;
-            inset:0;
-            background:#f5f7f6;
-            z-index:99999;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            padding:20px;
-        ">
-
-            <div style="
-                background:white;
-                width:100%;
-                max-width:400px;
-                padding:25px;
-                border-radius:15px;
-                box-shadow:0 4px 20px rgba(0,0,0,0.15);
-            ">
-
-                <h2 style="
-                    text-align:center;
-                    color:#176b3a;
-                    margin-bottom:8px;
-                ">
-                    🔐 SmartGram Login
-                </h2>
-
-                <p style="
-                    text-align:center;
-                    color:#666;
-                    margin-bottom:20px;
-                ">
-                    Admin / Officer Login
-                </p>
-
-                <label>Username</label>
-
-                <input id="adminUsername"
-                    type="text"
-                    placeholder="Username"
-                    style="
-                        width:100%;
-                        padding:13px;
-                        margin:8px 0 15px;
-                        border:1px solid #ccc;
-                        border-radius:8px;
-                    ">
-
-                <label>Password</label>
-
-                <input id="adminPassword"
-                    type="password"
-                    placeholder="Password"
-                    style="
-                        width:100%;
-                        padding:13px;
-                        margin:8px 0 20px;
-                        border:1px solid #ccc;
-                        border-radius:8px;
-                    ">
-
-                <button onclick="checkAdminLogin()"
-                    style="
-                        width:100%;
-                        padding:13px;
-                        background:#176b3a;
-                        color:white;
-                        border:0;
-                        border-radius:8px;
-                        font-size:16px;
-                        font-weight:bold;
-                    ">
-                    🔓 Login
-                </button>
-
-                <button onclick="this.parentElement.parentElement.remove()"
-                    style="
-                        width:100%;
-                        padding:11px;
-                        margin-top:10px;
-                        background:#ddd;
-                        border:0;
-                        border-radius:8px;
-                    ">
-                    ❌ बंद करा
-                </button>
-
-            </div>
-        </div>
-    `;
-
-    document.body.appendChild(box);
 }
 
 
-function checkAdminLogin() {
+function submitComplaint(){
 
-    const username =
-        document.getElementById("adminUsername").value.trim();
+const name=document.getElementById("cname").value.trim();
+const mobile=document.getElementById("cmobile").value.trim();
+const village=document.getElementById("cvillage").value.trim();
+const type=document.getElementById("ctype").value;
+const desc=document.getElementById("cdesc").value.trim();
 
-    const password =
-        document.getElementById("adminPassword").value.trim();
+if(!name || !mobile || !village || !desc){
 
+alert("कृपया सर्व आवश्यक माहिती भरा.");
+return;
 
-    if (username === "admin" && password === "1234") {
-
-        document.body.lastElementChild.remove();
-
-        adminDashboard();
-
-    } else {
-
-        alert("❌ चुकीचे Username किंवा Password!");
-
-    }
 }
-    function approveBirthApplication(button) {
 
-    const card = button.parentElement.parentElement;
+if(!/^[0-9]{10}$/.test(mobile)){
 
-    const status = card.querySelector(".birthStatus");
+alert("कृपया योग्य 10 अंकी मोबाइल नंबर टाका.");
+return;
 
-    if (status) {
-        status.innerHTML = "🟢 Approved";
-        status.style.color = "#198754";
-        status.style.fontWeight = "bold";
-    }
-
-    button.disabled = true;
-    button.innerHTML = "✅ Approved";
-    button.style.background = "#6c757d";
-
-    alert("✅ Birth Certificate Application Approved Successfully!");
-    }
-function adminDashboard() {
-
-    const box = document.createElement("div");
-
-    box.innerHTML = `
-        <div style="
-            position:fixed;
-            inset:0;
-            background:#f5f7f6;
-            z-index:9999;
-            overflow:auto;
-            padding:20px;
-        ">
-
-            <h2 style="text-align:center;color:#176b3a;">
-                🔐 SmartGram Admin Dashboard
-            </h2>
-
-            <p style="text-align:center;">
-                Authorized Officer Panel
-            </p>
-
-            <hr style="margin:20px 0;">
-
-            <div style="
-                background:white;
-                padding:18px;
-                margin:12px 0;
-                border-radius:12px;
-                box-shadow:0 2px 8px rgba(0,0,0,.1);
-            ">
-                <h3>📄 Birth Certificate Applications</h3>
-
-                <p>
-                    <b>Application No:</b> BC-534433
-                </p>
-
-                <p>
-                    <b>Applicant:</b> Pending verification
-                </p>
-
-                <p>
-                    <b>Status:</b>
-                    <span class="birthStatus"style="color:#d68910;">
-                    🟡 Pending
-                    </span>
-                </p>
-
-                <button onclick="approveBirthApplication(this)"
-                    style="
-                    background:#176b3a;
-                    color:white;
-                    border:0;
-                    padding:10px 15px;
-                    border-radius:7px;
-                    margin:5px;
-                    ">
-                    ✅ Approve
-                </button>
-
-                <button onclick="alert('Birth application rejected')"
-                    style="
-                    background:#b52b27;
-                    color:white;
-                    border:0;
-                    padding:10px 15px;
-                    border-radius:7px;
-                    margin:5px;
-                    ">
-                    ❌ Reject
-                </button>
-
-                <button onclick="alert('PDF download option')"
-                    style="
-                    background:#444;
-                    color:white;
-                    border:0;
-                    padding:10px 15px;
-                    border-radius:7px;
-                    margin:5px;
-                    ">
-                    📄 PDF
-                </button>
-            </div>
-
-            <div style="
-                background:white;
-                padding:18px;
-                margin:12px 0;
-                border-radius:12px;
-                box-shadow:0 2px 8px rgba(0,0,0,.1);
-            ">
-                <h3>⚰️ Death Certificate Applications</h3>
-
-                <p><b>Status:</b> 🟡 Pending</p>
-
-                <button onclick="alert('Death application approved')"
-                    style="
-                    background:#176b3a;
-                    color:white;
-                    border:0;
-                    padding:10px 15px;
-                    border-radius:7px;
-                    ">
-                    ✅ Approve
-                </button>
-
-                <button onclick="alert('Death application rejected')"
-                    style="
-                    background:#b52b27;
-                    color:white;
-                    border:0;
-                    padding:10px 15px;
-                    border-radius:7px;
-                    ">
-                    ❌ Reject
-                </button>
-            </div>
-
-            <div style="
-                background:white;
-                padding:18px;
-                margin:12px 0;
-                border-radius:12px;
-            ">
-                <h3>📝 Village Complaints</h3>
-
-                <p>Pending Complaints: <b>32</b></p>
-                <p>Resolved Complaints: <b>75</b></p>
-            </div>
-
-            <button onclick="this.parentElement.remove()"
-                style="
-                width:100%;
-                padding:14px;
-                margin-top:15px;
-                background:#123d27;
-                color:white;
-                border:0;
-                border-radius:10px;
-                font-size:16px;
-                ">
-                🚪 Logout / Close
-            </button>
-
-        </div>
-    `;
-
-    document.body.appendChild(box);
 }
-function citizenDashboard() {
-    createPopup(`
-        <h2>👤 Citizen Dashboard</h2>
 
-        <p class="popup-subtitle">
-            SmartGram – Citizen Services
-        </p>
+const id="SG-"+Math.floor(100000+Math.random()*900000);
 
-        <div class="official-box">
-            <h3>📝 Complaint</h3>
-            <p>गावातील समस्या नोंदवा.</p>
-            <button class="green-btn" onclick="complaint()">
-                समस्या नोंदवा
-            </button>
-        </div>
+const complaintData={
+    id:id,
+    name:name,
+    mobile:mobile,
+    village:village,
+    type:type,
+    desc:desc,
+    status:"Pending"
+};
 
-        <div class="official-box">
-            <h3>📄 Certificate</h3>
-            <p>जन्म / मृत्यू प्रमाणपत्रासाठी अर्ज करा.</p>
-            <button class="green-btn" onclick="certificates()">
-                Certificate Services
-            </button>
-        </div>
+localStorage.setItem(
+    "complaint_"+id,
+    JSON.stringify(complaintData)
+);
 
-        <div class="official-box">
-            <h3>🗺️ Village Map</h3>
-            <button class="green-btn" onclick="villageMap()">
-                Map पाहा
-            </button>
-        </div>
+let count=parseInt(localStorage.getItem("smartgramComplaintCount")||"0");
 
-        <button class="close-btn" onclick="closePopup()">
-            ❌ Logout
-        </button>
-    `);
+count++;
+
+localStorage.setItem(
+    "smartgramComplaintCount",
+    count
+);
+
+updateStats();
+
+document.getElementById("result").innerHTML=`
+
+<div class="success">
+
+<h3>✅ समस्या यशस्वीरित्या नोंदवली!</h3>
+
+<p>तुमचा Complaint ID:</p>
+
+<h2>${id}</h2>
+
+<p>
+हा ID जपून ठेवा.
+Track Complaint साठी उपयोगी पडेल.
+</p>
+
+</div>
+`;
+
 }
 
 
-function generateDeathPDF(applicationNo) {
+/* =========================
+   TRACK COMPLAINT
+========================= */
 
-    const name =
-        document.getElementById("deathName")?.value || "";
+function trackComplaint(){
 
-    const date =
-        document.getElementById("deathDate")?.value || "";
+createPopup(`
 
-    const place =
-        document.getElementById("deathPlace")?.value || "";
+<h2>🔎 Track Complaint</h2>
 
-    const relative =
-        document.getElementById("relativeName")?.value || "";
+<p class="popup-subtitle">
+Complaint ID टाका
+</p>
 
-    const address =
-        document.getElementById("deathAddress")?.value || "";
+<input id="trackId"
+placeholder="उदा. SG-123456">
 
-    const printWindow = window.open("", "_blank");
+<button class="green-btn"
+onclick="checkComplaint()">
+🔎 Track
+</button>
 
-    if (!printWindow) {
-        alert("Browser popup allow करा.");
-        return;
-    }
+<button class="close-btn"
+onclick="closePopup()">
+❌ बंद करा
+</button>
 
-    printWindow.document.write(`
-        <!DOCTYPE html>
-        <html lang="mr">
-        <head>
-            <meta charset="UTF-8">
+<div id="trackResult"></div>
 
-            <title>Death Certificate Application</title>
-
-            <style>
-
-                body {
-                    font-family: Arial, sans-serif;
-                    padding: 30px;
-                    background: white;
-                }
-
-                .page {
-                    max-width: 800px;
-                    margin: auto;
-                    border: 2px solid #176b3a;
-                    padding: 35px;
-                }
-
-                h1, h2 {
-                    text-align: center;
-                }
-
-                .notice {
-                    text-align: center;
-                    border: 1px solid #999;
-                    padding: 8px;
-                    margin: 15px 0;
-                    font-weight: bold;
-                }
-
-                .row {
-                    display: flex;
-                    margin: 14px 0;
-                    border-bottom: 1px solid #ddd;
-                    padding-bottom: 8px;
-                }
-
-                .label {
-                    width: 220px;
-                    font-weight: bold;
-                }
-
-                .value {
-                    flex: 1;
-                }
-
-                .footer {
-                    margin-top: 50px;
-                    text-align: center;
-                    font-size: 13px;
-                }
-
-                @media print {
-                    body {
-                        padding: 0;
-                    }
-                }
-
-            </style>
-        </head>
-
-        <body>
-
-            <div class="page">
-
-                <h1>SMARTGRAM</h1>
-
-                <h2>मृत्यू प्रमाणपत्र अर्जाची प्रत</h2>
-
-                <div class="notice">
-                    ही नमुना / अर्जाची प्रत आहे —
-                    अधिकृत शासकीय प्रमाणपत्र नाही
-                </div>
-
-                <p>
-                    <b>Application No.:</b>
-                    ${applicationNo}
-                </p>
-
-                <hr>
-
-                <div class="row">
-                    <div class="label">
-                        मृत व्यक्तीचे नाव:
-                    </div>
-
-                    <div class="value">
-                        ${name}
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="label">
-                        मृत्यू तारीख:
-                    </div>
-
-                    <div class="value">
-                        ${date}
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="label">
-                        मृत्यू ठिकाण:
-                    </div>
-
-                    <div class="value">
-                        ${place}
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="label">
-                        अर्जदाराचे नाव:
-                    </div>
-
-                    <div class="value">
-                        ${relative}
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="label">
-                        पत्ता:
-                    </div>
-
-                    <div class="value">
-                        ${address}
-                    </div>
-                </div>
-
-                <br>
-
-                <p>
-                    हा दस्तऐवज SmartGram प्रणालीतील
-                    अर्जाची printable प्रत आहे.
-                </p>
-
-                <div class="footer">
-                    SmartGram Digital Village
-                    Development Initiative
-                </div>
-
-            </div>
-
-            <script>
-                window.onload = function() {
-                    window.print();
-                };
-            <\/script>
-
-        </body>
-        </html>
-    `);
-
-    printWindow.document.close();
+`);
 }
-</script>
 
-</body>
-</html>
+
+function checkComplaint(){
+
+const id=document.getElementById("trackId").value.trim();
+
+const saved=localStorage.getItem("complaint_"+id);
+
+if(!saved){
+
+document.getElementById("trackResult").innerHTML=`
+
+<div style="color:red;margin-top:20px;">
+❌ Complaint ID सापडली नाही.
+</div>
+
+`;
+
+return;
+
+}
+
+const data=JSON.parse(saved);
+
+document.getElementById("trackResult").innerHTML=`
+
+<div class="official-box">
+
+<h3>✅ Complaint Found</h3>
+
+<p><b>Complaint ID:</b> ${data.id}</p>
+
+<p><b>नाव:</b> ${data.name}</p>
+
+<p><b>गाव:</b> ${data.village}</p>
+
+<p><b>प्रकार:</b> ${data.type}</p>
+
+<p><b>Status:</b> 🟡 ${data.status}</p>
+
+<p><b>समस्या:</b> ${data.desc}</p>
+
+</div>
+
+`;
+
+}
+
+
+/* =========================
+   CITIZEN REGISTRATION
+========================= */
+
+function citizenRegistration(){
+
+createPopup(`
+
+<h2>👤 Citizen Registration</h2>
+
+<p class="popup-subtitle">
+SmartGram Digital Village
+</p>
+
+<label>पूर्ण नाव</label>
+
+<input id="regName"
+placeholder="तुमचे पूर्ण नाव">
+
+<label>मोबाइल नंबर</label>
+
+<input id="regMobile"
+type="tel"
+maxlength="10"
+placeholder="10 अंकी मोबाइल नंबर">
+
+<label>गाव</label>
+
+<input id="regVillage"
+value="गोगरी">
+
+<label>Username</label>
+
+<input id="regUsername"
+placeholder="Username तयार करा">
+
+<label>Password</label>
+
+<input id="regPassword"
+type="password"
+placeholder="Password तयार करा">
+
+<label>Confirm Password</label>
+
+<input id="regConfirm"
+type="password"
+placeholder="Password पुन्हा टाका">
+
+<button class="green-btn"
+onclick="saveCitizenRegistration()">
+📝 Register
+</button>
+
+<button class="close-btn"
+onclick="closePopup()">
+❌ बंद करा
+</button>
+
+<div id="registrationResult"></div>
+
+`);
+}
+
+
+function saveCitizenRegistration(){
+
+const name=document.getElementById("regName").value.trim();
+const mobile=document.getElementById("regMobile").value.trim();
+const village=document.getElementById("regVillage").value.trim();
+const username=document.getElementById("regUsername").value.trim();
+const password=document.getElementById("regPassword").value;
+const confirm=document.getElementById("regConfirm").value;
+
+if(!name || !mobile || !village || !username || !password){
+
+alert("कृपया सर्व माहिती भरा.");
+return;
+
+}
+
+if(!/^[0-9]{10}$/.test(mobile)){
+
+alert("योग्य 10 अंकी मोबाइल नंबर टाका.");
+return;
+
+}
+
+if(password!==confirm){
+
+alert("Password आणि Confirm Password समान नाहीत.");
+return;
+
+}
+
+const registrationNo=
+"SG-CIT-"+Math.floor(100000+Math.random()*900000);
+
+const citizen={
+
+registrationNo:registrationNo,
+name:name,
+mobile:mobile,
+village:village,
+username:username,
+password:password
+
+};
+
+localStorage.setItem(
+"smartgramCitizen",
+JSON.stringify(citizen)
+);
+
+document.getElementById("registrationResult").innerHTML=`
+
+<div class="success">
+
+<h3>✅ Registration Successful</h3>
+
+<p><b>Registration Number:</b></p>
+
+<h2>${registrationNo}</h2>
+
+<p><b>Name:</b> ${name}</p>
+
+<p><b>Username:</b> ${username}</p>
+
+<p>
+हा Registration Number जपून ठेवा.
+</p>
+
+</div>
+
+`;
+
+}
+
+
+/* =========================
+   CITIZEN LOGIN
+========================= */
+
+function citizenLogin(){
+
+createPopup(`
+
+<h2>🔐 Citizen Login</h2>
+
+<p class="popup-subtitle">
+SmartGram Digital Village
+</p>
+
+<label>Username</label>
+
+<input id="citizenUsername"
+placeholder="Username">
+
+<label>Password</label>
+
+<input id="citizenPassword"
+type="password"
+placeholder="Password">
+
+<button class="green-btn"
+onclick="checkCitizenLogin()">
+🔓 Login
+</button>
+
+<button class="close-btn"
+onclick="closePopup()">
+❌ बंद करा
+</button>
+
+`);
+}
+
+
+function checkCitizenLogin(){
+
+const username=
+document.getElementById("citizenUsername").value.trim();
+
+const password=
+document.getElementById("citizenPassword").value;
+
+const saved=
+JSON.parse(localStorage.getItem("smartgramCitizen"));
+
+if(!saved){
+
+alert("❌ आधी Citizen Registration करा.");
+return;
+
+}
+
+if(
+username===saved.username &&
+password===saved.password
+){
+
+closePopup();
+
+citizenDashboard();
+
+}else{
+
+alert("❌ चुकीचे Username किंवा Password.");
+
+}
+
+}
+
+
+/* =========================
+   CITIZEN DASHBOARD
+========================= */
+
+function citizenDashboard(){
+
+const saved=
+JSON.parse(localStorage.getItem("smartgramCitizen"));
+
+createPopup(`
+
+<h2>👤 Citizen Dashboard</h2>
+
+<p class="popup-subtitle">
+SmartGram – Citizen Services
+</p>
+
+<div class="official-box">
+
+<h3>👤 Citizen Information</h3>
+
+<p><b>Name:</b> ${saved.name}</p>
+
+<p><b>Registration No:</b> ${saved.registrationNo}</p>
+
+<p><b>Mobile:</b> ${saved.mobile}</p>
+
+<p><b>Village:</b> ${saved.village}</p>
+
+</div>
+
+<div class="official-box">
+
+<h3>📝 Complaint</h3>
+
+<p>गावातील समस्या नोंदवा.</p>
+
+<button class="green-btn"
+onclick="complaint()">
+समस्या नोंदवा
+</button>
+
+</div>
+
+<div class="official-box">
+
+<h3>📄 Certificates</h3>
+
+<p>जन्म / मृत्यू प्रमाणपत्रासाठी अर्ज करा.</p>
+
+<button class="green-btn"
+onclick="certificates()">
+Certificate Services
+</button>
+
+</div>
+
+<div class="official-box">
+
+<h3>🗺️ Village Map</h3>
+
+<button class="green-btn"
+onclick="villageMap()">
+Map पाहा
+</button>
+
+</div>
+
+<button class="close-btn"
+onclick="closePopup()">
+🚪 Logout
+</button>
+
+`);
+}
+
+
+/* =========================
+   VILLAGE OFFICIALS
+========================= */
+
+function villageOfficials(){
+
+createPopup(`
+
+<h2>👥 ग्रामपंचायत अधिकारी</h2>
+
+<p class="popup-subtitle">
+Gogari – Mangrulpir, Washim
+</p>
+
+<div class="official-box">
+<h3>👨‍💼 सरपंच</h3>
+<p><b>नाव:</b> श्री केशव ज्ञानदेव जटाळे</p>
+<p><b>मोबाइल:</b> लवकरच उपलब्ध</p>
+</div>
+
+<div class="official-box">
+<h3>👩‍💼 उपसरपंच</h3>
+<p><b>नाव:</b> सौ. कविता पंकज इंगोले</p>
+<p><b>मोबाइल:</b> लवकरच उपलब्ध</p>
+</div>
+
+<div class="official-box">
+<h3>👨‍💼 ग्रामसेवक</h3>
+<p><b>नाव:</b> श्री संजय पाचरणे</p>
+<p><b>मोबाइल:</b> लवकरच उपलब्ध</p>
+</div>
+
+<div class="official-box">
+<h3>👨‍💼 तलाठी</h3>
+<p><b>नाव:</b> श्री अमोल भुरकाडे</p>
+<p><b>मोबाइल:</b> लवकरच उपलब्ध</p>
+</div>
+
+<div class="official-box">
+<h3>👤 सदस्य</h3>
+<p>नंदू पावसे</p>
+<p>डीगांबर बोथे</p>
+<p>मधुकर इंगोले</p>
+</div>
+
+<button class="close-btn"
+onclick="closePopup()">
+❌ बंद करा
+</button>
+
+`);
+}
+
+
+/* =========================
+   VILLAGE MAP
+========================= */
+
+function villageMap(){
+
+createPopup(`
+
+<h2>🗺️ Village Map</h2>
+
+<p class="popup-subtitle">
+गोगरी – मंगरूळपीर – वाशिम
+</p>
+
+<div class="official-box">
+
+<h3>🏫 शाळेची माहिती</h3>
+
+<p>
+<b>नाव:</b>
+राष्ट्रसंत तुकडोजी महाराज विद्यालय
+</p>
+
+<p>
+<b>संस्था:</b>
+जिल्हा परिषद गोगरी
+</p>
+
+<p>
+<b>पत्ता:</b>
+गोगरी, ता. मंगरूळपीर,
+जि. वाशिम, महाराष्ट्र
+</p>
+
+</div>
+
+<iframe
+src="https://www.google.com/maps?q=Gogari,Mangrulpir,Washim,Maharashtra&output=embed"
+width="100%"
+height="350"
+style="border:0;border-radius:12px;"
+loading="lazy">
+</iframe>
+
+<button class="close-btn"
+onclick="closePopup()">
+❌ बंद करा
+</button>
+
+`);
+}
+
+
+/* =========================
+   NOTICES
+========================= */
+
+function villageNotices(){
+
+createPopup(`
+
+<h2>📢 Village Notices</h2>
+
+<p class="popup-subtitle">
+गावातील महत्त्वाच्या सूचना
+</p>
+
+<div class="notice-box">
+
+<h3>📌 ग्रामपंचायत सूचना</h3>
+
+<p>
+नवीन सूचना लवकरच येथे प्रकाशित केली जाईल.
+</p>
+
+</div>
+
+<div class="notice-box">
+
+<h3>📢 नागरिकांसाठी सूचना</h3>
+
+<p>
+गावातील नागरिकांनी नियमितपणे सूचना तपासाव्यात.
+</p>
+
+</div>
+
+<button class="close-btn"
+onclick="closePopup()">
+❌ बंद करा
+</button>
+
+`);
+}
+
+
+/* =========================
+   VILLAGE IDEAS
+========================= */
+
+function villageIdeas(){
+
+createPopup(`
+
+<h2>💡 Village Ideas</h2>
+
+<p class="popup-subtitle">
+गावाच्या विकासासाठी तुमची कल्पना द्या
+</p>
+
+<label>तुमचे नाव</label>
+
+<input id="ideaName"
+placeholder="तुमचे नाव">
+
+<label>तुमची कल्पना</label>
+
+<textarea id="ideaText"
+rows="5"
+placeholder="गावाच्या विकासासाठी तुमची कल्पना लिहा">
+</textarea>
+
+<button class="green-btn"
+onclick="submitIdea()">
+📤 Idea Submit करा
+</button>
+
+<button class="close-btn"
+onclick="closePopup()">
+❌ बंद करा
+</button>
+
+<div id="ideaResult"></div>
+
+`);
+}
+
+
+function submitIdea(){
+
+const name=
+document.getElementById("ideaName").value.trim();
+
+const idea=
+document.getElementById("ideaText").value.trim();
+
+if(!name || !idea){
+
+alert("कृपया नाव आणि idea भरा.");
+return;
+
+}
+
+document.getElementById("ideaResult").innerHTML=`
+
+<div class="success">
+
+<h3>✅ Idea Successfully Submitted!</h3>
+
+<p>धन्यवाद ${name}!</p>
+
+<p>
+तुमची कल्पना SmartGram मध्ये नोंदवली आहे.
+</p>
+
+</div>
+
+`;
+
+}
+
+
+/* =========================
+   CERTIFICATES
+========================= */
+
+function certificates(){
+
+createPopup(`
+
+<h2>📄 Certificate Services</h2>
+
+<p class="popup-subtitle">
+प्रमाणपत्रासाठी online अर्ज
+</p>
+
+<div class="official-box"
+onclick="birthCertificate()"
+style="cursor:pointer;">
+
+<h3>🍼 Birth Certificate</h3>
+
+<p>जन्म प्रमाणपत्रासाठी अर्ज करा.</p>
+
+</div>
+
+<div class="official-box"
+onclick="deathCertificate()"
+style="cursor:pointer;">
+
+<h3>⚰️ Death Certificate</h3>
+
+<p>मृत्यू प्रमाणपत्रासाठी अर्ज करा.</p>
+
+</div>
+
+<button class="close-btn"
+onclick="closePopup()">
+❌ बंद करा
+</button>
+
+`);
+}
+
+
+/* =========================
+   BIRTH CERTIFICATE
+========================= */
+
+function birthCertificate(){
+
+createPopup(`
+
+<h2>🍼 Birth Certificate Application</h2>
+
+<p class="popup-subtitle">
+जन्म प्रमाणपत्रासाठी माहिती भरा
+</p>
+
+<label>बाळाचे नाव</label>
+
+<input id="birthName"
+placeholder="बाळाचे पूर्ण नाव">
+
+<label>जन्म तारीख</label>
+
+<input id="birthDate"
+type="date">
+
+<label>जन्म ठिकाण</label>
+
+<input id="birthPlace"
+placeholder="जन्म ठिकाण">
+
+<label>वडिलांचे नाव</label>
+
+<input id="fatherName"
+placeholder="वडिलांचे नाव">
+
+<label>आईचे नाव</label>
+
+<input id="motherName"
+placeholder="आईचे नाव">
+
+<label>पत्ता</label>
+
+<textarea id="birthAddress"
+rows="4"
+placeholder="पूर्ण पत्ता">
+</textarea>
+
+<button class="green-btn"
+onclick="submitBirth()">
+📤 अर्ज Submit करा
+</button>
+
+<button class="close-btn"
+onclick="closePopup()">
+❌ बंद करा
+</button>
+
+<div id="birthResult"></div>
+
+`);
+}
+
+
+function submitBirth(){
+
+const name=document.getElementById("birthName").value.trim();
+const date=document.getElementById("birthDate").value;
+const place=document.getElementById("birthPlace").value.trim();
+const father=document.getElementById("fatherName").value.trim();
+const mother=document.getElementById("motherName").value.trim();
+const address=document.getElementById("birthAddress").value.trim();
+
+if(!name || !date || !father || !mother){
+
+alert("कृपया आवश्यक माहिती भरा.");
+return;
+
+}
+
+const applicationNo=
+"BC-"+Math.floor(100000+Math.random()*900000);
+
+const application={
+applicationNo,
+name,
+date,
+place,
+father,
+mother,
+address,
+status:"Pending"
+};
+
+localStorage.setItem(
+"birthApplication_"+applicationNo,
+JSON.stringify(application)
+);
+
+document.getElementById("birthResult").innerHTML=`
+
+<div class="success">
+
+<h3>✅ अर्ज यशस्वीरित्या Submit झाला!</h3>
+
+<p><b>Application Number:</b></p>
+
+<h2>${applicationNo}</h2>
+
+<p>
+अर्ज Officer verification साठी पाठवण्यात आला आहे.
+</p>
+
+<button class="green-btn"
+onclick="generateBirthPDF('${applicationNo}')">
+📄 Print / PDF
+</button>
+
+</div>
+
+`;
+
+}
+
+
+/* =========================
+   DEATH CERTIFICATE
+========================= */
+
+function deathCertificate(){
+
+createPopup(`
+
+<h2>⚰️ Death Certificate Application</h2>
+
+<p class="popup-subtitle">
+मृत्यू प्रमाणपत्रासाठी माहिती भरा
+</p>
+
+<label>मृत व्यक्तीचे नाव</label>
+
+<input id="deathName"
+placeholder="पूर्ण नाव">
+
+<label>मृत्यू तारीख</label>
+    
