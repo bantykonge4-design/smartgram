@@ -2155,12 +2155,540 @@ onclick="closePopup()">
 }
 
 
+
+<script>
+
 function submitDeath(){
 
-const name=
-document.getElementById(
-"deathName"
-).value.trim();
+    const name = document.getElementById("deathName").value.trim();
+    const date = document.getElementById("deathDate").value;
+    const place = document.getElementById("deathPlace").value.trim();
+    const relative = document.getElementById("relativeName").value.trim();
+    const address = document.getElementById("deathAddress").value.trim();
 
-const date=
-docume
+    if(!name || !date || !place || !relative || !address){
+
+        alert("कृपया सर्व माहिती भरा.");
+        return;
+
+    }
+
+    const no = "DC-" + Math.floor(
+        100000 + Math.random() * 900000
+    );
+
+    const data = {
+
+        no:no,
+        name:name,
+        date:date,
+        place:place,
+        relative:relative,
+        address:address,
+        status:"Pending"
+
+    };
+
+    localStorage.setItem(
+        "deathApplication",
+        JSON.stringify(data)
+    );
+
+    document.getElementById("deathResult").innerHTML = `
+
+        <div class="success">
+
+            <h3>✅ अर्ज Submit झाला!</h3>
+
+            <p>Application No:</p>
+
+            <h2>${no}</h2>
+
+            <p>
+            तुमचा मृत्यू प्रमाणपत्र अर्ज नोंदवला आहे.
+            </p>
+
+            <br>
+
+            <button
+            class="green"
+            onclick="printDeath()">
+
+            📄 Print / PDF
+
+            </button>
+
+        </div>
+
+    `;
+
+}
+
+
+/* DEATH APPLICATION PRINT */
+
+function printDeath(){
+
+    const a = JSON.parse(
+        localStorage.getItem("deathApplication") || "{}"
+    );
+
+    const w = window.open("", "_blank");
+
+    if(!w){
+
+        alert("Browser popup allow करा.");
+        return;
+
+    }
+
+    w.document.write(`
+
+    <html>
+
+    <head>
+
+    <meta charset="UTF-8">
+
+    <title>SmartGram Death Application</title>
+
+    <style>
+
+    body{
+        font-family:Arial;
+        padding:35px;
+    }
+
+    .page{
+        max-width:750px;
+        margin:auto;
+        border:2px solid #176b3a;
+        padding:30px;
+    }
+
+    h1,h2{
+        text-align:center;
+    }
+
+    .row{
+        padding:12px;
+        border-bottom:1px solid #ddd;
+    }
+
+    </style>
+
+    </head>
+
+    <body>
+
+    <div class="page">
+
+        <h1>SMARTGRAM</h1>
+
+        <h2>मृत्यू प्रमाणपत्र अर्जाची प्रत</h2>
+
+        <p style="text-align:center">
+
+        <b>
+        ही नमुना / अर्जाची प्रत आहे —
+        अधिकृत शासकीय प्रमाणपत्र नाही
+        </b>
+
+        </p>
+
+        <hr>
+
+        <div class="row">
+        <b>Application No:</b> ${a.no}
+        </div>
+
+        <div class="row">
+        <b>मृत व्यक्तीचे नाव:</b> ${a.name}
+        </div>
+
+        <div class="row">
+        <b>मृत्यू तारीख:</b> ${a.date}
+        </div>
+
+        <div class="row">
+        <b>मृत्यू ठिकाण:</b> ${a.place}
+        </div>
+
+        <div class="row">
+        <b>नातेवाईकाचे नाव:</b> ${a.relative}
+        </div>
+
+        <div class="row">
+        <b>पत्ता:</b> ${a.address}
+        </div>
+
+        <p style="margin-top:40px">
+        SmartGram Digital Village Development Initiative
+        </p>
+
+    </div>
+
+    <script>
+
+    window.onload=function(){
+        window.print();
+    }
+
+    <\/script>
+
+    </body>
+
+    </html>
+
+    `);
+
+    w.document.close();
+
+}
+
+
+/* ADMIN LOGIN */
+
+function adminLogin(){
+
+    popup("🔐 Admin / Officer Login",`
+
+        <p class="sub">
+        SmartGram Administration
+        </p>
+
+        <label>Username</label>
+
+        <input
+        id="adminUser"
+        placeholder="Username"
+        value="admin"
+        >
+
+        <label>Password</label>
+
+        <input
+        id="adminPass"
+        type="password"
+        placeholder="Password"
+        >
+
+        <div class="rowbtn">
+
+            <button
+            class="green"
+            onclick="checkAdmin()">
+
+            🔓 Login
+
+            </button>
+
+            <button
+            class="close"
+            onclick="closePopup()">
+
+            ❌ बंद करा
+
+            </button>
+
+        </div>
+
+    `);
+
+}
+
+
+/* ADMIN CHECK */
+
+function checkAdmin(){
+
+    const user =
+    document.getElementById("adminUser").value.trim();
+
+    const pass =
+    document.getElementById("adminPass").value;
+
+    if(user === "admin" && pass === "1234"){
+
+        closePopup();
+
+        adminDashboard();
+
+    }
+
+    else{
+
+        alert(
+        "❌ चुकीचे Username किंवा Password"
+        );
+
+    }
+
+}
+
+
+/* ADMIN DASHBOARD */
+
+function adminDashboard(){
+
+    const complaint =
+    JSON.parse(
+        localStorage.getItem("smartgramComplaint") || "null"
+    );
+
+    const citizen =
+    JSON.parse(
+        localStorage.getItem("smartgramCitizen") || "null"
+    );
+
+    const birth =
+    JSON.parse(
+        localStorage.getItem("birthApplication") || "null"
+    );
+
+    const death =
+    JSON.parse(
+        localStorage.getItem("deathApplication") || "null"
+    );
+
+
+    popup("👨‍💼 Admin Dashboard",`
+
+        <p class="sub">
+        SmartGram – Administration Panel
+        </p>
+
+
+        <div class="box">
+
+            <h3>📝 Complaints</h3>
+
+            ${
+                complaint
+                ?
+                `
+                <p>
+                <b>ID:</b> ${complaint.id}
+                </p>
+
+                <p>
+                <b>Name:</b> ${complaint.name}
+                </p>
+
+                <p>
+                <b>Type:</b> ${complaint.type}
+                </p>
+
+                <p>
+                <b>Status:</b> 🟡 ${complaint.status}
+                </p>
+
+                <button
+                class="green"
+                onclick="approveComplaint()">
+
+                ✅ Resolve Complaint
+
+                </button>
+                `
+                :
+                `<p>अजून complaint उपलब्ध नाही.</p>`
+            }
+
+        </div>
+
+
+        <div class="box">
+
+            <h3>👤 Citizen</h3>
+
+            ${
+                citizen
+                ?
+                `
+                <p>
+                <b>Name:</b> ${citizen.name}
+                </p>
+
+                <p>
+                <b>Mobile:</b> ${citizen.mobile}
+                </p>
+
+                <p>
+                <b>Username:</b> ${citizen.username}
+                </p>
+                `
+                :
+                `<p>अजून registration नाही.</p>`
+            }
+
+        </div>
+
+
+        <div class="box">
+
+            <h3>🍼 Birth Certificate</h3>
+
+            ${
+                birth
+                ?
+                `
+                <p>
+                <b>Application:</b> ${birth.no}
+                </p>
+
+                <p>
+                <b>Name:</b> ${birth.name}
+                </p>
+
+                <p>
+                <b>Status:</b> ${birth.status}
+                </p>
+
+                <button
+                class="green"
+                onclick="approveBirth()">
+
+                ✅ Approve
+
+                </button>
+                `
+                :
+                `<p>अजून अर्ज नाही.</p>`
+            }
+
+        </div>
+
+
+        <div class="box">
+
+            <h3>⚰️ Death Certificate</h3>
+
+            ${
+                death
+                ?
+                `
+                <p>
+                <b>Application:</b> ${death.no}
+                </p>
+
+                <p>
+                <b>Name:</b> ${death.name}
+                </p>
+
+                <p>
+                <b>Status:</b> ${death.status}
+                </p>
+
+                <button
+                class="green"
+                onclick="approveDeath()">
+
+                ✅ Approve
+
+                </button>
+                `
+                :
+                `<p>अजून अर्ज नाही.</p>`
+            }
+
+        </div>
+
+
+        <button
+        class="close"
+        onclick="closePopup()">
+
+        🚪 Logout
+
+        </button>
+
+    `);
+
+}
+
+
+/* APPROVE COMPLAINT */
+
+function approveComplaint(){
+
+    const data =
+    JSON.parse(
+        localStorage.getItem("smartgramComplaint")
+        || "null"
+    );
+
+    if(data){
+
+        data.status = "Resolved";
+
+        localStorage.setItem(
+            "smartgramComplaint",
+            JSON.stringify(data)
+        );
+
+        alert("✅ Complaint Resolved Successfully!");
+
+        adminDashboard();
+
+    }
+
+}
+
+
+/* APPROVE BIRTH */
+
+function approveBirth(){
+
+    const data =
+    JSON.parse(
+        localStorage.getItem("birthApplication")
+        || "null"
+    );
+
+    if(data){
+
+        data.status = "Approved";
+
+        localStorage.setItem(
+            "birthApplication",
+            JSON.stringify(data)
+        );
+
+        alert("✅ Birth Certificate Application Approved Successfully!");
+
+        adminDashboard();
+
+    }
+
+}
+
+
+/* APPROVE DEATH */
+
+function approveDeath(){
+
+    const data =
+    JSON.parse(
+        localStorage.getItem("deathApplication")
+        || "null"
+    );
+
+    if(data){
+
+        data.status = "Approved";
+
+        localStorage.setItem(
+            "deathApplication",
+            JSON.stringify(data)
+        );
+
+        alert("✅ Death Certificate Application Approved Successfully!");
+
+        adminDashboard();
+
+    }
+
+}
+
+</script>
