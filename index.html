@@ -585,7 +585,128 @@ function checkComplaint() {
 
     }
 }
+function citizenLogin() {
 
+    const box = document.createElement("div");
+
+    box.innerHTML = `
+        <div style="
+            position:fixed;
+            inset:0;
+            background:#f5f7f6;
+            z-index:99999;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            padding:20px;
+        ">
+
+            <div style="
+                background:white;
+                width:100%;
+                max-width:400px;
+                padding:25px;
+                border-radius:15px;
+                box-shadow:0 4px 20px rgba(0,0,0,.15);
+            ">
+
+                <h2 style="text-align:center;color:#176b3a;">
+                    🔐 Citizen Login
+                </h2>
+
+                <p style="text-align:center;color:#666;">
+                    SmartGram Digital Village
+                </p>
+
+                <label>Username</label>
+
+                <input id="citizenUsername"
+                    type="text"
+                    placeholder="Username"
+                    style="
+                    width:100%;
+                    padding:13px;
+                    margin:8px 0 15px;
+                    border:1px solid #ccc;
+                    border-radius:8px;
+                    ">
+
+                <label>Password</label>
+
+                <input id="citizenPassword"
+                    type="password"
+                    placeholder="Password"
+                    style="
+                    width:100%;
+                    padding:13px;
+                    margin:8px 0 20px;
+                    border:1px solid #ccc;
+                    border-radius:8px;
+                    ">
+
+                <button onclick="checkCitizenLogin()"
+                    style="
+                    width:100%;
+                    padding:13px;
+                    background:#176b3a;
+                    color:white;
+                    border:0;
+                    border-radius:8px;
+                    font-size:16px;
+                    font-weight:bold;
+                    ">
+                    🔓 Login
+                </button>
+
+                <button onclick="this.parentElement.parentElement.remove()"
+                    style="
+                    width:100%;
+                    padding:11px;
+                    margin-top:10px;
+                    border:0;
+                    border-radius:8px;
+                    ">
+                    ❌ बंद करा
+                </button>
+
+            </div>
+        </div>
+    `;
+
+    document.body.appendChild(box);
+}
+
+
+function checkCitizenLogin() {
+
+    const username =
+        document.getElementById("citizenUsername").value.trim();
+
+    const password =
+        document.getElementById("citizenPassword").value;
+
+    const saved =
+        JSON.parse(localStorage.getItem("smartgramCitizen"));
+
+    if (!saved) {
+        alert("❌ आधी Citizen Registration करा.");
+        return;
+    }
+
+    if (
+        username === saved.username &&
+        password === saved.password
+    ) {
+
+        document.body.lastElementChild.remove();
+
+        citizenDashboard();
+
+    } else {
+
+        alert("❌ चुकीचे Username किंवा Password.");
+    }
+}
 function citizenRegistration() {
 
     const box = document.createElement("div");
