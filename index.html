@@ -1339,3 +1339,343 @@ window.onload = function(){
 
     printWindow.document.close();
     }
+function deathCertificate(){
+
+    popup("⚰️ Death Certificate Application",`
+
+    <p class="sub">
+    मृत्यू प्रमाणपत्रासाठी माहिती भरा
+    </p>
+
+    <label>मृत व्यक्तीचे नाव</label>
+    <input id="deathName" placeholder="पूर्ण नाव">
+
+    <label>मृत्यू तारीख</label>
+    <input id="deathDate" type="date">
+
+    <label>मृत्यू ठिकाण</label>
+    <input id="deathPlace" placeholder="मृत्यू ठिकाण">
+
+    <label>अर्जदाराचे नाव</label>
+    <input id="relativeName" placeholder="अर्जदाराचे नाव">
+
+    <label>पत्ता</label>
+    <textarea id="deathAddress" rows="4"
+    placeholder="पूर्ण पत्ता"></textarea>
+
+    <div class="rowbtn">
+
+    <button class="green" onclick="submitDeath()">
+    📤 अर्ज Submit
+    </button>
+
+    <button class="close" onclick="closePopup()">
+    ❌ बंद करा
+    </button>
+
+    </div>
+
+    <div id="deathResult"></div>
+
+    `);
+}
+
+
+function submitDeath(){
+
+    const name =
+    document.getElementById("deathName").value.trim();
+
+    const date =
+    document.getElementById("deathDate").value;
+
+    const place =
+    document.getElementById("deathPlace").value.trim();
+
+    const relative =
+    document.getElementById("relativeName").value.trim();
+
+    const address =
+    document.getElementById("deathAddress").value.trim();
+
+
+    if(!name || !date || !place || !relative || !address){
+
+        alert("कृपया सर्व माहिती भरा.");
+        return;
+
+    }
+
+
+    const no =
+    "DC-" + Math.floor(
+        100000 + Math.random() * 900000
+    );
+
+
+    const data = {
+
+        no:no,
+        name:name,
+        date:date,
+        place:place,
+        relative:relative,
+        address:address,
+        status:"Pending"
+
+    };
+
+
+    localStorage.setItem(
+        "deathApplication",
+        JSON.stringify(data)
+    );
+
+
+    document.getElementById(
+        "deathResult"
+    ).innerHTML = `
+
+    <div class="success">
+
+    <h3>✅ अर्ज Submit झाला!</h3>
+
+    <p>
+    Application No:
+    </p>
+
+    <h2>${no}</h2>
+
+    <p>
+    अर्जाची प्रत Print करण्यासाठी खालील बटन दाबा.
+    </p>
+
+    <br>
+
+    <button
+    class="green"
+    onclick="printDeath()">
+
+    📄 Print / PDF
+
+    </button>
+
+    </div>
+
+    `;
+
+}
+
+
+function printDeath(){
+
+    const a =
+    JSON.parse(
+        localStorage.getItem(
+            "deathApplication"
+        ) || "{}"
+    );
+
+
+    if(!a.no){
+
+        alert(
+            "आधी Death Certificate Application submit करा."
+        );
+
+        return;
+
+    }
+
+
+    const printWindow =
+    window.open("", "_blank");
+
+
+    if(!printWindow){
+
+        alert(
+            "Popup Blocked आहे. Browser मध्ये popup allow करा."
+        );
+
+        return;
+
+    }
+
+
+    printWindow.document.write(`
+
+<!DOCTYPE html>
+
+<html lang="mr">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>
+SmartGram Death Application
+</title>
+
+<style>
+
+body{
+    font-family:Arial,sans-serif;
+    padding:30px;
+    background:white;
+}
+
+.page{
+    max-width:750px;
+    margin:auto;
+    border:2px solid #176b3a;
+    padding:30px;
+}
+
+h1{
+    text-align:center;
+    color:#176b3a;
+}
+
+h2{
+    text-align:center;
+}
+
+.row{
+    padding:12px;
+    border-bottom:1px solid #ddd;
+    font-size:16px;
+}
+
+.note{
+    margin-top:20px;
+    padding:12px;
+    background:#f5f5f5;
+    text-align:center;
+}
+
+@media print{
+
+    body{
+        padding:0;
+    }
+
+    .page{
+        border:2px solid #176b3a;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="page">
+
+<h1>
+🌾 SMARTGRAM
+</h1>
+
+<h2>
+मृत्यू प्रमाणपत्र अर्जाची प्रत
+</h2>
+
+<div class="note">
+
+ही नमुना अर्जाची प्रत आहे —
+अधिकृत शासकीय प्रमाणपत्र नाही.
+
+</div>
+
+<br>
+
+<div class="row">
+
+<b>
+Application No:
+</b>
+
+${a.no}
+
+</div>
+
+<div class="row">
+
+<b>
+मृत व्यक्तीचे नाव:
+</b>
+
+${a.name || ""}
+
+</div>
+
+<div class="row">
+
+<b>
+मृत्यू तारीख:
+</b>
+
+${a.date || ""}
+
+</div>
+
+<div class="row">
+
+<b>
+मृत्यू ठिकाण:
+</b>
+
+${a.place || ""}
+
+</div>
+
+<div class="row">
+
+<b>
+अर्जदाराचे नाव:
+</b>
+
+${a.relative || ""}
+
+</div>
+
+<div class="row">
+
+<b>
+पत्ता:
+</b>
+
+${a.address || ""}
+
+</div>
+
+<br>
+
+<p>
+SmartGram Digital Village Development Initiative
+</p>
+
+</div>
+
+<script>
+
+window.onload = function(){
+
+    window.print();
+
+};
+
+<\/script>
+
+</body>
+
+</html>
+
+    `);
+
+
+    printWindow.document.close();
+
+    }
