@@ -1891,6 +1891,230 @@ function adminDashboard() {
 
     document.body.appendChild(box);
 }
+function citizenDashboard() {
+    createPopup(`
+        <h2>👤 Citizen Dashboard</h2>
+
+        <p class="popup-subtitle">
+            SmartGram – Citizen Services
+        </p>
+
+        <div class="official-box">
+            <h3>📝 Complaint</h3>
+            <p>गावातील समस्या नोंदवा.</p>
+            <button class="green-btn" onclick="complaint()">
+                समस्या नोंदवा
+            </button>
+        </div>
+
+        <div class="official-box">
+            <h3>📄 Certificate</h3>
+            <p>जन्म / मृत्यू प्रमाणपत्रासाठी अर्ज करा.</p>
+            <button class="green-btn" onclick="certificates()">
+                Certificate Services
+            </button>
+        </div>
+
+        <div class="official-box">
+            <h3>🗺️ Village Map</h3>
+            <button class="green-btn" onclick="villageMap()">
+                Map पाहा
+            </button>
+        </div>
+
+        <button class="close-btn" onclick="closePopup()">
+            ❌ Logout
+        </button>
+    `);
+}
+
+
+function generateDeathPDF(applicationNo) {
+
+    const name =
+        document.getElementById("deathName")?.value || "";
+
+    const date =
+        document.getElementById("deathDate")?.value || "";
+
+    const place =
+        document.getElementById("deathPlace")?.value || "";
+
+    const relative =
+        document.getElementById("relativeName")?.value || "";
+
+    const address =
+        document.getElementById("deathAddress")?.value || "";
+
+    const printWindow = window.open("", "_blank");
+
+    if (!printWindow) {
+        alert("Browser popup allow करा.");
+        return;
+    }
+
+    printWindow.document.write(`
+        <!DOCTYPE html>
+        <html lang="mr">
+        <head>
+            <meta charset="UTF-8">
+
+            <title>Death Certificate Application</title>
+
+            <style>
+
+                body {
+                    font-family: Arial, sans-serif;
+                    padding: 30px;
+                    background: white;
+                }
+
+                .page {
+                    max-width: 800px;
+                    margin: auto;
+                    border: 2px solid #176b3a;
+                    padding: 35px;
+                }
+
+                h1, h2 {
+                    text-align: center;
+                }
+
+                .notice {
+                    text-align: center;
+                    border: 1px solid #999;
+                    padding: 8px;
+                    margin: 15px 0;
+                    font-weight: bold;
+                }
+
+                .row {
+                    display: flex;
+                    margin: 14px 0;
+                    border-bottom: 1px solid #ddd;
+                    padding-bottom: 8px;
+                }
+
+                .label {
+                    width: 220px;
+                    font-weight: bold;
+                }
+
+                .value {
+                    flex: 1;
+                }
+
+                .footer {
+                    margin-top: 50px;
+                    text-align: center;
+                    font-size: 13px;
+                }
+
+                @media print {
+                    body {
+                        padding: 0;
+                    }
+                }
+
+            </style>
+        </head>
+
+        <body>
+
+            <div class="page">
+
+                <h1>SMARTGRAM</h1>
+
+                <h2>मृत्यू प्रमाणपत्र अर्जाची प्रत</h2>
+
+                <div class="notice">
+                    ही नमुना / अर्जाची प्रत आहे —
+                    अधिकृत शासकीय प्रमाणपत्र नाही
+                </div>
+
+                <p>
+                    <b>Application No.:</b>
+                    ${applicationNo}
+                </p>
+
+                <hr>
+
+                <div class="row">
+                    <div class="label">
+                        मृत व्यक्तीचे नाव:
+                    </div>
+
+                    <div class="value">
+                        ${name}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="label">
+                        मृत्यू तारीख:
+                    </div>
+
+                    <div class="value">
+                        ${date}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="label">
+                        मृत्यू ठिकाण:
+                    </div>
+
+                    <div class="value">
+                        ${place}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="label">
+                        अर्जदाराचे नाव:
+                    </div>
+
+                    <div class="value">
+                        ${relative}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="label">
+                        पत्ता:
+                    </div>
+
+                    <div class="value">
+                        ${address}
+                    </div>
+                </div>
+
+                <br>
+
+                <p>
+                    हा दस्तऐवज SmartGram प्रणालीतील
+                    अर्जाची printable प्रत आहे.
+                </p>
+
+                <div class="footer">
+                    SmartGram Digital Village
+                    Development Initiative
+                </div>
+
+            </div>
+
+            <script>
+                window.onload = function() {
+                    window.print();
+                };
+            <\/script>
+
+        </body>
+        </html>
+    `);
+
+    printWindow.document.close();
+}
 </script>
 
 </body>
