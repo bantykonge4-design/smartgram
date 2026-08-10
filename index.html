@@ -586,7 +586,181 @@ function checkComplaint() {
     }
 }
 
+function citizenRegistration() {
 
+    const box = document.createElement("div");
+
+    box.innerHTML = `
+        <div style="
+            position:fixed;
+            inset:0;
+            background:#f5f7f6;
+            z-index:9999;
+            overflow:auto;
+            padding:20px;
+        ">
+
+            <div style="
+                background:white;
+                max-width:450px;
+                margin:auto;
+                padding:25px;
+                border-radius:15px;
+                box-shadow:0 4px 15px rgba(0,0,0,0.15);
+            ">
+
+                <h2 style="
+                    text-align:center;
+                    color:#176b3a;
+                ">
+                    👤 Citizen Registration
+                </h2>
+
+                <p style="text-align:center;color:#666;">
+                    SmartGram Digital Village
+                </p>
+
+                <label>पूर्ण नाव</label>
+                <input id="regName"
+                    type="text"
+                    placeholder="तुमचे पूर्ण नाव"
+                    style="width:100%;padding:12px;margin:8px 0 15px;">
+
+                <label>मोबाइल नंबर</label>
+                <input id="regMobile"
+                    type="tel"
+                    placeholder="10 अंकी मोबाइल नंबर"
+                    style="width:100%;padding:12px;margin:8px 0 15px;">
+
+                <label>गाव</label>
+                <input id="regVillage"
+                    type="text"
+                    value="गोगरी"
+                    style="width:100%;padding:12px;margin:8px 0 15px;">
+
+                <label>Username</label>
+                <input id="regUsername"
+                    type="text"
+                    placeholder="Username तयार करा"
+                    style="width:100%;padding:12px;margin:8px 0 15px;">
+
+                <label>Password</label>
+                <input id="regPassword"
+                    type="password"
+                    placeholder="Password तयार करा"
+                    style="width:100%;padding:12px;margin:8px 0 15px;">
+
+                <label>Confirm Password</label>
+                <input id="regConfirm"
+                    type="password"
+                    placeholder="Password पुन्हा टाका"
+                    style="width:100%;padding:12px;margin:8px 0 20px;">
+
+                <button onclick="saveCitizenRegistration()"
+                    style="
+                    width:100%;
+                    padding:13px;
+                    background:#176b3a;
+                    color:white;
+                    border:0;
+                    border-radius:8px;
+                    font-size:16px;
+                    font-weight:bold;
+                    ">
+                    📝 Register
+                </button>
+
+                <button onclick="this.parentElement.parentElement.remove()"
+                    style="
+                    width:100%;
+                    padding:11px;
+                    margin-top:10px;
+                    border:0;
+                    border-radius:8px;
+                    ">
+                    ❌ बंद करा
+                </button>
+
+                <div id="registrationResult"></div>
+
+            </div>
+        </div>
+    `;
+
+    document.body.appendChild(box);
+}
+
+
+function saveCitizenRegistration() {
+
+    const name =
+        document.getElementById("regName").value.trim();
+
+    const mobile =
+        document.getElementById("regMobile").value.trim();
+
+    const village =
+        document.getElementById("regVillage").value.trim();
+
+    const username =
+        document.getElementById("regUsername").value.trim();
+
+    const password =
+        document.getElementById("regPassword").value;
+
+    const confirm =
+        document.getElementById("regConfirm").value;
+
+
+    if (!name || !mobile || !village || !username || !password) {
+        alert("कृपया सर्व माहिती भरा.");
+        return;
+    }
+
+    if (password !== confirm) {
+        alert("Password आणि Confirm Password समान नाहीत.");
+        return;
+    }
+
+    const citizen = {
+        name: name,
+        mobile: mobile,
+        village: village,
+        username: username,
+        password: password
+    };
+
+    localStorage.setItem(
+        "smartgramCitizen",
+        JSON.stringify(citizen)
+    );
+
+    document.getElementById("registrationResult").innerHTML = `
+        <div style="
+            margin-top:20px;
+            padding:15px;
+            background:#f0fff0;
+            border:2px solid #198754;
+            border-radius:10px;
+        ">
+            <h3 style="color:#198754;">
+                ✅ Registration Successful
+            </h3>
+
+            <p>
+                तुमचे SmartGram Registration यशस्वी झाले.
+            </p>
+
+            <p>
+                <b>Username:</b> ${username}
+            </p>
+
+            <p>
+                आता Citizen Login करून services वापरता येतील.
+            </p>
+        </div>
+    `;
+            }
 /* VILLAGE OFFICIALS */
 
 function villageOfficials() {
