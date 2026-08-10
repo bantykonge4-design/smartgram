@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>SmartGram - Digital Village</title>
 
 <style>
@@ -21,16 +22,16 @@ body{
 header{
     background:#176b3a;
     color:white;
-    padding:20px;
+    padding:22px 15px;
     text-align:center;
 }
 
 header h1{
-    font-size:30px;
+    font-size:32px;
 }
 
 header p{
-    margin-top:6px;
+    margin-top:7px;
 }
 
 .hero{
@@ -51,11 +52,13 @@ header p{
     margin-bottom:22px;
 }
 
-.btn{
+.btn,
+.green,
+.dark{
     background:#176b3a;
     color:white;
     border:0;
-    padding:13px 22px;
+    padding:13px 20px;
     border-radius:8px;
     font-weight:bold;
     cursor:pointer;
@@ -86,7 +89,6 @@ header p{
     text-align:center;
     box-shadow:0 2px 8px #0002;
     cursor:pointer;
-    transition:.15s;
 }
 
 .card:active{
@@ -181,31 +183,20 @@ label{
     font-weight:bold;
 }
 
-.green{
-    background:#176b3a;
-    color:white;
-    border:0;
-    padding:12px 18px;
-    border-radius:8px;
-    cursor:pointer;
-}
-
 .close{
     background:#ddd;
+    color:#222;
     border:0;
     padding:12px 18px;
     border-radius:8px;
     cursor:pointer;
-    margin-left:5px;
 }
 
-.dark{
-    background:#123d27;
-    color:white;
-    border:0;
-    padding:13px 20px;
-    border-radius:8px;
-    cursor:pointer;
+.rowbtn{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    margin-top:10px;
 }
 
 .box{
@@ -229,13 +220,6 @@ label{
     border-radius:10px;
 }
 
-.rowbtn{
-    display:flex;
-    gap:8px;
-    flex-wrap:wrap;
-    margin-top:10px;
-}
-
 @media(max-width:500px){
 
     .cards{
@@ -245,7 +229,6 @@ label{
     .hero h2{
         font-size:24px;
     }
-
 }
 </style>
 </head>
@@ -253,21 +236,13 @@ label{
 <body>
 
 <header>
-
 <h1>🌾 SmartGram</h1>
-
-<p>
-Digital Village Grievance & Development System
-</p>
-
+<p>Digital Village Grievance & Development System</p>
 </header>
-
 
 <section class="hero">
 
-<h2>
-आपल्या गावासाठी डिजिटल व्यासपीठ
-</h2>
+<h2>आपल्या गावासाठी डिजिटल व्यासपीठ</h2>
 
 <p>
 गावातील समस्या नोंदवा, तक्रारीचा status पाहा,
@@ -280,266 +255,153 @@ Digital Village Grievance & Development System
 
 </section>
 
-
 <section class="section">
 
-<h2>
-SmartGram Services
-</h2>
+<h2>SmartGram Services</h2>
 
 <div class="cards">
 
-
 <div class="card" onclick="complaint()">
-
 <div class="icon">📝</div>
-
 <h3>Complaint</h3>
-
-<p>
-गावातील समस्या online नोंदवा.
-</p>
-
+<p>गावातील समस्या online नोंदवा.</p>
 </div>
-
 
 <div class="card" onclick="trackComplaint()">
-
 <div class="icon">🔎</div>
-
 <h3>Track Complaint</h3>
-
-<p>
-Complaint चा status पाहा.
-</p>
-
+<p>Complaint चा status पाहा.</p>
 </div>
-
 
 <div class="card" onclick="villageOfficials()">
-
 <div class="icon">👥</div>
-
 <h3>Village Officials</h3>
-
-<p>
-गावातील अधिकारी माहिती.
-</p>
-
+<p>गावातील अधिकारी माहिती.</p>
 </div>
-
 
 <div class="card" onclick="citizenRegistration()">
-
 <div class="icon">👤</div>
-
 <h3>Citizen Registration</h3>
-
-<p>
-नागरिक Registration करा.
-</p>
-
+<p>नागरिक Registration करा.</p>
 </div>
-
 
 <div class="card" onclick="citizenLogin()">
-
 <div class="icon">🔐</div>
-
 <h3>Citizen Login</h3>
-
-<p>
-Citizen services वापरा.
-</p>
-
+<p>Citizen services वापरा.</p>
 </div>
-
 
 <div class="card" onclick="villageMap()">
-
 <div class="icon">🗺️</div>
-
 <h3>Village Map</h3>
-
-<p>
-गावातील महत्त्वाची ठिकाणे.
-</p>
-
+<p>गावातील महत्त्वाची ठिकाणे.</p>
 </div>
-
 
 <div class="card" onclick="villageNotices()">
-
 <div class="icon">📢</div>
-
 <h3>Village Notices</h3>
-
-<p>
-महत्त्वाच्या सूचना.
-</p>
-
+<p>महत्त्वाच्या सूचना.</p>
 </div>
-
 
 <div class="card" onclick="villageIdeas()">
-
 <div class="icon">💡</div>
-
 <h3>Village Ideas</h3>
-
-<p>
-विकासासाठी ideas द्या.
-</p>
-
+<p>विकासासाठी ideas द्या.</p>
 </div>
-
 
 <div class="card" onclick="certificates()">
-
 <div class="icon">📄</div>
-
 <h3>Certificates</h3>
-
-<p>
-जन्म / मृत्यू अर्ज.
-</p>
-
+<p>जन्म / मृत्यू अर्ज.</p>
 </div>
 
-
 </div>
-
 </section>
 
-
-<div style="
-text-align:center;
-padding:10px 15px 25px;
-">
+<div style="text-align:center;padding:10px 15px 25px">
 
 <button class="dark" onclick="adminLogin()">
-
 🔐 Admin / Officer Login
-
 </button>
 
 </div>
 
-
 <section class="section">
 
-<h2>
-Village Complaint Overview
-</h2>
+<h2>Village Complaint Overview</h2>
 
 <div class="stats">
 
 <div class="stat">
-
 <h3>128</h3>
-
-<p>
-Total Complaints
-</p>
-
+<p>Total Complaints</p>
 </div>
 
-
 <div class="stat">
-
 <h3>75</h3>
-
-<p>
-Resolved
-</p>
-
+<p>Resolved</p>
 </div>
 
-
 <div class="stat">
-
 <h3>32</h3>
-
-<p>
-Pending
-</p>
-
+<p>Pending</p>
 </div>
-
 
 <div class="stat">
-
 <h3>21</h3>
-
-<p>
-In Progress
-</p>
-
+<p>In Progress</p>
 </div>
 
 </div>
-
 </section>
 
-
 <footer>
-
-© 2026 SmartGram
-
-<br>
-
+© 2026 SmartGram<br>
 Digital Village Development Initiative
-
 </footer>
-
-
 
 <script>
 
-/* POPUP SYSTEM */
+/* =========================
+   POPUP
+========================= */
 
 function popup(title,content){
 
-const old=document.querySelector(".popup");
+    const old=document.querySelector(".popup");
 
-if(old){
-old.remove();
-}
+    if(old){
+        old.remove();
+    }
 
-const div=document.createElement("div");
+    const div=document.createElement("div");
 
-div.className="popup";
+    div.className="popup";
 
-div.innerHTML=`
+    div.innerHTML=`
+        <div class="popup-box">
+            <h2>${title}</h2>
+            ${content}
+        </div>
+    `;
 
-<div class="popup-box">
-
-<h2>${title}</h2>
-
-${content}
-
-</div>
-
-`;
-
-document.body.appendChild(div);
-
+    document.body.appendChild(div);
 }
 
 
 function closePopup(){
 
-const p=document.querySelector(".popup");
+    const p=document.querySelector(".popup");
 
-if(p){
-p.remove();
+    if(p){
+        p.remove();
+    }
 }
 
-}
 
-
-
-/* COMPLAINT */
+/* =========================
+   COMPLAINT
+========================= */
 
 function complaint(){
 
@@ -549,191 +411,115 @@ popup("📝 ग्राम समस्या नोंदणी",`
 SmartGram – Digital Village
 </p>
 
+<label>नाव</label>
 
-<label>
-नाव
-</label>
+<input id="cname"
+placeholder="तुमचे पूर्ण नाव">
 
-<input
-id="cname"
-placeholder="तुमचे पूर्ण नाव"
->
+<label>मोबाइल नंबर</label>
 
-
-<label>
-मोबाइल नंबर
-</label>
-
-<input
-id="cmobile"
+<input id="cmobile"
 type="tel"
-placeholder="10 अंकी मोबाइल नंबर"
->
+placeholder="10 अंकी मोबाइल नंबर">
 
+<label>गाव</label>
 
-<label>
-गाव
-</label>
+<input id="cvillage"
+value="गोगरी">
 
-<input
-id="cvillage"
-value="गोगरी"
-placeholder="गावाचे नाव"
->
-
-
-<label>
-समस्येचा प्रकार
-</label>
+<label>समस्येचा प्रकार</label>
 
 <select id="ctype">
 
 <option>रस्ता</option>
-
 <option>पाणी</option>
-
 <option>वीज</option>
-
 <option>स्वच्छता</option>
-
 <option>गटार</option>
-
 <option>शासकीय सेवा</option>
-
 <option>इतर</option>
 
 </select>
 
+<label>समस्येचे वर्णन</label>
 
-<label>
-समस्येचे वर्णन
-</label>
-
-<textarea
-id="cdesc"
+<textarea id="cdesc"
 rows="5"
-placeholder="तुमची समस्या सविस्तर लिहा">
-</textarea>
-
+placeholder="तुमची समस्या सविस्तर लिहा"></textarea>
 
 <div class="rowbtn">
 
-<button
-class="green"
+<button class="green"
 onclick="submitComplaint()">
-
 📤 समस्या नोंदवा
-
 </button>
 
-
-<button
-class="close"
+<button class="close"
 onclick="closePopup()">
-
 ❌ बंद करा
-
 </button>
 
 </div>
 
-
 <div id="complaintResult"></div>
-
 `);
-
 }
 
 
 function submitComplaint(){
 
-const name=
-document.getElementById("cname").value.trim();
+    const name=document.getElementById("cname").value.trim();
+    const mobile=document.getElementById("cmobile").value.trim();
+    const village=document.getElementById("cvillage").value.trim();
+    const desc=document.getElementById("cdesc").value.trim();
+    const type=document.getElementById("ctype").value;
 
-const mobile=
-document.getElementById("cmobile").value.trim();
+    if(!name || !mobile || !village || !desc){
 
-const village=
-document.getElementById("cvillage").value.trim();
+        alert("कृपया सर्व माहिती भरा.");
+        return;
+    }
 
-const desc=
-document.getElementById("cdesc").value.trim();
+    const id="SG-"+Math.floor(
+        100000+Math.random()*900000
+    );
 
-const type=
-document.getElementById("ctype").value;
+    const data={
+        id:id,
+        name:name,
+        mobile:mobile,
+        village:village,
+        type:type,
+        desc:desc,
+        status:"Pending"
+    };
 
+    localStorage.setItem(
+        "smartgramComplaint",
+        JSON.stringify(data)
+    );
 
-if(!name || !mobile || !village || !desc){
+    document.getElementById("complaintResult").innerHTML=`
 
-alert("कृपया सर्व माहिती भरा.");
+    <div class="success">
 
-return;
+    <h3>✅ समस्या यशस्वीरित्या नोंदवली!</h3>
 
+    <p>Complaint ID:</p>
+
+    <h2>${id}</h2>
+
+    <p>हा ID Track Complaint साठी जपून ठेवा.</p>
+
+    </div>
+
+    `;
 }
 
 
-const id=
-"SG-"+Math.floor(
-100000+Math.random()*900000
-);
-
-
-const complaintData={
-
-id:id,
-
-name:name,
-
-mobile:mobile,
-
-village:village,
-
-type:type,
-
-desc:desc,
-
-status:"Pending"
-
-};
-
-
-localStorage.setItem(
-"smartgramComplaint",
-JSON.stringify(complaintData)
-);
-
-
-document.getElementById(
-"complaintResult"
-).innerHTML=`
-
-<div class="success">
-
-<h3>
-✅ समस्या यशस्वीरित्या नोंदवली!
-</h3>
-
-<p>
-Complaint ID:
-</p>
-
-<h2>
-${id}
-</h2>
-
-<p>
-हा ID Track Complaint साठी जपून ठेवा.
-</p>
-
-</div>
-
-`;
-
-}
-
-
-
-/* TRACK COMPLAINT */
+/* =========================
+   TRACK COMPLAINT
+========================= */
 
 function trackComplaint(){
 
@@ -743,267 +529,143 @@ popup("🔎 Track Complaint",`
 तुमचा Complaint ID टाका
 </p>
 
-
-<input
-id="trackId"
-placeholder="उदा. SG-123456"
->
-
+<input id="trackId"
+placeholder="उदा. SG-123456">
 
 <div class="rowbtn">
 
-<button
-class="green"
+<button class="green"
 onclick="checkComplaint()">
-
 🔎 Track
-
 </button>
 
-
-<button
-class="close"
+<button class="close"
 onclick="closePopup()">
-
 ❌ बंद करा
-
 </button>
 
 </div>
 
-
 <div id="trackResult"></div>
-
 `);
-
 }
 
 
 function checkComplaint(){
 
-const id=
-document.getElementById("trackId")
-.value.trim();
+    const id=document.getElementById("trackId").value.trim();
 
+    const saved=JSON.parse(
+        localStorage.getItem("smartgramComplaint") || "null"
+    );
 
-const saved=
-JSON.parse(
-localStorage.getItem(
-"smartgramComplaint"
-)||"null"
-);
+    if(saved && saved.id===id){
 
+        document.getElementById("trackResult").innerHTML=`
 
-let found=null;
+        <div class="success">
 
+        <h3>✅ Complaint Found</h3>
 
-if(saved && saved.id===id){
+        <p><b>Complaint ID:</b> ${saved.id}</p>
 
-found=saved;
+        <p><b>Type:</b> ${saved.type}</p>
 
+        <p><b>Status:</b> 🟡 ${saved.status}</p>
+
+        <p>${saved.desc}</p>
+
+        </div>
+
+        `;
+
+        return;
+    }
+
+    document.getElementById("trackResult").innerHTML=`
+
+    <p style="color:red;margin-top:15px">
+    ❌ Complaint ID सापडली नाही.
+    </p>
+
+    `;
 }
 
 
-if(id==="SG-570934"){
-
-found={
-
-id:"SG-570934",
-
-type:"रस्ता",
-
-status:"Pending"
-
-};
-
-}
-
-
-if(found){
-
-document.getElementById(
-"trackResult"
-).innerHTML=`
-
-<div class="success">
-
-<h3>
-✅ Complaint Found
-</h3>
-
-<p>
-<b>Complaint ID:</b>
-${found.id}
-</p>
-
-<p>
-<b>Type:</b>
-${found.type}
-</p>
-
-<p>
-<b>Status:</b>
-🟡 ${found.status}
-</p>
-
-<p>
-तपासणीसाठी पाठवण्यात आली आहे.
-</p>
-
-</div>
-
-`;
-
-}
-
-else{
-
-document.getElementById(
-"trackResult"
-).innerHTML=`
-
-<p style="
-color:red;
-margin-top:15px;
-">
-
-❌ Complaint ID सापडली नाही.
-
-</p>
-
-`;
-
-}
-
-}
-
-
-
-/* VILLAGE OFFICIALS */
+/* =========================
+   VILLAGE OFFICIALS
+========================= */
 
 function villageOfficials(){
 
 popup("👥 ग्रामपंचायत अधिकारी",`
 
 <p class="sub">
-
 Gogari – Mangrulpir, Washim
-
 </p>
-
 
 <div class="box">
 
-<h3>
-👨‍💼 सरपंच
-</h3>
+<h3>👨‍💼 सरपंच</h3>
 
-<p>
-<b>नाव:</b>
-श्री केशव ज्ञानदेव जटाळे
-</p>
+<p><b>नाव:</b> श्री केशव ज्ञानदेव जटाळे</p>
 
-<p>
-<b>मोबाइल:</b>
-लवकरच उपलब्ध
-</p>
+<p><b>मोबाइल:</b> लवकरच उपलब्ध</p>
 
 </div>
-
 
 <div class="box">
 
-<h3>
-👩‍💼 उपसरपंच
-</h3>
+<h3>👩‍💼 उपसरपंच</h3>
 
-<p>
-<b>नाव:</b>
-सौ. कविता पंकज इंगोले
-</p>
+<p><b>नाव:</b> सौ. कविता पंकज इंगोले</p>
 
-<p>
-<b>मोबाइल:</b>
-लवकरच उपलब्ध
-</p>
+<p><b>मोबाइल:</b> लवकरच उपलब्ध</p>
 
 </div>
-
 
 <div class="box">
 
-<h3>
-👨‍💼 ग्रामसेवक
-</h3>
+<h3>👨‍💼 ग्रामसेवक</h3>
 
-<p>
-<b>नाव:</b>
-श्री संजय पाचरणे
-</p>
+<p><b>नाव:</b> श्री संजय पाचरणे</p>
 
-<p>
-<b>मोबाइल:</b>
-लवकरच उपलब्ध
-</p>
+<p><b>मोबाइल:</b> लवकरच उपलब्ध</p>
 
 </div>
-
 
 <div class="box">
 
-<h3>
-👨‍💼 तलाठी
-</h3>
+<h3>👨‍💼 तलाठी</h3>
 
-<p>
-<b>नाव:</b>
-श्री अमोल भुरकाडे
-</p>
+<p><b>नाव:</b> श्री अमोल भुरकाडे</p>
 
-<p>
-<b>मोबाइल:</b>
-लवकरच उपलब्ध
-</p>
+<p><b>मोबाइल:</b> लवकरच उपलब्ध</p>
 
 </div>
-
 
 <div class="box">
 
-<h3>
-👤 सदस्य
-</h3>
+<h3>👤 सदस्य</h3>
 
-<p>
-नंदू पावसे
-</p>
-
-<p>
-डीगांबर बोथे
-</p>
-
-<p>
-मधुकर इंगोले
-</p>
+<p>नंदू पावसे</p>
+<p>डीगांबर बोथे</p>
+<p>मधुकर इंगोले</p>
 
 </div>
 
-
-<button
-class="close"
+<button class="close"
 onclick="closePopup()">
-
 ❌ बंद करा
-
 </button>
 
 `);
-
 }
 
 
-
-/* CITIZEN REGISTRATION */
+/* =========================
+   CITIZEN REGISTRATION
+========================= */
 
 function citizenRegistration(){
 
@@ -1013,203 +675,113 @@ popup("👤 Citizen Registration",`
 SmartGram Digital Village
 </p>
 
+<label>पूर्ण नाव</label>
 
-<label>
-पूर्ण नाव
-</label>
+<input id="regName"
+placeholder="तुमचे पूर्ण नाव">
 
-<input
-id="regName"
-placeholder="तुमचे पूर्ण नाव"
->
+<label>मोबाइल नंबर</label>
 
+<input id="regMobile"
+placeholder="10 अंकी मोबाइल नंबर">
 
-<label>
-मोबाइल नंबर
-</label>
+<label>गाव</label>
 
-<input
-id="regMobile"
-placeholder="10 अंकी मोबाइल नंबर"
->
+<input id="regVillage"
+value="गोगरी">
 
+<label>Username</label>
 
-<label>
-गाव
-</label>
+<input id="regUsername"
+placeholder="Username तयार करा">
 
-<input
-id="regVillage"
-value="गोगरी"
->
+<label>Password</label>
 
-
-<label>
-Username
-</label>
-
-<input
-id="regUsername"
-placeholder="Username तयार करा"
->
-
-
-<label>
-Password
-</label>
-
-<input
-id="regPassword"
+<input id="regPassword"
 type="password"
-placeholder="Password"
->
+placeholder="Password">
 
+<label>Confirm Password</label>
 
-<label>
-Confirm Password
-</label>
-
-<input
-id="regConfirm"
+<input id="regConfirm"
 type="password"
-placeholder="Password पुन्हा टाका"
->
-
+placeholder="Password पुन्हा टाका">
 
 <div class="rowbtn">
 
-<button
-class="green"
+<button class="green"
 onclick="saveCitizen()">
-
 📝 Register
-
 </button>
 
-
-<button
-class="close"
+<button class="close"
 onclick="closePopup()">
-
 ❌ बंद करा
-
 </button>
 
 </div>
 
-
 <div id="regResult"></div>
 
 `);
-
 }
 
 
 function saveCitizen(){
 
-const name=
-document.getElementById("regName")
-.value.trim();
+    const name=document.getElementById("regName").value.trim();
+    const mobile=document.getElementById("regMobile").value.trim();
+    const village=document.getElementById("regVillage").value.trim();
+    const username=document.getElementById("regUsername").value.trim();
+    const password=document.getElementById("regPassword").value;
+    const confirm=document.getElementById("regConfirm").value;
 
-const mobile=
-document.getElementById("regMobile")
-.value.trim();
+    if(!name || !mobile || !village || !username || !password){
 
-const village=
-document.getElementById("regVillage")
-.value.trim();
+        alert("कृपया सर्व माहिती भरा.");
+        return;
+    }
 
-const username=
-document.getElementById("regUsername")
-.value.trim();
+    if(password!==confirm){
 
-const password=
-document.getElementById("regPassword")
-.value;
+        alert("Password आणि Confirm Password समान नाहीत.");
+        return;
+    }
 
-const confirm=
-document.getElementById("regConfirm")
-.value;
+    const citizen={
+        name:name,
+        mobile:mobile,
+        village:village,
+        username:username,
+        password:password
+    };
 
+    localStorage.setItem(
+        "smartgramCitizen",
+        JSON.stringify(citizen)
+    );
 
-if(
-!name ||
-!mobile ||
-!village ||
-!username ||
-!password
-){
+    document.getElementById("regResult").innerHTML=`
 
-alert("कृपया सर्व माहिती भरा.");
+    <div class="success">
 
-return;
+    <h3>✅ Registration Successful</h3>
 
+    <p>
+    Username: <b>${username}</b>
+    </p>
+
+    <p>आता Citizen Login करा.</p>
+
+    </div>
+
+    `;
 }
 
 
-if(password!==confirm){
-
-alert(
-"Password आणि Confirm Password समान नाहीत."
-);
-
-return;
-
-}
-
-
-const citizen={
-
-name:name,
-
-mobile:mobile,
-
-village:village,
-
-username:username,
-
-password:password
-
-};
-
-
-localStorage.setItem(
-
-"smartgramCitizen",
-
-JSON.stringify(citizen)
-
-);
-
-
-document.getElementById(
-"regResult"
-).innerHTML=`
-
-<div class="success">
-
-<h3>
-✅ Registration Successful
-</h3>
-
-<p>
-Username:
-<b>${username}</b>
-</p>
-
-<p>
-आता Citizen Login करा.
-</p>
-
-</div>
-
-`;
-
-}
-
-
-
-/* CITIZEN LOGIN */
+/* =========================
+   CITIZEN LOGIN
+========================= */
 
 function citizenLogin(){
 
@@ -1219,203 +791,127 @@ popup("🔐 Citizen Login",`
 SmartGram Digital Village
 </p>
 
+<label>Username</label>
 
-<label>
-Username
-</label>
+<input id="loginUser"
+placeholder="Username">
 
-<input
-id="loginUser"
-placeholder="Username"
->
+<label>Password</label>
 
-
-<label>
-Password
-</label>
-
-<input
-id="loginPass"
+<input id="loginPass"
 type="password"
-placeholder="Password"
->
-
+placeholder="Password">
 
 <div class="rowbtn">
 
-<button
-class="green"
+<button class="green"
 onclick="checkCitizen()">
-
 🔓 Login
-
 </button>
 
-
-<button
-class="close"
+<button class="close"
 onclick="closePopup()">
-
 ❌ बंद करा
-
 </button>
 
 </div>
 
 `);
-
 }
 
 
 function checkCitizen(){
 
-const saved=
-JSON.parse(
-localStorage.getItem(
-"smartgramCitizen"
-)||"null"
-);
+    const saved=JSON.parse(
+        localStorage.getItem("smartgramCitizen") || "null"
+    );
 
+    if(!saved){
 
-if(!saved){
+        alert("❌ आधी Citizen Registration करा.");
+        return;
+    }
 
-alert(
-"❌ आधी Citizen Registration करा."
-);
+    const username=document.getElementById("loginUser").value.trim();
+    const password=document.getElementById("loginPass").value;
 
-return;
+    if(username===saved.username && password===saved.password){
 
+        closePopup();
+        citizenDashboard();
+
+    }else{
+
+        alert("❌ चुकीचे Username किंवा Password.");
+
+    }
 }
 
 
-const username=
-document.getElementById(
-"loginUser"
-).value.trim();
-
-const password=
-document.getElementById(
-"loginPass"
-).value;
-
-
-if(
-username===saved.username &&
-password===saved.password
-){
-
-closePopup();
-
-citizenDashboard();
-
-}
-
-else{
-
-alert(
-"❌ चुकीचे Username किंवा Password."
-);
-
-}
-
-}
-
-
-
-/* CITIZEN DASHBOARD */
+/* =========================
+   CITIZEN DASHBOARD
+========================= */
 
 function citizenDashboard(){
 
-const saved=
-JSON.parse(
-localStorage.getItem(
-"smartgramCitizen"
-)||"{}"
-);
+    const saved=JSON.parse(
+        localStorage.getItem("smartgramCitizen") || "{}"
+    );
 
+    popup("👤 Citizen Dashboard",`
 
-popup("👤 Citizen Dashboard",`
+    <div class="box">
 
-<div class="box">
+    <h3>Welcome ${saved.name || "Citizen"} 👋</h3>
 
-<h3>
-Welcome ${saved.name || "Citizen"} 👋
-</h3>
+    <p><b>Village:</b> ${saved.village || "Gogari"}</p>
 
-<p>
-<b>Village:</b>
-${saved.village || "Gogari"}
-</p>
+    <p><b>Mobile:</b> ${saved.mobile || ""}</p>
 
-<p>
-<b>Mobile:</b>
-${saved.mobile || ""}
-</p>
+    </div>
 
-</div>
+    <div class="box">
 
+    <h3>Services</h3>
 
-<div class="box">
+    <br>
 
-<h3>
-Services
-</h3>
+    <button class="green"
+    onclick="closePopup();complaint()">
+    📝 Complaint
+    </button>
 
-<br>
+    <button class="green"
+    onclick="closePopup();certificates()">
+    📄 Certificates
+    </button>
 
-<button
-class="green"
-onclick="closePopup();complaint()">
+    </div>
 
-📝 Complaint
+    <button class="close"
+    onclick="closePopup()">
+    🚪 Logout
+    </button>
 
-</button>
-
-
-<button
-class="green"
-onclick="closePopup();certificates()">
-
-📄 Certificates
-
-</button>
-
-</div>
-
-
-<button
-class="close"
-onclick="closePopup()">
-
-🚪 Logout
-
-</button>
-
-`);
-
+    `);
 }
 
 
-
-/* VILLAGE MAP */
+/* =========================
+   VILLAGE MAP
+========================= */
 
 function villageMap(){
 
 popup("🗺️ Village Map",`
 
 <p class="sub">
-
-गोगरी, ता. मंगरूळपीर,
-जि. वाशिम
-
+गोगरी, ता. मंगरूळपीर, जि. वाशिम
 </p>
-
 
 <div class="box">
 
-<h3>
-🏫 राष्ट्रसंत तुकडोजी महाराज विद्यालय
-</h3>
+<h3>🏫 महत्त्वाचे ठिकाण</h3>
 
 <p>
 गोगरी, ता. मंगरूळपीर,
@@ -1424,41 +920,27 @@ popup("🗺️ Village Map",`
 
 </div>
 
-
 <iframe
-
 src="https://www.google.com/maps?q=Gogari,Mangrulpir,Washim,Maharashtra&output=embed"
-
 width="100%"
-
 height="350"
-
-style="
-border:0;
-border-radius:12px;
-">
-
+style="border:0;border-radius:12px;">
 </iframe>
-
 
 <br><br>
 
-
-<button
-class="close"
+<button class="close"
 onclick="closePopup()">
-
 ❌ बंद करा
-
 </button>
 
 `);
-
 }
 
 
-
-/* NOTICES */
+/* =========================
+   NOTICES
+========================= */
 
 function villageNotices(){
 
@@ -1468,12 +950,9 @@ popup("📢 Village Notices",`
 गावातील महत्त्वाच्या सूचना
 </p>
 
-
 <div class="box">
 
-<h3>
-📌 ग्रामपंचायत सूचना
-</h3>
+<h3>📌 ग्रामपंचायत सूचना</h3>
 
 <p>
 नवीन सूचना लवकरच येथे प्रकाशित केली जाईल.
@@ -1481,12 +960,9 @@ popup("📢 Village Notices",`
 
 </div>
 
-
 <div class="box">
 
-<h3>
-📢 नागरिकांसाठी सूचना
-</h3>
+<h3>📢 नागरिकांसाठी सूचना</h3>
 
 <p>
 गावातील नागरिकांनी नियमितपणे सूचना तपासाव्यात.
@@ -1494,133 +970,90 @@ popup("📢 Village Notices",`
 
 </div>
 
-
-<button
-class="close"
+<button class="close"
 onclick="closePopup()">
-
 ❌ बंद करा
-
 </button>
 
 `);
-
 }
 
 
-
-/* VILLAGE IDEAS */
+/* =========================
+   VILLAGE IDEAS
+========================= */
 
 function villageIdeas(){
 
 popup("💡 Village Ideas",`
 
 <p class="sub">
-
 गावाच्या विकासासाठी तुमची कल्पना द्या
-
 </p>
 
+<label>तुमचे नाव</label>
 
-<label>
-तुमचे नाव
-</label>
+<input id="ideaName"
+placeholder="तुमचे नाव">
 
-<input
-id="ideaName"
-placeholder="तुमचे नाव"
->
+<label>तुमची कल्पना</label>
 
-
-<label>
-तुमची कल्पना
-</label>
-
-<textarea
-id="ideaText"
+<textarea id="ideaText"
 rows="5"
-placeholder="गावाच्या विकासासाठी कल्पना लिहा">
-</textarea>
-
+placeholder="गावाच्या विकासासाठी कल्पना लिहा"></textarea>
 
 <div class="rowbtn">
 
-<button
-class="green"
+<button class="green"
 onclick="submitIdea()">
-
 📤 Idea Submit
-
 </button>
 
-
-<button
-class="close"
+<button class="close"
 onclick="closePopup()">
-
 ❌ बंद करा
-
 </button>
 
 </div>
 
-
 <div id="ideaResult"></div>
 
 `);
-
 }
 
 
 function submitIdea(){
 
-const name=
-document.getElementById("ideaName")
-.value.trim();
+    const name=document.getElementById("ideaName").value.trim();
+    const idea=document.getElementById("ideaText").value.trim();
 
-const idea=
-document.getElementById("ideaText")
-.value.trim();
+    if(!name || !idea){
 
+        alert("कृपया नाव आणि idea भरा.");
+        return;
+    }
 
-if(!name || !idea){
+    document.getElementById("ideaResult").innerHTML=`
 
-alert(
-"कृपया नाव आणि idea भरा."
-);
+    <div class="success">
 
-return;
+    <h3>✅ Idea Submitted!</h3>
 
+    <p>धन्यवाद ${name}!</p>
+
+    <p>
+    तुमची कल्पना SmartGram मध्ये नोंदवली आहे.
+    </p>
+
+    </div>
+
+    `;
 }
 
 
-document.getElementById(
-"ideaResult"
-).innerHTML=`
-
-<div class="success">
-
-<h3>
-✅ Idea Submitted!
-</h3>
-
-<p>
-धन्यवाद ${name}!
-</p>
-
-<p>
-तुमची कल्पना SmartGram मध्ये नोंदवली आहे.
-</p>
-
-</div>
-
-`;
-
-}
-
-
-
-/* CERTIFICATES */
+/* =========================
+   CERTIFICATES
+========================= */
 
 function certificates(){
 
@@ -1630,54 +1063,38 @@ popup("📄 Certificate Services",`
 प्रमाणपत्रासाठी online अर्ज
 </p>
 
-
-<div
-class="box"
+<div class="box"
 onclick="birthCertificate()"
 style="cursor:pointer">
 
-<h3>
-🍼 Birth Certificate
-</h3>
+<h3>🍼 Birth Certificate</h3>
 
-<p>
-जन्म प्रमाणपत्रासाठी अर्ज करा.
-</p>
+<p>जन्म प्रमाणपत्रासाठी अर्ज करा.</p>
 
 </div>
 
-
-<div
-class="box"
+<div class="box"
 onclick="deathCertificate()"
 style="cursor:pointer">
 
-<h3>
-⚰️ Death Certificate
-</h3>
+<h3>⚰️ Death Certificate</h3>
 
-<p>
-मृत्यू प्रमाणपत्रासाठी अर्ज करा.
-</p>
+<p>मृत्यू प्रमाणपत्रासाठी अर्ज करा.</p>
 
 </div>
 
-
-<button
-class="close"
+<button class="close"
 onclick="closePopup()">
-
 ❌ बंद करा
-
 </button>
 
 `);
-
 }
 
 
-
-/* BIRTH CERTIFICATE */
+/* =========================
+   BIRTH CERTIFICATE
+========================= */
 
 function birthCertificate(){
 
@@ -1687,1008 +1104,238 @@ popup("🍼 Birth Certificate Application",`
 जन्म प्रमाणपत्रासाठी माहिती भरा
 </p>
 
+<label>बाळाचे नाव</label>
 
-<label>
-बाळाचे नाव
-</label>
+<input id="birthName"
+placeholder="बाळाचे पूर्ण नाव">
 
-<input
-id="birthName"
-placeholder="बाळाचे पूर्ण नाव"
->
+<label>जन्म तारीख</label>
 
+<input id="birthDate"
+type="date">
 
-<label>
-जन्म तारीख
-</label>
+<label>जन्म ठिकाण</label>
 
-<input
-id="birthDate"
-type="date"
->
+<input id="birthPlace"
+placeholder="जन्म ठिकाण">
 
+<label>वडिलांचे नाव</label>
 
-<label>
-जन्म ठिकाण
-</label>
+<input id="fatherName"
+placeholder="वडिलांचे नाव">
 
-<input
-id="birthPlace"
-placeholder="जन्म ठिकाण"
->
+<label>आईचे नाव</label>
 
+<input id="motherName"
+placeholder="आईचे नाव">
 
-<label>
-वडिलांचे नाव
-</label>
+<label>पत्ता</label>
 
-<input
-id="fatherName"
-placeholder="वडिलांचे नाव"
->
-
-
-<label>
-आईचे नाव
-</label>
-
-<input
-id="motherName"
-placeholder="आईचे नाव"
->
-
-
-<label>
-पत्ता
-</label>
-
-<textarea
-id="birthAddress"
+<textarea id="birthAddress"
 rows="4"
-placeholder="पूर्ण पत्ता">
-</textarea>
-
+placeholder="पूर्ण पत्ता"></textarea>
 
 <div class="rowbtn">
 
-<button
-class="green"
+<button class="green"
 onclick="submitBirth()">
-
 📤 अर्ज Submit
-
 </button>
 
-
-<button
-class="close"
+<button class="close"
 onclick="closePopup()">
-
 ❌ बंद करा
-
 </button>
 
 </div>
 
-
 <div id="birthResult"></div>
 
 `);
-
 }
 
 
 function submitBirth(){
 
-const name=
-document.getElementById("birthName")
-.value.trim();
-
-const date=
-document.getElementById("birthDate")
-.value;
-
-const father=
-document.getElementById("fatherName")
-.value.trim();
-
-const mother=
-document.getElementById("motherName")
-.value.trim();
-
-
-if(
-!name ||
-!date ||
-!father ||
-!mother
-){
-
-alert(
-"कृपया आवश्यक माहिती भरा."
-);
-
-return;
-
-}
-
-
-const no=
-"BC-"+Math.floor(
-100000+Math.random()*900000
-);
-
-
-const data={
-
-no:no,
-
-name:name,
-
-date:date,
-
-father:father,
-
-mother:mother,
-
-status:"Pending"
-
-};
-
-
-localStorage.setItem(
-
-"birthApplication",
-
-JSON.stringify(data)
-
-);
-
-
-document.getElementById(
-"birthResult"
-).innerHTML=`
-
-<div class="success">
-
-<h3>
-✅ अर्ज Submit झाला!
-</h3>
-
-<p>
-Application No:
-</p>
-
-<h2>
-${no}
-</h2>
-
-
-<button
-class="green"
-onclick="printBirth()">
-
-📄 Print / PDF
-
-</button>
-
-</div>
-
-`;
-
-}
-
-
-
-/* PRINT BIRTH */
-
-function printBirth(){
-
-const a=
-JSON.parse(
-localStorage.getItem(
-"birthApplication"
-)||"{}"
-);
-
-
-const w=
-window.open(
-"",
-"_blank"
-);
-
-
-if(!w){
-
-alert(
-"Browser popup allow करा."
-);
-
-return;
-
-}
-
-
-w.document.write(`
-
-<html>
-
-<head>
-
-<meta charset="UTF-8">
-
-<title>
-SmartGram Birth Application
-</title>
-
-<style>
-
-body{
-font-family:Arial;
-padding:35px;
-}
-
-.page{
-max-width:750px;
-margin:auto;
-border:2px solid #176b3a;
-padding:30px;
-}
-
-h1,h2{
-text-align:center;
-}
-
-.row{
-padding:12px;
-border-bottom:1px solid #ddd;
-}
-
-</style>
-
-</head>
-
-
-<body>
-
-
-<div class="page">
-
-<h1>
-SMARTGRAM
-</h1>
-
-<h2>
-जन्म प्रमाणपत्र अर्जाची प्रत
-</h2>
-
-<p style="text-align:center">
-
-<b>
-ही नमुना / अर्जाची प्रत आहे —
-अधिकृत शासकीय प्रमाणपत्र नाही
-</b>
-
-</p>
-
-<hr>
-
-
-<div class="row">
-
-<b>
-Application No:
-</b>
-
-${a.no}
-
-</div>
-
-
-<div class="row">
-
-<b>
-बालकाचे नाव:
-</b>
-
-${a.name}
-
-</div>
-
-
-<div class="row">
-
-<b>
-जन्म तारीख:
-</b>
-
-${a.date}
-
-</div>
-
-
-<div class="row">
-
-<b>
-वडिलांचे नाव:
-</b>
-
-${a.father}
-
-</div>
-
-
-<div class="row">
-
-<b>
-आईचे नाव:
-</b>
-
-${a.mother}
-
-</div>
-
-
-<p style="margin-top:40px">
-
-SmartGram Digital Village Development Initiative
-
-</p>
-
-
-</div>
-
-
-<script>
-
-window.onload=function(){
-
-window.print();
-
-}
-
-<\/script>
-
-
-</body>
-
-</html>
-
-`);
-
-
-w.document.close();
-
-}
-
-
-
-/* DEATH CERTIFICATE */
-
-function deathCertificate(){
-
-popup("⚰️ Death Certificate Application",`
-
-<p class="sub">
-मृत्यू प्रमाणपत्रासाठी माहिती भरा
-</p>
-
-
-<label>
-मृत व्यक्तीचे नाव
-</label>
-
-<input
-id="deathName"
-placeholder="पूर्ण नाव"
->
-
-
-<label>
-मृत्यू तारीख
-</label>
-
-<input
-id="deathDate"
-type="date"
->
-
-
-<label>
-मृत्यू ठिकाण
-</label>
-
-<input
-id="deathPlace"
-placeholder="मृत्यू ठिकाण"
->
-
-
-<label>
-नातेवाईकाचे नाव
-</label>
-
-<input
-id="relativeName"
-placeholder="अर्जदाराचे नाव"
->
-
-
-<label>
-पत्ता
-</label>
-
-<textarea
-id="deathAddress"
-rows="4"
-placeholder="पूर्ण पत्ता">
-</textarea>
-
-
-<div class="rowbtn">
-
-<button
-class="green"
-onclick="submitDeath()">
-
-📤 अर्ज Submit
-
-</button>
-
-
-<button
-class="close"
-onclick="closePopup()">
-
-❌ बंद करा
-
-</button>
-
-</div>
-
-
-<div id="deathResult"></div>
-
-`);
-
-}
-
-
-
-<script>
-
-function submitDeath(){
-
-    const name = document.getElementById("deathName").value.trim();
-    const date = document.getElementById("deathDate").value;
-    const place = document.getElementById("deathPlace").value.trim();
-    const relative = document.getElementById("relativeName").value.trim();
-    const address = document.getElementById("deathAddress").value.trim();
-
-    if(!name || !date || !place || !relative || !address){
-
-        alert("कृपया सर्व माहिती भरा.");
+    const name=document.getElementById("birthName").value.trim();
+    const date=document.getElementById("birthDate").value;
+    const place=document.getElementById("birthPlace").value.trim();
+    const father=document.getElementById("fatherName").value.trim();
+    const mother=document.getElementById("motherName").value.trim();
+    const address=document.getElementById("birthAddress").value.trim();
+
+    if(!name || !date || !place || !father || !mother || !address){
+
+        alert("कृपया आवश्यक माहिती भरा.");
         return;
-
     }
 
-    const no = "DC-" + Math.floor(
-        100000 + Math.random() * 900000
+    const no="BC-"+Math.floor(
+        100000+Math.random()*900000
     );
 
-    const data = {
-
+    const data={
         no:no,
         name:name,
         date:date,
         place:place,
-        relative:relative,
+        father:father,
+        mother:mother,
         address:address,
         status:"Pending"
-
     };
 
     localStorage.setItem(
-        "deathApplication",
+        "birthApplication",
         JSON.stringify(data)
     );
 
-    document.getElementById("deathResult").innerHTML = `
+    document.getElementById("birthResult").innerHTML=`
 
-        <div class="success">
+    <div class="success">
 
-            <h3>✅ अर्ज Submit झाला!</h3>
+    <h3>✅ अर्ज Submit झाला!</h3>
 
-            <p>Application No:</p>
+    <p>Application No:</p>
 
-            <h2>${no}</h2>
+    <h2>${no}</h2>
 
-            <p>
-            तुमचा मृत्यू प्रमाणपत्र अर्ज नोंदवला आहे.
-            </p>
-
-            <br>
-
-            <button
-            class="green"
-            onclick="printDeath()">
-
-            📄 Print / PDF
-
-            </button>
-
-        </div>
-
-    `;
-
-}
-
-
-/* DEATH APPLICATION PRINT */
-
-function printDeath(){
+    <button class="green"
+    onclick="printBirth()">
+    📄 Print / PDF
+    </button>
+function printBirth(){
 
     const a = JSON.parse(
-        localStorage.getItem("deathApplication") || "{}"
+        localStorage.getItem("birthApplication") || "{}"
     );
 
-    const w = window.open("", "_blank");
-
-    if(!w){
-
-        alert("Browser popup allow करा.");
+    if(!a.no){
+        alert("आधी Birth Certificate Application submit करा.");
         return;
-
     }
 
-    w.document.write(`
+    const printWindow = window.open("", "_blank");
 
-    <html>
+    if(!printWindow){
+        alert("Popup Blocked आहे. Browser मध्ये popup allow करा.");
+        return;
+    }
 
-    <head>
+    printWindow.document.write(`
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+<meta charset="UTF-8">
 
-    <meta charset="UTF-8">
+<title>SmartGram Birth Application</title>
 
-    <title>SmartGram Death Application</title>
+<style>
 
-    <style>
+body{
+    font-family:Arial,sans-serif;
+    padding:30px;
+    background:white;
+}
 
+.page{
+    max-width:750px;
+    margin:auto;
+    border:2px solid #176b3a;
+    padding:30px;
+}
+
+h1{
+    text-align:center;
+    color:#176b3a;
+}
+
+h2{
+    text-align:center;
+}
+
+.row{
+    padding:12px;
+    border-bottom:1px solid #ddd;
+    font-size:16px;
+}
+
+.note{
+    margin-top:20px;
+    padding:12px;
+    background:#f5f5f5;
+    text-align:center;
+}
+
+@media print{
     body{
-        font-family:Arial;
-        padding:35px;
+        padding:0;
     }
 
     .page{
-        max-width:750px;
-        margin:auto;
         border:2px solid #176b3a;
-        padding:30px;
     }
+}
 
-    h1,h2{
-        text-align:center;
-    }
+</style>
+</head>
 
-    .row{
-        padding:12px;
-        border-bottom:1px solid #ddd;
-    }
+<body>
 
-    </style>
+<div class="page">
 
-    </head>
+<h1>🌾 SMARTGRAM</h1>
 
-    <body>
+<h2>जन्म प्रमाणपत्र अर्जाची प्रत</h2>
 
-    <div class="page">
+<div class="note">
+ही नमुना अर्जाची प्रत आहे — अधिकृत शासकीय प्रमाणपत्र नाही.
+</div>
 
-        <h1>SMARTGRAM</h1>
+<br>
 
-        <h2>मृत्यू प्रमाणपत्र अर्जाची प्रत</h2>
+<div class="row">
+<b>Application No:</b>
+${a.no}
+</div>
 
-        <p style="text-align:center">
+<div class="row">
+<b>बालकाचे नाव:</b>
+${a.name || ""}
+</div>
 
-        <b>
-        ही नमुना / अर्जाची प्रत आहे —
-        अधिकृत शासकीय प्रमाणपत्र नाही
-        </b>
+<div class="row">
+<b>जन्म तारीख:</b>
+${a.date || ""}
+</div>
 
-        </p>
+<div class="row">
+<b>वडिलांचे नाव:</b>
+${a.father || ""}
+</div>
 
-        <hr>
+<div class="row">
+<b>आईचे नाव:</b>
+${a.mother || ""}
+</div>
 
-        <div class="row">
-        <b>Application No:</b> ${a.no}
-        </div>
+<br>
 
-        <div class="row">
-        <b>मृत व्यक्तीचे नाव:</b> ${a.name}
-        </div>
+<p>
+SmartGram Digital Village Development Initiative
+</p>
 
-        <div class="row">
-        <b>मृत्यू तारीख:</b> ${a.date}
-        </div>
+</div>
 
-        <div class="row">
-        <b>मृत्यू ठिकाण:</b> ${a.place}
-        </div>
+<script>
+window.onload = function(){
+    window.print();
+};
+<\/script>
 
-        <div class="row">
-        <b>नातेवाईकाचे नाव:</b> ${a.relative}
-        </div>
-
-        <div class="row">
-        <b>पत्ता:</b> ${a.address}
-        </div>
-
-        <p style="margin-top:40px">
-        SmartGram Digital Village Development Initiative
-        </p>
-
-    </div>
-
-    <script>
-
-    window.onload=function(){
-        window.print();
-    }
-
-    <\/script>
-
-    </body>
-
-    </html>
-
+</body>
+</html>
     `);
 
-    w.document.close();
-
-}
-
-
-/* ADMIN LOGIN */
-
-function adminLogin(){
-
-    popup("🔐 Admin / Officer Login",`
-
-        <p class="sub">
-        SmartGram Administration
-        </p>
-
-        <label>Username</label>
-
-        <input
-        id="adminUser"
-        placeholder="Username"
-        value="admin"
-        >
-
-        <label>Password</label>
-
-        <input
-        id="adminPass"
-        type="password"
-        placeholder="Password"
-        >
-
-        <div class="rowbtn">
-
-            <button
-            class="green"
-            onclick="checkAdmin()">
-
-            🔓 Login
-
-            </button>
-
-            <button
-            class="close"
-            onclick="closePopup()">
-
-            ❌ बंद करा
-
-            </button>
-
-        </div>
-
-    `);
-
-}
-
-
-/* ADMIN CHECK */
-
-function checkAdmin(){
-
-    const user =
-    document.getElementById("adminUser").value.trim();
-
-    const pass =
-    document.getElementById("adminPass").value;
-
-    if(user === "admin" && pass === "1234"){
-
-        closePopup();
-
-        adminDashboard();
-
+    printWindow.document.close();
     }
-
-    else{
-
-        alert(
-        "❌ चुकीचे Username किंवा Password"
-        );
-
-    }
-
-}
-
-
-/* ADMIN DASHBOARD */
-
-function adminDashboard(){
-
-    const complaint =
-    JSON.parse(
-        localStorage.getItem("smartgramComplaint") || "null"
-    );
-
-    const citizen =
-    JSON.parse(
-        localStorage.getItem("smartgramCitizen") || "null"
-    );
-
-    const birth =
-    JSON.parse(
-        localStorage.getItem("birthApplication") || "null"
-    );
-
-    const death =
-    JSON.parse(
-        localStorage.getItem("deathApplication") || "null"
-    );
-
-
-    popup("👨‍💼 Admin Dashboard",`
-
-        <p class="sub">
-        SmartGram – Administration Panel
-        </p>
-
-
-        <div class="box">
-
-            <h3>📝 Complaints</h3>
-
-            ${
-                complaint
-                ?
-                `
-                <p>
-                <b>ID:</b> ${complaint.id}
-                </p>
-
-                <p>
-                <b>Name:</b> ${complaint.name}
-                </p>
-
-                <p>
-                <b>Type:</b> ${complaint.type}
-                </p>
-
-                <p>
-                <b>Status:</b> 🟡 ${complaint.status}
-                </p>
-
-                <button
-                class="green"
-                onclick="approveComplaint()">
-
-                ✅ Resolve Complaint
-
-                </button>
-                `
-                :
-                `<p>अजून complaint उपलब्ध नाही.</p>`
-            }
-
-        </div>
-
-
-        <div class="box">
-
-            <h3>👤 Citizen</h3>
-
-            ${
-                citizen
-                ?
-                `
-                <p>
-                <b>Name:</b> ${citizen.name}
-                </p>
-
-                <p>
-                <b>Mobile:</b> ${citizen.mobile}
-                </p>
-
-                <p>
-                <b>Username:</b> ${citizen.username}
-                </p>
-                `
-                :
-                `<p>अजून registration नाही.</p>`
-            }
-
-        </div>
-
-
-        <div class="box">
-
-            <h3>🍼 Birth Certificate</h3>
-
-            ${
-                birth
-                ?
-                `
-                <p>
-                <b>Application:</b> ${birth.no}
-                </p>
-
-                <p>
-                <b>Name:</b> ${birth.name}
-                </p>
-
-                <p>
-                <b>Status:</b> ${birth.status}
-                </p>
-
-                <button
-                class="green"
-                onclick="approveBirth()">
-
-                ✅ Approve
-
-                </button>
-                `
-                :
-                `<p>अजून अर्ज नाही.</p>`
-            }
-
-        </div>
-
-
-        <div class="box">
-
-            <h3>⚰️ Death Certificate</h3>
-
-            ${
-                death
-                ?
-                `
-                <p>
-                <b>Application:</b> ${death.no}
-                </p>
-
-                <p>
-                <b>Name:</b> ${death.name}
-                </p>
-
-                <p>
-                <b>Status:</b> ${death.status}
-                </p>
-
-                <button
-                class="green"
-                onclick="approveDeath()">
-
-                ✅ Approve
-
-                </button>
-                `
-                :
-                `<p>अजून अर्ज नाही.</p>`
-            }
-
-        </div>
-
-
-        <button
-        class="close"
-        onclick="closePopup()">
-
-        🚪 Logout
-
-        </button>
-
-    `);
-
-}
-
-
-/* APPROVE COMPLAINT */
-
-function approveComplaint(){
-
-    const data =
-    JSON.parse(
-        localStorage.getItem("smartgramComplaint")
-        || "null"
-    );
-
-    if(data){
-
-        data.status = "Resolved";
-
-        localStorage.setItem(
-            "smartgramComplaint",
-            JSON.stringify(data)
-        );
-
-        alert("✅ Complaint Resolved Successfully!");
-
-        adminDashboard();
-
-    }
-
-}
-
-
-/* APPROVE BIRTH */
-
-function approveBirth(){
-
-    const data =
-    JSON.parse(
-        localStorage.getItem("birthApplication")
-        || "null"
-    );
-
-    if(data){
-
-        data.status = "Approved";
-
-        localStorage.setItem(
-            "birthApplication",
-            JSON.stringify(data)
-        );
-
-        alert("✅ Birth Certificate Application Approved Successfully!");
-
-        adminDashboard();
-
-    }
-
-}
-
-
-/* APPROVE DEATH */
-
-function approveDeath(){
-
-    const data =
-    JSON.parse(
-        localStorage.getItem("deathApplication")
-        || "null"
-    );
-
-    if(data){
-
-        data.status = "Approved";
-
-        localStorage.setItem(
-            "deathApplication",
-            JSON.stringify(data)
-        );
-
-        alert("✅ Death Certificate Application Approved Successfully!");
-
-        adminDashboard();
-
-    }
-
-}
-
-</script>
