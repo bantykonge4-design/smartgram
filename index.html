@@ -3,236 +3,46 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>SmartGram - Digital Village</title>
 
 <style>
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-    font-family:Arial,sans-serif;
-}
-
-body{
-    background:#f5f7f6;
-    color:#222;
-}
-
-header{
-    background:#176b3a;
-    color:white;
-    padding:20px;
-    text-align:center;
-}
-
-header h1{
-    font-size:30px;
-}
-
-header p{
-    margin-top:6px;
-}
-
-.hero{
-    background:white;
-    text-align:center;
-    padding:45px 20px;
-}
-
-.hero h2{
-    color:#176b3a;
-    font-size:28px;
-    margin-bottom:12px;
-}
-
-.hero p{
-    color:#555;
-    line-height:1.6;
-    margin-bottom:20px;
-}
-
-.btn{
-    background:#176b3a;
-    color:white;
-    border:0;
-    padding:13px 22px;
-    border-radius:8px;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-.section{
-    padding:30px 18px;
-}
-
-.section h2{
-    text-align:center;
-    color:#176b3a;
-    margin-bottom:20px;
-}
-
-.cards{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:14px;
-    max-width:850px;
-    margin:auto;
-}
-
-.card{
-    background:white;
-    padding:20px 12px;
-    border-radius:12px;
-    text-align:center;
-    box-shadow:0 2px 8px #0002;
-    cursor:pointer;
-}
-
-.card .icon{
-    font-size:30px;
-    margin-bottom:8px;
-}
-
-.card h3{
-    color:#176b3a;
-    margin-bottom:6px;
-}
-
-.card p{
-    font-size:12px;
-    color:#666;
-}
-
-.stats{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:12px;
-    max-width:800px;
-    margin:auto;
-}
-
-.stat{
-    background:#176b3a;
-    color:white;
-    padding:20px;
-    border-radius:10px;
-    text-align:center;
-}
-
-.stat h3{
-    font-size:25px;
-}
-
-footer{
-    background:#123d27;
-    color:white;
-    text-align:center;
-    padding:20px;
-    margin-top:20px;
-}
-
-.popup{
-    position:fixed;
-    inset:0;
-    background:#f5f7f6;
-    z-index:9999;
-    overflow:auto;
-    padding:20px;
-}
-
-.popup-box{
-    background:white;
-    max-width:550px;
-    margin:auto;
-    padding:22px;
-    border-radius:15px;
-    box-shadow:0 3px 15px #0002;
-}
-
-.popup h2{
-    color:#176b3a;
-    text-align:center;
-    margin-bottom:8px;
-}
-
-.sub{
-    text-align:center;
-    color:#666;
-    margin-bottom:18px;
-}
-
-input,
-select,
-textarea{
-    width:100%;
-    padding:12px;
-    margin:7px 0 14px;
-    border:1px solid #ccc;
-    border-radius:8px;
-    font-size:15px;
-}
-
-label{
-    font-weight:bold;
-}
-
-.green{
-    background:#176b3a;
-    color:white;
-    border:0;
-    padding:12px 18px;
-    border-radius:8px;
-    cursor:pointer;
-}
-
-.close{
-    background:#ddd;
-    border:0;
-    padding:12px 18px;
-    border-radius:8px;
-    cursor:pointer;
-    margin-left:5px;
-}
-
-.dark{
-    background:#123d27;
-    color:white;
-    border:0;
-    padding:13px 20px;
-    border-radius:8px;
-    cursor:pointer;
-}
-
-.box{
-    background:white;
-    padding:15px;
-    margin:12px 0;
-    border-radius:12px;
-    box-shadow:0 2px 7px #0001;
-}
-
-.box h3{
-    color:#176b3a;
-    margin-bottom:8px;
-}
-
-.success{
-    margin-top:18px;
-    padding:15px;
-    background:#f0fff0;
-    border:2px solid #198754;
-    border-radius:10px;
-}
-
+*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,sans-serif}
+body{background:#f5f7f6;color:#222}
+header{background:#176b3a;color:white;padding:20px;text-align:center}
+header h1{font-size:30px}
+header p{margin-top:6px}
+.hero{background:white;text-align:center;padding:45px 20px}
+.hero h2{color:#176b3a;font-size:28px;margin-bottom:12px}
+.hero p{color:#555;line-height:1.6;margin-bottom:20px}
+button{cursor:pointer}
+.btn,.green{background:#176b3a;color:white;border:0;padding:13px 22px;border-radius:8px;font-weight:bold}
+.dark{background:#123d27;color:white;border:0;padding:13px 20px;border-radius:8px}
+.section{padding:30px 18px}
+.section h2{text-align:center;color:#176b3a;margin-bottom:20px}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;max-width:850px;margin:auto}
+.card{background:white;padding:20px 12px;border-radius:12px;text-align:center;box-shadow:0 2px 8px #0002;cursor:pointer}
+.card:active{transform:scale(.97)}
+.icon{font-size:30px;margin-bottom:8px}
+.card h3{color:#176b3a;margin-bottom:6px}
+.card p{font-size:12px;color:#666}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;max-width:800px;margin:auto}
+.stat{background:#176b3a;color:white;padding:20px;border-radius:10px;text-align:center}
+.stat h3{font-size:25px}
+footer{background:#123d27;color:white;text-align:center;padding:20px;margin-top:20px}
+.popup{position:fixed;inset:0;background:#f5f7f6;z-index:9999;overflow:auto;padding:20px}
+.popup-box{background:white;max-width:600px;margin:auto;padding:22px;border-radius:15px;box-shadow:0 3px 15px #0002}
+.popup h2{text-align:center;color:#176b3a;margin-bottom:8px}
+.sub{text-align:center;color:#666;margin-bottom:18px}
+input,select,textarea{width:100%;padding:12px;margin:7px 0 14px;border:1px solid #ccc;border-radius:8px;font-size:15px}
+label{font-weight:bold}
+.close{background:#ddd;border:0;padding:12px 18px;border-radius:8px;margin-left:5px}
+.box{background:white;padding:15px;margin:12px 0;border-radius:12px;box-shadow:0 2px 7px #0001}
+.box h3{color:#176b3a;margin-bottom:8px}
+.success{margin-top:18px;padding:15px;background:#f0fff0;border:2px solid #198754;border-radius:10px}
+.map{width:100%;height:350px;border:0;border-radius:12px}
 @media(max-width:500px){
-    .cards{
-        grid-template-columns:1fr 1fr;
-    }
-
-    .hero h2{
-        font-size:24px;
-    }
+.cards{grid-template-columns:1fr 1fr}
+.hero h2{font-size:24px}
 }
 </style>
 </head>
@@ -240,233 +50,249 @@ label{
 <body>
 
 <header>
-
 <h1>🌾 SmartGram</h1>
-
 <p>Digital Village Grievance & Development System</p>
-
 </header>
 
-
 <section class="hero">
-
 <h2>आपल्या गावासाठी डिजिटल व्यासपीठ</h2>
-
 <p>
 गावातील समस्या नोंदवा, अधिकृत माहिती मिळवा
 आणि गावाच्या विकासात सहभागी व्हा.
 </p>
-
-<button class="btn" onclick="complaint()">
-🔴 समस्या नोंदवा
-</button>
-
+<button class="btn" onclick="complaint()">🔴 समस्या नोंदवा</button>
 </section>
 
-
 <section class="section">
-
 <h2>SmartGram Services</h2>
 
 <div class="cards">
 
-
 <div class="card" onclick="complaint()">
-
 <div class="icon">📝</div>
-
 <h3>Complaint</h3>
-
 <p>गावातील समस्या online नोंदवा.</p>
-
 </div>
-
-
 
 <div class="card" onclick="trackComplaint()">
-
 <div class="icon">🔎</div>
-
 <h3>Track Complaint</h3>
-
 <p>Complaint चा status पाहा.</p>
-
 </div>
-
-
 
 <div class="card" onclick="villageOfficials()">
-
 <div class="icon">👥</div>
-
 <h3>Village Officials</h3>
-
 <p>गावातील अधिकारी माहिती.</p>
-
 </div>
-
-
 
 <div class="card" onclick="citizenRegistration()">
-
 <div class="icon">👤</div>
-
 <h3>Citizen Registration</h3>
-
 <p>नागरिक Registration करा.</p>
-
 </div>
-
-
 
 <div class="card" onclick="citizenLogin()">
-
 <div class="icon">🔐</div>
-
 <h3>Citizen Login</h3>
-
 <p>Citizen services वापरा.</p>
-
 </div>
-
-
 
 <div class="card" onclick="villageMap()">
-
 <div class="icon">🗺️</div>
-
 <h3>Village Map</h3>
-
 <p>गावातील महत्त्वाची ठिकाणे.</p>
-
 </div>
-
-
 
 <div class="card" onclick="villageNotices()">
-
 <div class="icon">📢</div>
-
 <h3>Village Notices</h3>
-
 <p>महत्त्वाच्या सूचना.</p>
-
 </div>
-
-
 
 <div class="card" onclick="villageIdeas()">
-
 <div class="icon">💡</div>
-
 <h3>Village Ideas</h3>
-
 <p>विकासासाठी ideas द्या.</p>
-
 </div>
-
-
 
 <div class="card" onclick="certificates()">
-
 <div class="icon">📄</div>
-
 <h3>Certificates</h3>
-
 <p>जन्म / मृत्यू अर्ज.</p>
-
 </div>
 
-
 </div>
-
 </section>
 
-
 <div style="text-align:center;padding:10px 15px 25px">
-
-<button class="dark" onclick="adminLogin()">
-
-🔐 Admin / Officer Login
-
-</button>
-
+<button class="dark" onclick="adminLogin()">🔐 Admin / Officer Login</button>
 </div>
 
-
 <section class="section">
-
 <h2>Village Complaint Overview</h2>
 
 <div class="stats">
-
-<div class="stat">
-
-<h3>128</h3>
-
-<p>Total Complaints</p>
-
+<div class="stat"><h3>128</h3><p>Total Complaints</p></div>
+<div class="stat"><h3>75</h3><p>Resolved</p></div>
+<div class="stat"><h3>32</h3><p>Pending</p></div>
+<div class="stat"><h3>21</h3><p>In Progress</p></div>
 </div>
-
-
-<div class="stat">
-
-<h3>75</h3>
-
-<p>Resolved</p>
-
-</div>
-
-
-<div class="stat">
-
-<h3>32</h3>
-
-<p>Pending</p>
-
-</div>
-
-
-<div class="stat">
-
-<h3>21</h3>
-
-<p>In Progress</p>
-
-</div>
-
-</div>
-
 </section>
 
-
 <footer>
-
 © 2026 SmartGram<br>
-
 Digital Village Development Initiative
-
 </footer>
-
-
 
 <script>
 
+/* ---------- POPUP SYSTEM ---------- */
 
-function popup(title,content){
+function openPopup(title,content){
 
-const old=document.querySelector(".popup");
-
-if(old){
-
-old.remove();
-
-}
+closePopup();
 
 const div=document.createElement("div");
-
 div.className="popup";
 
 div.innerHTML=`
+<div class="popup-box">
+<h2>${title}</h2>
+${content}
+</div>
+`;
 
-<div class="popup
+document.body.appendChild(div);
+}
+
+function closePopup(){
+const p=document.querySelector(".popup");
+if(p)p.remove();
+}
+
+
+/* ---------- COMPLAINT ---------- */
+
+function complaint(){
+
+openPopup("📝 ग्राम समस्या नोंदणी",`
+
+<p class="sub">SmartGram Digital Village</p>
+
+<label>नाव</label>
+<input id="cName" placeholder="तुमचे पूर्ण नाव">
+
+<label>मोबाइल नंबर</label>
+<input id="cMobile" type="tel" maxlength="10" placeholder="10 अंकी मोबाइल नंबर">
+
+<label>गाव</label>
+<input id="cVillage" value="गोगरी">
+
+<label>समस्येचा प्रकार</label>
+<select id="cType">
+<option>रस्ता</option>
+<option>पाणी</option>
+<option>वीज</option>
+<option>स्वच्छता</option>
+<option>गटार</option>
+<option>शासकीय सेवा</option>
+<option>इतर</option>
+</select>
+
+<label>समस्येचे वर्णन</label>
+<textarea id="cDesc" rows="5" placeholder="समस्या लिहा"></textarea>
+
+<button class="green" onclick="submitComplaint()">📤 समस्या नोंदवा</button>
+<button class="close" onclick="closePopup()">❌ बंद करा</button>
+
+<div id="complaintResult"></div>
+`);
+}
+
+function submitComplaint(){
+
+let name=document.getElementById("cName").value.trim();
+let mobile=document.getElementById("cMobile").value.trim();
+let village=document.getElementById("cVillage").value.trim();
+let desc=document.getElementById("cDesc").value.trim();
+
+if(!name||!mobile||!village||!desc){
+alert("कृपया सर्व माहिती भरा.");
+return;
+}
+
+let id="SG-"+Math.floor(100000+Math.random()*900000);
+
+localStorage.setItem("lastComplaint",JSON.stringify({
+id:id,name:name,mobile:mobile,village:village,desc:desc,status:"Pending"
+}));
+
+document.getElementById("complaintResult").innerHTML=`
+<div class="success">
+<h3>✅ Complaint Successfully Registered</h3>
+<p>तुमचा Complaint ID:</p>
+<h2>${id}</h2>
+<p>हा ID जपून ठेवा.</p>
+</div>`;
+}
+
+
+/* ---------- TRACK ---------- */
+
+function trackComplaint(){
+
+openPopup("🔎 Track Complaint",`
+
+<p class="sub">Complaint ID टाका</p>
+
+<input id="trackId" placeholder="उदा. SG-123456">
+
+<button class="green" onclick="checkComplaint()">🔎 Track</button>
+<button class="close" onclick="closePopup()">❌ बंद करा</button>
+
+<div id="trackResult"></div>
+`);
+}
+
+function checkComplaint(){
+
+let id=document.getElementById("trackId").value.trim();
+let saved=JSON.parse(localStorage.getItem("lastComplaint")||"null");
+
+if(saved && saved.id===id){
+
+document.getElementById("trackResult").innerHTML=`
+<div class="success">
+<h3>✅ Complaint Found</h3>
+<p><b>ID:</b> ${saved.id}</p>
+<p><b>Name:</b> ${saved.name}</p>
+<p><b>Status:</b> 🟡 ${saved.status}</p>
+<p><b>Department:</b> ग्रामपंचायत</p>
+</div>`;
+
+}else{
+
+document.getElementById("trackResult").innerHTML=`
+<p style="color:red;margin-top:15px">❌ Complaint ID सापडली नाही.</p>`;
+}
+}
+
+
+/* ---------- VILLAGE OFFICIALS ---------- */
+
+function villageOfficials(){
+
+openPopup("👥 ग्रामपंचायत अधिकारी",`
+
+<p class="sub">गोगरी – ता. मंगरूळपीर, जि. वाशिम</p>
+
+<div class="box">
+<h3>👨‍💼 सरपंच</h3>
+<p><b>नाव:</b> श्री केशव ज्ञानदेव जटाळे</p>
+<p><b>मोबाइल:</b> लवकरच उपलब्ध</p>
+</div>
+
+<div class="box">
+<h3>👩‍💼 उपसरपंच</h3>
+<p><b>नाव
