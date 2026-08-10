@@ -692,56 +692,77 @@ function villageOfficials() {
 
 function villageMap() {
 
-    createPopup(`
+    const box = document.createElement("div");
 
-        <h2>🗺️ Village Map</h2>
+    box.innerHTML = `
+        <div style="
+            position:fixed;
+            inset:0;
+            background:#f5f7f6;
+            z-index:9999;
+            overflow:auto;
+            padding:20px;
+        ">
 
-        <p class="popup-subtitle">
-            गावातील महत्त्वाची ठिकाणे
-        </p>
+            <div style="
+                background:white;
+                padding:20px;
+                border-radius:15px;
+                max-width:700px;
+                margin:auto;
+            ">
 
+                <h2 style="text-align:center;color:#176b3a;">
+                    🏫 शाळेची माहिती
+                </h2>
 
-        <div class="official-box">
+                <hr>
 
-            <h3>🏫 शाळा</h3>
+                <h3>
+                    राष्ट्रसंत तुकडोजी महाराज विद्यालय
+                </h3>
 
-            <p>
-                गावातील शाळांची माहिती येथे उपलब्ध होईल.
-            </p>
+                <p>
+                    <b>संस्था:</b> जिल्हा परिषद गोगरी
+                </p>
 
+                <p>
+                    <b>📍 पत्ता:</b><br>
+                    गोगरी, ता. मंगरूळपीर,<br>
+                    जि. वाशिम, महाराष्ट्र
+                </p>
+
+                <h3 style="color:#176b3a;">
+                    🗺️ Google Map
+                </h3>
+
+                <iframe
+                    src="https://www.google.com/maps?q=Gogari,Mangrulpir,Washim,Maharashtra&output=embed"
+                    width="100%"
+                    height="350"
+                    style="border:0;border-radius:12px;"
+                    loading="lazy">
+                </iframe>
+
+                <button
+                    onclick="this.parentElement.parentElement.remove()"
+                    style="
+                    width:100%;
+                    padding:13px;
+                    margin-top:15px;
+                    background:#176b3a;
+                    color:white;
+                    border:0;
+                    border-radius:8px;
+                    font-size:16px;">
+                    ❌ बंद करा
+                </button>
+
+            </div>
         </div>
+    `;
 
-
-        <div class="official-box">
-
-            <h3>🏛️ ग्रामपंचायत</h3>
-
-            <p>
-                ग्रामपंचायत कार्यालयाची माहिती येथे उपलब्ध होईल.
-            </p>
-
-        </div>
-
-
-        <div class="official-box">
-
-            <h3>🏥 आरोग्य केंद्र</h3>
-
-            <p>
-                आरोग्य सुविधांची माहिती येथे उपलब्ध होईल.
-            </p>
-
-        </div>
-
-
-        <button class="close-btn"
-                onclick="closePopup()">
-
-            ❌ बंद करा
-
-        </button>
-
-    `);
+    document.body.appendChild(box);
 }
 
 
