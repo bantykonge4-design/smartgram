@@ -1679,3 +1679,1421 @@ window.onload = function(){
     printWindow.document.close();
 
     }
+function adminLogin(){
+
+    popup("🔐 Admin / Officer Login",`
+
+    <p class="sub">
+    SmartGram Officer Panel
+    </p>
+
+    <label>Username</label>
+
+    <input
+        id="adminUser"
+        placeholder="Admin Username"
+    >
+
+    <label>Password</label>
+
+    <input
+        id="adminPass"
+        type="password"
+        placeholder="Password"
+    >
+
+    <div class="rowbtn">
+
+        <button
+            class="green"
+            onclick="checkAdmin()">
+            🔓 Login
+        </button>
+
+        <button
+            class="close"
+            onclick="closePopup()">
+            ❌ बंद करा
+        </button>
+
+    </div>
+
+    `);
+}
+
+
+function checkAdmin(){
+
+    const username =
+        document.getElementById("adminUser").value.trim();
+
+    const password =
+        document.getElementById("adminPass").value;
+
+    if(username === "admin" && password === "1234"){
+
+        closePopup();
+
+        adminDashboard();
+
+    }else{
+
+        alert("❌ चुकीचे Username किंवा Password");
+
+    }
+
+}
+
+
+function adminDashboard(){
+
+    popup("👨‍💼 Admin / Officer Dashboard",`
+
+    <div class="box">
+
+        <h3>📊 Complaint Management</h3>
+
+        <p>
+        येथे नागरिकांच्या तक्रारी पाहता येतील.
+        </p>
+
+        <br>
+
+        <button
+            class="green"
+            onclick="viewComplaint()">
+            📋 View Complaint
+        </button>
+
+    </div>
+
+
+    <div class="box">
+
+        <h3>📄 Certificate Applications</h3>
+
+        <p>
+        Birth आणि Death applications तपासा.
+        </p>
+
+    </div>
+
+
+    <div class="box">
+
+        <h3>👥 Village Officials</h3>
+
+        <p>
+        गावातील अधिकारी माहिती व्यवस्थापित करा.
+        </p>
+
+    </div>
+
+
+    <button
+        class="close"
+        onclick="closePopup()">
+
+        🚪 Logout
+
+    </button>
+
+    `);
+
+}
+
+
+function viewComplaint(){
+
+    const complaint =
+        JSON.parse(
+            localStorage.getItem(
+                "smartgramComplaint"
+            ) || "null"
+        );
+
+
+    if(!complaint){
+
+        popup("📋 Complaints",`
+
+        <div class="success">
+
+            <h3>
+            कोणतीही Complaint नाही.
+            </h3>
+
+            <p>
+            सध्या नागरिकांकडून तक्रार नोंदवलेली नाही.
+            </p>
+
+        </div>
+
+        <button
+            class="close"
+            onclick="adminDashboard()">
+
+            ↩️ Back
+
+        </button>
+
+        `);
+
+        return;
+
+    }
+
+
+    popup("📋 Complaint Details",`
+
+    <div class="box">
+
+        <h3>
+        Complaint ID
+        </h3>
+
+        <p>
+        <b>${complaint.id}</b>
+        </p>
+
+    </div>
+
+
+    <div class="box">
+
+        <p>
+        <b>नाव:</b>
+        ${complaint.name}
+        </p>
+
+        <p>
+        <b>Mobile:</b>
+        ${complaint.mobile}
+        </p>
+
+        <p>
+        <b>गाव:</b>
+        ${complaint.village}
+        </p>
+
+        <p>
+        <b>प्रकार:</b>
+        ${complaint.type}
+        </p>
+
+        <p>
+        <b>समस्या:</b>
+        ${complaint.desc}
+        </p>
+
+        <p>
+        <b>Status:</b>
+        🟡 ${complaint.status}
+        </p>
+
+    </div>
+
+
+    <button
+        class="close"
+        onclick="adminDashboard()">
+
+        ↩️ Back
+
+    </button>
+
+    `);
+
+        }
+        function viewComplaint(){
+
+    const complaint =
+        JSON.parse(
+            localStorage.getItem("smartgramComplaint") || "null"
+        );
+
+    if(!complaint){
+
+        popup("📋 Complaints",`
+
+            <div class="success">
+                <h3>कोणतीही Complaint नाही.</h3>
+                <p>सध्या कोणतीही तक्रार नोंदवलेली नाही.</p>
+            </div>
+
+            <button
+                class="close"
+                onclick="adminDashboard()">
+                ↩️ Back
+            </button>
+
+        `);
+
+        return;
+    }
+
+
+    popup("📋 Complaint Management",`
+
+        <div class="box">
+
+            <h3>🆔 Complaint ID</h3>
+
+            <p>
+                <b>${complaint.id}</b>
+            </p>
+
+        </div>
+
+
+        <div class="box">
+
+            <p>
+                <b>नाव:</b> ${complaint.name}
+            </p>
+
+            <p>
+                <b>Mobile:</b> ${complaint.mobile}
+            </p>
+
+            <p>
+                <b>गाव:</b> ${complaint.village}
+            </p>
+
+            <p>
+                <b>प्रकार:</b> ${complaint.type}
+            </p>
+
+            <p>
+                <b>समस्या:</b> ${complaint.desc}
+            </p>
+
+        </div>
+
+
+        <div class="box">
+
+            <h3>📊 Complaint Status</h3>
+
+            <select id="newStatus">
+
+                <option value="Pending"
+                ${complaint.status==="Pending" ? "selected":""}>
+                🟡 Pending
+                </option>
+
+                <option value="In Progress"
+                ${complaint.status==="In Progress" ? "selected":""}>
+                🔵 In Progress
+                </option>
+
+                <option value="Resolved"
+                ${complaint.status==="Resolved" ? "selected":""}>
+                🟢 Resolved
+                </option>
+
+            </select>
+
+
+            <button
+                class="green"
+                onclick="updateComplaintStatus()">
+
+                💾 Update Status
+
+            </button>
+
+        </div>
+
+
+        <div id="statusResult"></div>
+
+
+        <button
+            class="close"
+            onclick="adminDashboard()">
+
+            ↩️ Back
+
+        </button>
+
+    `);
+}
+
+
+function updateComplaintStatus(){
+
+    const complaint =
+        JSON.parse(
+            localStorage.getItem("smartgramComplaint") || "null"
+        );
+
+
+    if(!complaint){
+
+        alert("Complaint सापडली नाही.");
+        return;
+
+    }
+
+
+    const newStatus =
+        document.getElementById("newStatus").value;
+
+
+    complaint.status = newStatus;
+
+
+    localStorage.setItem(
+        "smartgramComplaint",
+        JSON.stringify(complaint)
+    );
+
+
+    document.getElementById(
+        "statusResult"
+    ).innerHTML = `
+
+        <div class="success">
+
+            <h3>✅ Status Updated!</h3>
+
+            <p>
+                Complaint ID:
+                <b>${complaint.id}</b>
+            </p>
+
+            <p>
+                नवीन Status:
+                <b>${newStatus}</b>
+            </p>
+
+        </div>
+
+    `;
+        }
+        function villageMap(){
+
+    popup("🗺️ Gogari Village Map",`
+
+        <p class="sub">
+        गोगरी, ता. मंगरूळपीर, जि. वाशिम
+        </p>
+
+        <div class="box">
+
+            <h3>📍 गावातील महत्त्वाची ठिकाणे</h3>
+
+            <br>
+
+            <button
+                class="green"
+                onclick="openMapPlace('ZP School Gogari')">
+                🏫 ZP School Gogari
+            </button>
+
+            <br><br>
+
+            <button
+                class="green"
+                onclick="openMapPlace('Gogari Gram Panchayat')">
+                🏢 ग्रामपंचायत
+            </button>
+
+            <br><br>
+
+            <button
+                class="green"
+                onclick="openMapPlace('Gogari Village Mangrulpir Washim')">
+                📍 Gogari Village
+            </button>
+
+        </div>
+
+        <div class="box">
+
+            <h3>🗺️ Google Map</h3>
+
+            <iframe
+                src="https://www.google.com/maps?q=Gogari,Mangrulpir,Washim,Maharashtra&output=embed"
+                width="100%"
+                height="350"
+                style="border:0;border-radius:12px;"
+                loading="lazy">
+            </iframe>
+
+        </div>
+
+        <button
+            class="close"
+            onclick="closePopup()">
+
+            ❌ बंद करा
+
+        </button>
+
+    `);
+}
+
+
+function openMapPlace(place){
+
+    const url =
+    "https://www.google.com/maps/search/?api=1&query="
+    + encodeURIComponent(place + ", Gogari, Mangrulpir, Washim, Maharashtra");
+
+    window.open(url, "_blank");
+
+                }
+                function villageNotices(){
+
+    const notices = JSON.parse(
+        localStorage.getItem("smartgramNotices") || "[]"
+    );
+
+    let html = `
+        <p class="sub">
+            📢 गावातील महत्त्वाच्या सूचना
+        </p>
+    `;
+
+    if(notices.length === 0){
+
+        html += `
+            <div class="box">
+                <h3>📌 सध्या कोणतीही नवीन सूचना नाही.</h3>
+                <p>नवीन सूचना येथे प्रकाशित केली जाईल.</p>
+            </div>
+        `;
+
+    }else{
+
+        notices.forEach(function(notice,index){
+
+            html += `
+                <div class="box">
+
+                    <h3>
+                        📢 ${notice.title}
+                    </h3>
+
+                    <p>
+                        ${notice.text}
+                    </p>
+
+                    <br>
+
+                    <small>
+                        📅 ${notice.date}
+                    </small>
+
+                    <br><br>
+
+                    <button
+                        class="close"
+                        onclick="deleteNotice(${index})">
+
+                        🗑️ Delete
+
+                    </button>
+
+                </div>
+            `;
+
+        });
+
+    }
+
+
+    html += `
+
+        <div class="box">
+
+            <h3>➕ नवीन सूचना Add करा</h3>
+
+            <label>
+                Notice Title
+            </label>
+
+            <input
+                id="noticeTitle"
+                placeholder="उदा. ग्रामसभा सूचना"
+            >
+
+            <label>
+                Notice Details
+            </label>
+
+            <textarea
+                id="noticeText"
+                rows="4"
+                placeholder="सूचना येथे लिहा">
+            </textarea>
+
+            <button
+                class="green"
+                onclick="addNotice()">
+
+                📢 Add Notice
+
+            </button>
+
+        </div>
+
+
+        <button
+            class="close"
+            onclick="closePopup()">
+
+            ❌ बंद करा
+
+        </button>
+
+    `;
+
+    popup("📢 Village Notices",html);
+}
+
+
+function addNotice(){
+
+    const title =
+        document.getElementById("noticeTitle")
+        .value.trim();
+
+    const text =
+        document.getElementById("noticeText")
+        .value.trim();
+
+
+    if(!title || !text){
+
+        alert("कृपया Notice Title आणि Details भरा.");
+
+        return;
+
+    }
+
+
+    const notices = JSON.parse(
+        localStorage.getItem("smartgramNotices") || "[]"
+    );
+
+
+    const today =
+        new Date().toLocaleDateString("mr-IN");
+
+
+    notices.unshift({
+
+        title:title,
+        text:text,
+        date:today
+
+    });
+
+
+    localStorage.setItem(
+        "smartgramNotices",
+        JSON.stringify(notices)
+    );
+
+
+    alert("✅ Notice Successfully Added!");
+
+    villageNotices();
+
+}
+
+
+function deleteNotice(index){
+
+    const notices = JSON.parse(
+        localStorage.getItem("smartgramNotices") || "[]"
+    );
+
+
+    if(!confirm("ही Notice Delete करायची आहे का?")){
+
+        return;
+
+    }
+
+
+    notices.splice(index,1);
+
+
+    localStorage.setItem(
+        "smartgramNotices",
+        JSON.stringify(notices)
+    );
+
+
+    villageNotices();
+
+}
+function villageIdeas(){
+
+    const ideas = JSON.parse(
+        localStorage.getItem("smartgramIdeas") || "[]"
+    );
+
+    let html = `
+        <p class="sub">
+            💡 गावाच्या विकासासाठी तुमची कल्पना द्या
+        </p>
+
+        <div class="box">
+
+            <h3>➕ तुमची Idea Submit करा</h3>
+
+            <label>तुमचे नाव</label>
+
+            <input
+                id="ideaName"
+                placeholder="तुमचे पूर्ण नाव"
+            >
+
+            <label>तुमची कल्पना</label>
+
+            <textarea
+                id="ideaText"
+                rows="5"
+                placeholder="गावाच्या विकासासाठी तुमची कल्पना लिहा">
+            </textarea>
+
+            <button
+                class="green"
+                onclick="submitIdea()">
+
+                📤 Idea Submit
+
+            </button>
+
+        </div>
+    `;
+
+
+    if(ideas.length > 0){
+
+        html += `
+            <h3 style="
+                color:#176b3a;
+                margin:20px 0 10px;
+            ">
+                📋 नागरिकांच्या Ideas
+            </h3>
+        `;
+
+
+        ideas.forEach(function(idea,index){
+
+            html += `
+                <div class="box">
+
+                    <h3>
+                        💡 ${idea.name}
+                    </h3>
+
+                    <p>
+                        ${idea.text}
+                    </p>
+
+                    <br>
+
+                    <small>
+                        📅 ${idea.date}
+                    </small>
+
+                </div>
+            `;
+
+        });
+
+    }
+
+
+    html += `
+
+        <button
+            class="close"
+            onclick="closePopup()">
+
+            ❌ बंद करा
+
+        </button>
+
+    `;
+
+
+    popup("💡 Village Ideas",html);
+}
+
+
+
+function submitIdea(){
+
+    const name =
+        document.getElementById("ideaName")
+        .value.trim();
+
+    const text =
+        document.getElementById("ideaText")
+        .value.trim();
+
+
+    if(!name || !text){
+
+        alert(
+            "कृपया नाव आणि Idea भरा."
+        );
+
+        return;
+
+    }
+
+
+    const ideas = JSON.parse(
+        localStorage.getItem("smartgramIdeas") || "[]"
+    );
+
+
+    const date =
+        new Date().toLocaleDateString("mr-IN");
+
+
+    ideas.unshift({
+
+        name:name,
+        text:text,
+        date:date
+
+    });
+
+
+    localStorage.setItem(
+        "smartgramIdeas",
+        JSON.stringify(ideas)
+    );
+
+
+    alert(
+        "✅ तुमची Idea Successfully Submit झाली!"
+    );
+
+
+    villageIdeas();
+
+}
+function adminDashboard(){
+
+    popup("👨‍💼 Admin / Officer Dashboard",`
+
+        <p class="sub">
+            SmartGram Management Panel
+        </p>
+
+
+        <div class="box">
+
+            <h3>📋 Complaint Management</h3>
+
+            <p>
+                नागरिकांच्या तक्रारी पाहा आणि Status बदला.
+            </p>
+
+            <br>
+
+            <button
+                class="green"
+                onclick="viewComplaint()">
+
+                📋 View Complaints
+
+            </button>
+
+        </div>
+
+
+        <div class="box">
+
+            <h3>💡 Village Ideas</h3>
+
+            <p>
+                नागरिकांनी दिलेल्या विकासाच्या Ideas पाहा.
+            </p>
+
+            <br>
+
+            <button
+                class="green"
+                onclick="adminViewIdeas()">
+
+                💡 View Ideas
+
+            </button>
+
+        </div>
+
+
+        <div class="box">
+
+            <h3>📢 Village Notices</h3>
+
+            <p>
+                गावातील Notices व्यवस्थापित करा.
+            </p>
+
+            <br>
+
+            <button
+                class="green"
+                onclick="villageNotices()">
+
+                📢 Manage Notices
+
+            </button>
+
+        </div>
+
+
+        <div class="box">
+
+            <h3>🍼 Birth Applications</h3>
+
+            <p>
+                Birth Certificate applications तपासा.
+            </p>
+
+            <br>
+
+            <button
+                class="green"
+                onclick="adminBirthApplications()">
+
+                🍼 View Birth Applications
+
+            </button>
+
+        </div>
+
+
+        <div class="box">
+
+            <h3>⚰️ Death Applications</h3>
+
+            <p>
+                Death Certificate applications तपासा.
+            </p>
+
+            <br>
+
+            <button
+                class="green"
+                onclick="adminDeathApplications()">
+
+                ⚰️ View Death Applications
+
+            </button>
+
+        </div>
+
+
+        <button
+            class="close"
+            onclick="closePopup()">
+
+            🚪 Logout
+
+        </button>
+
+    `);
+
+    }
+    function adminViewIdeas(){
+
+    const ideas = JSON.parse(
+        localStorage.getItem("smartgramIdeas") || "[]"
+    );
+
+    let html = `
+        <p class="sub">
+            💡 नागरिकांच्या विकासाच्या Ideas
+        </p>
+    `;
+
+
+    if(ideas.length === 0){
+
+        html += `
+            <div class="box">
+
+                <h3>
+                    📭 कोणतीही Idea नाही.
+                </h3>
+
+                <p>
+                    अजून नागरिकांनी Idea Submit केलेली नाही.
+                </p>
+
+            </div>
+        `;
+
+    }else{
+
+        ideas.forEach(function(idea,index){
+
+            html += `
+                <div class="box">
+
+                    <h3>
+                        💡 ${idea.name}
+                    </h3>
+
+                    <p>
+                        ${idea.text}
+                    </p>
+
+                    <br>
+
+                    <small>
+                        📅 ${idea.date}
+                    </small>
+
+                </div>
+            `;
+
+        });
+
+    }
+
+
+    html += `
+
+        <button
+            class="close"
+            onclick="adminDashboard()">
+
+            ↩️ Back
+
+        </button>
+
+    `;
+
+
+    popup("💡 Village Ideas",html);
+
+}
+
+
+
+function adminBirthApplications(){
+
+    const data = JSON.parse(
+        localStorage.getItem("birthApplication") || "null"
+    );
+
+
+    if(!data){
+
+        popup("🍼 Birth Applications",`
+
+            <div class="box">
+
+                <h3>
+                    📭 कोणताही अर्ज नाही.
+                </h3>
+
+                <p>
+                    सध्या Birth Certificate application उपलब्ध नाही.
+                </p>
+
+            </div>
+
+            <button
+                class="close"
+                onclick="adminDashboard()">
+
+                ↩️ Back
+
+            </button>
+
+        `);
+
+        return;
+    }
+
+
+    popup("🍼 Birth Application",`
+
+        <div class="box">
+
+            <h3>
+                Application No: ${data.no}
+            </h3>
+
+            <p>
+                <b>बालकाचे नाव:</b>
+                ${data.name}
+            </p>
+
+            <p>
+                <b>जन्म तारीख:</b>
+                ${data.date}
+            </p>
+
+            <p>
+                <b>वडिलांचे नाव:</b>
+                ${data.father}
+            </p>
+
+            <p>
+                <b>आईचे नाव:</b>
+                ${data.mother}
+            </p>
+
+            <p>
+                <b>Status:</b>
+                🟡 ${data.status}
+            </p>
+
+        </div>
+
+
+        <button
+            class="close"
+            onclick="adminDashboard()">
+
+            ↩️ Back
+
+        </button>
+
+    `);
+
+}
+
+
+
+function adminDeathApplications(){
+
+    const data = JSON.parse(
+        localStorage.getItem("deathApplication") || "null"
+    );
+
+
+    if(!data){
+
+        popup("⚰️ Death Applications",`
+
+            <div class="box">
+
+                <h3>
+                    📭 कोणताही अर्ज नाही.
+                </h3>
+
+                <p>
+                    सध्या Death Certificate application उपलब्ध नाही.
+                </p>
+
+            </div>
+
+            <button
+                class="close"
+                onclick="adminDashboard()">
+
+                ↩️ Back
+
+            </button>
+
+        `);
+
+        return;
+    }
+
+
+    popup("⚰️ Death Application",`
+
+        <div class="box">
+
+            <h3>
+                Application No: ${data.no}
+            </h3>
+
+            <p>
+                <b>मृत व्यक्ती:</b>
+                ${data.name}
+            </p>
+
+            <p>
+                <b>मृत्यू तारीख:</b>
+                ${data.date}
+            </p>
+
+            <p>
+                <b>मृत्यू ठिकाण:</b>
+                ${data.place}
+            </p>
+
+            <p>
+                <b>अर्जदार:</b>
+                ${data.relative}
+            </p>
+
+            <p>
+                <b>पत्ता:</b>
+                ${data.address}
+            </p>
+
+            <p>
+                <b>Status:</b>
+                🟡 ${data.status}
+            </p>
+
+        </div>
+
+
+        <button
+            class="close"
+            onclick="adminDashboard()">
+
+            ↩️ Back
+
+        </button>
+
+    `);
+
+                }
+                function citizenDashboard(){
+
+    const saved = JSON.parse(
+        localStorage.getItem("smartgramCitizen") || "{}"
+    );
+
+    popup("👤 Citizen Dashboard",`
+
+        <p class="sub">
+            SmartGram Citizen Services
+        </p>
+
+
+        <div class="box">
+
+            <h3>
+                👋 Welcome ${saved.name || "Citizen"}
+            </h3>
+
+            <p>
+                <b>Village:</b>
+                ${saved.village || "Gogari"}
+            </p>
+
+            <p>
+                <b>Mobile:</b>
+                ${saved.mobile || ""}
+            </p>
+
+            <p>
+                <b>Username:</b>
+                ${saved.username || ""}
+            </p>
+
+        </div>
+
+
+        <div class="box">
+
+            <h3>📝 Complaint</h3>
+
+            <p>
+                गावातील नवीन समस्या नोंदवा.
+            </p>
+
+            <br>
+
+            <button
+                class="green"
+                onclick="closePopup();complaint()">
+
+                📝 New Complaint
+
+            </button>
+
+        </div>
+
+
+        <div class="box">
+
+            <h3>📋 My Complaint</h3>
+
+            <p>
+                तुमची नोंदवलेली Complaint पाहा.
+            </p>
+
+            <br>
+
+            <button
+                class="green"
+                onclick="myComplaint()">
+
+                📋 View My Complaint
+
+            </button>
+
+        </div>
+
+
+        <div class="box">
+
+            <h3>📄 Certificates</h3>
+
+            <p>
+                Birth / Death Certificate साठी अर्ज करा.
+            </p>
+
+            <br>
+
+            <button
+                class="green"
+                onclick="closePopup();certificates()">
+
+                📄 Certificate Services
+
+            </button>
+
+        </div>
+
+
+        <button
+            class="close"
+            onclick="closePopup()">
+
+            🚪 Logout
+
+        </button>
+
+    `);
+}
+function myComplaint(){
+
+    const complaint = JSON.parse(
+        localStorage.getItem("smartgramComplaint") || "null"
+    );
+
+
+    if(!complaint){
+
+        popup("📋 My Complaint",`
+
+            <div class="box">
+
+                <h3>
+                    📭 कोणतीही Complaint नाही.
+                </h3>
+
+                <p>
+                    तुम्ही अजून कोणतीही समस्या नोंदवलेली नाही.
+                </p>
+
+            </div>
+
+
+            <button
+                class="green"
+                onclick="closePopup();complaint()">
+
+                📝 New Complaint
+
+            </button>
+
+
+            <button
+                class="close"
+                onclick="closePopup()">
+
+                ❌ बंद करा
+
+            </button>
+
+        `);
+
+        return;
+    }
+
+
+    let statusIcon = "🟡";
+
+    if(complaint.status === "In Progress"){
+        statusIcon = "🔵";
+    }
+
+    if(complaint.status === "Resolved"){
+        statusIcon = "🟢";
+    }
+
+
+    popup("📋 My Complaint",`
+
+        <div class="box">
+
+            <h3>
+                🆔 ${complaint.id}
+            </h3>
+
+            <p>
+                <b>नाव:</b>
+                ${complaint.name}
+            </p>
+
+            <p>
+                <b>Mobile:</b>
+                ${complaint.mobile}
+            </p>
+
+            <p>
+                <b>गाव:</b>
+                ${complaint.village}
+            </p>
+
+            <p>
+                <b>समस्येचा प्रकार:</b>
+                ${complaint.type}
+            </p>
+
+            <p>
+                <b>समस्या:</b>
+                ${complaint.desc}
+            </p>
+
+            <br>
+
+            <p>
+                <b>Status:</b>
+                ${statusIcon} ${complaint.status}
+            </p>
+
+        </div>
+
+
+        <button
+            class="green"
+            onclick="closePopup();trackComplaint()">
+
+            🔎 Track Complaint
+
+        </button>
+
+
+        <button
+            class="close"
+            onclick="closePopup()">
+
+            ❌ बंद करा
+
+        </button>
+
+    `);
+                }
+                </script>
+
+</body>
+</html>
