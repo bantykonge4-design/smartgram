@@ -544,7 +544,32 @@ document.getElementById("ideaResult").innerHTML=
 </div>`;
 
 }
+<script>
 
+function openService(id){
+
+    document.querySelectorAll(".service-page").forEach(function(page){
+        page.style.display="none";
+    });
+
+    document.getElementById(id).style.display="block";
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+}
+
+function showAllServices(){
+
+    document.querySelectorAll(".service-page").forEach(function(page){
+        page.style.display="none";
+    });
+
+    document.getElementById("servicesHome").style.display="block";
+}
+
+</script>
 </script>
 
 </body>
