@@ -1505,6 +1505,48 @@ function enterWebsite(){
 
   console.log("Firebase connected successfully!");
     </script>
+<div style="text-align:center; padding:30px;">
+    <h2>🔐 SmartGram Login</h2>
 
+    <button onclick="showAdminLogin()">
+        🔐 Admin Login
+    </button>
+
+    <button onclick="showCitizenLogin()">
+        👤 Citizen Login
+    </button>
+</div>
+
+<div id="adminLogin" style="display:none; text-align:center; padding:20px;">
+    <h3>🔐 Admin Login</h3>
+
+    <input type="email" id="adminEmail" placeholder="Admin Email">
+    <br><br>
+
+    <input type="password" id="adminPassword" placeholder="Password">
+    <br><br>
+
+    <button onclick="adminLogin()">Login</button>
+
+    <p id="adminMessage"></p>
+</div>
+
+<div id="citizenLogin" style="display:none; text-align:center; padding:20px;">
+    <h3>👤 Citizen Login</h3>
+
+    <input type="tel" id="citizenPhone" placeholder="+91XXXXXXXXXX">
+    <br><br>
+
+    <button onclick="sendOTP()">Send OTP</button>
+
+    <br><br>
+
+    <input type="text" id="otp" placeholder="Enter OTP">
+    <br><br>
+
+    <button onclick="verifyOTP()">Verify OTP</button>
+
+    <p id="citizenMessage"></p>
+</div>
 </body>
 </html>
