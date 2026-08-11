@@ -995,9 +995,63 @@ document.getElementById("birthPrint").remove();
 
 function death(){
 
-alert("⚰️ Death Certificate Application\n\nमृत्यू प्रमाणपत्रासाठी अर्ज प्रक्रिया लवकरच उपलब्ध होईल.");
+document.body.insertAdjacentHTML("beforeend",`
+<div id="deathPrint" style="
+width:210mm;
+min-height:297mm;
+padding:20mm;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+background:white;
+color:#111;
+border:2px solid #222;
+">
 
-}
+<div style="text-align:center">
+<h2>ग्रामपंचायत गोगरी</h2>
+<h3>मृत्यू प्रमाणपत्र — नमुना</h3>
+<p><b>SAMPLE / NOT AN OFFICIAL DOCUMENT</b></p>
+</div>
+
+<hr>
+
+<p><b>मृत व्यक्तीचे नाव :</b> __________________________</p>
+<p><b>मृत्यू तारीख :</b> ____ / ____ / ______</p>
+<p><b>मृत्यू ठिकाण :</b> ______________________________</p>
+<p><b>वय :</b> __________</p>
+<p><b>पत्ता :</b> _____________________________________</p>
+
+<br>
+
+<p><b>नोंदणी क्रमांक :</b> ______________________________</p>
+<p><b>प्रमाणपत्र दिनांक :</b> ____ / ____ / ______</p>
+
+<br><br>
+
+<div style="display:flex;justify-content:space-between">
+<div>दिनांक : __________</div>
+<div style="text-align:center">
+अधिकृत अधिकारी<br><br>
+________________
+</div>
+</div>
+
+<br><br>
+
+<p style="text-align:center;font-size:12px">
+हे केवळ शैक्षणिक/प्रकल्पासाठी तयार केलेले नमुना प्रमाणपत्र आहे.
+</p>
+
+</div>
+`);
+
+window.print();
+
+setTimeout(()=>{
+document.getElementById("deathPrint").remove();
+},1000);
+
+    }
 function enterWebsite(){
 
     document.getElementById("welcomeScreen").style.display="none";
