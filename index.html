@@ -938,7 +938,58 @@ document.getElementById("ideaResult").innerHTML=`
 
 function birth(){
 
-alert("🍼 Birth Certificate Application\n\nजन्म प्रमाणपत्रासाठी अर्ज प्रक्रिया लवकरच उपलब्ध होईल.");
+document.body.insertAdjacentHTML("beforeend",`
+<div id="birthPrint" style="
+width:210mm;
+min-height:297mm;
+padding:20mm;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+background:white;
+color:#111;
+border:2px solid #222;
+">
+
+<div style="text-align:center;">
+<h2>ग्रामपंचायत गोगरी</h2>
+<h3>जन्म प्रमाणपत्र — नमुना</h3>
+<p><b>SAMPLE / NOT AN OFFICIAL DOCUMENT</b></p>
+</div>
+
+<hr>
+
+<p><b>नाव :</b> ______________________________</p>
+<p><b>जन्म तारीख :</b> ____ / ____ / ______</p>
+<p><b>जन्म ठिकाण :</b> _______________________</p>
+<p><b>आईचे नाव :</b> _________________________</p>
+<p><b>वडिलांचे नाव :</b> ______________________</p>
+<p><b>पत्ता :</b> ______________________________</p>
+
+<br>
+
+<p><b>नोंदणी क्रमांक :</b> ______________________</p>
+<p><b>प्रमाणपत्र दिनांक :</b> ____ / ____ / ______</p>
+
+<br><br>
+
+<div style="display:flex;justify-content:space-between;">
+<div>दिनांक : __________</div>
+<div>अधिकृत अधिकारी<br><br>________________</div>
+</div>
+
+<br><br>
+<p style="text-align:center;font-size:12px;">
+हे केवळ शैक्षणिक/प्रकल्पासाठी तयार केलेले नमुना प्रमाणपत्र आहे.
+</p>
+
+</div>
+`);
+
+window.print();
+
+setTimeout(()=>{
+document.getElementById("birthPrint").remove();
+},1000);
 
 }
 
