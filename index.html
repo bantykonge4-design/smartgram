@@ -939,60 +939,296 @@ document.getElementById("ideaResult").innerHTML=`
 function birth(){
 
 document.body.insertAdjacentHTML("beforeend",`
-<div id="birthPrint" style="
-width:210mm;
-min-height:297mm;
-padding:20mm;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
-background:white;
-color:#111;
-border:2px solid #222;
-">
+<div id="birthForm" style="
+position:fixed;inset:0;background:#f1f3f4;
+z-index:9999;overflow:auto;padding:20px;
+font-family:Arial,sans-serif">
 
-<div style="text-align:center;">
-<h2>ग्रामपंचायत गोगरी</h2>
-<h3>जन्म प्रमाणपत्र — नमुना</h3>
-<p><b>SAMPLE / NOT AN OFFICIAL DOCUMENT</b></p>
-</div>
+<div style="
+max-width:650px;margin:auto;background:white;
+padding:25px;border-radius:12px;
+box-shadow:0 3px 15px #aaa">
+
+<h2 style="text-align:center;color:#176b3a;margin-bottom:5px">
+ग्रामपंचायत गोगरी
+</h2>
+
+<p style="text-align:center;margin-top:0">
+ता. मंगरुळपीर, जि. वाशिम, महाराष्ट्र
+</p>
+
+<h2 style="text-align:center">जन्म प्रमाणपत्र</h2>
+
+<p style="text-align:center;color:#b00000;font-weight:bold">
+DEMO / FOR EDUCATIONAL PROJECT
+</p>
 
 <hr>
 
-<p><b>नाव :</b> ______________________________</p>
-<p><b>जन्म तारीख :</b> ____ / ____ / ______</p>
-<p><b>जन्म ठिकाण :</b> _______________________</p>
-<p><b>आईचे नाव :</b> _________________________</p>
-<p><b>वडिलांचे नाव :</b> ______________________</p>
-<p><b>पत्ता :</b> ______________________________</p>
+<label><b>नाव</b></label>
+<input id="bName" placeholder="पूर्ण नाव"
+style="width:100%;padding:12px;margin:7px 0 15px;box-sizing:border-box">
+
+<label><b>जन्म तारीख</b></label>
+<input id="bDate" type="date"
+style="width:100%;padding:12px;margin:7px 0 15px;box-sizing:border-box">
+
+<label><b>जन्म ठिकाण</b></label>
+<input id="bPlace" placeholder="जन्म ठिकाण"
+style="width:100%;padding:12px;margin:7px 0 15px;box-sizing:border-box">
+
+<label><b>आईचे नाव</b></label>
+<input id="bMother" placeholder="आईचे पूर्ण नाव"
+style="width:100%;padding:12px;margin:7px 0 15px;box-sizing:border-box">
+
+<label><b>वडिलांचे नाव</b></label>
+<input id="bFather" placeholder="वडिलांचे पूर्ण नाव"
+style="width:100%;padding:12px;margin:7px 0 15px;box-sizing:border-box">
+
+<label><b>पत्ता</b></label>
+<textarea id="bAddress" rows="3" placeholder="पूर्ण पत्ता"
+style="width:100%;padding:12px;margin:7px 0 20px;box-sizing:border-box"></textarea>
+
+<button onclick="printBirth()" style="
+width:100%;padding:14px;background:#176b3a;
+color:white;border:0;border-radius:8px;
+font-size:17px">
+🖨️ प्रमाणपत्र तयार करा / Print
+</button>
+
+<button onclick="document.getElementById('birthForm').remove()" style="
+width:100%;padding:12px;margin-top:10px;
+background:#777;color:white;border:0;
+border-radius:8px;font-size:16px">
+बंद करा
+</button>
+
+</div>
+</div>
+`);
+}
+
+
+function printBirth(){
+
+let name=document.getElementById("bName").value.trim();
+let date=document.getElementById("bDate").value;
+let place=document.getElementById("bPlace").value.trim();
+let mother=document.getElementById("bMother").value.trim();
+let father=document.getElementById("bFather").value.trim();
+let address=document.getElementById("bAddress").value.trim();
+
+if(!name || !date){
+alert("कृपया नाव आणि जन्म तारीख भरा.");
+return;
+}
+
+let regNo="DEMO-"+Math.floor(100000+Math.random()*900000);
+
+let w=window.open("","_blank");
+
+w.document.write(`
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+<meta charset="UTF-8">
+<title>Birth Certificate Demo</title>
+
+<style>
+body{
+font-family:Arial,sans-serif;
+background:white;
+margin:0;
+padding:20px;
+color:#111;
+}
+
+.certificate{
+max-width:850px;
+margin:auto;
+border:2px solid #222;
+padding:35px;
+min-height:1000px;
+box-sizing:border-box;
+}
+
+.header{
+text-align:center;
+border-bottom:2px solid #222;
+padding-bottom:15px;
+}
+
+.header h2{
+margin:5px;
+font-size:25px;
+}
+
+.header h3{
+margin:8px;
+font-size:21px;
+}
+
+.demo{
+color:#b00000;
+font-weight:bold;
+font-size:13px;
+}
+
+.info{
+margin-top:25px;
+font-size:16px;
+line-height:2;
+}
+
+.line{
+border-bottom:1px solid #777;
+display:inline-block;
+min-width:300px;
+}
+
+.footer{
+margin-top:100px;
+display:flex;
+justify-content:space-between;
+}
+
+.stamp{
+width:130px;
+height:70px;
+border:2px dashed #176b3a;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+font-size:12px;
+color:#176b3a;
+}
+
+.note{
+margin-top:70px;
+text-align:center;
+font-size:11px;
+color:#555;
+}
+</style>
+</head>
+
+<body>
+
+<div class="certificate">
+
+<div class="header">
+
+<h2>ग्रामपंचायत गोगरी</h2>
+
+<p>
+तालुका – मंगरुळपीर,
+जिल्हा – वाशिम, महाराष्ट्र
+</p>
+
+<h3>जन्म प्रमाणपत्र</h3>
+
+<div class="demo">
+DEMO / FOR EDUCATIONAL PROJECT
+</div>
+
+</div>
+
+<div class="info">
+
+<p>
+<b>नाव :</b>
+<span class="line">${name}</span>
+</p>
+
+<p>
+<b>जन्म तारीख :</b>
+<span class="line">${date}</span>
+</p>
+
+<p>
+<b>जन्म ठिकाण :</b>
+<span class="line">${place}</span>
+</p>
+
+<p>
+<b>आईचे नाव :</b>
+<span class="line">${mother}</span>
+</p>
+
+<p>
+<b>वडिलांचे नाव :</b>
+<span class="line">${father}</span>
+</p>
+
+<p>
+<b>पत्ता :</b>
+<span class="line">${address}</span>
+</p>
 
 <br>
 
-<p><b>नोंदणी क्रमांक :</b> ______________________</p>
-<p><b>प्रमाणपत्र दिनांक :</b> ____ / ____ / ______</p>
+<p>
+<b>नोंदणी क्रमांक :</b> ${regNo}
+</p>
 
-<br><br>
-
-<div style="display:flex;justify-content:space-between;">
-<div>दिनांक : __________</div>
-<div>अधिकृत अधिकारी<br><br>________________</div>
-</div>
-
-<br><br>
-<p style="text-align:center;font-size:12px;">
-हे केवळ शैक्षणिक/प्रकल्पासाठी तयार केलेले नमुना प्रमाणपत्र आहे.
+<p>
+<b>प्रमाणपत्र दिनांक :</b>
+${new Date().toLocaleDateString("en-IN")}
 </p>
 
 </div>
+
+<div class="footer">
+
+<div>
+
+दिनांक : __________________
+
+</div>
+
+<div class="stamp">
+
+ग्रामपंचायत<br>
+गोगरी<br>
+DEMO STAMP
+
+</div>
+
+<div style="text-align:center">
+
+अधिकृत अधिकारी<br><br>
+____________________
+
+</div>
+
+</div>
+
+<div class="note">
+
+हे प्रमाणपत्र केवळ शैक्षणिक प्रकल्पाच्या प्रदर्शनासाठी तयार केलेले
+DEMO आहे. हे शासकीय/कायदेशीर प्रमाणपत्र नाही.
+
+</div>
+
+</div>
+
+<script>
+window.onload=function(){
+window.print();
+};
+<\/script>
+
+</body>
+</html>
 `);
 
-window.print();
+w.document.close();
 
-setTimeout(()=>{
-document.getElementById("birthPrint").remove();
-},1000);
+document.getElementById("birthForm").remove();
 
-}
-
+    }
 function death(){
 
 document.body.insertAdjacentHTML("beforeend",`
