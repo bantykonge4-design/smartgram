@@ -205,7 +205,102 @@ font-size:32px;
 }
 
 }
+.card .icon{
+    font-size:32px;
+}
 
+
+/* WELCOME SCREEN */
+
+#welcomeScreen{
+    position:fixed;
+    inset:0;
+    z-index:99999;
+    background:linear-gradient(135deg,#fff8e8,#f5f7f6);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:25px;
+}
+
+.welcome-photo img{
+    width:180px;
+    height:230px;
+    object-fit:cover;
+    border-radius:18px;
+    border:5px solid #176b3a;
+    box-shadow:0 5px 20px #0003;
+}
+
+.welcome-content h1{
+    color:#176b3a;
+    font-size:38px;
+    margin-top:18px;
+}
+
+.welcome-content h2{
+    color:#222;
+    margin-top:10px;
+    font-size:26px;
+}
+
+.welcome-content h3{
+    color:#555;
+    margin-top:8px;
+}
+
+.welcome-content p{
+    color:#666;
+    margin-top:7px;
+}
+
+.welcome-line{
+    width:100px;
+    height:3px;
+    background:#176b3a;
+    margin:15px auto;
+}
+
+.welcome-content h4{
+    font-size:20px;
+    color:#176b3a;
+}
+
+.welcome-text{
+    max-width:500px;
+    line-height:1.6;
+}
+
+.welcome-content button{
+    margin-top:20px;
+    background:#176b3a;
+    color:white;
+    border:0;
+    padding:14px 30px;
+    border-radius:10px;
+    font-size:17px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+@media(max-width:600px){
+
+    .welcome-photo img{
+        width:145px;
+        height:190px;
+    }
+
+    .welcome-content h1{
+        font-size:32px;
+    }
+
+    .welcome-content h2{
+        font-size:23px;
+    }
+
+}
 </style>
 </head>
 
@@ -852,7 +947,11 @@ function death(){
 alert("⚰️ Death Certificate Application\n\nमृत्यू प्रमाणपत्रासाठी अर्ज प्रक्रिया लवकरच उपलब्ध होईल.");
 
 }
+function enterWebsite(){
 
+    document.getElementById("welcomeScreen").style.display="none";
+
+}
 </script>
 
 </body>
