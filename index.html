@@ -1543,18 +1543,17 @@ function enterWebsite(){
 
     <input type="text" id="otp" placeholder="Enter OTP">
     <br><br>
+<script type="module">
 
-    <button onclick="verifyOTP()">Verify OTP</button>
-
-    <p id="citizenMessage"></p>
-</div>
-    <script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
 
 import {
     getAuth,
     signInWithEmailAndPassword
-} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+}
+from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+
 
 const firebaseConfig = {
     apiKey: "AIzaSyD6I-lrYAUCbaOyUx7n6W0BHJmOyCgJOoo",
@@ -1565,44 +1564,93 @@ const firebaseConfig = {
     appId: "1:160318195171:web:e62ab30c7ec3d4bc338cd6"
 };
 
+
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
+
+// ADMIN LOGIN BOX
 window.showAdminLogin = function () {
+
     document.getElementById("adminLogin").style.display = "block";
+
     document.getElementById("citizenLogin").style.display = "none";
 };
 
+
+// CITIZEN LOGIN BOX
 window.showCitizenLogin = function () {
+
     document.getElementById("citizenLogin").style.display = "block";
+
     document.getElementById("adminLogin").style.display = "none";
 };
 
+
+// ADMIN LOGIN
 window.adminLogin = async function () {
 
-    const email = document.getElementById("adminEmail").value;
-    const password = document.getElementById("adminPassword").value;
-    const message = document.getElementById("adminMessage");
+    const email =
+        document.getElementById("adminEmail").value.trim();
+
+    const password =
+        document.getElementById("adminPassword").value;
+
+    const message =
+        document.getElementById("adminMessage");
+
+
+    if (email === "" || password === "") {
+
+        message.innerHTML =
+            "⚠️ Email आणि Password भरा.";
+
+        return;
+    }
+
 
     try {
 
-        await signInWithEmailAndPassword(auth, email, password);
+        await signInWithEmailAndPassword(
+            auth,
+            email,
+            password
+        );
 
-        message.innerHTML = "✅ Admin Login Successful!";
+        message.innerHTML =
+            "✅ Admin Login Successful!";
 
-        setTimeout(() => {
-            window.location.href = "admin-dashboard.html";
-        }, 1000);
+        message.style.color = "green";
+
 
     } catch (error) {
 
-        message.innerHTML = "❌ Email किंवा Password चुकीचा आहे.";
-
         console.log(error);
+
+        message.innerHTML =
+            "❌ Login failed: " + error.message;
+
+        message.style.color = "red";
     }
+
 };
-    </script>
-    <script>
+
+
+// CITIZEN BUTTONS - पुढे Phone OTP जोडू
+window.sendOTP = function () {
+
+    document.getElementById("citizenMessage").innerHTML =
+        "📱 Phone OTP आपण पुढच्या step मध्ये जोडू.";
+};
+
+
+window.verifyOTP = function () {
+
+    document.getElementById("citizenMessage").innerHTML =
+        "⚠️ आधी Phone OTP setup करूया.";
+};
+
+</script>    <script>
 function showAdminLogin() {
     document.getElementById("adminLogin").style.display = "block";
     document.getElementById("citizenLogin").style.display = "none";
