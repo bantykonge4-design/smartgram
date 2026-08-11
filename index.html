@@ -1232,67 +1232,242 @@ document.getElementById("birthForm").remove();
 function death(){
 
 document.body.insertAdjacentHTML("beforeend",`
-<div id="deathPrint" style="
-width:210mm;
-min-height:297mm;
-padding:20mm;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
-background:white;
-color:#111;
-border:2px solid #222;
-">
 
-<div style="text-align:center">
-<h2>ग्रामपंचायत गोगरी</h2>
-<h3>मृत्यू प्रमाणपत्र — नमुना</h3>
-<p><b>SAMPLE / NOT AN OFFICIAL DOCUMENT</b></p>
-</div>
+<div id="deathForm" style="
+position:fixed;
+inset:0;
+background:#f2f4f3;
+z-index:9999;
+overflow:auto;
+padding:20px;
+font-family:Arial,sans-serif">
+
+<div style="
+max-width:650px;
+margin:auto;
+background:white;
+padding:25px;
+border-radius:14px;
+box-shadow:0 3px 15px #0002">
+
+<h2 style="text-align:center;color:#176b3a">
+ग्रामपंचायत गोगरी
+</h2>
+
+<p style="text-align:center">
+ता. मंगरूळपीर, जि. वाशिम, महाराष्ट्र
+</p>
 
 <hr>
 
-<p><b>मृत व्यक्तीचे नाव :</b> __________________________</p>
-<p><b>मृत्यू तारीख :</b> ____ / ____ / ______</p>
-<p><b>मृत्यू ठिकाण :</b> ______________________________</p>
-<p><b>वय :</b> __________</p>
-<p><b>पत्ता :</b> _____________________________________</p>
+<h2 style="text-align:center">
+मृत्यू नोंदणी अर्ज
+</h2>
 
-<br>
-
-<p><b>नोंदणी क्रमांक :</b> ______________________________</p>
-<p><b>प्रमाणपत्र दिनांक :</b> ____ / ____ / ______</p>
-
-<br><br>
-
-<div style="display:flex;justify-content:space-between">
-<div>दिनांक : __________</div>
-<div style="text-align:center">
-अधिकृत अधिकारी<br><br>
-________________
-</div>
-</div>
-
-<br><br>
-
-<p style="text-align:center;font-size:12px">
-हे केवळ शैक्षणिक/प्रकल्पासाठी तयार केलेले नमुना प्रमाणपत्र आहे.
+<p style="text-align:center;color:#777">
+Death Registration Application
 </p>
 
+<label><b>मृत व्यक्तीचे पूर्ण नाव</b></label>
+<input id="dName" placeholder="पूर्ण नाव"
+style="width:100%;padding:12px;margin:7px 0 15px;box-sizing:border-box">
+
+<label><b>मृत्यूची तारीख</b></label>
+<input id="dDate" type="date"
+style="width:100%;padding:12px;margin:7px 0 15px;box-sizing:border-box">
+
+<label><b>मृत्यूची वेळ</b></label>
+<input id="dTime" type="time"
+style="width:100%;padding:12px;margin:7px 0 15px;box-sizing:border-box">
+
+<label><b>मृत्यूचे ठिकाण</b></label>
+<select id="dPlace"
+style="width:100%;padding:12px;margin:7px 0 15px">
+
+<option value="">ठिकाण निवडा</option>
+<option>गोगरी</option>
+<option>शासकीय रुग्णालय</option>
+<option>खाजगी रुग्णालय</option>
+<option>घरी</option>
+<option>इतर</option>
+
+</select>
+
+<label><b>वय</b></label>
+<input id="dAge" type="number" placeholder="वय"
+style="width:100%;padding:12px;margin:7px 0 15px;box-sizing:border-box">
+
+<label><b>लिंग</b></label>
+<select id="dGender"
+style="width:100%;padding:12px;margin:7px 0 15px">
+
+<option value="">लिंग निवडा</option>
+<option>पुरुष</option>
+<option>स्त्री</option>
+<option>इतर</option>
+
+</select>
+
+<label><b>वडिलांचे / पतीचे नाव</b></label>
+<input id="dRelative"
+style="width:100%;padding:12px;margin:7px 0 15px;box-sizing:border-box">
+
+<label><b>अर्जदाराचे नाव</b></label>
+<input id="dApplicant"
+style="width:100%;padding:12px;margin:7px 0 15px;box-sizing:border-box">
+
+<label><b>मोबाइल नंबर</b></label>
+<input id="dMobile" type="tel"
+placeholder="10 अंकी मोबाइल नंबर"
+style="width:100%;padding:12px;margin:7px 0 15px;box-sizing:border-box">
+
+<label><b>पत्ता</b></label>
+<textarea id="dAddress" rows="4"
+placeholder="पूर्ण पत्ता"
+style="width:100%;padding:12px;margin:7px 0 20px;box-sizing:border-box"></textarea>
+
+<button onclick="printDeath()"
+style="
+width:100%;
+padding:14px;
+background:#176b3a;
+color:white;
+border:0;
+border-radius:8px;
+font-size:17px">
+
+🖨️ अर्ज तयार करा / Print
+
+</button>
+
+<button onclick="document.getElementById('deathForm').remove()"
+style="
+width:100%;
+padding:12px;
+margin-top:10px;
+background:#777;
+color:white;
+border:0;
+border-radius:8px">
+
+बंद करा
+
+</button>
+
 </div>
+</div>
+
 `);
+}
 
-window.print();
 
-setTimeout(()=>{
-document.getElementById("deathPrint").remove();
-},1000);
+function printDeath(){
 
-    }
-function enterWebsite(){
+let name=document.getElementById("dName").value.trim();
+let date=document.getElementById("dDate").value;
+let time=document.getElementById("dTime").value;
+let place=document.getElementById("dPlace").value;
+let age=document.getElementById("dAge").value;
+let gender=document.getElementById("dGender").value;
+let relative=document.getElementById("dRelative").value.trim();
+let applicant=document.getElementById("dApplicant").value.trim();
+let mobile=document.getElementById("dMobile").value.trim();
+let address=document.getElementById("dAddress").value.trim();
 
-    document.getElementById("welcomeScreen").style.display="none";
+if(!name || !date || !applicant){
+
+alert("कृपया आवश्यक माहिती भरा.");
+
+return;
 
 }
+
+let applicationNo =
+"DEMO-D-"+Math.floor(100000+Math.random()*900000);
+
+let w=window.open("","_blank");
+
+w.document.write(`
+
+<!DOCTYPE html>
+<html lang="mr">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>मृत्यू नोंदणी अर्ज</title>
+
+<style>
+
+body{
+font-family:Arial,sans-serif;
+background:white;
+padding:25px;
+color:#111;
+}
+
+.page{
+max-width:850px;
+margin:auto;
+border:2px solid #333;
+padding:35px;
+box-sizing:border-box;
+}
+
+.header{
+text-align:center;
+border-bottom:2px solid #333;
+padding-bottom:15px;
+}
+
+.header h1{
+font-size:24px;
+margin:5px;
+}
+
+.header h2{
+font-size:20px;
+margin:5px;
+}
+
+.demo{
+color:#b00000;
+font-weight:bold;
+font-size:12px;
+margin-top:8px;
+}
+
+.section{
+margin-top:25px;
+border:1px solid #555;
+}
+
+.section-title{
+background:#eee;
+padding:10px;
+font-weight:bold;
+}
+
+.grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+}
+
+.field{
+padding:13px;
+border-bottom:1px solid #aaa;
+border-right:1px solid #aaa;
+min-height:35px;
+}
+
+.field:nth-child(even){
+border-right:0;
+}
+
+.full
+
+
 </script>
 
 </body>
