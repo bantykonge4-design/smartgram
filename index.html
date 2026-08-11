@@ -1602,5 +1602,16 @@ window.adminLogin = async function () {
     }
 };
     </script>
+    <script>
+function showAdminLogin() {
+    document.getElementById("adminLogin").style.display = "block";
+    document.getElementById("citizenLogin").style.display = "none";
+}
+
+function showCitizenLogin() {
+    document.getElementById("citizenLogin").style.display = "block";
+    document.getElementById("adminLogin").style.display = "none";
+}
+    </script>
 </body>
 </html>
