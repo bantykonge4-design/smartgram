@@ -2,37 +2,20 @@
 <html lang="mr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>SmartGram</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>SmartGram - Digital Village</title>
+
 <style>
 
-body{
-    background:#f5f7f6;
-}
-
-/* इथे तुझा CSS */
-
-.services{
-    max-width:1000px;
-    margin:auto;
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:18px;
-}
-
-.service-box{
-    background:white;
-    padding:25px 15px;
-    text-align:center;
-    border-radius:15px;
-    box-shadow:0 3px 12px #0002;
-}
-
-</style>
-<style>
-body{
+*{
+box-sizing:border-box;
 margin:0;
+padding:0;
 font-family:Arial,sans-serif;
+}
+
+body{
 background:#f5f7f6;
 color:#222;
 }
@@ -40,275 +23,634 @@ color:#222;
 header{
 background:#176b3a;
 color:white;
+padding:25px 15px;
 text-align:center;
-padding:20px;
 }
 
-section{
-padding:20px 15px;
+header h1{
+font-size:32px;
 }
 
-h2{
+header p{
+margin-top:8px;
+}
+
+.hero{
+background:white;
+text-align:center;
+padding:45px 20px;
+}
+
+.hero h2{
+color:#176b3a;
+font-size:27px;
+margin-bottom:12px;
+}
+
+.hero p{
+color:#555;
+line-height:1.7;
+margin-bottom:20px;
+}
+
+button{
+border:0;
+border-radius:8px;
+padding:12px 20px;
+cursor:pointer;
+font-weight:bold;
+}
+
+.mainbtn{
+background:#176b3a;
+color:white;
+}
+
+.services{
+padding:30px 15px;
+}
+
+.services h2{
 text-align:center;
 color:#176b3a;
+margin-bottom:20px;
+}
+
+.grid{
+max-width:900px;
+margin:auto;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:15px;
 }
 
 .card{
 background:white;
+padding:25px 12px;
+text-align:center;
+border-radius:15px;
+box-shadow:0 3px 10px #0002;
+cursor:pointer;
+}
+
+.card:active{
+transform:scale(.97);
+}
+
+.card .icon{
+font-size:38px;
+margin-bottom:8px;
+}
+
+.card h3{
+color:#176b3a;
+margin-bottom:7px;
+}
+
+.card p{
+font-size:13px;
+color:#666;
+}
+
+.page{
+display:none;
+position:fixed;
+inset:0;
+background:#f5f7f6;
+z-index:9999;
+overflow:auto;
 padding:20px;
-margin:12px auto;
-max-width:550px;
-border-radius:12px;
-box-shadow:0 2px 8px #0002;
 }
 
-button{
-background:#176b3a;
-color:white;
-border:0;
-padding:12px 18px;
-border-radius:8px;
-font-weight:bold;
-margin-top:8px;
+.pagebox{
+background:white;
+max-width:600px;
+margin:10px auto;
+padding:25px;
+border-radius:15px;
+box-shadow:0 3px 15px #0002;
 }
 
-input,textarea,select{
+.pagebox h2{
+text-align:center;
+color:#176b3a;
+margin-bottom:20px;
+}
+
+input,select,textarea{
 width:100%;
 padding:12px;
-margin:8px 0 12px;
-box-sizing:border-box;
+margin:8px 0 15px;
 border:1px solid #ccc;
 border-radius:8px;
+font-size:15px;
 }
 
-.result{
-margin-top:15px;
-padding:12px;
-background:#effff3;
-border:1px solid #198754;
-border-radius:8px;
+label{
+font-weight:bold;
 }
+
+.green{
+background:#176b3a;
+color:white;
+}
+
+.close{
+background:#ddd;
+color:#222;
+margin-left:5px;
+}
+
+.info{
+background:#f5f7f6;
+padding:18px;
+border-radius:12px;
+margin-bottom:12px;
+}
+
+.info h3{
+color:#176b3a;
+margin-bottom:7px;
+}
+
+.success{
+margin-top:15px;
+padding:15px;
+background:#effff0;
+border:2px solid #198754;
+border-radius:10px;
+}
+
+footer{
+background:#123d27;
+color:white;
+text-align:center;
+padding:20px;
+margin-top:20px;
+}
+
+@media(max-width:500px){
+
+.grid{
+grid-template-columns:1fr 1fr;
+gap:10px;
+}
+
+.card{
+padding:20px 8px;
+}
+
+.card .icon{
+font-size:32px;
+}
+
+}
+
 </style>
 </head>
 
 <body>
 
 <header>
+
 <h1>🌾 SmartGram</h1>
-<p>Digital Village – Gogari</p>
+
+<p>Digital Village Grievance & Development System</p>
+
 </header>
 
-<!-- SERVICES -->
 
-<section>
+<section class="hero">
 
-<h2>🌾 SmartGram Services</h2>
+<h2>आपल्या गावासाठी डिजिटल व्यासपीठ</h2>
 
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:15px;padding:15px;">
+<p>
+गावातील समस्या नोंदवा, अधिकृत माहिती मिळवा
+आणि गावाच्या विकासात सहभागी व्हा.
+</p>
 
-<div onclick="document.getElementById('cname').scrollIntoView()"
-style="background:white;padding:25px 10px;text-align:center;border-radius:15px;box-shadow:0 3px 10px #0002;cursor:pointer;">
-<div style="font-size:38px;">📝</div>
+<button class="mainbtn" onclick="openPage('complaint')">
+📝 समस्या नोंदवा
+</button>
+
+</section>
+
+
+<section class="services">
+
+<h2>SmartGram Services</h2>
+
+<div class="grid">
+
+
+<div class="card" onclick="openPage('complaint')">
+
+<div class="icon">📝</div>
+
 <h3>Complaint</h3>
+
 <p>गावातील समस्या नोंदवा</p>
+
 </div>
 
-<div onclick="trackComplaint()"
-style="background:white;padding:25px 10px;text-align:center;border-radius:15px;box-shadow:0 3px 10px #0002;cursor:pointer;">
-<div style="font-size:38px;">🔎</div>
+
+<div class="card" onclick="openPage('track')">
+
+<div class="icon">🔎</div>
+
 <h3>Track Complaint</h3>
+
 <p>तक्रारीचा Status पाहा</p>
+
 </div>
 
-<div onclick="villageOfficials()"
-style="background:white;padding:25px 10px;text-align:center;border-radius:15px;box-shadow:0 3px 10px #0002;cursor:pointer;">
-<div style="font-size:38px;">👥</div>
+
+<div class="card" onclick="openPage('officials')">
+
+<div class="icon">👥</div>
+
 <h3>Village Officials</h3>
+
 <p>गावातील अधिकारी माहिती</p>
+
 </div>
 
-<div onclick="villageMap()"
-style="background:white;padding:25px 10px;text-align:center;border-radius:15px;box-shadow:0 3px 10px #0002;cursor:pointer;">
-<div style="font-size:38px;">🗺️</div>
+
+<div class="card" onclick="openPage('map')">
+
+<div class="icon">🗺️</div>
+
 <h3>Village Map</h3>
+
 <p>गावाचा नकाशा</p>
+
 </div>
 
-<div onclick="villageNotices()"
-style="background:white;padding:25px 10px;text-align:center;border-radius:15px;box-shadow:0 3px 10px #0002;cursor:pointer;">
-<div style="font-size:38px;">📢</div>
+
+<div class="card" onclick="openPage('notices')">
+
+<div class="icon">📢</div>
+
 <h3>Village Notices</h3>
+
 <p>गावातील सूचना</p>
+
 </div>
 
-<div onclick="villageIdeas()"
-style="background:white;padding:25px 10px;text-align:center;border-radius:15px;box-shadow:0 3px 10px #0002;cursor:pointer;">
-<div style="font-size:38px;">💡</div>
+
+<div class="card" onclick="openPage('ideas')">
+
+<div class="icon">💡</div>
+
 <h3>Village Ideas</h3>
-<p>गावाच्या विकासासाठी कल्पना</p>
+
+<p>गावासाठी कल्पना द्या</p>
+
 </div>
 
-<div onclick="certificates()"
-style="background:white;padding:25px 10px;text-align:center;border-radius:15px;box-shadow:0 3px 10px #0002;cursor:pointer;">
-<div style="font-size:38px;">📄</div>
+
+<div class="card" onclick="openPage('certificates')">
+
+<div class="icon">📄</div>
+
 <h3>Certificates</h3>
+
 <p>जन्म / मृत्यू अर्ज</p>
+
 </div>
+
 
 </div>
 
 </section>
-<!-- COMPLAINT -->
 
-<section>
 
-<h2>📝 Complaint</h2>
+<footer>
 
-<div class="card">
+© 2026 SmartGram<br>
+
+Digital Village Development Initiative
+
+</footer>
+
+
+
+<!-- COMPLAINT PAGE -->
+
+<div class="page" id="complaint">
+
+<div class="pagebox">
+
+<h2>📝 ग्राम समस्या नोंदणी</h2>
 
 <label>नाव</label>
-<input id="cname" placeholder="तुमचे नाव">
+
+<input id="cname" placeholder="तुमचे पूर्ण नाव">
+
 
 <label>मोबाइल नंबर</label>
-<input id="cmobile" placeholder="मोबाइल नंबर">
+
+<input id="cmobile" placeholder="10 अंकी मोबाइल नंबर">
+
+
+<label>गाव</label>
+
+<input id="cvillage" value="गोगरी">
+
 
 <label>समस्येचा प्रकार</label>
 
 <select id="ctype">
+
 <option>रस्ता</option>
 <option>पाणी</option>
 <option>वीज</option>
 <option>स्वच्छता</option>
 <option>गटार</option>
+<option>शासकीय सेवा</option>
 <option>इतर</option>
+
 </select>
+
 
 <label>समस्येचे वर्णन</label>
 
-<textarea id="cdesc" rows="4"
-placeholder="तुमची समस्या लिहा"></textarea>
+<textarea id="cdesc" rows="5"
+placeholder="तुमची समस्या सविस्तर लिहा"></textarea>
 
-<button onclick="submitComplaint()">
-📤 Complaint Submit
+
+<button class="green" onclick="submitComplaint()">
+📤 समस्या नोंदवा
+</button>
+
+<button class="close" onclick="closePages()">
+❌ बंद करा
 </button>
 
 <div id="complaintResult"></div>
 
 </div>
-</section>
+
+</div>
 
 
-<!-- TRACK -->
 
-<section>
+<!-- TRACK PAGE -->
+
+<div class="page" id="track">
+
+<div class="pagebox">
 
 <h2>🔎 Track Complaint</h2>
 
-<div class="card">
+<p style="margin-bottom:15px;">
+तुमचा Complaint ID टाका.
+</p>
 
 <input id="trackId"
-placeholder="Complaint ID उदा. SG-123456">
+placeholder="उदा. SG-123456">
 
-<button onclick="trackComplaint()">
+<button class="green" onclick="trackNow()">
 🔎 Track
+</button>
+
+<button class="close" onclick="closePages()">
+❌ बंद करा
 </button>
 
 <div id="trackResult"></div>
 
 </div>
-</section>
-
-
-<!-- CERTIFICATE -->
-
-<section>
-
-<h2>📄 Certificate</h2>
-
-<div class="card">
-
-<h3>🍼 Birth Certificate</h3>
-
-<p>जन्म प्रमाणपत्रासाठी अर्ज करा.</p>
-
-<button onclick="birthCertificate()">
-Birth Certificate
-</button>
-
-<hr>
-
-<h3>⚰️ Death Certificate</h3>
-
-<p>मृत्यू प्रमाणपत्रासाठी अर्ज करा.</p>
-
-<button onclick="deathCertificate()">
-Death Certificate
-</button>
-
-<div id="certificateResult"></div>
 
 </div>
-</section>
 
 
-<!-- SARPANCH -->
 
-<section>
+<!-- OFFICIALS PAGE -->
+
+<div class="page" id="officials">
+
+<div class="pagebox">
 
 <h2>👥 Village Officials</h2>
 
-<div class="card">
+<div class="info">
 
 <h3>👨‍💼 सरपंच</h3>
 
-<p>
-<b>नाव:</b> श्री केशव ज्ञानदेव जटाळे
+<p>नाव: ग्रामपंचायत सरपंच</p>
+
+<p>गोगरी ग्रामपंचायत</p>
+
+</div>
+
+
+<div class="info">
+
+<h3>👨‍💼 उपसरपंच</h3>
+
+<p>गोगरी ग्रामपंचायत</p>
+
+</div>
+
+
+<div class="info">
+
+<h3>👨‍💼 ग्रामसेवक</h3>
+
+<p>गोगरी ग्रामपंचायत</p>
+
+</div>
+
+
+<div class="info">
+
+<h3>👨‍💼 तलाठी</h3>
+
+<p>गोगरी, ता. मंगरूळपीर</p>
+
+</div>
+
+
+<button class="close" onclick="closePages()">
+❌ बंद करा
+</button>
+
+</div>
+
+</div>
+
+
+
+<!-- MAP PAGE -->
+
+<div class="page" id="map">
+
+<div class="pagebox">
+
+<h2>🗺️ Village Map</h2>
+
+<p style="margin-bottom:15px;text-align:center;">
+
+गोगरी, ता. मंगरूळपीर,
+जि. वाशिम
+
 </p>
 
-<p>
-<b>गाव:</b> गोगरी
-</p>
+<iframe
+src="https://www.google.com/maps?q=Gogari,Mangrulpir,Washim,Maharashtra&output=embed"
+width="100%"
+height="350"
+style="border:0;border-radius:12px;">
+</iframe>
+
+<br><br>
+
+<button class="close" onclick="closePages()">
+❌ बंद करा
+</button>
+
+</div>
+
+</div>
+
+
+
+<!-- NOTICES PAGE -->
+
+<div class="page" id="notices">
+
+<div class="pagebox">
+
+<h2>📢 Village Notices</h2>
+
+<div class="info">
+
+<h3>📌 ग्रामपंचायत सूचना</h3>
 
 <p>
-<b>तालुका:</b> मंगरूळपीर
-</p>
-
-<p>
-<b>जिल्हा:</b> वाशिम
+गावातील नवीन सूचना येथे प्रकाशित केली जाईल.
 </p>
 
 </div>
 
-</section>
+
+<div class="info">
+
+<h3>📢 नागरिकांसाठी सूचना</h3>
+
+<p>
+नागरिकांनी नियमितपणे सूचना तपासाव्यात.
+</p>
+
+</div>
 
 
-<!-- VILLAGE IDEA -->
+<button class="close" onclick="closePages()">
+❌ बंद करा
+</button>
 
-<section>
+</div>
+
+</div>
+
+
+
+<!-- IDEAS PAGE -->
+
+<div class="page" id="ideas">
+
+<div class="pagebox">
 
 <h2>💡 Village Ideas</h2>
 
-<div class="card">
+<p style="margin-bottom:15px;">
+गावाच्या विकासासाठी तुमची कल्पना द्या.
+</p>
 
-<input id="ideaName"
-placeholder="तुमचे नाव">
+<label>तुमचे नाव</label>
 
-<textarea id="idea"
-rows="4"
-placeholder="गावाच्या विकासासाठी तुमची कल्पना"></textarea>
+<input id="ideaName" placeholder="तुमचे नाव">
 
-<button onclick="sendIdea()">
+
+<label>तुमची कल्पना</label>
+
+<textarea id="ideaText" rows="5"
+placeholder="गावाच्या विकासासाठी कल्पना लिहा"></textarea>
+
+
+<button class="green" onclick="submitIdea()">
 📤 Idea Submit
+</button>
+
+<button class="close" onclick="closePages()">
+❌ बंद करा
 </button>
 
 <div id="ideaResult"></div>
 
 </div>
 
-</section>
+</div>
+
+
+
+<!-- CERTIFICATE PAGE -->
+
+<div class="page" id="certificates">
+
+<div class="pagebox">
+
+<h2>📄 Certificate Services</h2>
+
+<div class="info" onclick="birth()" style="cursor:pointer;">
+
+<h3>🍼 Birth Certificate</h3>
+
+<p>जन्म प्रमाणपत्रासाठी अर्ज करा.</p>
+
+</div>
+
+
+<div class="info" onclick="death()" style="cursor:pointer;">
+
+<h3>⚰️ Death Certificate</h3>
+
+<p>मृत्यू प्रमाणपत्रासाठी अर्ज करा.</p>
+
+</div>
+
+
+<button class="close" onclick="closePages()">
+❌ बंद करा
+</button>
+
+</div>
+
+</div>
+
 
 
 <script>
+
+function openPage(id){
+
+closePages();
+
+document.getElementById(id).style.display="block";
+
+}
+
+function closePages(){
+
+document.querySelectorAll(".page").forEach(function(page){
+
+page.style.display="none";
+
+});
+
+}
+
 
 /* COMPLAINT */
 
@@ -318,49 +660,68 @@ let name=document.getElementById("cname").value.trim();
 
 let mobile=document.getElementById("cmobile").value.trim();
 
+let village=document.getElementById("cvillage").value.trim();
+
 let type=document.getElementById("ctype").value;
 
 let desc=document.getElementById("cdesc").value.trim();
 
-if(!name || !mobile || !desc){
+
+if(!name || !mobile || !village || !desc){
 
 alert("कृपया सर्व माहिती भरा.");
 
 return;
+
 }
+
 
 let id="SG-"+Math.floor(100000+Math.random()*900000);
 
-let complaint={
+
+let data={
+
 id:id,
 name:name,
 mobile:mobile,
+village:village,
 type:type,
 desc:desc,
 status:"Pending"
+
 };
+
 
 localStorage.setItem(
 "smartgramComplaint",
-JSON.stringify(complaint)
+JSON.stringify(data)
 );
 
-document.getElementById("complaintResult").innerHTML=
 
-`<div class="result">
-<b>✅ Complaint Submitted!</b>
-<br><br>
-Complaint ID:
-<h3>${id}</h3>
+document.getElementById("complaintResult").innerHTML=`
+
+<div class="success">
+
+<h3>✅ समस्या यशस्वीरित्या नोंदवली!</h3>
+
+<p>Complaint ID:</p>
+
+<h2>${id}</h2>
+
+<p>
 हा ID Track Complaint साठी जपून ठेवा.
-</div>`;
+</p>
+
+</div>
+
+`;
 
 }
 
 
 /* TRACK */
 
-function trackComplaint(){
+function trackNow(){
 
 let id=document.getElementById("trackId").value.trim();
 
@@ -368,209 +729,93 @@ let data=JSON.parse(
 localStorage.getItem("smartgramComplaint") || "null"
 );
 
+
 if(data && data.id===id){
 
-document.getElementById("trackResult").innerHTML=
+document.getElementById("trackResult").innerHTML=`
 
-`<div class="result">
-<b>✅ Complaint Found</b>
-<br><br>
-ID: ${data.id}<br>
-Type: ${data.type}<br>
-Status: 🟡 ${data.status}
-</div>`;
+<div class="success">
+
+<h3>✅ Complaint Found</h3>
+
+<p><b>Complaint ID:</b> ${data.id}</p>
+
+<p><b>Type:</b> ${data.type}</p>
+
+<p><b>Status:</b> 🟡 ${data.status}</p>
+
+</div>
+
+`;
 
 }else{
 
-document.getElementById("trackResult").innerHTML=
+document.getElementById("trackResult").innerHTML=`
 
-`<div style="color:red;margin-top:15px">
+<p style="color:red;margin-top:20px;">
+
 ❌ Complaint ID सापडली नाही.
-</div>`;
+
+</p>
+
+`;
 
 }
 
 }
 
 
-/* BIRTH */
+/* IDEA */
 
-function birthCertificate(){
-
-document.getElementById("certificateResult").innerHTML=
-
-`<div class="card">
-
-<h3>🍼 Birth Certificate Application</h3>
-
-<input id="birthName"
-placeholder="बाळाचे नाव">
-
-<input id="birthDate"
-type="date">
-
-<input id="father"
-placeholder="वडिलांचे नाव">
-
-<input id="mother"
-placeholder="आईचे नाव">
-
-<button onclick="submitBirth()">
-📤 Submit
-</button>
-
-<div id="birthResult"></div>
-
-</div>`;
-
-}
-
-
-function submitBirth(){
-
-let name=document.getElementById("birthName").value;
-
-let date=document.getElementById("birthDate").value;
-
-let father=document.getElementById("father").value;
-
-let mother=document.getElementById("mother").value;
-
-if(!name || !date || !father || !mother){
-
-alert("सर्व माहिती भरा.");
-
-return;
-}
-
-let no="BC-"+Math.floor(100000+Math.random()*900000);
-
-document.getElementById("birthResult").innerHTML=
-
-`<div class="result">
-✅ Birth Application Submitted!
-<br><br>
-Application No:
-<h3>${no}</h3>
-</div>`;
-
-}
-
-
-/* DEATH */
-
-function deathCertificate(){
-
-document.getElementById("certificateResult").innerHTML=
-
-`<div class="card">
-
-<h3>⚰️ Death Certificate Application</h3>
-
-<input id="deathName"
-placeholder="मृत व्यक्तीचे नाव">
-
-<input id="deathDate"
-type="date">
-
-<input id="deathPlace"
-placeholder="मृत्यू ठिकाण">
-
-<input id="relative"
-placeholder="नातेवाईकाचे नाव">
-
-<button onclick="submitDeath()">
-📤 Submit
-</button>
-
-<div id="deathResult"></div>
-
-</div>`;
-
-}
-
-
-function submitDeath(){
-
-let name=document.getElementById("deathName").value;
-
-let date=document.getElementById("deathDate").value;
-
-let place=document.getElementById("deathPlace").value;
-
-let relative=document.getElementById("relative").value;
-
-if(!name || !date || !place || !relative){
-
-alert("सर्व माहिती भरा.");
-
-return;
-}
-
-let no="DC-"+Math.floor(100000+Math.random()*900000);
-
-document.getElementById("deathResult").innerHTML=
-
-`<div class="result">
-✅ Death Application Submitted!
-<br><br>
-Application No:
-<h3>${no}</h3>
-</div>`;
-
-}
-
-
-/* VILLAGE IDEA */
-
-function sendIdea(){
+function submitIdea(){
 
 let name=document.getElementById("ideaName").value.trim();
 
-let idea=document.getElementById("idea").value.trim();
+let idea=document.getElementById("ideaText").value.trim();
+
 
 if(!name || !idea){
 
-alert("नाव आणि Idea भरा.");
+alert("कृपया नाव आणि कल्पना भरा.");
 
 return;
-}
-
-document.getElementById("ideaResult").innerHTML=
-
-`<div class="result">
-✅ धन्यवाद ${name}!<br>
-तुमची Village Idea नोंदवली आहे.
-</div>`;
 
 }
-<script>
 
-function openService(id){
 
-    document.querySelectorAll(".service-page").forEach(function(page){
-        page.style.display="none";
-    });
+document.getElementById("ideaResult").innerHTML=`
 
-    document.getElementById(id).style.display="block";
+<div class="success">
 
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
+<h3>✅ Idea Submitted!</h3>
+
+<p>धन्यवाद ${name}!</p>
+
+<p>तुमची कल्पना नोंदवली आहे.</p>
+
+</div>
+
+`;
+
 }
 
-function showAllServices(){
 
-    document.querySelectorAll(".service-page").forEach(function(page){
-        page.style.display="none";
-    });
+/* CERTIFICATES */
 
-    document.getElementById("servicesHome").style.display="block";
+function birth(){
+
+alert("🍼 Birth Certificate Application\n\nजन्म प्रमाणपत्रासाठी अर्ज प्रक्रिया लवकरच उपलब्ध होईल.");
+
 }
 
-</script>
+function death(){
+
+alert("⚰️ Death Certificate Application\n\nमृत्यू प्रमाणपत्रासाठी अर्ज प्रक्रिया लवकरच उपलब्ध होईल.");
+
+}
+
 </script>
 
 </body>
-    </html>
+
+</html>
