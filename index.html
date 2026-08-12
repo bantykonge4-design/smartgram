@@ -886,77 +886,54 @@ document.getElementById("adminLogin").style.display="none";
 
 /* COMPLAINT */
 
-function submitComplaint(){
+async function submitComplaint(){
 
-let name =
-document.getElementById("cname").value.trim();
+    let name = document.getElementById("cname").value.trim();
+    let mobile = document.getElementById("cmobile").value.trim();
+    let village = document.getElementById("cvillage").value.trim();
+    let type = document.getElementById("ctype").value;
+    let desc = document.getElementById("cdesc").value.trim();
 
-let mobile =
-document.getElementById("cmobile").value.trim();
+    if(!name || !mobile || !village || !desc){
+        alert("कृपया सर्व माहिती भरा.");
+        return;
+    }
 
-let village =
-document.getElementById("cvillage").value.trim();
+    let id = "SG-" + Math.floor(100000 + Math.random() * 900000);
 
-let type =
-document.getElementById("ctype").value;
+    try {
 
-let desc =
-document.getElementById("cdesc").value.trim();
+        await addDoc(collection(db, "complaints"), {
+            complaintId: id,
+            name: name,
+            mobile: mobile,
+            village: village,
+            type: type,
+            description: desc,
+            status: "Pending",
+            createdAt: new Date().toISOString()
+        });
 
+        document.getElementById("complaintResult").innerHTML = `
+            <div class="success">
+                <h3>✅ समस्या यशस्वीरित्या नोंदवली!</h3>
+                <p>Complaint ID:</p>
+                <h2>${id}</h2>
+                <p>हा ID Track Complaint साठी जपून ठेवा.</p>
+            </div>
+        `;
 
-if(!name || !mobile || !village || !desc){
+        document.getElementById("cname").value = "";
+        document.getElementById("cmobile").value = "";
+        document.getElementById("cdesc").value = "";
 
-alert("कृपया सर्व माहिती भरा.");
+    } catch(error) {
 
-return;
+        console.error(error);
 
-}
+        alert("❌ Complaint save झाली नाही. Firebase तपासा.");
 
-
-let id =
-"SG-" +
-Math.floor(100000 + Math.random() * 900000);
-
-
-let data={
-
-id:id,
-name:name,
-mobile:mobile,
-village:village,
-type:type,
-desc:desc,
-status:"Pending"
-
-};
-
-
-localStorage.setItem(
-"smartgramComplaint",
-JSON.stringify(data)
-);
-
-
-document.getElementById(
-"complaintResult"
-).innerHTML = `
-
-<div class="success">
-
-<h3>✅ समस्या यशस्वीरित्या नोंदवली!</h3>
-
-<p>Complaint ID:</p>
-
-<h2>${id}</h2>
-
-<p>
-हा ID Track Complaint साठी जपून ठेवा.
-</p>
-
-</div>
-
-`;
-
+    }
 }
 
 
