@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="mr">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>SmartGram Gogari | ग्रामपंचायत व गावाची माहिती</title>
+<title>SmartGram Gogari | Digital Village</title>
 
 <meta name="description"
-content="SmartGram Gogari – ग्रामपंचायत, अधिकारी, नागरिक सेवा, समस्या नोंदणी व गावाची माहिती.">
+content="SmartGram Gogari – ग्रामपंचायत, नागरिक सेवा, तक्रार नोंदणी आणि गावाची माहिती.">
 
 <style>
+
 *{
     box-sizing:border-box;
     margin:0;
@@ -61,7 +63,6 @@ button{
     padding:12px 20px;
     cursor:pointer;
     font-weight:bold;
-    margin:4px;
 }
 
 .mainbtn,
@@ -89,7 +90,7 @@ button{
     max-width:900px;
     margin:auto;
     display:grid;
-    grid-template-columns:repeat(2,1fr);
+    grid-template-columns:1fr 1fr;
     gap:15px;
 }
 
@@ -100,15 +101,10 @@ button{
     border-radius:15px;
     box-shadow:0 3px 10px #0002;
     cursor:pointer;
-    transition:.2s;
 }
 
 .card:hover{
-    transform:translateY(-3px);
-}
-
-.card:active{
-    transform:scale(.97);
+    transform:translateY(-2px);
 }
 
 .card .icon{
@@ -138,7 +134,7 @@ button{
 
 .pagebox{
     background:white;
-    max-width:600px;
+    max-width:650px;
     margin:10px auto;
     padding:25px;
     border-radius:15px;
@@ -194,6 +190,7 @@ footer{
     margin-top:20px;
 }
 
+
 /* WELCOME */
 
 #welcomeScreen{
@@ -209,13 +206,8 @@ footer{
     padding:25px;
 }
 
-.welcome-photo img{
-    width:180px;
-    height:230px;
-    object-fit:cover;
-    border-radius:18px;
-    border:5px solid #176b3a;
-    box-shadow:0 5px 20px #0003;
+.welcome-photo{
+    font-size:100px;
 }
 
 .welcome-content h1{
@@ -266,35 +258,116 @@ footer{
     font-size:17px;
 }
 
+
 /* LOGIN */
 
 .login-section{
-    background:white;
-    padding:30px 15px;
     text-align:center;
+    padding:30px 15px;
+    background:white;
+    margin-top:20px;
 }
 
-.login-box{
-    max-width:500px;
-    margin:20px auto;
-    padding:25px;
-    background:#f5f7f6;
-    border-radius:15px;
-}
-
-.login-box h2{
+.login-section h2{
     color:#176b3a;
-    margin-bottom:15px;
+    margin-bottom:20px;
 }
 
-.message{
-    margin-top:15px;
-    font-weight:bold;
+.login-buttons button{
+    margin:5px;
 }
+
+
+/* ADMIN DASHBOARD */
+
+#adminDashboard{
+    display:none;
+    min-height:100vh;
+    background:#f5f7f6;
+    padding:30px 15px;
+}
+
+.dashboard-box{
+    max-width:950px;
+    margin:auto;
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 3px 15px #0002;
+}
+
+.dashboard-box h2{
+    text-align:center;
+    color:#176b3a;
+}
+
+.dashboard-box > p{
+    text-align:center;
+    color:#555;
+    margin:10px 0 25px;
+}
+
+.dashboard-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+}
+
+.dashboard-card{
+    background:#f5f7f6;
+    padding:25px;
+    border-radius:12px;
+    text-align:center;
+    cursor:pointer;
+}
+
+.dashboard-card:hover{
+    background:#e9f3ed;
+}
+
+.dashboard-card .icon{
+    font-size:40px;
+}
+
+.dashboard-card h3{
+    color:#176b3a;
+    margin:10px 0;
+}
+
+.logout{
+    margin-top:25px;
+    width:100%;
+    padding:14px;
+    background:#d32f2f;
+    color:white;
+    font-size:16px;
+}
+
+
+/* ADMIN DATA */
+
+.admin-data{
+    display:none;
+    margin-top:20px;
+    padding:20px;
+    background:white;
+    border-radius:12px;
+}
+
+.complaint-item{
+    background:#f5f7f6;
+    padding:15px;
+    border-radius:10px;
+    margin-bottom:10px;
+}
+
+
+/* MOBILE */
 
 @media(max-width:600px){
 
-    .grid{
+    .grid,
+    .dashboard-grid{
         grid-template-columns:1fr 1fr;
         gap:10px;
     }
@@ -307,11 +380,6 @@ footer{
         font-size:32px;
     }
 
-    .welcome-photo img{
-        width:145px;
-        height:190px;
-    }
-
     .welcome-content h1{
         font-size:32px;
     }
@@ -319,20 +387,22 @@ footer{
     .welcome-content h2{
         font-size:23px;
     }
+
 }
+
 </style>
+
 </head>
 
 <body>
 
-<!-- WELCOME SCREEN -->
+
+<!-- ================= WELCOME SCREEN ================= -->
 
 <div id="welcomeScreen">
 
     <div class="welcome-photo">
-        <img
-        src="https://commons.wikimedia.org/wiki/Special:Redirect/file/CHATRAPATI%20SHIVAJI%20MAHARAJ.jpg"
-        alt="छत्रपती शिवाजी महाराज">
+        🌾
     </div>
 
     <div class="welcome-content">
@@ -364,36 +434,43 @@ footer{
 </div>
 
 
-<!-- HEADER -->
+<!-- ================= HEADER ================= -->
 
 <header>
 
-<h1>🌾 SmartGram</h1>
+    <h1>🌾 SmartGram</h1>
 
-<p>Digital Village Grievance & Development System</p>
+    <p>
+        Digital Village Grievance & Development System
+    </p>
 
 </header>
 
 
-<!-- HERO -->
+<!-- ================= HERO ================= -->
 
 <section class="hero">
 
-<h2>आपल्या गावासाठी डिजिटल व्यासपीठ</h2>
+    <h2>
+        आपल्या गावासाठी डिजिटल व्यासपीठ
+    </h2>
 
-<p>
-गावातील समस्या नोंदवा, अधिकृत माहिती मिळवा
-आणि गावाच्या विकासात सहभागी व्हा.
-</p>
+    <p>
+        गावातील समस्या नोंदवा, अधिकृत माहिती मिळवा
+        आणि गावाच्या विकासात सहभागी व्हा.
+    </p>
 
-<button class="mainbtn" onclick="openPage('complaint')">
-📝 समस्या नोंदवा
-</button>
+    <button class="mainbtn"
+            onclick="openPage('complaint')">
+
+        📝 समस्या नोंदवा
+
+    </button>
 
 </section>
 
 
-<!-- SERVICES -->
+<!-- ================= SERVICES ================= -->
 
 <section class="services">
 
@@ -401,124 +478,195 @@ footer{
 
 <div class="grid">
 
-<div class="card" onclick="openPage('complaint')">
-<div class="icon">📝</div>
-<h3>Complaint</h3>
-<p>गावातील समस्या नोंदवा</p>
-</div>
 
-<div class="card" onclick="openPage('track')">
-<div class="icon">🔎</div>
-<h3>Track Complaint</h3>
-<p>तक्रारीचा Status पाहा</p>
-</div>
+<div class="card"
+     onclick="openPage('complaint')">
 
-<div class="card" onclick="openPage('officials')">
-<div class="icon">👥</div>
-<h3>Village Officials</h3>
-<p>गावातील अधिकारी माहिती</p>
-</div>
+    <div class="icon">📝</div>
 
-<div class="card" onclick="openPage('map')">
-<div class="icon">🗺️</div>
-<h3>Village Map</h3>
-<p>गावाचा नकाशा</p>
-</div>
+    <h3>Complaint</h3>
 
-<div class="card" onclick="openPage('notices')">
-<div class="icon">📢</div>
-<h3>Village Notices</h3>
-<p>गावातील सूचना</p>
-</div>
-
-<div class="card" onclick="openPage('ideas')">
-<div class="icon">💡</div>
-<h3>Village Ideas</h3>
-<p>गावासाठी कल्पना द्या</p>
-</div>
-
-<div class="card" onclick="openPage('certificates')">
-<div class="icon">📄</div>
-<h3>Certificates</h3>
-<p>जन्म / मृत्यू अर्ज</p>
-</div>
+    <p>गावातील समस्या नोंदवा</p>
 
 </div>
+
+
+<div class="card"
+     onclick="openPage('track')">
+
+    <div class="icon">🔎</div>
+
+    <h3>Track Complaint</h3>
+
+    <p>तक्रारीचा Status पाहा</p>
+
+</div>
+
+
+<div class="card"
+     onclick="openPage('officials')">
+
+    <div class="icon">👥</div>
+
+    <h3>Village Officials</h3>
+
+    <p>गावातील अधिकारी माहिती</p>
+
+</div>
+
+
+<div class="card"
+     onclick="openPage('map')">
+
+    <div class="icon">🗺️</div>
+
+    <h3>Village Map</h3>
+
+    <p>गावाचा नकाशा</p>
+
+</div>
+
+
+<div class="card"
+     onclick="openPage('notices')">
+
+    <div class="icon">📢</div>
+
+    <h3>Village Notices</h3>
+
+    <p>गावातील सूचना</p>
+
+</div>
+
+
+<div class="card"
+     onclick="openPage('ideas')">
+
+    <div class="icon">💡</div>
+
+    <h3>Village Ideas</h3>
+
+    <p>गावासाठी कल्पना द्या</p>
+
+</div>
+
+
+<div class="card"
+     onclick="openPage('certificates')">
+
+    <div class="icon">📄</div>
+
+    <h3>Certificates</h3>
+
+    <p>जन्म / मृत्यू अर्ज</p>
+
+</div>
+
+
+</div>
+
 </section>
 
 
-<!-- LOGIN SECTION -->
+<!-- ================= LOGIN ================= -->
 
 <section class="login-section">
 
 <h2>🔐 SmartGram Login</h2>
 
-<button class="green" onclick="showAdminLogin()">
-🔐 Admin Login
+<div class="login-buttons">
+
+<button class="green"
+        onclick="showAdminLogin()">
+
+    🔐 Admin Login
+
 </button>
 
-<button onclick="showCitizenLogin()">
-👤 Citizen Login
+<button
+        onclick="showCitizenLogin()">
+
+    👤 Citizen Login
+
 </button>
+
+</div>
 
 
 <!-- ADMIN LOGIN -->
 
-<div id="adminLogin" class="login-box" style="display:none;">
+<div id="adminLogin"
+     style="display:none;max-width:450px;margin:25px auto;">
 
-<h2>🔐 Admin Login</h2>
+    <h3>🔐 Admin Login</h3>
 
-<input
-type="email"
-id="adminEmail"
-placeholder="Admin Email">
+    <input
+        type="email"
+        id="adminEmail"
+        placeholder="Admin Email">
 
-<input
-type="password"
-id="adminPassword"
-placeholder="Password">
+    <input
+        type="password"
+        id="adminPassword"
+        placeholder="Password">
 
-<button class="green" onclick="adminLogin()">
-Login
-</button>
+    <button
+        class="green"
+        onclick="adminLogin()">
 
-<p id="adminMessage" class="message"></p>
+        Login
+
+    </button>
+
+    <p id="adminMessage"
+       style="margin-top:15px;">
+    </p>
 
 </div>
 
 
 <!-- CITIZEN LOGIN -->
 
-<div id="citizenLogin" class="login-box" style="display:none;">
+<div id="citizenLogin"
+     style="display:none;max-width:450px;margin:25px auto;">
 
-<h2>👤 Citizen Login</h2>
+    <h3>👤 Citizen Login</h3>
 
-<input
-type="tel"
-id="citizenPhone"
-placeholder="+91XXXXXXXXXX">
+    <input
+        type="tel"
+        id="citizenPhone"
+        placeholder="Mobile Number">
 
-<button class="green" onclick="sendOTP()">
-Send OTP
-</button>
+    <button
+        class="green"
+        onclick="sendOTP()">
 
-<input
-type="text"
-id="otp"
-placeholder="Enter OTP">
+        Send OTP
 
-<button class="green" onclick="verifyOTP()">
-Verify OTP
-</button>
+    </button>
 
-<p id="citizenMessage" class="message"></p>
+    <input
+        type="text"
+        id="otp"
+        placeholder="Enter OTP">
+
+    <button
+        onclick="verifyOTP()">
+
+        Verify OTP
+
+    </button>
+
+    <p id="citizenMessage"
+       style="margin-top:15px;">
+    </p>
 
 </div>
 
 </section>
 
 
-<!-- FOOTER -->
+<!-- ================= FOOTER ================= -->
 
 <footer>
 
@@ -529,7 +677,10 @@ Digital Village Development Initiative
 </footer>
 
 
-<!-- COMPLAINT PAGE -->
+
+<!-- ================================================= -->
+<!-- ================= COMPLAINT ==================== -->
+<!-- ================================================= -->
 
 <div class="page" id="complaint">
 
@@ -538,17 +689,27 @@ Digital Village Development Initiative
 <h2>📝 ग्राम समस्या नोंदणी</h2>
 
 <label>नाव</label>
-<input id="cname" placeholder="तुमचे पूर्ण नाव">
+
+<input id="cname"
+       placeholder="तुमचे पूर्ण नाव">
+
 
 <label>मोबाइल नंबर</label>
-<input id="cmobile" placeholder="10 अंकी मोबाइल नंबर">
+
+<input id="cmobile"
+       placeholder="10 अंकी मोबाइल नंबर">
+
 
 <label>गाव</label>
-<input id="cvillage" value="गोगरी">
+
+<input id="cvillage"
+       value="गोगरी">
+
 
 <label>समस्येचा प्रकार</label>
 
 <select id="ctype">
+
 <option>रस्ता</option>
 <option>पाणी</option>
 <option>वीज</option>
@@ -556,31 +717,40 @@ Digital Village Development Initiative
 <option>गटार</option>
 <option>शासकीय सेवा</option>
 <option>इतर</option>
+
 </select>
+
 
 <label>समस्येचे वर्णन</label>
 
-<textarea
-id="cdesc"
-rows="5"
-placeholder="तुमची समस्या सविस्तर लिहा">
-</textarea>
+<textarea id="cdesc"
+          rows="5"
+          placeholder="तुमची समस्या सविस्तर लिहा"></textarea>
 
-<button class="green" onclick="submitComplaint()">
+
+<button class="green"
+        onclick="submitComplaint()">
+
 📤 समस्या नोंदवा
+
 </button>
 
-<button class="close" onclick="closePages()">
+<button class="close"
+        onclick="closePages()">
+
 ❌ बंद करा
+
 </button>
 
 <div id="complaintResult"></div>
 
 </div>
+
 </div>
 
 
-<!-- TRACK PAGE -->
+
+<!-- ================= TRACK ================= -->
 
 <div class="page" id="track">
 
@@ -592,25 +762,32 @@ placeholder="तुमची समस्या सविस्तर लिह�
 तुमचा Complaint ID टाका.
 </p>
 
-<input
-id="trackId"
-placeholder="उदा. SG-123456">
+<input id="trackId"
+       placeholder="उदा. SG-123456">
 
-<button class="green" onclick="trackNow()">
+<button class="green"
+        onclick="trackNow()">
+
 🔎 Track
+
 </button>
 
-<button class="close" onclick="closePages()">
+<button class="close"
+        onclick="closePages()">
+
 ❌ बंद करा
+
 </button>
 
 <div id="trackResult"></div>
 
 </div>
+
 </div>
 
 
-<!-- OFFICIALS PAGE -->
+
+<!-- ================= OFFICIALS ================= -->
 
 <div class="page" id="officials">
 
@@ -618,15 +795,25 @@ placeholder="उदा. SG-123456">
 
 <h2>👥 Village Officials</h2>
 
+
 <div class="info">
 
 <h3>👨‍💼 सरपंच</h3>
 
-<p><b>नाव:</b> श्री केशव ज्ञानदेवराव जटाळे</p>
+<p>
+<b>नाव:</b>
+श्री केशव ज्ञानदेवराव जटाळे
+</p>
 
-<p><b>मोबाईल:</b> 9767767809</p>
+<p>
+<b>मोबाईल:</b>
+9767767809
+</p>
 
-<p><b>ग्रामपंचायत:</b> गोगरी</p>
+<p>
+<b>ग्रामपंचायत:</b>
+गोगरी
+</p>
 
 </div>
 
@@ -635,9 +822,15 @@ placeholder="उदा. SG-123456">
 
 <h3>👩‍💼 उपसरपंच</h3>
 
-<p><b>नाव:</b> सौ कविता पंकज इंगोले</p>
+<p>
+<b>नाव:</b>
+सौ कविता पंकज इंगोले
+</p>
 
-<p><b>ग्रामपंचायत:</b> गोगरी</p>
+<p>
+<b>ग्रामपंचायत:</b>
+गोगरी
+</p>
 
 </div>
 
@@ -646,9 +839,15 @@ placeholder="उदा. SG-123456">
 
 <h3>👨‍💼 ग्रामसेवक</h3>
 
-<p><b>नाव:</b> श्री संजय पाचरणे</p>
+<p>
+<b>नाव:</b>
+श्री संजय पाचरणे
+</p>
 
-<p><b>ग्रामपंचायत:</b> गोगरी</p>
+<p>
+<b>ग्रामपंचायत:</b>
+गोगरी
+</p>
 
 </div>
 
@@ -657,11 +856,20 @@ placeholder="उदा. SG-123456">
 
 <h3>👨‍💼 तलाठी</h3>
 
-<p><b>नाव:</b> श्री अमोल भुरकडे</p>
+<p>
+<b>नाव:</b>
+श्री अमोल भुरकडे
+</p>
 
-<p><b>मोबाईल:</b> 8806105501</p>
+<p>
+<b>मोबाईल:</b>
+8806105501
+</p>
 
-<p><b>गाव:</b> गोगरी, ता. मंगरुळपीर</p>
+<p>
+<b>गाव:</b>
+गोगरी, ता. मंगरुळपीर
+</p>
 
 </div>
 
@@ -670,21 +878,33 @@ placeholder="उदा. SG-123456">
 
 <h3>👮 पोलिस पाटील</h3>
 
-<p><b>नाव:</b> श्री दत्ता भोयर</p>
+<p>
+<b>नाव:</b>
+श्री दत्ता भोयर
+</p>
 
-<p><b>गाव:</b> गोगरी</p>
+<p>
+<b>गाव:</b>
+गोगरी
+</p>
 
 </div>
 
-<button class="close" onclick="closePages()">
+
+<button class="close"
+        onclick="closePages()">
+
 ❌ बंद करा
+
 </button>
 
 </div>
+
 </div>
 
 
-<!-- MAP PAGE -->
+
+<!-- ================= MAP ================= -->
 
 <div class="page" id="map">
 
@@ -692,9 +912,11 @@ placeholder="उदा. SG-123456">
 
 <h2>🗺️ Village Map</h2>
 
-<p style="margin-bottom:15px;text-align:center;">
-गोगरी, ता. मंगरुळपीर,
+<p style="text-align:center;margin-bottom:15px;">
+
+गोगरी, ता. मंगरूळपीर,
 जि. वाशिम
+
 </p>
 
 <iframe
@@ -702,19 +924,25 @@ src="https://www.google.com/maps?q=Gogari,Mangrulpir,Washim,Maharashtra&output=e
 width="100%"
 height="350"
 style="border:0;border-radius:12px;">
+
 </iframe>
 
 <br><br>
 
-<button class="close" onclick="closePages()">
+<button class="close"
+        onclick="closePages()">
+
 ❌ बंद करा
+
 </button>
 
 </div>
+
 </div>
 
 
-<!-- NOTICES -->
+
+<!-- ================= NOTICES ================= -->
 
 <div class="page" id="notices">
 
@@ -732,6 +960,7 @@ style="border:0;border-radius:12px;">
 
 </div>
 
+
 <div class="info">
 
 <h3>📢 नागरिकांसाठी सूचना</h3>
@@ -742,15 +971,21 @@ style="border:0;border-radius:12px;">
 
 </div>
 
-<button class="close" onclick="closePages()">
+
+<button class="close"
+        onclick="closePages()">
+
 ❌ बंद करा
+
 </button>
 
 </div>
+
 </div>
 
 
-<!-- IDEAS -->
+
+<!-- ================= IDEAS ================= -->
 
 <div class="page" id="ideas">
 
@@ -764,33 +999,40 @@ style="border:0;border-radius:12px;">
 
 <label>तुमचे नाव</label>
 
-<input
-id="ideaName"
-placeholder="तुमचे नाव">
+<input id="ideaName"
+       placeholder="तुमचे नाव">
+
 
 <label>तुमची कल्पना</label>
 
-<textarea
-id="ideaText"
-rows="5"
-placeholder="गावाच्या विकासासाठी कल्पना लिहा">
-</textarea>
+<textarea id="ideaText"
+          rows="5"
+          placeholder="गावाच्या विकासासाठी कल्पना लिहा"></textarea>
 
-<button class="green" onclick="submitIdea()">
+
+<button class="green"
+        onclick="submitIdea()">
+
 📤 Idea Submit
+
 </button>
 
-<button class="close" onclick="closePages()">
+<button class="close"
+        onclick="closePages()">
+
 ❌ बंद करा
+
 </button>
 
 <div id="ideaResult"></div>
 
 </div>
+
 </div>
 
 
-<!-- CERTIFICATES -->
+
+<!-- ================= CERTIFICATES ================= -->
 
 <div class="page" id="certificates">
 
@@ -798,10 +1040,9 @@ placeholder="गावाच्या विकासासाठी कल्�
 
 <h2>📄 Certificate Services</h2>
 
-<div
-class="info"
-onclick="birth()"
-style="cursor:pointer;">
+<div class="info"
+     onclick="birth()"
+     style="cursor:pointer;">
 
 <h3>🍼 Birth Certificate</h3>
 
@@ -812,10 +1053,9 @@ style="cursor:pointer;">
 </div>
 
 
-<div
-class="info"
-onclick="death()"
-style="cursor:pointer;">
+<div class="info"
+     onclick="death()"
+     style="cursor:pointer;">
 
 <h3>⚰️ Death Certificate</h3>
 
@@ -825,177 +1065,381 @@ style="cursor:pointer;">
 
 </div>
 
-<button class="close" onclick="closePages()">
+
+<button class="close"
+        onclick="closePages()">
+
 ❌ बंद करा
+
 </button>
 
 </div>
+
 </div>
 
 
-<!-- JAVASCRIPT -->
+
+<!-- ================================================= -->
+<!-- ================= ADMIN DASHBOARD =============== -->
+<!-- ================================================= -->
+
+<div id="adminDashboard">
+
+<div class="dashboard-box">
+
+<h2>
+🔐 SmartGram Admin Dashboard
+</h2>
+
+<p>
+ग्रामपंचायत गोगरी – Admin Panel
+</p>
+
+
+<div class="dashboard-grid">
+
+
+<div class="dashboard-card"
+     onclick="showAdminComplaints()">
+
+<div class="icon">📝</div>
+
+<h3>Complaints</h3>
+
+<p>
+नागरिकांच्या तक्रारी पाहा
+</p>
+
+</div>
+
+
+<div class="dashboard-card"
+     onclick="alert('Village Officials management पुढील step मध्ये जोडू शकतो.')">
+
+<div class="icon">👥</div>
+
+<h3>Village Officials</h3>
+
+<p>
+अधिकाऱ्यांची माहिती manage करा
+</p>
+
+</div>
+
+
+<div class="dashboard-card"
+     onclick="alert('Notices management पुढील step मध्ये जोडू शकतो.')">
+
+<div class="icon">📢</div>
+
+<h3>Notices</h3>
+
+<p>
+गावातील सूचना add करा
+</p>
+
+</div>
+
+
+<div class="dashboard-card"
+     onclick="alert('Village Ideas section पुढील step मध्ये जोडू शकतो.')">
+
+<div class="icon">💡</div>
+
+<h3>Village Ideas</h3>
+
+<p>
+नागरिकांच्या कल्पना पाहा
+</p>
+
+</div>
+
+
+</div>
+
+
+<div id="adminComplaintData"
+     class="admin-data">
+
+<h3 style="color:#176b3a;">
+📋 नागरिकांच्या तक्रारी
+</h3>
+
+<div id="complaintList"
+     style="margin-top:15px;">
+</div>
+
+</div>
+
+
+<button class="logout"
+        onclick="adminLogout()">
+
+🚪 Logout
+
+</button>
+
+</div>
+
+</div>
+
+
+
+<!-- ================================================= -->
+<!-- ================= MAIN JAVASCRIPT =============== -->
+<!-- ================================================= -->
 
 <script>
 
+/* WELCOME */
+
 function enterWebsite(){
 
-document.getElementById("welcomeScreen").style.display="none";
+    document.getElementById(
+        "welcomeScreen"
+    ).style.display = "none";
 
 }
 
+
+/* PAGE OPEN */
 
 function openPage(id){
 
-closePages();
+    closePages();
 
-document.getElementById(id).style.display="block";
+    document.getElementById(id)
+        .style.display = "block";
 
 }
 
+
+/* PAGE CLOSE */
 
 function closePages(){
 
-document.querySelectorAll(".page").forEach(function(page){
+    document.querySelectorAll(".page")
+    .forEach(function(page){
 
-page.style.display="none";
+        page.style.display = "none";
 
-});
+    });
 
 }
 
 
-/* ADMIN / CITIZEN LOGIN */
+/* ADMIN LOGIN BOX */
 
 function showAdminLogin(){
 
-document.getElementById("adminLogin").style.display="block";
+    document.getElementById(
+        "adminLogin"
+    ).style.display = "block";
 
-document.getElementById("citizenLogin").style.display="none";
+    document.getElementById(
+        "citizenLogin"
+    ).style.display = "none";
 
 }
 
 
+/* CITIZEN LOGIN BOX */
+
 function showCitizenLogin(){
 
-document.getElementById("citizenLogin").style.display="block";
+    document.getElementById(
+        "citizenLogin"
+    ).style.display = "block";
 
-document.getElementById("adminLogin").style.display="none";
+    document.getElementById(
+        "adminLogin"
+    ).style.display = "none";
 
 }
 
 
 /* COMPLAINT */
 
-async function submitComplaint(){
+function submitComplaint(){
 
-    let name = document.getElementById("cname").value.trim();
-    let mobile = document.getElementById("cmobile").value.trim();
-    let village = document.getElementById("cvillage").value.trim();
-    let type = document.getElementById("ctype").value;
-    let desc = document.getElementById("cdesc").value.trim();
+    let name =
+        document.getElementById("cname")
+        .value.trim();
+
+    let mobile =
+        document.getElementById("cmobile")
+        .value.trim();
+
+    let village =
+        document.getElementById("cvillage")
+        .value.trim();
+
+    let type =
+        document.getElementById("ctype")
+        .value;
+
+    let desc =
+        document.getElementById("cdesc")
+        .value.trim();
+
 
     if(!name || !mobile || !village || !desc){
+
         alert("कृपया सर्व माहिती भरा.");
+
         return;
-    }
-
-    let id = "SG-" + Math.floor(100000 + Math.random() * 900000);
-
-    try {
-
-        await addDoc(collection(db, "complaints"), {
-            complaintId: id,
-            name: name,
-            mobile: mobile,
-            village: village,
-            type: type,
-            description: desc,
-            status: "Pending",
-            createdAt: new Date().toISOString()
-        });
-
-        document.getElementById("complaintResult").innerHTML = `
-            <div class="success">
-                <h3>✅ समस्या यशस्वीरित्या नोंदवली!</h3>
-                <p>Complaint ID:</p>
-                <h2>${id}</h2>
-                <p>हा ID Track Complaint साठी जपून ठेवा.</p>
-            </div>
-        `;
-
-        document.getElementById("cname").value = "";
-        document.getElementById("cmobile").value = "";
-        document.getElementById("cdesc").value = "";
-
-    } catch(error) {
-
-        console.error(error);
-
-        alert("❌ Complaint save झाली नाही. Firebase तपासा.");
 
     }
+
+
+    let id =
+        "SG-" +
+        Math.floor(
+            100000 +
+            Math.random() * 900000
+        );
+
+
+    let data = {
+
+        id:id,
+        name:name,
+        mobile:mobile,
+        village:village,
+        type:type,
+        desc:desc,
+        status:"Pending"
+
+    };
+
+
+    let complaints =
+        JSON.parse(
+            localStorage.getItem(
+                "smartgramComplaints"
+            ) || "[]"
+        );
+
+
+    complaints.push(data);
+
+
+    localStorage.setItem(
+        "smartgramComplaints",
+        JSON.stringify(complaints)
+    );
+
+
+    document.getElementById(
+        "complaintResult"
+    ).innerHTML = `
+
+        <div class="success">
+
+            <h3>
+            ✅ समस्या यशस्वीरित्या नोंदवली!
+            </h3>
+
+            <p>Complaint ID:</p>
+
+            <h2>${id}</h2>
+
+            <p>
+            हा ID Track Complaint साठी जपून ठेवा.
+            </p>
+
+        </div>
+
+    `;
+
+
+    document.getElementById("cname").value = "";
+    document.getElementById("cmobile").value = "";
+    document.getElementById("cdesc").value = "";
+
 }
 
 
-/* TRACK */
+/* TRACK COMPLAINT */
 
 function trackNow(){
 
-let id =
-document.getElementById("trackId").value.trim();
+    let id =
+        document.getElementById(
+            "trackId"
+        ).value.trim();
 
 
-let data =
-JSON.parse(
-localStorage.getItem("smartgramComplaint") || "null"
-);
+    let complaints =
+        JSON.parse(
+            localStorage.getItem(
+                "smartgramComplaints"
+            ) || "[]"
+        );
 
 
-if(data && data.id === id){
+    let data =
+        complaints.find(
+            function(item){
+                return item.id === id;
+            }
+        );
 
-document.getElementById(
-"trackResult"
-).innerHTML = `
 
-<div class="success">
+    if(data){
 
-<h3>✅ Complaint Found</h3>
+        document.getElementById(
+            "trackResult"
+        ).innerHTML = `
 
-<p>
-<b>Complaint ID:</b> ${data.id}
-</p>
+        <div class="success">
 
-<p>
-<b>Type:</b> ${data.type}
-</p>
+            <h3>✅ Complaint Found</h3>
 
-<p>
-<b>Status:</b> 🟡 ${data.status}
-</p>
+            <p>
+            <b>Complaint ID:</b>
+            ${data.id}
+            </p>
 
-<p>
-<b>Village:</b> ${data.village}
-</p>
+            <p>
+            <b>नाव:</b>
+            ${data.name}
+            </p>
 
-</div>
+            <p>
+            <b>Type:</b>
+            ${data.type}
+            </p>
 
-`;
+            <p>
+            <b>Problem:</b>
+            ${data.desc}
+            </p>
 
-}else{
+            <p>
+            <b>Status:</b>
+            🟡 ${data.status}
+            </p>
 
-document.getElementById(
-"trackResult"
-).innerHTML = `
+        </div>
 
-<p style="color:red;margin-top:20px;">
+        `;
 
-❌ Complaint ID सापडली नाही.
+    }else{
 
-</p>
+        document.getElementById(
+            "trackResult"
+        ).innerHTML = `
 
-`;
+        <p style="color:red;margin-top:20px;">
 
-}
+        ❌ Complaint ID सापडली नाही.
+
+        </p>
+
+        `;
+
+    }
 
 }
 
@@ -1004,623 +1448,315 @@ document.getElementById(
 
 function submitIdea(){
 
-let name =
-document.getElementById("ideaName").value.trim();
+    let name =
+        document.getElementById(
+            "ideaName"
+        ).value.trim();
 
-let idea =
-document.getElementById("ideaText").value.trim();
 
+    let idea =
+        document.getElementById(
+            "ideaText"
+        ).value.trim();
 
-if(!name || !idea){
 
-alert("कृपया नाव आणि कल्पना भरा.");
+    if(!name || !idea){
 
-return;
-
-}
-
-
-document.getElementById(
-"ideaResult"
-).innerHTML = `
-
-<div class="success">
-
-<h3>✅ Idea Submitted!</h3>
-
-<p>धन्यवाद ${name}!</p>
-
-<p>तुमची कल्पना नोंदवली आहे.</p>
-
-</div>
-
-`;
-
-}
-
-
-/* BIRTH */
-
-function birth(){
-
-document.body.insertAdjacentHTML(
-"beforeend",
-`
-
-<div id="birthForm"
-style="
-position:fixed;
-inset:0;
-background:#f1f3f4;
-z-index:99999;
-overflow:auto;
-padding:20px;
-">
-
-<div style="
-max-width:650px;
-margin:auto;
-background:white;
-padding:25px;
-border-radius:12px;
-box-shadow:0 3px 15px #aaa;
-">
-
-<h2 style="
-text-align:center;
-color:#176b3a;
-">
-ग्रामपंचायत गोगरी
-</h2>
-
-<p style="text-align:center;">
-ता. मंगरुळपीर, जि. वाशिम, महाराष्ट्र
-</p>
-
-<h2 style="text-align:center;">
-जन्म प्रमाणपत्र
-</h2>
-
-<p style="
-text-align:center;
-color:#b00000;
-font-weight:bold;
-">
-DEMO / FOR EDUCATIONAL PROJECT
-</p>
-
-<hr>
-
-<label>नाव</label>
-
-<input
-id="bName"
-placeholder="पूर्ण नाव">
-
-<label>जन्म तारीख</label>
-
-<input
-id="bDate"
-type="date">
-
-<label>जन्म ठिकाण</label>
-
-<input
-id="bPlace"
-placeholder="जन्म ठिकाण">
-
-<label>आईचे नाव</label>
-
-<input
-id="bMother"
-placeholder="आईचे पूर्ण नाव">
-
-<label>वडिलांचे नाव</label>
-
-<input
-id="bFather"
-placeholder="वडिलांचे पूर्ण नाव">
-
-<label>पत्ता</label>
-
-<textarea
-id="bAddress"
-rows="3"
-placeholder="पूर्ण पत्ता">
-</textarea>
-
-<button
-onclick="printBirth()"
-style="
-width:100%;
-padding:14px;
-background:#176b3a;
-color:white;
-border:0;
-border-radius:8px;
-font-size:17px;
-">
-
-🖨️ प्रमाणपत्र तयार करा / Print
-
-</button>
-
-<button
-onclick="
-document.getElementById('birthForm').remove()
-"
-style="
-width:100%;
-padding:12px;
-margin-top:10px;
-background:#777;
-color:white;
-border:0;
-border-radius:8px;
-">
-
-बंद करा
-
-</button>
-
-</div>
-</div>
-
-`
-);
-
-}
-
-
-function printBirth(){
-
-let name =
-document.getElementById("bName").value.trim();
-
-let date =
-document.getElementById("bDate").value;
-
-let place =
-document.getElementById("bPlace").value.trim();
-
-let mother =
-document.getElementById("bMother").value.trim();
-
-let father =
-document.getElementById("bFather").value.trim();
-
-let address =
-document.getElementById("bAddress").value.trim();
-
-
-if(!name || !date){
-
-alert("कृपया नाव आणि जन्म तारीख भरा.");
-
-return;
-
-}
-
-
-let regNo =
-"DEMO-" +
-Math.floor(100000 + Math.random() * 900000);
-
-
-let w =
-window.open("","_blank");
-
-
-w.document.write(`
-
-<!DOCTYPE html>
-
-<html lang="mr">
-
-<head>
-
-<meta charset="UTF-8">
-
-<title>Birth Certificate Demo</title>
-
-<style>
-
-body{
-font-family:Arial,sans-serif;
-background:white;
-margin:0;
-padding:20px;
-}
-
-.certificate{
-max-width:850px;
-margin:auto;
-border:2px solid #222;
-padding:35px;
-min-height:900px;
-}
-
-.header{
-text-align:center;
-border-bottom:2px solid #222;
-padding-bottom:15px;
-}
-
-.demo{
-color:#b00000;
-font-weight:bold;
-}
-
-.info{
-margin-top:25px;
-line-height:2;
-}
-
-.footer{
-margin-top:100px;
-display:flex;
-justify-content:space-between;
-}
-
-.note{
-margin-top:70px;
-text-align:center;
-font-size:11px;
-color:#555;
-}
-
-</style>
-
-</head>
-
-<body>
-
-<div class="certificate">
-
-<div class="header">
-
-<h2>ग्रामपंचायत गोगरी</h2>
-
-<p>
-तालुका – मंगरुळपीर,
-जिल्हा – वाशिम, महाराष्ट्र
-</p>
-
-<h3>जन्म प्रमाणपत्र</h3>
-
-<div class="demo">
-DEMO / FOR EDUCATIONAL PROJECT
-</div>
-
-</div>
-
-<div class="info">
-
-<p>
-<b>नाव :</b> ${name}
-</p>
-
-<p>
-<b>जन्म तारीख :</b> ${date}
-</p>
-
-<p>
-<b>जन्म ठिकाण :</b> ${place}
-</p>
-
-<p>
-<b>आईचे नाव :</b> ${mother}
-</p>
-
-<p>
-<b>वडिलांचे नाव :</b> ${father}
-</p>
-
-<p>
-<b>पत्ता :</b> ${address}
-</p>
-
-<p>
-<b>नोंदणी क्रमांक :</b> ${regNo}
-</p>
-
-<p>
-<b>प्रमाणपत्र दिनांक :</b>
-${new Date().toLocaleDateString("en-IN")}
-</p>
-
-</div>
-
-<div class="footer">
-
-<div>
-दिनांक : ____________
-</div>
-
-<div>
-ग्रामपंचायत गोगरी<br><br>
-अधिकृत अधिकारी<br><br>
-________________
-</div>
-
-</div>
-
-<div class="note">
-
-हे प्रमाणपत्र केवळ शैक्षणिक प्रकल्पाच्या
-प्रदर्शनासाठी तयार केलेले DEMO आहे.
-हे शासकीय/कायदेशीर प्रमाणपत्र नाही.
-
-</div>
-
-</div>
-
-<script>
-
-window.onload=function(){
-
-window.print();
-
-};
-
-<\/script>
-
-</body>
-
-</html>
-
-`);
-
-w.document.close();
-
-document.getElementById(
-"birthForm"
-).remove();
-
-}
-
-
-/* DEATH */
-
-function death(){
-
-let w =
-window.open("","_blank");
-
-
-w.document.write(`
-
-<!DOCTYPE html>
-
-<html lang="mr">
-
-<head>
-
-<meta charset="UTF-8">
-
-<title>मृत्यू प्रमाणपत्र Demo</title>
-
-<style>
-
-body{
-font-family:Arial,sans-serif;
-padding:20px;
-}
-
-.page{
-max-width:850px;
-margin:auto;
-border:2px solid #222;
-padding:30px;
-}
-
-.header{
-text-align:center;
-border-bottom:2px solid #222;
-padding-bottom:15px;
-}
-
-.demo{
-color:#b00000;
-font-weight:bold;
-}
-
-input{
-width:100%;
-padding:10px;
-margin-top:6px;
-margin-bottom:15px;
-box-sizing:border-box;
-}
-
-button{
-padding:12px 20px;
-}
-
-</style>
-
-</head>
-
-<body>
-
-<div class="page">
-
-<div class="header">
-
-<h2>मृत्यू प्रमाणपत्र</h2>
-
-<h3>ग्रामपंचायत गोगरी</h3>
-
-<p>
-ता. मंगरुळपीर,
-जि. वाशिम, महाराष्ट्र
-</p>
-
-<div class="demo">
-DEMO / शैक्षणिक प्रकल्प
-</div>
-
-</div>
-
-<br>
-
-<label>मृत व्यक्तीचे नाव</label>
-
-<input id="dname">
-
-<label>लिंग</label>
-
-<input id="dgender">
-
-<label>मृत्यू दिनांक</label>
-
-<input id="ddate" type="date">
-
-<label>मृत्यू ठिकाण</label>
-
-<input id="dplace">
-
-<label>वडिलांचे / पतीचे नाव</label>
-
-<input id="dfather">
-
-<label>आईचे नाव</label>
-
-<input id="dmother">
-
-<label>पत्ता</label>
-
-<input id="daddress">
-
-<br>
-
-<button onclick="window.print()">
-🖨️ Print
-</button>
-
-</div>
-
-</body>
-
-</html>
-
-`);
-
-w.document.close();
-
-}
-
-
-/* ADMIN LOGIN */
-
-<script>
-
-async function adminLogin(){
-
-    let email =
-    document.getElementById("adminEmail").value.trim();
-
-    let password =
-    document.getElementById("adminPassword").value;
-
-    let message =
-    document.getElementById("adminMessage");
-
-    if(!email || !password){
-
-        message.innerHTML =
-        "⚠️ Email आणि Password भरा.";
-
-        message.style.color="red";
-
-        return;
-    }
-
-    if(window.firebaseAdminLogin){
-
-        window.firebaseAdminLogin(
-            email,
-            password,
-            message
+        alert(
+            "कृपया नाव आणि कल्पना भरा."
         );
 
-    }else{
+        return;
 
-        message.innerHTML =
-        "⚠️ Firebase अजून load होत आहे. पुन्हा प्रयत्न करा.";
-
-        message.style.color="orange";
     }
+
+
+    let ideas =
+        JSON.parse(
+            localStorage.getItem(
+                "smartgramIdeas"
+            ) || "[]"
+        );
+
+
+    ideas.push({
+
+        name:name,
+        idea:idea,
+        date:new Date().toLocaleString()
+
+    });
+
+
+    localStorage.setItem(
+        "smartgramIdeas",
+        JSON.stringify(ideas)
+    );
+
+
+    document.getElementById(
+        "ideaResult"
+    ).innerHTML = `
+
+    <div class="success">
+
+        <h3>✅ Idea Submitted!</h3>
+
+        <p>
+        धन्यवाद ${name}!
+        </p>
+
+        <p>
+        तुमची कल्पना नोंदवली आहे.
+        </p>
+
+    </div>
+
+    `;
 
 }
 
 
-/* CITIZEN OTP */
+/* CITIZEN OTP DEMO */
 
 function sendOTP(){
 
     let phone =
-    document.getElementById("citizenPhone").value.trim();
+        document.getElementById(
+            "citizenPhone"
+        ).value.trim();
+
 
     let message =
-    document.getElementById("citizenMessage");
+        document.getElementById(
+            "citizenMessage"
+        );
+
 
     if(!phone){
 
         message.innerHTML =
-        "⚠️ Mobile Number भरा.";
+            "⚠️ Mobile Number भरा.";
 
-        message.style.color="red";
+        message.style.color = "red";
 
         return;
+
     }
 
-    message.innerHTML =
-    "📱 OTP सुविधा पुढील step मध्ये जोडूया.";
 
-    message.style.color="#176b3a";
+    message.innerHTML =
+        "📱 Phone OTP सुविधा Firebase Phone Authentication मध्ये जोडता येईल.";
+
+    message.style.color =
+        "#176b3a";
+
 }
 
 
 function verifyOTP(){
 
     let otp =
-    document.getElementById("otp").value.trim();
+        document.getElementById(
+            "otp"
+        ).value.trim();
+
 
     let message =
-    document.getElementById("citizenMessage");
+        document.getElementById(
+            "citizenMessage"
+        );
+
 
     if(!otp){
 
         message.innerHTML =
-        "⚠️ OTP भरा.";
+            "⚠️ OTP भरा.";
 
-        message.style.color="red";
+        message.style.color = "red";
 
         return;
+
     }
 
-    message.innerHTML =
-    "⚠️ Phone OTP setup पुढील step मध्ये जोडूया.";
 
-    message.style.color="orange";
+    message.innerHTML =
+        "⚠️ Phone OTP setup पूर्ण केल्यानंतर Verification चालेल.";
+
+    message.style.color =
+        "orange";
+
+}
+
+
+/* ADMIN COMPLAINTS */
+
+function showAdminComplaints(){
+
+    let box =
+        document.getElementById(
+            "adminComplaintData"
+        );
+
+
+    let list =
+        document.getElementById(
+            "complaintList"
+        );
+
+
+    box.style.display = "block";
+
+
+    let complaints =
+        JSON.parse(
+            localStorage.getItem(
+                "smartgramComplaints"
+            ) || "[]"
+        );
+
+
+    if(complaints.length === 0){
+
+        list.innerHTML =
+            "<p>अजून कोणतीही Complaint आलेली नाही.</p>";
+
+        return;
+
+    }
+
+
+    list.innerHTML = "";
+
+
+    complaints.forEach(function(item){
+
+        list.innerHTML += `
+
+        <div class="complaint-item">
+
+            <p>
+            <b>ID:</b> ${item.id}
+            </p>
+
+            <p>
+            <b>नाव:</b> ${item.name}
+            </p>
+
+            <p>
+            <b>Mobile:</b> ${item.mobile}
+            </p>
+
+            <p>
+            <b>गाव:</b> ${item.village}
+            </p>
+
+            <p>
+            <b>Type:</b> ${item.type}
+            </p>
+
+            <p>
+            <b>Problem:</b> ${item.desc}
+            </p>
+
+            <p>
+            <b>Status:</b> 🟡 ${item.status}
+            </p>
+
+        </div>
+
+        `;
+
+    });
+
+}
+
+
+/* ADMIN LOGOUT */
+
+function adminLogout(){
+
+    document.getElementById(
+        "adminDashboard"
+    ).style.display = "none";
+
+
+    document.getElementById(
+        "adminLogin"
+    ).style.display = "block";
+
+
+    document.getElementById(
+        "adminEmail"
+    ).value = "";
+
+
+    document.getElementById(
+        "adminPassword"
+    ).value = "";
+
+
+    document.getElementById(
+        "adminMessage"
+    ).innerHTML = "";
+
+
+    document.getElementById(
+        "adminComplaintData"
+    ).style.display = "none";
+
+
+    alert(
+        "Admin Logout Successful!"
+    );
+
+}
+
+
+/* BIRTH DEMO */
+
+function birth(){
+
+    alert(
+        "Birth Certificate Demo पुढील module मध्ये पूर्ण करता येईल."
+    );
+
+}
+
+
+/* DEATH DEMO */
+
+function death(){
+
+    alert(
+        "Death Certificate Demo पुढील module मध्ये पूर्ण करता येईल."
+    );
+
 }
 
 </script>
 
 
-<!-- FIREBASE ADMIN LOGIN -->
+
+<!-- ================================================= -->
+<!-- ================= FIREBASE ====================== -->
+<!-- ================================================= -->
 
 <script type="module">
 
-import { initializeApp }
-from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+import {
+    initializeApp
+}
+from
+"https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+
 
 import {
     getAuth,
     signInWithEmailAndPassword
 }
-from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+from
+"https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
 
 
 const firebaseConfig = {
@@ -1647,14 +1783,47 @@ const firebaseConfig = {
 
 
 const app =
-initializeApp(firebaseConfig);
+    initializeApp(firebaseConfig);
+
 
 const auth =
-getAuth(app);
+    getAuth(app);
 
 
-window.firebaseAdminLogin =
-async function(email,password,message){
+/* FIREBASE ADMIN LOGIN */
+
+window.adminLogin = async function(){
+
+    const email =
+        document.getElementById(
+            "adminEmail"
+        ).value.trim();
+
+
+    const password =
+        document.getElementById(
+            "adminPassword"
+        ).value;
+
+
+    const message =
+        document.getElementById(
+            "adminMessage"
+        );
+
+
+    if(!email || !password){
+
+        message.innerHTML =
+            "⚠️ Email आणि Password भरा.";
+
+        message.style.color =
+            "red";
+
+        return;
+
+    }
+
 
     try{
 
@@ -1666,286 +1835,45 @@ async function(email,password,message){
 
 
         message.innerHTML =
-        "✅ Admin Login Successful!";
+            "✅ Admin Login Successful!";
 
-        message.style.color="green";
-
-
-        alert("Admin Login Successful!");
+        message.style.color =
+            "green";
 
 
-        setTimeout(function(){
-
-            document.getElementById(
-                "adminLogin"
-            ).style.display="none";
+        alert(
+            "Admin Login Successful!"
+        );
 
 
-            document.getElementById(
-                "adminDashboard"
-            ).style.display="block";
-
-        },1000);
+        document.getElementById(
+            "adminLogin"
+        ).style.display = "none";
 
 
-    }catch(error){
+        document.getElementById(
+            "adminDashboard"
+        ).style.display = "block";
+
+
+    }
+
+    catch(error){
 
         console.error(error);
 
-        message.innerHTML =
-        "❌ Login failed: " + error.message;
 
-        message.style.color="red";
+        message.innerHTML =
+            "❌ Login failed: " +
+            error.message;
+
+
+        message.style.color =
+            "red";
 
     }
 
 };
-
-</script>
-
-
-<!-- ADMIN DASHBOARD -->
-
-<div id="adminDashboard"
-style="
-display:none;
-min-height:100vh;
-background:#f5f7f6;
-padding:30px 15px;
-">
-
-<div style="
-max-width:900px;
-margin:auto;
-background:white;
-padding:30px;
-border-radius:15px;
-box-shadow:0 3px 15px #0002;
-">
-
-<h2 style="
-text-align:center;
-color:#176b3a;
-">
-🔐 SmartGram Admin Dashboard
-</h2>
-
-<p style="
-text-align:center;
-color:#555;
-margin-bottom:25px;
-">
-ग्रामपंचायत गोगरी – Admin Panel
-</p>
-
-
-<div style="
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:15px;
-">
-
-
-<!-- COMPLAINTS -->
-
-<div style="
-background:#f5f7f6;
-padding:25px;
-border-radius:12px;
-text-align:center;
-cursor:pointer;
-"
-onclick="openComplaints()">
-
-<div style="font-size:40px;">
-📝
-</div>
-
-<h3 style="color:#176b3a;">
-Complaints
-</h3>
-
-<p>
-नागरिकांच्या तक्रारी पाहा
-</p>
-
-</div>
-
-
-<!-- OFFICIALS -->
-
-<div style="
-background:#f5f7f6;
-padding:25px;
-border-radius:12px;
-text-align:center;
-cursor:pointer;
-"
-onclick="openOfficials()">
-
-<div style="font-size:40px;">
-👥
-</div>
-
-<h3 style="color:#176b3a;">
-Village Officials
-</h3>
-
-<p>
-अधिकाऱ्यांची माहिती manage करा
-</p>
-
-</div>
-
-
-<!-- NOTICES -->
-
-<div style="
-background:#f5f7f6;
-padding:25px;
-border-radius:12px;
-text-align:center;
-cursor:pointer;
-"
-onclick="openNotices()">
-
-<div style="font-size:40px;">
-📢
-</div>
-
-<h3 style="color:#176b3a;">
-Notices
-</h3>
-
-<p>
-गावातील सूचना add करा
-</p>
-
-</div>
-
-
-<!-- IDEAS -->
-
-<div style="
-background:#f5f7f6;
-padding:25px;
-border-radius:12px;
-text-align:center;
-cursor:pointer;
-"
-onclick="openIdeas()">
-
-<div style="font-size:40px;">
-💡
-</div>
-
-<h3 style="color:#176b3a;">
-Village Ideas
-</h3>
-
-<p>
-नागरिकांच्या कल्पना पाहा
-</p>
-
-</div>
-
-</div>
-
-
-<!-- LOGOUT -->
-
-<button
-onclick="adminLogout()"
-style="
-margin-top:25px;
-width:100%;
-padding:14px;
-background:#d32f2f;
-color:white;
-border:0;
-border-radius:8px;
-font-size:16px;
-font-weight:bold;
-cursor:pointer;
-">
-
-🚪 Logout
-
-</button>
-
-</div>
-
-</div>
-
-
-<script>
-
-function openComplaints(){
-
-    alert(
-        "📝 Complaints section पुढच्या step मध्ये जोडूया."
-    );
-
-}
-
-
-function openOfficials(){
-
-    alert(
-        "👥 Village Officials section पुढच्या step मध्ये जोडूया."
-    );
-
-}
-
-
-function openNotices(){
-
-    alert(
-        "📢 Notices section पुढच्या step मध्ये जोडूया."
-    );
-
-}
-
-
-function openIdeas(){
-
-    alert(
-        "💡 Village Ideas section पुढच्या step मध्ये जोडूया."
-    );
-
-}
-
-
-function adminLogout(){
-
-    document.getElementById(
-        "adminDashboard"
-    ).style.display="none";
-
-
-    document.getElementById(
-        "adminLogin"
-    ).style.display="block";
-
-
-    document.getElementById(
-        "adminEmail"
-    ).value="";
-
-
-    document.getElementById(
-        "adminPassword"
-    ).value="";
-
-
-    document.getElementById(
-        "adminMessage"
-    ).innerHTML="";
-
-
-    alert("Admin Logout Successful!");
-
-}
 
 </script>
 
