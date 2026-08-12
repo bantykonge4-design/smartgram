@@ -1499,7 +1499,11 @@ function enterWebsite(){
 
   import { getAuth } 
     from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
-
+import {
+  getFirestore,
+  collection,
+  addDoc
+} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
   const firebaseConfig = {
     apiKey: "AIzaSyD6I-lrYAUCbaOyUx7n6W0BHJmOyCgJOoo",
     authDomain: "gogari-smartgram.firebaseapp.com",
@@ -1577,7 +1581,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-
+const db = getFirestore(app);
 
 // ADMIN LOGIN BOX
 window.showAdminLogin = function () {
