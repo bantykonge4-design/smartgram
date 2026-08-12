@@ -1727,7 +1727,10 @@ message.style.color="green";
 
 
 alert("Admin Login Successful!");
-
+setTimeout(() => {
+    document.getElementById("adminLogin").style.display = "none";
+    document.getElementById("adminDashboard").style.display = "block";
+}, 1000);
 
 }catch(error){
 
