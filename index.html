@@ -1908,6 +1908,108 @@ function adminLogout(){
 
 </script>
 
+<!-- ADMIN DASHBOARD -->
 
+<div id="adminDashboard" style="display:none; padding:20px;">
+
+    <div style="
+        max-width:900px;
+        margin:auto;
+        background:white;
+        padding:25px;
+        border-radius:15px;
+        box-shadow:0 3px 15px #0002;
+    ">
+
+        <h2 style="text-align:center;color:#176b3a;">
+            🔐 SmartGram Admin Dashboard
+        </h2>
+
+        <p style="text-align:center;">
+            ग्रामपंचायत गोगरी – Admin Panel
+        </p>
+
+        <div style="
+            display:grid;
+            grid-template-columns:repeat(2,1fr);
+            gap:15px;
+            margin-top:25px;
+        ">
+
+            <div style="
+                background:#f5f7f6;
+                padding:25px;
+                border-radius:12px;
+                text-align:center;
+            ">
+                <div style="font-size:40px;">📝</div>
+                <h3>Complaints</h3>
+                <p>नागरिकांच्या तक्रारी पाहा</p>
+            </div>
+
+            <div style="
+                background:#f5f7f6;
+                padding:25px;
+                border-radius:12px;
+                text-align:center;
+            ">
+                <div style="font-size:40px;">👥</div>
+                <h3>Village Officials</h3>
+                <p>अधिकाऱ्यांची माहिती manage करा</p>
+            </div>
+
+            <div style="
+                background:#f5f7f6;
+                padding:25px;
+                border-radius:12px;
+                text-align:center;
+            ">
+                <div style="font-size:40px;">📢</div>
+                <h3>Notices</h3>
+                <p>गावातील सूचना add करा</p>
+            </div>
+
+            <div style="
+                background:#f5f7f6;
+                padding:25px;
+                border-radius:12px;
+                text-align:center;
+            ">
+                <div style="font-size:40px;">💡</div>
+                <h3>Village Ideas</h3>
+                <p>नागरिकांच्या कल्पना पाहा</p>
+            </div>
+
+        </div>
+
+        <button onclick="adminLogout()" style="
+            margin-top:25px;
+            width:100%;
+            padding:13px;
+            background:#d32f2f;
+            color:white;
+            border:0;
+            border-radius:8px;
+            font-size:16px;
+        ">
+            🚪 Logout
+        </button>
+
+    </div>
+
+</div>
+
+<script>
+function adminLogout(){
+
+    document.getElementById("adminDashboard").style.display = "none";
+
+    document.getElementById("adminLogin").style.display = "block";
+
+    document.getElementById("adminMessage").innerHTML = "";
+
+    alert("Admin Logout Successful!");
+}
+</script>
 </body>
 </html>
