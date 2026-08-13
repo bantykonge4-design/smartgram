@@ -1208,8 +1208,18 @@ function showCitizenLogin(){
 
 /* COMPLAINT */
 
-function submitComplaint(){
+    function submitComplaint(){
 
+    if(!window.citizenLoggedIn){
+
+        alert("🔒 कृपया Citizen Login करा. Login केल्यानंतरच समस्या नोंदवता येईल.");
+
+        document.getElementById("complaint").style.display = "none";
+
+        document.getElementById("citizenLogin").style.display = "block";
+
+        return;
+    }
     let name =
         document.getElementById("cname")
         .value.trim();
@@ -1445,69 +1455,7 @@ function submitIdea(){
 
 }
 
-/* CITIZEN OTP DEMO */
 
-function sendOTP(){
-
-    let phone =
-        document.getElementById(
-            "citizenPhone"
-        ).value.trim();
-
-    let message =
-        document.getElementById(
-            "citizenMessage"
-        );
-
-    if(!phone){
-
-        message.innerHTML =
-            "⚠️ Mobile Number भरा.";
-
-        message.style.color = "red";
-
-        return;
-
-    }
-
-    message.innerHTML =
-        "📱 Phone OTP सुविधा Firebase Phone Authentication मध्ये जोडता येईल.";
-
-    message.style.color =
-        "#176b3a";
-
-}
-
-function verifyOTP(){
-
-    let otp =
-        document.getElementById(
-            "otp"
-        ).value.trim();
-
-    let message =
-        document.getElementById(
-            "citizenMessage"
-        );
-
-    if(!otp){
-
-        message.innerHTML =
-            "⚠️ OTP भरा.";
-
-        message.style.color = "red";
-
-        return;
-
-    }
-
-    message.innerHTML =
-        "⚠️ Phone OTP setup पूर्ण केल्यानंतर Verification चालेल.";
-
-    message.style.color =
-        "orange";
-
-}
 
 /* ADMIN COMPLAINTS */
 
