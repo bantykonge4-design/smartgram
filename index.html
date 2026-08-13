@@ -1641,11 +1641,385 @@ function death(){
 
 </script>
 
-<!-- ================= FIREBASE ================= -->
+
 
 
 
 </script>
+<!-- ================= FIREBASE SMARTGRAM ================= -->
+<script type="module">
 
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+
+import {
+    getAuth,
+    signInWithEmailAndPassword,
+    signOut
+}
+from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+
+import {
+    getFirestore,
+    collection,
+    getDocs,
+    updateDoc,
+    doc
+}
+from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+
+
+/* ================= FIREBASE CONFIG ================= */
+
+const firebaseConfig = {
+    apiKey: "AIzaSyD6I-lrYAUCbaOyUx7n6W0BHJmOyCgJOoo",
+    authDomain: "gogari-smartgram.firebaseapp.com",
+    projectId: "gogari-smartgram",
+    storageBucket: "gogari-smartgram.firebasestorage.app",
+    messagingSenderId: "160318195171",
+    appId: "1:160318195171:web:e62ab30c7ec3d4bc338cd6"
+};
+
+
+/* ================= INITIALIZE ================= */
+
+const app = initializeApp(firebaseConfig);
+
+const auth = getAuth(app);
+
+const db = getFirestore(app);
+
+
+/* ================= ADMIN LOGIN ================= */
+
+window.adminLogin = async function () {
+
+    const email =
+        document.getElementById("adminEmail").value.trim();
+
+    const password =
+        document.getElementById("adminPassword").value;
+
+    const message =
+        document.getElementById("adminMessage");
+
+
+    if (!email || !password) {
+
+        message.innerHTML =
+            "⚠️ Email आणि Password भरा.";
+
+        message.style.color = "red";
+
+        return;
+    }
+
+
+    try {
+
+        await signInWithEmailAndPassword(
+            auth,
+            email,
+            password
+        );
+
+
+        message.innerHTML =
+            "✅ Admin Login Successful!";
+
+        message.style.color = "green";
+
+
+        document.getElementById(
+            "adminLogin"
+        ).style.display = "none";
+
+
+        document.getElementById(
+            "adminDashboard"
+        ).style.display = "block";
+
+
+        /* Complaints load करा */
+        loadComplaints();
+
+
+    } catch (error) {
+
+        console.error(error);
+
+        message.innerHTML =
+            "❌ Login failed: " + error.message;
+
+        message.style.color = "red";
+
+    }
+
+};
+
+
+/* ================= LOAD COMPLAINTS ================= */
+
+async function loadComplaints() {
+
+    const list =
+        document.getElementById("complaintList");
+
+
+    list.innerHTML =
+        "<p>⏳ Complaints loading...</p>";
+
+
+    try {
+
+        const snapshot =
+            await getDocs(
+                collection(db, "complaints")
+            );
+
+
+        if (snapshot.empty) {
+
+            list.innerHTML =
+                "<p>📭 अजून कोणतीही Complaint आलेली नाही.</p>";
+
+            return;
+        }
+
+
+        list.innerHTML = "";
+
+
+        snapshot.forEach((item) => {
+
+            const data = item.data();
+
+            const documentId = item.id;
+
+
+            list.innerHTML += `
+
+            <div class="complaint-item"
+                 style="
+                 background:white;
+                 padding:18px;
+                 margin:15px 0;
+                 border-radius:12px;
+                 box-shadow:0 2px 8px #ccc;
+                 ">
+
+                <h3>
+                    📝 Complaint
+                </h3>
+
+                <p>
+                    <b>Document ID:</b>
+                    ${documentId}
+                </p>
+
+                <p>
+                    <b>नाव:</b>
+                    ${data.name || "-"}
+                </p>
+
+                <p>
+                    <b>Mobile:</b>
+                    ${data.mobile || "-"}
+                </p>
+
+                <p>
+                    <b>गाव:</b>
+                    ${data.village || "-"}
+                </p>
+
+                <p>
+                    <b>Type:</b>
+                    ${data.type || "-"}
+                </p>
+
+                <p>
+                    <b>Problem:</b>
+                    ${data.desc || data.complaint || "-"}
+                </p>
+
+                <p>
+                    <b>Status:</b>
+                    <span id="status-${documentId}">
+                        ${data.status || "Pending"}
+                    </span>
+                </p>
+
+
+                <button
+                    onclick="approveComplaint('${documentId}')"
+                    style="
+                    background:#198754;
+                    color:white;
+                    padding:10px 16px;
+                    border:0;
+                    border-radius:8px;
+                    margin-right:8px;
+                    cursor:pointer;
+                    ">
+                    ✅ Approve
+                </button>
+
+
+                <button
+                    onclick="rejectComplaint('${documentId}')"
+                    style="
+                    background:#dc3545;
+                    color:white;
+                    padding:10px 16px;
+                    border:0;
+                    border-radius:8px;
+                    cursor:pointer;
+                    ">
+                    ❌ Reject
+                </button>
+
+            </div>
+
+            `;
+
+        });
+
+
+    } catch (error) {
+
+        console.error(error);
+
+        list.innerHTML = `
+            <p style="color:red;">
+                ❌ Complaints load होत नाहीत.
+                <br>
+                ${error.message}
+            </p>
+        `;
+
+    }
+
+}
+
+
+/* ================= APPROVE ================= */
+
+window.approveComplaint = async function(documentId) {
+
+    try {
+
+        await updateDoc(
+            doc(db, "complaints", documentId),
+            {
+                status: "Approved"
+            }
+        );
+
+
+        document.getElementById(
+            "status-" + documentId
+        ).innerHTML = "Approved";
+
+
+        alert("✅ Complaint Approved!");
+
+
+    } catch (error) {
+
+        console.error(error);
+
+        alert(
+            "❌ Approve करताना error: "
+            + error.message
+        );
+
+    }
+
+};
+
+
+/* ================= REJECT ================= */
+
+window.rejectComplaint = async function(documentId) {
+
+    try {
+
+        await updateDoc(
+            doc(db, "complaints", documentId),
+            {
+                status: "Rejected"
+            }
+        );
+
+
+        document.getElementById(
+            "status-" + documentId
+        ).innerHTML = "Rejected";
+
+
+        alert("❌ Complaint Rejected!");
+
+
+    } catch (error) {
+
+        console.error(error);
+
+        alert(
+            "❌ Reject करताना error: "
+            + error.message
+        );
+
+    }
+
+};
+
+
+/* ================= REFRESH COMPLAINTS ================= */
+
+window.showAdminComplaints = function() {
+
+    document.getElementById(
+        "adminComplaintData"
+    ).style.display = "block";
+
+    loadComplaints();
+
+};
+
+
+/* ================= ADMIN LOGOUT ================= */
+
+window.adminLogout = async function() {
+
+    await signOut(auth);
+
+
+    document.getElementById(
+        "adminDashboard"
+    ).style.display = "none";
+
+
+    document.getElementById(
+        "adminLogin"
+    ).style.display = "block";
+
+
+    document.getElementById(
+        "adminEmail"
+    ).value = "";
+
+
+    document.getElementById(
+        "adminPassword"
+    ).value = "";
+
+
+    document.getElementById(
+        "adminMessage"
+    ).innerHTML = "";
+
+};
+
+</script>
 </body>
 </html>
