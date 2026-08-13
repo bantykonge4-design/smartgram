@@ -1511,80 +1511,15 @@ function verifyOTP(){
 
 /* ADMIN COMPLAINTS */
 
-function showAdminComplaints(){
+window.showAdminComplaints = function() {
 
-    let box =
-        document.getElementById(
-            "adminComplaintData"
-        );
+    document.getElementById(
+        "adminComplaintData"
+    ).style.display = "block";
 
-    let list =
-        document.getElementById(
-            "complaintList"
-        );
+    loadComplaints();
 
-    box.style.display = "block";
-
-    let complaints =
-        JSON.parse(
-            localStorage.getItem(
-                "smartgramComplaints"
-            ) || "[]"
-        );
-
-    if(complaints.length === 0){
-
-        list.innerHTML =
-            "<p>अजून कोणतीही Complaint आलेली नाही.</p>";
-
-        return;
-
-    }
-
-    list.innerHTML = "";
-
-    complaints.forEach(function(item){
-
-        list.innerHTML += `
-
-        <div class="complaint-item">
-
-            <p>
-            <b>ID:</b> ${item.id}
-            </p>
-
-            <p>
-            <b>नाव:</b> ${item.name}
-            </p>
-
-            <p>
-            <b>Mobile:</b> ${item.mobile}
-            </p>
-
-            <p>
-            <b>गाव:</b> ${item.village}
-            </p>
-
-            <p>
-            <b>Type:</b> ${item.type}
-            </p>
-
-            <p>
-            <b>Problem:</b> ${item.desc}
-            </p>
-
-            <p>
-            <b>Status:</b> 🟡 ${item.status}
-            </p>
-
-        </div>
-
-        `;
-
-    });
-
-}
-
+};
 /* ADMIN LOGOUT */
 
 function adminLogout(){
