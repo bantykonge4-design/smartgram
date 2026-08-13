@@ -1942,23 +1942,35 @@ window.approveComplaint = async function(documentId) {
 
 window.rejectComplaint = async function(documentId) {
 
+    const reason = prompt(
+        "❌ Reject करण्याचे कारण लिहा:"
+    );
+
+    // Cancel किंवा रिकामं reason असेल तर reject करू नका
+    if (reason === null || reason.trim() === "") {
+        alert("⚠️ Reject reason लिहा.");
+        return;
+    }
+
     try {
 
         await updateDoc(
             doc(db, "complaints", documentId),
             {
-                status: "Rejected"
+                status: "Rejected",
+                rejectReason: reason.trim()
             }
         );
 
-
         document.getElementById(
             "status-" + documentId
-        ).innerHTML = "Rejected";
+        ).innerHTML =
+            "Rejected";
 
-
-        alert("❌ Complaint Rejected!");
-
+        alert(
+            "❌ Complaint Rejected!\n\nReason: "
+            + reason.trim()
+        );
 
     } catch (error) {
 
@@ -1972,20 +1984,6 @@ window.rejectComplaint = async function(documentId) {
     }
 
 };
-
-
-/* ================= REFRESH COMPLAINTS ================= */
-
-window.showAdminComplaints = function() {
-
-    document.getElementById(
-        "adminComplaintData"
-    ).style.display = "block";
-
-    loadComplaints();
-
-};
-
 
 /* ================= ADMIN LOGOUT ================= */
 
