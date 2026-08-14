@@ -1573,7 +1573,7 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
 const db = getFirestore(app);
-   /* ================= CITIZEN OTP ================= */
+/* ================= CITIZEN PHONE OTP ================= */
 
 window.citizenLoggedIn = false;
 
@@ -1582,11 +1582,12 @@ let recaptchaVerifier = null;
 
 window.sendOTP = async function () {
 
-    const phone =
-        document.getElementById("citizenPhone").value.trim();
+    const phone = document
+        .getElementById("citizenPhone")
+        .value
+        .trim();
 
-    const message =
-        document.getElementById("citizenMessage");
+    const message = document.getElementById("citizenMessage");
 
     if (!phone) {
         message.innerHTML = "⚠️ Mobile Number भरा.";
@@ -1595,38 +1596,33 @@ window.sendOTP = async function () {
     }
 
     if (!/^[6-9][0-9]{9}$/.test(phone)) {
-        message.innerHTML =
-            "⚠️ योग्य 10 अंकी Mobile Number टाका.";
+        message.innerHTML = "⚠️ योग्य 10 अंकी Mobile Number टाका.";
         message.style.color = "red";
         return;
     }
 
     try {
 
-        if (recaptchaVerifier) {
-            recaptchaVerifier.clear();
-        }
+        if (!recaptchaVerifier) {
 
-        recaptchaVerifier = new RecaptchaVerifier(
-            auth,
-            "recaptcha-container",
-            {
-                size: "normal"
-            }
-        );
-
-        await recaptchaVerifier.render();
-
-        confirmationResult =
-            await signInWithPhoneNumber(
+            recaptchaVerifier = new RecaptchaVerifier(
                 auth,
-                "+91" + phone,
-                recaptchaVerifier
+                "recaptcha-container",
+                {
+                    size: "normal"
+                }
             );
 
-        message.innerHTML =
-            "✅ OTP तुमच्या Mobile वर पाठवला आहे.";
+            await recaptchaVerifier.render();
+        }
 
+        confirmationResult = await signInWithPhoneNumber(
+            auth,
+            "+91" + phone,
+            recaptchaVerifier
+        );
+
+        message.innerHTML = "✅ OTP पाठवला आहे.";
         message.style.color = "green";
 
     } catch (error) {
@@ -1644,22 +1640,28 @@ window.sendOTP = async function () {
 
 window.verifyOTP = async function () {
 
-    const otp =
-        document.getElementById("otp").value.trim();
+    const otp = document
+        .getElementById("otp")
+        .value
+        .trim();
 
     const message =
         document.getElementById("citizenMessage");
 
     if (!confirmationResult) {
+
         message.innerHTML =
             "⚠️ आधी Send OTP करा.";
+
         message.style.color = "red";
         return;
     }
 
     if (!otp) {
+
         message.innerHTML =
             "⚠️ OTP भरा.";
+
         message.style.color = "red";
         return;
     }
@@ -1685,7 +1687,6 @@ window.verifyOTP = async function () {
         message.style.color = "red";
     }
 };
-
 /* ================= ADMIN LOGIN ================= */
 
 window.adminLogin = async function () {
