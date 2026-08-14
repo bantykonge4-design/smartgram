@@ -638,15 +638,19 @@ footer{
     <input
         type="tel"
         id="citizenPhone"
-        placeholder="Mobile Number">
+        placeholder="10 अंकी Mobile Number">
 
     <button
         class="green"
         onclick="sendOTP()">
 
-        Send OTP
+        📱 Send OTP
 
     </button>
+
+    <div id="recaptcha-container"
+         style="margin:15px 0;">
+    </div>
 
     <input
         type="text"
@@ -654,9 +658,10 @@ footer{
         placeholder="Enter OTP">
 
     <button
+        class="green"
         onclick="verifyOTP()">
 
-        Verify OTP
+        ✅ Verify OTP
 
     </button>
 
@@ -1574,6 +1579,99 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
 const db = getFirestore(app);
+
+
+/* ================= PHONE OTP ================= */
+
+let confirmationResult = null;
+let recaptchaVerifier = null;
+
+function setupRecaptcha() {
+    recaptchaVerifier = new RecaptchaVerifier(
+        auth,
+        "recaptcha-container",
+        {
+            size: "normal",
+            callback: function () {
+                console.log("reCAPTCHA verified");
+            },
+            "expired-callback": function () {
+                console.log("reCAPTCHA expired");
+            }
+        }
+    );
+}
+
+window.sendOTP = async function () {
+
+    try {
+
+        const phoneNumber =
+            document.getElementById("phoneNumber").value.trim();
+
+        if (!phoneNumber) {
+            alert("कृपया Mobile Number टाका");
+            return;
+        }
+
+        if (!phoneNumber.startsWith("+91")) {
+            alert("Number +91 ने टाका. उदाहरण: +919876543210");
+            return;
+        }
+
+        if (!recaptchaVerifier) {
+            setupRecaptcha();
+        }
+
+        confirmationResult =
+            await signInWithPhoneNumber(
+                auth,
+                phoneNumber,
+                recaptchaVerifier
+            );
+
+        alert("OTP पाठवला आहे ✅");
+
+    } catch (error) {
+
+        console.error(error);
+
+        alert("OTP पाठवताना Error: " + error.message);
+
+        if (recaptchaVerifier) {
+            recaptchaVerifier.clear();
+            recaptchaVerifier = null;
+        }
+    }
+};
+
+
+window.verifyOTP = async function () {
+
+    try {
+
+        const otp =
+            document.getElementById("otpCode").value.trim();
+
+        if (!confirmationResult) {
+            alert("आधी Send OTP करा");
+            return;
+        }
+
+        const result =
+            await confirmationResult.confirm(otp);
+
+        alert("Citizen Login Successful ✅");
+
+        console.log("User:", result.user);
+
+    } catch (error) {
+
+        console.error(error);
+
+        alert("OTP चुकीचा आहे किंवा Login Failed");
+    }
+};
 
 
 /* ================= ADMIN LOGIN ================= */
