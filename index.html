@@ -2017,7 +2017,94 @@ window.adminLogout = async function() {
     ).innerHTML = "";
 
 };
+// ================= CITIZEN PHONE OTP =================
 
+import {
+    RecaptchaVerifier,
+    signInWithPhoneNumber
+} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+
+let confirmationResult;
+
+window.sendOTP = async function () {
+
+    const phone = document.getElementById("citizenPhone").value.trim();
+    const message = document.getElementById("citizenMessage");
+
+    if (!phone) {
+        message.innerText = "कृपया Mobile Number टाका.";
+        return;
+    }
+
+    let fullPhone = phone;
+
+    if (!phone.startsWith("+")) {
+        fullPhone = "+91" + phone;
+    }
+
+    try {
+
+        if (!window.recaptchaVerifier) {
+
+            window.recaptchaVerifier = new RecaptchaVerifier(
+                auth,
+                "recaptcha-container",
+                {
+                    size: "normal"
+                }
+            );
+        }
+
+        confirmationResult = await signInWithPhoneNumber(
+            auth,
+            fullPhone,
+            window.recaptchaVerifier
+        );
+
+        message.innerText = "OTP पाठवला आहे. Mobile तपासा.";
+
+    } catch (error) {
+
+        console.error(error);
+        message.innerText = "OTP पाठवताना error आला: " + error.message;
+
+        if (window.recaptchaVerifier) {
+            window.recaptchaVerifier.clear();
+            window.recaptchaVerifier = null;
+        }
+    }
+};
+
+
+window.verifyOTP = async function () {
+
+    const otp = document.getElementById("otp").value.trim();
+    const message = document.getElementById("citizenMessage");
+
+    if (!confirmationResult) {
+        message.innerText = "आधी Send OTP करा.";
+        return;
+    }
+
+    if (!otp) {
+        message.innerText = "कृपया OTP टाका.";
+        return;
+    }
+
+    try {
+
+        const result = await confirmationResult.confirm(otp);
+
+        message.innerText = "✅ Citizen Login Successful!";
+
+        console.log("Citizen User:", result.user);
+
+    } catch (error) {
+
+        console.error(error);
+        message.innerText = "❌ OTP चुकीचा आहे किंवा Login Failed.";
+    }
+};
 </script>
 </body>
 </html>
