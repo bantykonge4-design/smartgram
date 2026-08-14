@@ -1580,6 +1580,112 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
 const db = getFirestore(app);
+    /* ================= CITIZEN OTP LOGIN ================= */
+
+window.citizenLoggedIn = false;
+
+let confirmationResult = null;
+let recaptchaVerifier = null;
+
+window.sendOTP = async function () {
+
+    const phone =
+        document.getElementById("citizenPhone").value.trim();
+
+    const message =
+        document.getElementById("citizenMessage");
+
+    if (!phone) {
+        message.innerHTML = "⚠️ Mobile Number भरा.";
+        message.style.color = "red";
+        return;
+    }
+
+    if (!/^[6-9][0-9]{9}$/.test(phone)) {
+        message.innerHTML =
+            "⚠️ योग्य 10 अंकी Mobile Number टाका.";
+        message.style.color = "red";
+        return;
+    }
+
+    try {
+
+        if (!recaptchaVerifier) {
+
+            recaptchaVerifier = new RecaptchaVerifier(
+                auth,
+                "recaptcha-container",
+                {
+                    size: "normal"
+                }
+            );
+
+            await recaptchaVerifier.render();
+        }
+
+        confirmationResult =
+            await signInWithPhoneNumber(
+                auth,
+                "+91" + phone,
+                recaptchaVerifier
+            );
+
+        message.innerHTML =
+            "✅ OTP पाठवला आहे.";
+
+        message.style.color = "green";
+
+    } catch (error) {
+
+        console.error(error);
+
+        message.innerHTML =
+            "❌ OTP पाठवताना Error:<br>" +
+            error.message;
+
+        message.style.color = "red";
+    }
+};
+
+
+window.verifyOTP = async function () {
+
+    const otp =
+        document.getElementById("otp").value.trim();
+
+    const message =
+        document.getElementById("citizenMessage");
+
+    if (!confirmationResult) {
+
+        message.innerHTML =
+            "⚠️ आधी Send OTP करा.";
+
+        message.style.color = "red";
+        return;
+    }
+
+    try {
+
+        await confirmationResult.confirm(otp);
+
+        window.citizenLoggedIn = true;
+
+        message.innerHTML =
+            "✅ Citizen Login Successful!";
+
+        message.style.color = "green";
+
+    } catch (error) {
+
+        console.error(error);
+
+        message.innerHTML =
+            "❌ OTP चुकीचा आहे.";
+
+        message.style.color = "red";
+    }
+};
 
 
 /* ================= PHONE OTP ================= */
