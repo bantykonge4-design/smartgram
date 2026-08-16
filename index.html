@@ -1538,20 +1538,10 @@ from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
 import {
     getAuth,
     signInWithEmailAndPassword,
-    signOut,
     RecaptchaVerifier,
-    signInWithPhoneNumber,
-    onAuthStateChanged
+    signInWithPhoneNumber
 }
 from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
-import {
-    getFirestore,
-    collection,
-    getDocs,
-    updateDoc,
-    doc
-}
-from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
 
 /* ================= FIREBASE CONFIG ================= */
@@ -1566,127 +1556,35 @@ const firebaseConfig = {
 };
 
 
-/* ================= INITIALIZE ================= */
+/* ================= INITIALIZE FIREBASE ================= */
 
 const app = initializeApp(firebaseConfig);
-
 const auth = getAuth(app);
-
-const db = getFirestore(app);
-/* ================= CITIZEN PHONE OTP ================= */
-
-window.citizenLoggedIn = false;
 
 let confirmationResult = null;
 let recaptchaVerifier = null;
 
-window.sendOTP = async function () {
 
-    const phone = document
-        .getElementById("citizenPhone")
-        .value
-        .trim();
+/* ================= SHOW ADMIN LOGIN ================= */
 
-    const message = document.getElementById("citizenMessage");
+window.showAdminLogin = function () {
 
-    if (!phone) {
-        message.innerHTML = "⚠️ Mobile Number भरा.";
-        message.style.color = "red";
-        return;
-    }
+    document.getElementById("adminLogin").style.display = "block";
+    document.getElementById("citizenLogin").style.display = "none";
 
-    if (!/^[6-9][0-9]{9}$/.test(phone)) {
-        message.innerHTML = "⚠️ योग्य 10 अंकी Mobile Number टाका.";
-        message.style.color = "red";
-        return;
-    }
-
-    try {
-
-        if (!recaptchaVerifier) {
-
-            recaptchaVerifier = new RecaptchaVerifier(
-                auth,
-                "recaptcha-container",
-                {
-                    size: "normal"
-                }
-            );
-
-            await recaptchaVerifier.render();
-        }
-
-        confirmationResult = await signInWithPhoneNumber(
-            auth,
-            "+91" + phone,
-            recaptchaVerifier
-        );
-
-        message.innerHTML = "✅ OTP पाठवला आहे.";
-        message.style.color = "green";
-
-    } catch (error) {
-
-        console.error(error);
-
-        message.innerHTML =
-            "❌ OTP पाठवताना Error:<br>" +
-            error.message;
-
-        message.style.color = "red";
-    }
 };
 
 
-window.verifyOTP = async function () {
+/* ================= SHOW CITIZEN LOGIN ================= */
 
-    const otp = document
-        .getElementById("otp")
-        .value
-        .trim();
+window.showCitizenLogin = function () {
 
-    const message =
-        document.getElementById("citizenMessage");
+    document.getElementById("citizenLogin").style.display = "block";
+    document.getElementById("adminLogin").style.display = "none";
 
-    if (!confirmationResult) {
-
-        message.innerHTML =
-            "⚠️ आधी Send OTP करा.";
-
-        message.style.color = "red";
-        return;
-    }
-
-    if (!otp) {
-
-        message.innerHTML =
-            "⚠️ OTP भरा.";
-
-        message.style.color = "red";
-        return;
-    }
-
-    try {
-
-        await confirmationResult.confirm(otp);
-
-        window.citizenLoggedIn = true;
-
-        message.innerHTML =
-            "✅ Citizen Login Successful!";
-
-        message.style.color = "green";
-
-    } catch (error) {
-
-        console.error(error);
-
-        message.innerHTML =
-            "❌ OTP चुकीचा आहे.";
-
-        message.style.color = "red";
-    }
 };
+
+
 /* ================= ADMIN LOGIN ================= */
 
 window.adminLogin = async function () {
@@ -1727,18 +1625,14 @@ window.adminLogin = async function () {
         message.style.color = "green";
 
 
-        document.getElementById(
-            "adminLogin"
-        ).style.display = "none";
+        document.getElementById("adminLogin").style.display = "none";
 
 
-        document.getElementById(
-            "adminDashboard"
-        ).style.display = "block";
+        if (document.getElementById("adminDashboard")) {
 
+            document.getElementById("adminDashboard").style.display = "block";
 
-        /* Complaints load करा */
-        loadComplaints();
+        }
 
 
     } catch (error) {
@@ -1746,7 +1640,7 @@ window.adminLogin = async function () {
         console.error(error);
 
         message.innerHTML =
-            "❌ Login failed: " + error.message;
+            "❌ Login Failed<br>" + error.message;
 
         message.style.color = "red";
 
@@ -1755,353 +1649,160 @@ window.adminLogin = async function () {
 };
 
 
-/* ================= LOAD COMPLAINTS ================= */
+/* ================= CREATE RECAPTCHA ================= */
 
-async function loadComplaints() {
+function createRecaptcha() {
 
-    const list =
-        document.getElementById("complaintList");
-
-
-    list.innerHTML =
-        "<p>⏳ Complaints loading...</p>";
-
-
-    try {
-
-        const snapshot =
-            await getDocs(
-                collection(db, "complaints")
-            );
-
-
-        if (snapshot.empty) {
-
-            list.innerHTML =
-                "<p>📭 अजून कोणतीही Complaint आलेली नाही.</p>";
-
-            return;
-        }
-
-
-        list.innerHTML = "";
-
-
-        snapshot.forEach((item) => {
-
-            const data = item.data();
-
-            const documentId = item.id;
-
-
-            list.innerHTML += `
-
-            <div class="complaint-item"
-                 style="
-                 background:white;
-                 padding:18px;
-                 margin:15px 0;
-                 border-radius:12px;
-                 box-shadow:0 2px 8px #ccc;
-                 ">
-
-                <h3>
-                    📝 Complaint
-                </h3>
-
-                <p>
-                    <b>Document ID:</b>
-                    ${documentId}
-                </p>
-
-                <p>
-                    <b>नाव:</b>
-                    ${data.name || "-"}
-                </p>
-
-                <p>
-                    <b>Mobile:</b>
-                    ${data.mobile || "-"}
-                </p>
-
-                <p>
-                    <b>गाव:</b>
-                    ${data.village || "-"}
-                </p>
-
-                <p>
-                    <b>Type:</b>
-                    ${data.type || "-"}
-                </p>
-
-                <p>
-                    <b>Problem:</b>
-                    ${data.desc || data.complaint || "-"}
-                </p>
-
-                <p>
-                    <b>Status:</b>
-                    <span id="status-${documentId}">
-                        ${data.status || "Pending"}
-                    </span>
-                </p>
-
-
-                <button
-                    onclick="approveComplaint('${documentId}')"
-                    style="
-                    background:#198754;
-                    color:white;
-                    padding:10px 16px;
-                    border:0;
-                    border-radius:8px;
-                    margin-right:8px;
-                    cursor:pointer;
-                    ">
-                    ✅ Approve
-                </button>
-
-
-                <button
-                    onclick="rejectComplaint('${documentId}')"
-                    style="
-                    background:#dc3545;
-                    color:white;
-                    padding:10px 16px;
-                    border:0;
-                    border-radius:8px;
-                    cursor:pointer;
-                    ">
-                    ❌ Reject
-                </button>
-
-            </div>
-
-            `;
-
-        });
-
-
-    } catch (error) {
-
-        console.error(error);
-
-        list.innerHTML = `
-            <p style="color:red;">
-                ❌ Complaints load होत नाहीत.
-                <br>
-                ${error.message}
-            </p>
-        `;
-
+    if (recaptchaVerifier) {
+        return;
     }
+
+
+    recaptchaVerifier =
+        new RecaptchaVerifier(
+            auth,
+            "recaptcha-container",
+            {
+                size: "normal"
+            }
+        );
 
 }
 
 
-/* ================= APPROVE ================= */
-
-window.approveComplaint = async function(documentId) {
-
-    try {
-
-        await updateDoc(
-            doc(db, "complaints", documentId),
-            {
-                status: "Approved"
-            }
-        );
-
-
-        document.getElementById(
-            "status-" + documentId
-        ).innerHTML = "Approved";
-
-
-        alert("✅ Complaint Approved!");
-
-
-    } catch (error) {
-
-        console.error(error);
-
-        alert(
-            "❌ Approve करताना error: "
-            + error.message
-        );
-
-    }
-
-};
-
-
-/* ================= REJECT ================= */
-
-window.rejectComplaint = async function(documentId) {
-
-    const reason = prompt(
-        "❌ Reject करण्याचे कारण लिहा:"
-    );
-
-    // Cancel किंवा रिकामं reason असेल तर reject करू नका
-    if (reason === null || reason.trim() === "") {
-        alert("⚠️ Reject reason लिहा.");
-        return;
-    }
-
-    try {
-
-        await updateDoc(
-            doc(db, "complaints", documentId),
-            {
-                status: "Rejected",
-                rejectReason: reason.trim()
-            }
-        );
-
-        document.getElementById(
-            "status-" + documentId
-        ).innerHTML =
-            "Rejected";
-
-        alert(
-            "❌ Complaint Rejected!\n\nReason: "
-            + reason.trim()
-        );
-
-    } catch (error) {
-
-        console.error(error);
-
-        alert(
-            "❌ Reject करताना error: "
-            + error.message
-        );
-
-    }
-
-};
-
-/* ================= ADMIN LOGOUT ================= */
-
-window.adminLogout = async function() {
-
-    await signOut(auth);
-
-
-    document.getElementById(
-        "adminDashboard"
-    ).style.display = "none";
-
-
-    document.getElementById(
-        "adminLogin"
-    ).style.display = "block";
-
-
-    document.getElementById(
-        "adminEmail"
-    ).value = "";
-
-
-    document.getElementById(
-        "adminPassword"
-    ).value = "";
-
-
-    document.getElementById(
-        "adminMessage"
-    ).innerHTML = "";
-
-};
-// ================= CITIZEN PHONE OTP =================
-
-import {
-    RecaptchaVerifier,
-    signInWithPhoneNumber
-} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
-
-let confirmationResult;
+/* ================= SEND OTP ================= */
 
 window.sendOTP = async function () {
 
-    const phone = document.getElementById("citizenPhone").value.trim();
-    const message = document.getElementById("citizenMessage");
+    const phone =
+        document
+        .getElementById("citizenPhone")
+        .value
+        .trim();
 
-    if (!phone) {
-        message.innerText = "कृपया Mobile Number टाका.";
+    const message =
+        document.getElementById("citizenMessage");
+
+
+    if (!/^[6-9][0-9]{9}$/.test(phone)) {
+
+        message.innerHTML =
+            "⚠️ योग्य 10 अंकी Mobile Number टाका.";
+
+        message.style.color = "red";
+
         return;
     }
 
-    let fullPhone = phone;
-
-    if (!phone.startsWith("+")) {
-        fullPhone = "+91" + phone;
-    }
 
     try {
 
-        if (!window.recaptchaVerifier) {
+        createRecaptcha();
 
-            window.recaptchaVerifier = new RecaptchaVerifier(
+
+        await recaptchaVerifier.render();
+
+
+        confirmationResult =
+            await signInWithPhoneNumber(
                 auth,
-                "recaptcha-container",
-                {
-                    size: "normal"
-                }
+                "+91" + phone,
+                recaptchaVerifier
             );
-        }
 
-        confirmationResult = await signInWithPhoneNumber(
-            auth,
-            fullPhone,
-            window.recaptchaVerifier
-        );
 
-        message.innerText = "OTP पाठवला आहे. Mobile तपासा.";
+        message.innerHTML =
+            "✅ OTP पाठवला आहे. तुमच्या मोबाइलवर आलेला OTP टाका.";
+
+        message.style.color = "green";
+
 
     } catch (error) {
 
         console.error(error);
-        message.innerText = "OTP पाठवताना error आला: " + error.message;
 
-        if (window.recaptchaVerifier) {
-            window.recaptchaVerifier.clear();
-            window.recaptchaVerifier = null;
+        message.innerHTML =
+            "❌ OTP पाठवता आला नाही.<br>" +
+            error.message;
+
+        message.style.color = "red";
+
+
+        if (recaptchaVerifier) {
+
+            recaptchaVerifier.clear();
+            recaptchaVerifier = null;
+
         }
+
     }
+
 };
 
+
+/* ================= VERIFY OTP ================= */
 
 window.verifyOTP = async function () {
 
-    const otp = document.getElementById("otp").value.trim();
-    const message = document.getElementById("citizenMessage");
+    const otp =
+        document
+        .getElementById("otp")
+        .value
+        .trim();
+
+    const message =
+        document.getElementById("citizenMessage");
+
 
     if (!confirmationResult) {
-        message.innerText = "आधी Send OTP करा.";
+
+        message.innerHTML =
+            "⚠️ आधी Send OTP करा.";
+
+        message.style.color = "red";
+
         return;
     }
 
+
     if (!otp) {
-        message.innerText = "कृपया OTP टाका.";
+
+        message.innerHTML =
+            "⚠️ OTP टाका.";
+
+        message.style.color = "red";
+
         return;
     }
+
 
     try {
 
-        const result = await confirmationResult.confirm(otp);
+        await confirmationResult.confirm(otp);
 
-        message.innerText = "✅ Citizen Login Successful!";
 
-        console.log("Citizen User:", result.user);
+        message.innerHTML =
+            "✅ Citizen Login Successful!";
+
+        message.style.color = "green";
+
+
+        document.getElementById("citizenLogin").style.display = "none";
+
 
     } catch (error) {
 
         console.error(error);
-        message.innerText = "❌ OTP चुकीचा आहे किंवा Login Failed.";
+
+        message.innerHTML =
+            "❌ OTP चुकीचा आहे किंवा Expired झाला आहे.";
+
+        message.style.color = "red";
+
     }
+
 };
+
 </script>
 </body>
 </html>
