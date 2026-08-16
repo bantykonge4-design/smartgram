@@ -1648,268 +1648,62 @@ window.adminLogin = async function () {
 
 };
 
-
 /* ================= CREATE RECAPTCHA ================= */
-
-function createRecaptcha() {
-
-    if (recaptchaVerifier) {
-        return;
-    }
-
-
-recaptchaVerifier = new RecaptchaVerifier(
-    auth,
-    "recaptcha-container",
-    {
-        size: "normal",
-        callback: function () {
-            console.log("reCAPTCHA verified");
-        },
-        "expired-callback": function () {
-            console.log("reCAPTCHA expired");
-        }
-    }
-);
-
-await recaptchaVerifier.render();
-}
-
-
-/* ================= SEND OTP ================= */
-
-window.sendOTP = async function () {
-
-    const phone =
-        document
-        .getElementById("citizenPhone")
-        .value
-        .trim();
-
-    const message =
-        document.getElementById("citizenMessage");
-
-
-    if (!/^[6-9][0-9]{9}$/.test(phone)) {
-
-        message.innerHTML =
-            "⚠️ योग्य 10 अंकी Mobile Number टाका.";
-
-        message.style.color = "red";
-
-        return;
-    }
-
-
-    try {
-
-        createRecaptcha();
-
-
-        await recaptchaVerifier.render();
-
-
-        confirmationResult =
-            await signInWithPhoneNumber(
-                auth,
-                "+91" + phone,
-                recaptchaVerifier
-            );
-
-
-        message.innerHTML =
-            "✅ OTP पाठवला आहे. तुमच्या मोबाइलवर आलेला OTP टाका.";
-
-        message.style.color = "green";
-
-
-    } catch (error) {
-
-        console.error(error);
-
-        message.innerHTML =
-            "❌ OTP पाठवता आला नाही.<br>" +
-            error.message;
-
-        message.style.color = "red";
-
-
-        if (recaptchaVerifier) {
-
-            recaptchaVerifier.clear();
-            recaptchaVerifier = null;
-
-        }
-
-    }
-
-};
-
-
-/* ================= VERIFY OTP ================= */
-
-window.verifyOTP = async function () {
-
-<script type="module">
-
-import { initializeApp }
-from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
-
-import {
-    getAuth,
-    signInWithEmailAndPassword,
-    RecaptchaVerifier,
-    signInWithPhoneNumber
-}
-from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
-
-
-/* ================= FIREBASE ================= */
-
-const firebaseConfig = {
-    apiKey: "AIzaSyD6I-lrYAUCbaOyUx7n6W0BHJmOyCgJOoo",
-    authDomain: "gogari-smartgram.firebaseapp.com",
-    projectId: "gogari-smartgram",
-    storageBucket: "gogari-smartgram.firebasestorage.app",
-    messagingSenderId: "160318195171",
-    appId: "1:160318195171:web:e62ab30c7ec3d4bc338cd6"
-};
-
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
 
 let confirmationResult = null;
 let recaptchaVerifier = null;
 
 
-/* ================= ADMIN LOGIN ================= */
-
-window.showAdminLogin = function () {
-
-    document.getElementById("adminLogin").style.display = "block";
-    document.getElementById("citizenLogin").style.display = "none";
-
-};
-
-window.adminLogin = async function () {
-
-    const email =
-        document.getElementById("adminEmail").value.trim();
-
-    const password =
-        document.getElementById("adminPassword").value;
-
-    const msg =
-        document.getElementById("adminMessage");
-
-    try {
-
-        await signInWithEmailAndPassword(
-            auth,
-            email,
-            password
-        );
-
-        msg.innerHTML = "✅ Admin Login Successful!";
-        msg.style.color = "green";
-
-    } catch (error) {
-
-        console.error(error);
-
-        msg.innerHTML =
-            "❌ Login Failed: " + error.message;
-
-        msg.style.color = "red";
-
-    }
-
-};
-
-
-/* ================= CITIZEN LOGIN ================= */
-
-window.showCitizenLogin = function () {
-
-    document.getElementById("citizenLogin").style.display = "block";
-    document.getElementById("adminLogin").style.display = "none";
-
-};
-
-
 /* ================= SEND OTP ================= */
 
 window.sendOTP = async function () {
 
-    const phone =
-        document.getElementById("citizenPhone")
-        .value
-        .trim();
-
-    const msg =
-        document.getElementById("citizenMessage");
-
+    const phone = document.getElementById("citizenPhone").value.trim();
+    const message = document.getElementById("citizenMessage");
 
     if (!/^[6-9][0-9]{9}$/.test(phone)) {
-
-        msg.innerHTML =
-            "⚠️ 10 अंकी योग्य Mobile Number टाका.";
-
-        msg.style.color = "red";
-
+        message.innerHTML = "⚠️ योग्य 10 अंकी Mobile Number टाका.";
+        message.style.color = "red";
         return;
     }
-
 
     try {
 
         if (recaptchaVerifier) {
-
             recaptchaVerifier.clear();
             recaptchaVerifier = null;
-
         }
 
-
-        recaptchaVerifier =
-            new RecaptchaVerifier(
-                auth,
-                "recaptcha-container",
-                {
-                    size: "normal"
-                }
-            );
-
+        recaptchaVerifier = new RecaptchaVerifier(
+            auth,
+            "recaptcha-container",
+            {
+                size: "normal"
+            }
+        );
 
         await recaptchaVerifier.render();
 
+        confirmationResult = await signInWithPhoneNumber(
+            auth,
+            "+91" + phone,
+            recaptchaVerifier
+        );
 
-        confirmationResult =
-            await signInWithPhoneNumber(
-                auth,
-                "+91" + phone,
-                recaptchaVerifier
-            );
+        message.innerHTML =
+            "✅ OTP पाठवला आहे. Mobile वर आलेला OTP टाका.";
 
-
-        msg.innerHTML =
-            "✅ OTP पाठवला आहे.";
-
-        msg.style.color = "green";
-
+        message.style.color = "green";
 
     } catch (error) {
 
         console.error(error);
 
-        msg.innerHTML =
-            "❌ OTP पाठवता आला नाही.<br>" +
-            error.message;
+        message.innerHTML =
+            "❌ OTP पाठवता आला नाही.<br>" + error.message;
 
-        msg.style.color = "red";
-
+        message.style.color = "red";
     }
-
 };
 
 
@@ -1917,56 +1711,36 @@ window.sendOTP = async function () {
 
 window.verifyOTP = async function () {
 
-    const otp =
-        document.getElementById("otp")
-        .value
-        .trim();
-
-    const msg =
-        document.getElementById("citizenMessage");
-
+    const otp = document.getElementById("otp").value.trim();
+    const message = document.getElementById("citizenMessage");
 
     if (!confirmationResult) {
-
-        msg.innerHTML =
-            "⚠️ आधी Send OTP करा.";
-
-        msg.style.color = "red";
-
+        message.innerHTML = "⚠️ आधी Send OTP दाबा.";
+        message.style.color = "red";
         return;
-
     }
-
 
     try {
 
         await confirmationResult.confirm(otp);
 
-
-        msg.innerHTML =
+        message.innerHTML =
             "✅ Citizen Login Successful!";
 
-        msg.style.color = "green";
+        message.style.color = "green";
 
-
-        document.getElementById(
-            "citizenLogin"
-        ).style.display = "none";
-
+        document.getElementById("citizenLogin").style.display = "none";
 
     } catch (error) {
 
         console.error(error);
 
-        msg.innerHTML =
-            "❌ OTP चुकीचा आहे.";
-
-        msg.style.color = "red";
-
+        message.innerHTML = "❌ OTP चुकीचा आहे.";
+        message.style.color = "red";
     }
-
 };
 
 </script>
+
 </body>
 </html>
