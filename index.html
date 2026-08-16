@@ -24,8 +24,6 @@ body{
     color:#222;
 }
 
-/* HEADER */
-
 header{
     background:#176b3a;
     color:white;
@@ -40,8 +38,6 @@ header h1{
 header p{
     margin-top:8px;
 }
-
-/* HERO */
 
 .hero{
     background:white;
@@ -61,14 +57,16 @@ header p{
     margin-bottom:20px;
 }
 
-/* BUTTON */
-
 button{
     border:0;
     border-radius:8px;
     padding:12px 20px;
     cursor:pointer;
     font-weight:bold;
+}
+
+button:active{
+    transform:scale(.98);
 }
 
 .mainbtn,
@@ -80,9 +78,18 @@ button{
 .close{
     background:#ddd;
     color:#222;
+    margin-left:5px;
 }
 
-/* SERVICES */
+.red{
+    background:#d32f2f;
+    color:white;
+}
+
+.blue{
+    background:#1565c0;
+    color:white;
+}
 
 .services{
     padding:30px 15px;
@@ -109,6 +116,7 @@ button{
     border-radius:15px;
     box-shadow:0 3px 10px #0002;
     cursor:pointer;
+    transition:.2s;
 }
 
 .card:hover{
@@ -129,8 +137,6 @@ button{
     font-size:13px;
     color:#666;
 }
-
-/* PAGE */
 
 .page{
     display:none;
@@ -192,7 +198,14 @@ label{
     border-radius:10px;
 }
 
-/* FOOTER */
+.errorbox{
+    margin-top:15px;
+    padding:15px;
+    background:#fff0f0;
+    border:2px solid #d32f2f;
+    border-radius:10px;
+    color:#b00020;
+}
 
 footer{
     background:#123d27;
@@ -201,8 +214,6 @@ footer{
     padding:20px;
     margin-top:20px;
 }
-
-/* WELCOME SCREEN */
 
 #welcomeScreen{
     position:fixed;
@@ -275,8 +286,6 @@ footer{
     font-size:17px;
 }
 
-/* LOGIN */
-
 .login-section{
     text-align:center;
     padding:30px 15px;
@@ -293,7 +302,19 @@ footer{
     margin:5px;
 }
 
-/* ADMIN DASHBOARD */
+.login-box{
+    display:none;
+    max-width:450px;
+    margin:25px auto;
+    padding:20px;
+    background:#f5f7f6;
+    border-radius:12px;
+}
+
+.login-box h3{
+    color:#176b3a;
+    margin-bottom:15px;
+}
 
 #adminDashboard{
     display:none;
@@ -358,8 +379,6 @@ footer{
     font-size:16px;
 }
 
-/* ADMIN DATA */
-
 .admin-data{
     display:none;
     margin-top:20px;
@@ -372,10 +391,71 @@ footer{
     background:#f5f7f6;
     padding:15px;
     border-radius:10px;
-    margin-bottom:10px;
+    margin-bottom:12px;
+    border-left:5px solid #176b3a;
 }
 
-/* MOBILE */
+.complaint-item h4{
+    color:#176b3a;
+    margin-bottom:8px;
+}
+
+.complaint-item p{
+    margin:5px 0;
+    line-height:1.5;
+}
+
+.status-select{
+    margin-top:10px;
+    width:100%;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+    margin-bottom:20px;
+}
+
+.stat{
+    background:#f5f7f6;
+    padding:15px;
+    text-align:center;
+    border-radius:10px;
+}
+
+.stat h3{
+    color:#176b3a;
+    font-size:25px;
+}
+
+.stat p{
+    font-size:13px;
+    color:#666;
+}
+
+.user-status{
+    margin-top:15px;
+    padding:10px;
+    border-radius:8px;
+    font-weight:bold;
+}
+
+.logged{
+    background:#e8f5e9;
+    color:#176b3a;
+}
+
+.notlogged{
+    background:#fff3cd;
+    color:#856404;
+}
+
+#recaptcha-container{
+    margin:15px auto;
+    display:flex;
+    justify-content:center;
+}
 
 @media(max-width:600px){
 
@@ -401,6 +481,18 @@ footer{
         font-size:23px;
     }
 
+    .stats{
+        grid-template-columns:1fr 1fr 1fr;
+    }
+
+    .page{
+        padding:10px;
+    }
+
+    .pagebox{
+        padding:18px;
+    }
+
 }
 
 </style>
@@ -409,16 +501,15 @@ footer{
 
 <body>
 
-<!-- ================= WELCOME SCREEN ================= -->
+<!-- ================= WELCOME ================= -->
 
 <div id="welcomeScreen">
 
     <div class="welcome-photo">
 
         <img
-            src="https://upload.wikimedia.org/wikipedia/commons/5/56/Chhatrapati_Shivaji_Maharaj.jpg"
-            alt="छत्रपती शिवाजी महाराज"
-        >
+        src="https://upload.wikimedia.org/wikipedia/commons/5/56/Chhatrapati_Shivaji_Maharaj.jpg"
+        alt="छत्रपती शिवाजी महाराज">
 
     </div>
 
@@ -437,9 +528,11 @@ footer{
         <h4>आपले हार्दिक स्वागत आहे 🙏</h4>
 
         <p class="welcome-text">
+
             आपल्या गावातील नागरिक सेवा,
             समस्या नोंदणी आणि गाव विकासासाठी
             SmartGram डिजिटल व्यासपीठ.
+
         </p>
 
         <button onclick="enterWebsite()">
@@ -449,6 +542,7 @@ footer{
     </div>
 
 </div>
+
 
 <!-- ================= HEADER ================= -->
 
@@ -461,6 +555,7 @@ footer{
     </p>
 
 </header>
+
 
 <!-- ================= HERO ================= -->
 
@@ -475,14 +570,16 @@ footer{
         आणि गावाच्या विकासात सहभागी व्हा.
     </p>
 
-    <button class="mainbtn"
-            onclick="openPage('complaint')">
+    <button
+    class="mainbtn"
+    onclick="openComplaint()">
 
         📝 समस्या नोंदवा
 
     </button>
 
 </section>
+
 
 <!-- ================= SERVICES ================= -->
 
@@ -493,85 +590,92 @@ footer{
 <div class="grid">
 
 <div class="card"
-     onclick="openPage('complaint')">
+onclick="openComplaint()">
 
-    <div class="icon">📝</div>
+<div class="icon">📝</div>
 
-    <h3>Complaint</h3>
+<h3>Complaint</h3>
 
-    <p>गावातील समस्या नोंदवा</p>
-
-</div>
-
-<div class="card"
-     onclick="openPage('track')">
-
-    <div class="icon">🔎</div>
-
-    <h3>Track Complaint</h3>
-
-    <p>तक्रारीचा Status पाहा</p>
+<p>गावातील समस्या नोंदवा</p>
 
 </div>
 
+
 <div class="card"
-     onclick="openPage('officials')">
+onclick="openPage('track')">
 
-    <div class="icon">👥</div>
+<div class="icon">🔎</div>
 
-    <h3>Village Officials</h3>
+<h3>Track Complaint</h3>
 
-    <p>गावातील अधिकारी माहिती</p>
+<p>तक्रारीचा Status पाहा</p>
 
 </div>
 
+
 <div class="card"
-     onclick="openPage('map')">
+onclick="openPage('officials')">
 
-    <div class="icon">🗺️</div>
+<div class="icon">👥</div>
 
-    <h3>Village Map</h3>
+<h3>Village Officials</h3>
 
-    <p>गावाचा नकाशा</p>
+<p>गावातील अधिकारी माहिती</p>
 
 </div>
 
+
 <div class="card"
-     onclick="openPage('notices')">
+onclick="openPage('map')">
 
-    <div class="icon">📢</div>
+<div class="icon">🗺️</div>
 
-    <h3>Village Notices</h3>
+<h3>Village Map</h3>
 
-    <p>गावातील सूचना</p>
+<p>गावाचा नकाशा</p>
 
 </div>
 
+
 <div class="card"
-     onclick="openPage('ideas')">
+onclick="openPage('notices')">
 
-    <div class="icon">💡</div>
+<div class="icon">📢</div>
 
-    <h3>Village Ideas</h3>
+<h3>Village Notices</h3>
 
-    <p>गावासाठी कल्पना द्या</p>
+<p>गावातील सूचना</p>
 
 </div>
 
+
 <div class="card"
-     onclick="openPage('certificates')">
+onclick="openPage('ideas')">
 
-    <div class="icon">📄</div>
+<div class="icon">💡</div>
 
-    <h3>Certificates</h3>
+<h3>Village Ideas</h3>
 
-    <p>जन्म / मृत्यू अर्ज</p>
+<p>गावासाठी कल्पना द्या</p>
+
+</div>
+
+
+<div class="card"
+onclick="openPage('certificates')">
+
+<div class="icon">📄</div>
+
+<h3>Certificates</h3>
+
+<p>जन्म / मृत्यू अर्ज</p>
 
 </div>
 
 </div>
 
 </section>
+
 
 <!-- ================= LOGIN ================= -->
 
@@ -581,97 +685,115 @@ footer{
 
 <div class="login-buttons">
 
-<button class="green"
-        onclick="showAdminLogin()">
+<button
+class="green"
+onclick="showAdminLogin()">
 
-    🔐 Admin Login
+🔐 Admin Login
 
 </button>
 
 <button
-        onclick="showCitizenLogin()">
+onclick="showCitizenLogin()">
 
-    👤 Citizen Login
+👤 Citizen Login
 
 </button>
 
 </div>
 
+
 <!-- ADMIN LOGIN -->
 
-<div id="adminLogin"
-     style="display:none;max-width:450px;margin:25px auto;">
+<div
+id="adminLogin"
+class="login-box">
 
-    <h3>🔐 Admin Login</h3>
+<h3>🔐 Admin Login</h3>
 
-    <input
-        type="email"
-        id="adminEmail"
-        placeholder="Admin Email">
+<input
+type="email"
+id="adminEmail"
+placeholder="Admin Email">
 
-    <input
-        type="password"
-        id="adminPassword"
-        placeholder="Password">
+<input
+type="password"
+id="adminPassword"
+placeholder="Password">
 
-    <button
-        class="green"
-        onclick="adminLogin()">
+<button
+class="green"
+onclick="adminLogin()">
 
-        Login
+Login
 
-    </button>
+</button>
 
-    <p id="adminMessage"
-       style="margin-top:15px;">
-    </p>
+<p
+id="adminMessage"
+style="margin-top:15px;">
+</p>
 
 </div>
 
+
 <!-- CITIZEN LOGIN -->
 
-<div id="citizenLogin"
-     style="display:none;max-width:450px;margin:25px auto;">
+<div
+id="citizenLogin"
+class="login-box">
 
-    <h3>👤 Citizen Login</h3>
+<h3>👤 Citizen Login</h3>
 
-    <input
-        type="tel"
-        id="citizenPhone"
-        placeholder="10 अंकी Mobile Number">
+<input
+type="tel"
+id="citizenPhone"
+maxlength="10"
+placeholder="10 अंकी Mobile Number">
 
-    <button
-        class="green"
-        onclick="sendOTP()">
+<button
+class="green"
+onclick="sendOTP()">
 
-        📱 Send OTP
+📱 Send OTP
 
-    </button>
+</button>
 
-    <div id="recaptcha-container"
-         style="margin:15px 0;">
-    </div>
+<div
+id="recaptcha-container">
+</div>
 
-    <input
-        type="text"
-        id="otp"
-        placeholder="Enter OTP">
+<input
+type="text"
+id="otp"
+maxlength="6"
+placeholder="Enter OTP">
 
-    <button
-        class="green"
-        onclick="verifyOTP()">
+<button
+class="green"
+onclick="verifyOTP()">
 
-        ✅ Verify OTP
+✅ Verify OTP
 
-    </button>
+</button>
 
-    <p id="citizenMessage"
-       style="margin-top:15px;">
-    </p>
+<p
+id="citizenMessage"
+style="margin-top:15px;">
+</p>
+
+<div
+id="citizenStatus"
+class="user-status notlogged">
+
+🔒 Citizen Login केलेले नाही
+
+</div>
 
 </div>
 
 </section>
+
 
 <!-- ================= FOOTER ================= -->
 
@@ -683,28 +805,44 @@ Digital Village Development Initiative
 
 </footer>
 
+
 <!-- ================= COMPLAINT ================= -->
 
-<div class="page" id="complaint">
+<div
+class="page"
+id="complaint">
 
 <div class="pagebox">
 
 <h2>📝 ग्राम समस्या नोंदणी</h2>
 
+<div
+id="complaintLoginNotice"
+class="user-status notlogged">
+
+🔒 Complaint करण्यासाठी Citizen Login आवश्यक आहे.
+
+</div>
+
 <label>नाव</label>
 
-<input id="cname"
-       placeholder="तुमचे पूर्ण नाव">
+<input
+id="cname"
+placeholder="तुमचे पूर्ण नाव">
 
 <label>मोबाइल नंबर</label>
 
-<input id="cmobile"
-       placeholder="10 अंकी मोबाइल नंबर">
+<input
+id="cmobile"
+type="tel"
+maxlength="10"
+placeholder="10 अंकी मोबाइल नंबर">
 
 <label>गाव</label>
 
-<input id="cvillage"
-       value="गोगरी">
+<input
+id="cvillage"
+value="गोगरी">
 
 <label>समस्येचा प्रकार</label>
 
@@ -722,19 +860,22 @@ Digital Village Development Initiative
 
 <label>समस्येचे वर्णन</label>
 
-<textarea id="cdesc"
-          rows="5"
-          placeholder="तुमची समस्या सविस्तर लिहा"></textarea>
+<textarea
+id="cdesc"
+rows="5"
+placeholder="तुमची समस्या सविस्तर लिहा"></textarea>
 
-<button class="green"
-        onclick="submitComplaint()">
+<button
+class="green"
+onclick="submitComplaint()">
 
 📤 समस्या नोंदवा
 
 </button>
 
-<button class="close"
-        onclick="closePages()">
+<button
+class="close"
+onclick="closePages()">
 
 ❌ बंद करा
 
@@ -746,30 +887,38 @@ Digital Village Development Initiative
 
 </div>
 
+
 <!-- ================= TRACK ================= -->
 
-<div class="page" id="track">
+<div
+class="page"
+id="track">
 
 <div class="pagebox">
 
 <h2>🔎 Track Complaint</h2>
 
 <p style="margin-bottom:15px;">
+
 तुमचा Complaint ID टाका.
+
 </p>
 
-<input id="trackId"
-       placeholder="उदा. SG-123456">
+<input
+id="trackId"
+placeholder="उदा. SG-123456">
 
-<button class="green"
-        onclick="trackNow()">
+<button
+class="green"
+onclick="trackNow()">
 
 🔎 Track
 
 </button>
 
-<button class="close"
-        onclick="closePages()">
+<button
+class="close"
+onclick="closePages()">
 
 ❌ बंद करा
 
@@ -781,13 +930,17 @@ Digital Village Development Initiative
 
 </div>
 
+
 <!-- ================= OFFICIALS ================= -->
 
-<div class="page" id="officials">
+<div
+class="page"
+id="officials">
 
 <div class="pagebox">
 
 <h2>👥 Village Officials</h2>
+
 
 <div class="info">
 
@@ -810,6 +963,7 @@ Digital Village Development Initiative
 
 </div>
 
+
 <div class="info">
 
 <h3>👩‍💼 उपसरपंच</h3>
@@ -826,6 +980,7 @@ Digital Village Development Initiative
 
 </div>
 
+
 <div class="info">
 
 <h3>👨‍💼 ग्रामसेवक</h3>
@@ -841,6 +996,7 @@ Digital Village Development Initiative
 </p>
 
 </div>
+
 
 <div class="info">
 
@@ -863,6 +1019,7 @@ Digital Village Development Initiative
 
 </div>
 
+
 <div class="info">
 
 <h3>👮 पोलिस पाटील</h3>
@@ -879,8 +1036,10 @@ Digital Village Development Initiative
 
 </div>
 
-<button class="close"
-        onclick="closePages()">
+
+<button
+class="close"
+onclick="closePages()">
 
 ❌ बंद करा
 
@@ -890,15 +1049,19 @@ Digital Village Development Initiative
 
 </div>
 
+
 <!-- ================= MAP ================= -->
 
-<div class="page" id="map">
+<div
+class="page"
+id="map">
 
 <div class="pagebox">
 
 <h2>🗺️ Village Map</h2>
 
-<p style="text-align:center;margin-bottom:15px;">
+<p
+style="text-align:center;margin-bottom:15px;">
 
 गोगरी, ता. मंगरूळपीर,
 जि. वाशिम
@@ -915,8 +1078,9 @@ style="border:0;border-radius:12px;">
 
 <br><br>
 
-<button class="close"
-        onclick="closePages()">
+<button
+class="close"
+onclick="closePages()">
 
 ❌ बंद करा
 
@@ -926,9 +1090,12 @@ style="border:0;border-radius:12px;">
 
 </div>
 
+
 <!-- ================= NOTICES ================= -->
 
-<div class="page" id="notices">
+<div
+class="page"
+id="notices">
 
 <div class="pagebox">
 
@@ -954,8 +1121,9 @@ style="border:0;border-radius:12px;">
 
 </div>
 
-<button class="close"
-        onclick="closePages()">
+<button
+class="close"
+onclick="closePages()">
 
 ❌ बंद करा
 
@@ -965,38 +1133,47 @@ style="border:0;border-radius:12px;">
 
 </div>
 
+
 <!-- ================= IDEAS ================= -->
 
-<div class="page" id="ideas">
+<div
+class="page"
+id="ideas">
 
 <div class="pagebox">
 
 <h2>💡 Village Ideas</h2>
 
 <p style="margin-bottom:15px;">
+
 गावाच्या विकासासाठी तुमची कल्पना द्या.
+
 </p>
 
 <label>तुमचे नाव</label>
 
-<input id="ideaName"
-       placeholder="तुमचे नाव">
+<input
+id="ideaName"
+placeholder="तुमचे नाव">
 
 <label>तुमची कल्पना</label>
 
-<textarea id="ideaText"
-          rows="5"
-          placeholder="गावाच्या विकासासाठी कल्पना लिहा"></textarea>
+<textarea
+id="ideaText"
+rows="5"
+placeholder="गावाच्या विकासासाठी कल्पना लिहा"></textarea>
 
-<button class="green"
-        onclick="submitIdea()">
+<button
+class="green"
+onclick="submitIdea()">
 
 📤 Idea Submit
 
 </button>
 
-<button class="close"
-        onclick="closePages()">
+<button
+class="close"
+onclick="closePages()">
 
 ❌ बंद करा
 
@@ -1008,17 +1185,21 @@ style="border:0;border-radius:12px;">
 
 </div>
 
+
 <!-- ================= CERTIFICATES ================= -->
 
-<div class="page" id="certificates">
+<div
+class="page"
+id="certificates">
 
 <div class="pagebox">
 
 <h2>📄 Certificate Services</h2>
 
-<div class="info"
-     onclick="birth()"
-     style="cursor:pointer;">
+<div
+class="info"
+onclick="birth()"
+style="cursor:pointer;">
 
 <h3>🍼 Birth Certificate</h3>
 
@@ -1028,9 +1209,10 @@ style="border:0;border-radius:12px;">
 
 </div>
 
-<div class="info"
-     onclick="death()"
-     style="cursor:pointer;">
+<div
+class="info"
+onclick="death()"
+style="cursor:pointer;">
 
 <h3>⚰️ Death Certificate</h3>
 
@@ -1040,8 +1222,9 @@ style="border:0;border-radius:12px;">
 
 </div>
 
-<button class="close"
-        onclick="closePages()">
+<button
+class="close"
+onclick="closePages()">
 
 ❌ बंद करा
 
@@ -1051,9 +1234,11 @@ style="border:0;border-radius:12px;">
 
 </div>
 
+
 <!-- ================= ADMIN DASHBOARD ================= -->
 
-<div id="adminDashboard">
+<div
+id="adminDashboard">
 
 <div class="dashboard-box">
 
@@ -1065,10 +1250,43 @@ style="border:0;border-radius:12px;">
 ग्रामपंचायत गोगरी – Admin Panel
 </p>
 
+
+<div
+class="stats">
+
+<div class="stat">
+
+<h3 id="totalCount">0</h3>
+
+<p>Total</p>
+
+</div>
+
+<div class="stat">
+
+<h3 id="pendingCount">0</h3>
+
+<p>Pending</p>
+
+</div>
+
+<div class="stat">
+
+<h3 id="resolvedCount">0</h3>
+
+<p>Resolved</p>
+
+</div>
+
+</div>
+
+
 <div class="dashboard-grid">
 
-<div class="dashboard-card"
-     onclick="showAdminComplaints()">
+
+<div
+class="dashboard-card"
+onclick="showAdminComplaints()">
 
 <div class="icon">📝</div>
 
@@ -1080,8 +1298,10 @@ style="border:0;border-radius:12px;">
 
 </div>
 
-<div class="dashboard-card"
-     onclick="alert('Village Officials management पुढील step मध्ये जोडू शकतो.')">
+
+<div
+class="dashboard-card"
+onclick="alert('Village Officials management पुढील module मध्ये जोडता येईल.')">
 
 <div class="icon">👥</div>
 
@@ -1093,8 +1313,10 @@ style="border:0;border-radius:12px;">
 
 </div>
 
-<div class="dashboard-card"
-     onclick="alert('Notices management पुढील step मध्ये जोडू शकतो.')">
+
+<div
+class="dashboard-card"
+onclick="alert('Notices management पुढील module मध्ये जोडता येईल.')">
 
 <div class="icon">📢</div>
 
@@ -1106,8 +1328,10 @@ style="border:0;border-radius:12px;">
 
 </div>
 
-<div class="dashboard-card"
-     onclick="alert('Village Ideas section पुढील step मध्ये जोडू शकतो.')">
+
+<div
+class="dashboard-card"
+onclick="loadIdeas()">
 
 <div class="icon">💡</div>
 
@@ -1121,21 +1345,54 @@ style="border:0;border-radius:12px;">
 
 </div>
 
-<div id="adminComplaintData"
-     class="admin-data">
 
-<h3 style="color:#176b3a;">
+<!-- ADMIN COMPLAINTS -->
+
+<div
+id="adminComplaintData"
+class="admin-data">
+
+<h3
+style="color:#176b3a;">
+
 📋 नागरिकांच्या तक्रारी
+
 </h3>
 
-<div id="complaintList"
-     style="margin-top:15px;">
-</div>
+<div
+id="complaintList"
+style="margin-top:15px;">
 
 </div>
 
-<button class="logout"
-        onclick="adminLogout()">
+</div>
+
+
+<!-- ADMIN IDEAS -->
+
+<div
+id="adminIdeasData"
+class="admin-data">
+
+<h3
+style="color:#176b3a;">
+
+💡 नागरिकांच्या कल्पना
+
+</h3>
+
+<div
+id="ideaList"
+style="margin-top:15px;">
+
+</div>
+
+</div>
+
+
+<button
+class="logout"
+onclick="adminLogout()">
 
 🚪 Logout
 
@@ -1145,150 +1402,739 @@ style="border:0;border-radius:12px;">
 
 </div>
 
-<!-- ================= JAVASCRIPT ================= -->
 
-<script>
+<!-- ================= FIREBASE ================= -->
 
-/* WELCOME */
+<script type="module">
 
-function enterWebsite(){
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+
+import {
+    getAuth,
+    signInWithEmailAndPassword,
+    RecaptchaVerifier,
+    signInWithPhoneNumber,
+    onAuthStateChanged,
+    signOut
+}
+from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+
+import {
+    getFirestore,
+    collection,
+    addDoc,
+    getDocs,
+    query,
+    orderBy,
+    updateDoc,
+    doc,
+    serverTimestamp
+}
+from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+
+
+/* ================= FIREBASE CONFIG ================= */
+
+const firebaseConfig = {
+
+    apiKey:
+    "AIzaSyD6I-lrYAUCbaOyUx7n6W0BHJmOyCgJOoo",
+
+    authDomain:
+    "gogari-smartgram.firebaseapp.com",
+
+    projectId:
+    "gogari-smartgram",
+
+    storageBucket:
+    "gogari-smartgram.firebasestorage.app",
+
+    messagingSenderId:
+    "160318195171",
+
+    appId:
+    "1:160318195171:web:e62ab30c7ec3d4bc338cd6"
+
+};
+
+
+/* ================= INITIALIZE ================= */
+
+const app = initializeApp(firebaseConfig);
+
+const auth = getAuth(app);
+
+const db = getFirestore(app);
+
+
+/* ================= GLOBAL VARIABLES ================= */
+
+let confirmationResult = null;
+
+let recaptchaVerifier = null;
+
+window.citizenLoggedIn = false;
+
+window.currentUser = null;
+
+
+/* ================= AUTH STATE ================= */
+
+onAuthStateChanged(auth, (user) => {
+
+    window.currentUser = user;
+
+    if(user){
+
+        if(user.phoneNumber){
+
+            window.citizenLoggedIn = true;
+
+            updateCitizenStatus(true);
+
+        }
+
+    }else{
+
+        window.citizenLoggedIn = false;
+
+        updateCitizenStatus(false);
+
+    }
+
+});
+
+
+/* ================= WELCOME ================= */
+
+window.enterWebsite = function(){
 
     document.getElementById(
         "welcomeScreen"
     ).style.display = "none";
 
-}
+};
 
-/* PAGE OPEN */
 
-function openPage(id){
+/* ================= PAGE ================= */
+
+window.openPage = function(id){
 
     closePages();
 
     document.getElementById(id)
-        .style.display = "block";
+    .style.display = "block";
 
-}
+};
 
-/* PAGE CLOSE */
 
-function closePages(){
+window.closePages = function(){
 
-    document.querySelectorAll(".page")
-    .forEach(function(page){
+    document
+    .querySelectorAll(".page")
+    .forEach(page => {
 
         page.style.display = "none";
 
     });
 
-}
+};
 
-/* ADMIN LOGIN BOX */
 
-function showAdminLogin(){
+/* ================= COMPLAINT OPEN ================= */
 
-    document.getElementById(
-        "adminLogin"
-    ).style.display = "block";
-
-    document.getElementById(
-        "citizenLogin"
-    ).style.display = "none";
-
-}
-
-/* CITIZEN LOGIN BOX */
-
-function showCitizenLogin(){
-
-    document.getElementById(
-        "citizenLogin"
-    ).style.display = "block";
-
-    document.getElementById(
-        "adminLogin"
-    ).style.display = "none";
-
-}
-
-/* COMPLAINT */
-
-    function submitComplaint(){
+window.openComplaint = function(){
 
     if(!window.citizenLoggedIn){
 
-        alert("🔒 कृपया Citizen Login करा. Login केल्यानंतरच समस्या नोंदवता येईल.");
+        alert(
+            "🔒 आधी Citizen Login करा."
+        );
 
-        document.getElementById("complaint").style.display = "none";
+        showCitizenLogin();
 
-        document.getElementById("citizenLogin").style.display = "block";
+        document.getElementById(
+            "citizenLogin"
+        ).scrollIntoView({
+            behavior:"smooth"
+        });
 
         return;
+
     }
-    let name =
-        document.getElementById("cname")
-        .value.trim();
 
-    let mobile =
-        document.getElementById("cmobile")
-        .value.trim();
+    openPage("complaint");
 
-    let village =
-        document.getElementById("cvillage")
-        .value.trim();
+    updateComplaintStatus();
 
-    let type =
-        document.getElementById("ctype")
+};
+
+
+/* ================= ADMIN LOGIN BOX ================= */
+
+window.showAdminLogin = function(){
+
+    document.getElementById(
+        "adminLogin"
+    ).style.display = "block";
+
+    document.getElementById(
+        "citizenLogin"
+    ).style.display = "none";
+
+};
+
+
+/* ================= CITIZEN LOGIN BOX ================= */
+
+window.showCitizenLogin = function(){
+
+    document.getElementById(
+        "citizenLogin"
+    ).style.display = "block";
+
+    document.getElementById(
+        "adminLogin"
+    ).style.display = "none";
+
+};
+
+
+/* ================= ADMIN LOGIN ================= */
+
+window.adminLogin = async function(){
+
+    const email =
+        document
+        .getElementById("adminEmail")
+        .value
+        .trim();
+
+    const password =
+        document
+        .getElementById("adminPassword")
         .value;
 
-    let desc =
-        document.getElementById("cdesc")
-        .value.trim();
+    const message =
+        document
+        .getElementById("adminMessage");
 
-    if(!name || !mobile || !village || !desc){
 
-        alert("कृपया सर्व माहिती भरा.");
+    if(!email || !password){
+
+        message.innerHTML =
+        "⚠️ Email आणि Password भरा.";
+
+        message.style.color = "red";
 
         return;
 
     }
 
-    let id =
+
+    message.innerHTML =
+    "⏳ Login होत आहे...";
+
+    message.style.color = "#176b3a";
+
+
+    try{
+
+        await signInWithEmailAndPassword(
+            auth,
+            email,
+            password
+        );
+
+
+        message.innerHTML =
+        "✅ Admin Login Successful!";
+
+        message.style.color = "green";
+
+
+        document
+        .getElementById("adminLogin")
+        .style.display = "none";
+
+
+        document
+        .getElementById("citizenLogin")
+        .style.display = "none";
+
+
+        document
+        .getElementById("adminDashboard")
+        .style.display = "block";
+
+
+        await loadComplaints();
+
+
+    }catch(error){
+
+        console.error(error);
+
+        let text =
+        "❌ Login Failed";
+
+        if(error.code ===
+        "auth/invalid-credential"){
+
+            text =
+            "❌ Email किंवा Password चुकीचा आहे.";
+
+        }
+
+        if(error.code ===
+        "auth/user-not-found"){
+
+            text =
+            "❌ हा Admin User Firebase मध्ये नाही.";
+
+        }
+
+        if(error.code ===
+        "auth/wrong-password"){
+
+            text =
+            "❌ Password चुकीचा आहे.";
+
+        }
+
+        message.innerHTML = text;
+
+        message.style.color = "red";
+
+    }
+
+};
+
+
+/* ================= CREATE RECAPTCHA ================= */
+
+function createRecaptcha(){
+
+    if(recaptchaVerifier){
+
+        try{
+
+            recaptchaVerifier.clear();
+
+        }catch(e){}
+
+        recaptchaVerifier = null;
+
+    }
+
+
+    recaptchaVerifier =
+    new RecaptchaVerifier(
+        auth,
+        "recaptcha-container",
+        {
+            size:"normal",
+            callback:function(){
+
+                console.log(
+                    "reCAPTCHA verified"
+                );
+
+            },
+            "expired-callback":function(){
+
+                console.log(
+                    "reCAPTCHA expired"
+                );
+
+            }
+        }
+    );
+
+}
+
+
+/* ================= SEND OTP ================= */
+
+window.sendOTP = async function(){
+
+    const phone =
+        document
+        .getElementById("citizenPhone")
+        .value
+        .trim();
+
+    const message =
+        document
+        .getElementById("citizenMessage");
+
+
+    if(!/^[6-9][0-9]{9}$/.test(phone)){
+
+        message.innerHTML =
+        "⚠️ योग्य 10 अंकी Mobile Number टाका.";
+
+        message.style.color = "red";
+
+        return;
+
+    }
+
+
+    message.innerHTML =
+    "⏳ reCAPTCHA आणि OTP तयार होत आहे...";
+
+    message.style.color = "#176b3a";
+
+
+    try{
+
+        createRecaptcha();
+
+        await recaptchaVerifier.render();
+
+
+        confirmationResult =
+        await signInWithPhoneNumber(
+            auth,
+            "+91" + phone,
+            recaptchaVerifier
+        );
+
+
+        message.innerHTML =
+        "✅ OTP पाठवला आहे. Mobile वर आलेला OTP टाका.";
+
+        message.style.color = "green";
+
+
+    }catch(error){
+
+        console.error(error);
+
+        message.innerHTML =
+        "❌ OTP पाठवता आला नाही.<br>" +
+        error.message;
+
+        message.style.color = "red";
+
+
+        if(recaptchaVerifier){
+
+            try{
+
+                recaptchaVerifier.clear();
+
+            }catch(e){}
+
+            recaptchaVerifier = null;
+
+        }
+
+    }
+
+};
+
+
+/* ================= VERIFY OTP ================= */
+
+window.verifyOTP = async function(){
+
+    const otp =
+        document
+        .getElementById("otp")
+        .value
+        .trim();
+
+    const message =
+        document
+        .getElementById("citizenMessage");
+
+
+    if(!confirmationResult){
+
+        message.innerHTML =
+        "⚠️ आधी Send OTP दाबा.";
+
+        message.style.color = "red";
+
+        return;
+
+    }
+
+
+    if(!/^[0-9]{6}$/.test(otp)){
+
+        message.innerHTML =
+        "⚠️ 6 अंकी OTP टाका.";
+
+        message.style.color = "red";
+
+        return;
+
+    }
+
+
+    try{
+
+        const result =
+        await confirmationResult.confirm(otp);
+
+
+        window.currentUser =
+        result.user;
+
+
+        window.citizenLoggedIn = true;
+
+
+        message.innerHTML =
+        "✅ Citizen Login Successful!";
+
+        message.style.color = "green";
+
+
+        updateCitizenStatus(true);
+
+
+        document
+        .getElementById("citizenLogin")
+        .style.display = "none";
+
+
+        document
+        .getElementById("otp")
+        .value = "";
+
+
+        document
+        .getElementById("recaptcha-container")
+        .innerHTML = "";
+
+
+        updateComplaintStatus();
+
+
+        alert(
+            "✅ Citizen Login Successful!\nआता तुम्ही Complaint Submit करू शकता."
+        );
+
+
+    }catch(error){
+
+        console.error(error);
+
+        message.innerHTML =
+        "❌ OTP चुकीचा किंवा Expired आहे.";
+
+        message.style.color = "red";
+
+    }
+
+};
+
+
+/* ================= CITIZEN STATUS ================= */
+
+function updateCitizenStatus(logged){
+
+    const status =
+        document.getElementById(
+            "citizenStatus"
+        );
+
+    if(!status) return;
+
+
+    if(logged){
+
+        status.className =
+        "user-status logged";
+
+        status.innerHTML =
+        "✅ Citizen Login झाले आहे";
+
+    }else{
+
+        status.className =
+        "user-status notlogged";
+
+        status.innerHTML =
+        "🔒 Citizen Login केलेले नाही";
+
+    }
+
+}
+
+
+function updateComplaintStatus(){
+
+    const notice =
+        document.getElementById(
+            "complaintLoginNotice"
+        );
+
+    if(!notice) return;
+
+
+    if(window.citizenLoggedIn){
+
+        notice.className =
+        "user-status logged";
+
+        notice.innerHTML =
+        "✅ Citizen Login झाले आहे. आता Complaint Submit करू शकता.";
+
+    }else{
+
+        notice.className =
+        "user-status notlogged";
+
+        notice.innerHTML =
+        "🔒 Complaint करण्यासाठी Citizen Login आवश्यक आहे.";
+
+    }
+
+}
+
+
+/* ================= SUBMIT COMPLAINT ================= */
+
+window.submitComplaint = async function(){
+
+    if(!window.citizenLoggedIn){
+
+        alert(
+            "🔒 कृपया आधी Citizen Login करा."
+        );
+
+        closePages();
+
+        showCitizenLogin();
+
+        document
+        .getElementById("citizenLogin")
+        .scrollIntoView({
+            behavior:"smooth"
+        });
+
+        return;
+
+    }
+
+
+    const name =
+        document
+        .getElementById("cname")
+        .value
+        .trim();
+
+    const mobile =
+        document
+        .getElementById("cmobile")
+        .value
+        .trim();
+
+    const village =
+        document
+        .getElementById("cvillage")
+        .value
+        .trim();
+
+    const type =
+        document
+        .getElementById("ctype")
+        .value;
+
+    const desc =
+        document
+        .getElementById("cdesc")
+        .value
+        .trim();
+
+
+    if(!name ||
+       !mobile ||
+       !village ||
+       !desc){
+
+        alert(
+            "कृपया सर्व माहिती भरा."
+        );
+
+        return;
+
+    }
+
+
+    if(!/^[6-9][0-9]{9}$/.test(mobile)){
+
+        alert(
+            "कृपया योग्य 10 अंकी Mobile Number टाका."
+        );
+
+        return;
+
+    }
+
+
+    const id =
         "SG-" +
         Math.floor(
             100000 +
             Math.random() * 900000
         );
 
-    let data = {
 
-        id:id,
-        name:name,
-        mobile:mobile,
-        village:village,
-        type:type,
-        desc:desc,
-        status:"Pending"
-
-    };
-
-    let complaints =
-        JSON.parse(
-            localStorage.getItem(
-                "smartgramComplaints"
-            ) || "[]"
+    const result =
+        document.getElementById(
+            "complaintResult"
         );
 
-    complaints.push(data);
 
-    localStorage.setItem(
-        "smartgramComplaints",
-        JSON.stringify(complaints)
-    );
+    result.innerHTML =
+    "⏳ Complaint Firebase मध्ये Save होत आहे...";
 
-    document.getElementById(
-        "complaintResult"
-    ).innerHTML = `
+
+    try{
+
+        await addDoc(
+            collection(db,"complaints"),
+            {
+
+                complaintId:id,
+
+                name:name,
+
+                mobile:mobile,
+
+                village:village,
+
+                type:type,
+
+                description:desc,
+
+                status:"Pending",
+
+                uid:
+                window.currentUser
+                ? window.currentUser.uid
+                : "",
+
+                phone:
+                window.currentUser
+                ? window.currentUser.phoneNumber
+                : "",
+
+                createdAt:
+                serverTimestamp()
+
+            }
+        );
+
+
+        result.innerHTML = `
 
         <div class="success">
 
@@ -1296,97 +2142,413 @@ function showCitizenLogin(){
             ✅ समस्या यशस्वीरित्या नोंदवली!
             </h3>
 
-            <p>Complaint ID:</p>
-
-            <h2>${id}</h2>
-
             <p>
-            हा ID Track Complaint साठी जपून ठेवा.
+            तुमचा Complaint ID:
             </p>
 
-        </div>
-
-    `;
-
-    document.getElementById("cname").value = "";
-    document.getElementById("cmobile").value = "";
-    document.getElementById("cdesc").value = "";
-
-}
-
-/* TRACK COMPLAINT */
-
-function trackNow(){
-
-    let id =
-        document.getElementById(
-            "trackId"
-        ).value.trim();
-
-    let complaints =
-        JSON.parse(
-            localStorage.getItem(
-                "smartgramComplaints"
-            ) || "[]"
-        );
-
-    let data =
-        complaints.find(
-            function(item){
-                return item.id === id;
-            }
-        );
-
-    if(data){
-
-        document.getElementById(
-            "trackResult"
-        ).innerHTML = `
-
-        <div class="success">
-
-            <h3>✅ Complaint Found</h3>
+            <h2>
+            ${id}
+            </h2>
 
             <p>
-            <b>Complaint ID:</b>
-            ${data.id}
-            </p>
-
-            <p>
-            <b>नाव:</b>
-            ${data.name}
-            </p>
-
-            <p>
-            <b>Type:</b>
-            ${data.type}
-            </p>
-
-            <p>
-            <b>Problem:</b>
-            ${data.desc}
-            </p>
-
-            <p>
-            <b>Status:</b>
-            🟡 ${data.status}
+            हा ID जपून ठेवा.
+            Track Complaint मध्ये हा ID वापरा.
             </p>
 
         </div>
 
         `;
 
-    }else{
 
+        document
+        .getElementById("cname")
+        .value = "";
+
+        document
+        .getElementById("cmobile")
+        .value = "";
+
+        document
+        .getElementById("cdesc")
+        .value = "";
+
+
+    }catch(error){
+
+        console.error(error);
+
+        result.innerHTML = `
+
+        <div class="errorbox">
+
+        ❌ Complaint Save झाली नाही.<br><br>
+
+        ${error.message}
+
+        </div>
+
+        `;
+
+    }
+
+};
+
+
+/* ================= TRACK COMPLAINT ================= */
+
+window.trackNow = async function(){
+
+    const id =
+        document
+        .getElementById("trackId")
+        .value
+        .trim()
+        .toUpperCase();
+
+    const result =
+        document
+        .getElementById("trackResult");
+
+
+    if(!id){
+
+        result.innerHTML =
+        "<p style='color:red;margin-top:20px;'>⚠️ Complaint ID टाका.</p>";
+
+        return;
+
+    }
+
+
+    result.innerHTML =
+    "⏳ Complaint शोधत आहे...";
+
+
+    try{
+
+        const q =
+        query(
+            collection(db,"complaints"),
+            orderBy(
+                "createdAt",
+                "desc"
+            )
+        );
+
+
+        const snapshot =
+        await getDocs(q);
+
+
+        let found = null;
+
+
+        snapshot.forEach(
+            (docSnap)=>{
+
+                const data =
+                docSnap.data();
+
+                if(
+                    data.complaintId === id
+                ){
+
+                    found = data;
+
+                }
+
+            }
+        );
+
+
+        if(found){
+
+            let statusIcon = "🟡";
+
+            if(found.status === "Resolved")
+                statusIcon = "🟢";
+
+            if(found.status === "In Progress")
+                statusIcon = "🔵";
+
+
+            result.innerHTML = `
+
+            <div class="success">
+
+                <h3>
+                ✅ Complaint Found
+                </h3>
+
+                <p>
+                <b>Complaint ID:</b>
+                ${found.complaintId}
+                </p>
+
+                <p>
+                <b>नाव:</b>
+                ${found.name}
+                </p>
+
+                <p>
+                <b>गाव:</b>
+                ${found.village}
+                </p>
+
+                <p>
+                <b>Type:</b>
+                ${found.type}
+                </p>
+
+                <p>
+                <b>Problem:</b>
+                ${found.description}
+                </p>
+
+                <p>
+                <b>Status:</b>
+                ${statusIcon}
+                ${found.status}
+                </p>
+
+            </div>
+
+            `;
+
+        }else{
+
+            result.innerHTML = `
+
+            <div class="errorbox">
+
+            ❌ Complaint ID सापडली नाही.
+
+            </div>
+
+            `;
+
+        }
+
+
+    }catch(error){
+
+        console.error(error);
+
+        result.innerHTML = `
+
+        <div class="errorbox">
+
+        ❌ Complaint Track करता आली नाही.<br><br>
+
+        ${error.message}
+
+        </div>
+
+        `;
+
+    }
+
+};
+
+
+/* ================= ADMIN COMPLAINTS ================= */
+
+window.showAdminComplaints = async function(){
+
+    document
+    .getElementById("adminComplaintData")
+    .style.display = "block";
+
+
+    document
+    .getElementById("adminIdeasData")
+    .style.display = "none";
+
+
+    await loadComplaints();
+
+};
+
+
+/* ================= LOAD COMPLAINTS ================= */
+
+async function loadComplaints(){
+
+    const list =
         document.getElementById(
-            "trackResult"
-        ).innerHTML = `
+            "complaintList"
+        );
 
-        <p style="color:red;margin-top:20px;">
 
-        ❌ Complaint ID सापडली नाही.
+    list.innerHTML =
+    "⏳ Complaints Loading...";
 
-        </p>
+
+    try{
+
+        const q =
+        query(
+            collection(db,"complaints"),
+            orderBy(
+                "createdAt",
+                "desc"
+            )
+        );
+
+
+        const snapshot =
+        await getDocs(q);
+
+
+        let total = 0;
+
+        let pending = 0;
+
+        let resolved = 0;
+
+
+        if(snapshot.empty){
+
+            list.innerHTML =
+            "<p>अजून कोणतीही Complaint नाही.</p>";
+
+        }else{
+
+            list.innerHTML = "";
+
+
+            snapshot.forEach(
+                (docSnap)=>{
+
+                    const data =
+                    docSnap.data();
+
+
+                    total++;
+
+
+                    if(data.status === "Pending")
+                        pending++;
+
+
+                    if(data.status === "Resolved")
+                        resolved++;
+
+
+                    const div =
+                    document.createElement(
+                        "div"
+                    );
+
+                    div.className =
+                    "complaint-item";
+
+
+                    div.innerHTML = `
+
+                    <h4>
+                    📝 ${data.complaintId || "N/A"}
+                    </h4>
+
+                    <p>
+                    <b>नाव:</b>
+                    ${escapeHTML(data.name)}
+                    </p>
+
+                    <p>
+                    <b>Mobile:</b>
+                    ${escapeHTML(data.mobile)}
+                    </p>
+
+                    <p>
+                    <b>गाव:</b>
+                    ${escapeHTML(data.village)}
+                    </p>
+
+                    <p>
+                    <b>Type:</b>
+                    ${escapeHTML(data.type)}
+                    </p>
+
+                    <p>
+                    <b>Problem:</b>
+                    ${escapeHTML(data.description)}
+                    </p>
+
+                    <p>
+                    <b>Current Status:</b>
+                    ${escapeHTML(data.status || "Pending")}
+                    </p>
+
+                    <select
+                    class="status-select"
+                    id="status-${docSnap.id}">
+
+                    <option
+                    ${data.status==="Pending"?"selected":""}>
+                    Pending
+                    </option>
+
+                    <option
+                    ${data.status==="In Progress"?"selected":""}>
+                    In Progress
+                    </option>
+
+                    <option
+                    ${data.status==="Resolved"?"selected":""}>
+                    Resolved
+                    </option>
+
+                    </select>
+
+                    <button
+                    class="blue"
+                    style="margin-top:10px;"
+                    onclick="updateComplaintStatusAdmin('${docSnap.id}')">
+
+                    💾 Update Status
+
+                    </button>
+
+                    `;
+
+
+                    list.appendChild(div);
+
+                }
+            );
+
+        }
+
+
+        document
+        .getElementById("totalCount")
+        .innerText = total;
+
+
+        document
+        .getElementById("pendingCount")
+        .innerText = pending;
+
+
+        document
+        .getElementById("resolvedCount")
+        .innerText = resolved;
+
+
+    }catch(error){
+
+        console.error(error);
+
+        list.innerHTML = `
+
+        <div class="errorbox">
+
+        ❌ Complaints Load झाल्या नाहीत.<br><br>
+
+        ${error.message}
+
+        </div>
 
         `;
 
@@ -1394,19 +2556,82 @@ function trackNow(){
 
 }
 
-/* IDEA */
 
-function submitIdea(){
+/* ================= UPDATE STATUS ================= */
 
-    let name =
+window.updateComplaintStatusAdmin =
+async function(docId){
+
+    const select =
         document.getElementById(
-            "ideaName"
-        ).value.trim();
+            "status-" + docId
+        );
 
-    let idea =
-        document.getElementById(
-            "ideaText"
-        ).value.trim();
+
+    if(!select) return;
+
+
+    const newStatus =
+        select.value;
+
+
+    try{
+
+        await updateDoc(
+            doc(
+                db,
+                "complaints",
+                docId
+            ),
+            {
+
+                status:newStatus,
+
+                updatedAt:
+                serverTimestamp()
+
+            }
+        );
+
+
+        alert(
+            "✅ Complaint Status Updated!"
+        );
+
+
+        await loadComplaints();
+
+
+    }catch(error){
+
+        console.error(error);
+
+        alert(
+            "❌ Status Update झाला नाही.\n" +
+            error.message
+        );
+
+    }
+
+};
+
+
+/* ================= IDEA ================= */
+
+window.submitIdea = async function(){
+
+    const name =
+        document
+        .getElementById("ideaName")
+        .value
+        .trim();
+
+    const idea =
+        document
+        .getElementById("ideaText")
+        .value
+        .trim();
+
 
     if(!name || !idea){
 
@@ -1418,325 +2643,309 @@ function submitIdea(){
 
     }
 
-    let ideas =
-        JSON.parse(
-            localStorage.getItem(
-                "smartgramIdeas"
-            ) || "[]"
-        );
 
-    ideas.push({
-
-        name:name,
-        idea:idea,
-        date:new Date().toLocaleString()
-
-    });
-
-    localStorage.setItem(
-        "smartgramIdeas",
-        JSON.stringify(ideas)
-    );
-
-    document.getElementById(
-        "ideaResult"
-    ).innerHTML = `
-
-    <div class="success">
-
-        <h3>✅ Idea Submitted!</h3>
-
-        <p>
-        धन्यवाद ${name}!
-        </p>
-
-        <p>
-        तुमची कल्पना नोंदवली आहे.
-        </p>
-
-    </div>
-
-    `;
-
-}
-
-
-
-/* ADMIN COMPLAINTS */
-
-window.showAdminComplaints = function() {
-
-    document.getElementById(
-        "adminComplaintData"
-    ).style.display = "block";
-
-    loadComplaints();
-
-};
-/* ADMIN LOGOUT */
-
-function adminLogout(){
-
-    document.getElementById(
-        "adminDashboard"
-    ).style.display = "none";
-
-    document.getElementById(
-        "adminLogin"
-    ).style.display = "block";
-
-    document.getElementById(
-        "adminEmail"
-    ).value = "";
-
-    document.getElementById(
-        "adminPassword"
-    ).value = "";
-
-    document.getElementById(
-        "adminMessage"
-    ).innerHTML = "";
-
-    document.getElementById(
-        "adminComplaintData"
-    ).style.display = "none";
-
-    alert(
-        "Admin Logout Successful!"
-    );
-
-}
-
-/* BIRTH */
-
-function birth(){
-
-    alert(
-        "Birth Certificate Demo पुढील module मध्ये पूर्ण करता येईल."
-    );
-
-}
-
-/* DEATH */
-
-function death(){
-
-    alert(
-        "Death Certificate Demo पुढील module मध्ये पूर्ण करता येईल."
-    );
-
-}
-
-</script>
-
-<!-- ================= FIREBASE SMARTGRAM ================= -->
-<script type="module">
-
-import { initializeApp }
-from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
-
-import {
-    getAuth,
-    signInWithEmailAndPassword,
-    RecaptchaVerifier,
-    signInWithPhoneNumber
-}
-from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
-
-
-/* ================= FIREBASE CONFIG ================= */
-
-const firebaseConfig = {
-    apiKey: "AIzaSyD6I-lrYAUCbaOyUx7n6W0BHJmOyCgJOoo",
-    authDomain: "gogari-smartgram.firebaseapp.com",
-    projectId: "gogari-smartgram",
-    storageBucket: "gogari-smartgram.firebasestorage.app",
-    messagingSenderId: "160318195171",
-    appId: "1:160318195171:web:e62ab30c7ec3d4bc338cd6"
-};
-
-
-/* ================= INITIALIZE FIREBASE ================= */
-
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-
-let confirmationResult = null;
-let recaptchaVerifier = null;
-
-
-/* ================= SHOW ADMIN LOGIN ================= */
-
-window.showAdminLogin = function () {
-
-    document.getElementById("adminLogin").style.display = "block";
-    document.getElementById("citizenLogin").style.display = "none";
-
-};
-
-
-/* ================= SHOW CITIZEN LOGIN ================= */
-
-window.showCitizenLogin = function () {
-
-    document.getElementById("citizenLogin").style.display = "block";
-    document.getElementById("adminLogin").style.display = "none";
-
-};
-
-
-/* ================= ADMIN LOGIN ================= */
-
-window.adminLogin = async function () {
-
-    const email =
-        document.getElementById("adminEmail").value.trim();
-
-    const password =
-        document.getElementById("adminPassword").value;
-
-    const message =
-        document.getElementById("adminMessage");
-
-
-    if (!email || !password) {
-
-        message.innerHTML =
-            "⚠️ Email आणि Password भरा.";
-
-        message.style.color = "red";
-
-        return;
-    }
-
-
-    try {
-
-        await signInWithEmailAndPassword(
-            auth,
-            email,
-            password
+    const result =
+        document.getElementById(
+            "ideaResult"
         );
 
 
-        message.innerHTML =
-            "✅ Admin Login Successful!";
-
-        message.style.color = "green";
+    result.innerHTML =
+    "⏳ Idea Save होत आहे...";
 
 
-        document.getElementById("adminLogin").style.display = "none";
+    try{
 
-
-        if (document.getElementById("adminDashboard")) {
-
-            document.getElementById("adminDashboard").style.display = "block";
-
-        }
-
-
-    } catch (error) {
-
-        console.error(error);
-
-        message.innerHTML =
-            "❌ Login Failed<br>" + error.message;
-
-        message.style.color = "red";
-
-    }
-
-};
-
-/* ================= CREATE RECAPTCHA ================= */
-
-
-
-/* ================= SEND OTP ================= */
-
-window.sendOTP = async function () {
-
-    const phone = document.getElementById("citizenPhone").value.trim();
-    const message = document.getElementById("citizenMessage");
-
-    if (!/^[6-9][0-9]{9}$/.test(phone)) {
-        message.innerHTML = "⚠️ योग्य 10 अंकी Mobile Number टाका.";
-        message.style.color = "red";
-        return;
-    }
-
-    try {
-
-        if (recaptchaVerifier) {
-            recaptchaVerifier.clear();
-            recaptchaVerifier = null;
-        }
-
-        recaptchaVerifier = new RecaptchaVerifier(
-            auth,
-            "recaptcha-container",
+        await addDoc(
+            collection(db,"ideas"),
             {
-                size: "normal"
+
+                name:name,
+
+                idea:idea,
+
+                uid:
+                window.currentUser
+                ? window.currentUser.uid
+                : "",
+
+                createdAt:
+                serverTimestamp()
+
             }
         );
 
-        await recaptchaVerifier.render();
 
-        confirmationResult = await signInWithPhoneNumber(
-            auth,
-            "+91" + phone,
-            recaptchaVerifier
+        result.innerHTML = `
+
+        <div class="success">
+
+            <h3>
+            ✅ Idea Submitted!
+            </h3>
+
+            <p>
+            धन्यवाद ${escapeHTML(name)}!
+            </p>
+
+            <p>
+            तुमची कल्पना Firebase मध्ये नोंदवली आहे.
+            </p>
+
+        </div>
+
+        `;
+
+
+        document
+        .getElementById("ideaName")
+        .value = "";
+
+        document
+        .getElementById("ideaText")
+        .value = "";
+
+
+    }catch(error){
+
+        console.error(error);
+
+        result.innerHTML = `
+
+        <div class="errorbox">
+
+        ❌ Idea Save झाली नाही.<br><br>
+
+        ${error.message}
+
+        </div>
+
+        `;
+
+    }
+
+};
+
+
+/* ================= LOAD IDEAS ================= */
+
+window.loadIdeas = async function(){
+
+    document
+    .getElementById("adminIdeasData")
+    .style.display = "block";
+
+
+    document
+    .getElementById("adminComplaintData")
+    .style.display = "none";
+
+
+    const list =
+        document.getElementById(
+            "ideaList"
         );
 
-        message.innerHTML =
-            "✅ OTP पाठवला आहे. Mobile वर आलेला OTP टाका.";
 
-        message.style.color = "green";
+    list.innerHTML =
+    "⏳ Ideas Loading...";
 
-    } catch (error) {
+
+    try{
+
+        const q =
+        query(
+            collection(db,"ideas"),
+            orderBy(
+                "createdAt",
+                "desc"
+            )
+        );
+
+
+        const snapshot =
+        await getDocs(q);
+
+
+        if(snapshot.empty){
+
+            list.innerHTML =
+            "<p>अजून कोणतीही Idea नाही.</p>";
+
+            return;
+
+        }
+
+
+        list.innerHTML = "";
+
+
+        snapshot.forEach(
+            (docSnap)=>{
+
+                const data =
+                docSnap.data();
+
+
+                const div =
+                document.createElement(
+                    "div"
+                );
+
+
+                div.className =
+                "complaint-item";
+
+
+                div.innerHTML = `
+
+                <h4>
+                💡 Village Idea
+                </h4>
+
+                <p>
+                <b>नाव:</b>
+                ${escapeHTML(data.name)}
+                </p>
+
+                <p>
+                <b>कल्पना:</b>
+                ${escapeHTML(data.idea)}
+                </p>
+
+                `;
+
+
+                list.appendChild(div);
+
+            }
+        );
+
+
+    }catch(error){
 
         console.error(error);
 
-        message.innerHTML =
-            "❌ OTP पाठवता आला नाही.<br>" + error.message;
+        list.innerHTML = `
 
-        message.style.color = "red";
+        <div class="errorbox">
+
+        ❌ Ideas Load झाल्या नाहीत.<br><br>
+
+        ${error.message}
+
+        </div>
+
+        `;
+
     }
+
 };
 
 
-/* ================= VERIFY OTP ================= */
+/* ================= LOGOUT ================= */
 
-window.verifyOTP = async function () {
+window.adminLogout = async function(){
 
-    const otp = document.getElementById("otp").value.trim();
-    const message = document.getElementById("citizenMessage");
+    try{
 
-    if (!confirmationResult) {
-        message.innerHTML = "⚠️ आधी Send OTP दाबा.";
-        message.style.color = "red";
-        return;
-    }
+        await signOut(auth);
 
-    try {
 
-        await confirmationResult.confirm(otp);
+        document
+        .getElementById("adminDashboard")
+        .style.display = "none";
 
-        message.innerHTML =
-            "✅ Citizen Login Successful!";
 
-        message.style.color = "green";
+        document
+        .getElementById("adminLogin")
+        .style.display = "block";
 
-        document.getElementById("citizenLogin").style.display = "none";
 
-    } catch (error) {
+        document
+        .getElementById("adminEmail")
+        .value = "";
+
+
+        document
+        .getElementById("adminPassword")
+        .value = "";
+
+
+        document
+        .getElementById("adminMessage")
+        .innerHTML = "";
+
+
+        document
+        .getElementById("adminComplaintData")
+        .style.display = "none";
+
+
+        document
+        .getElementById("adminIdeasData")
+        .style.display = "none";
+
+
+        alert(
+            "✅ Admin Logout Successful!"
+        );
+
+
+    }catch(error){
 
         console.error(error);
 
-        message.innerHTML = "❌ OTP चुकीचा आहे.";
-        message.style.color = "red";
+        alert(
+            "Logout Error: " +
+            error.message
+        );
+
     }
+
 };
+
+
+/* ================= CERTIFICATES ================= */
+
+window.birth = function(){
+
+    alert(
+        "🍼 Birth Certificate\n\nBirth Certificate अर्ज module पुढील step मध्ये Firebase सोबत जोडता येईल."
+    );
+
+};
+
+
+window.death = function(){
+
+    alert(
+        "⚰️ Death Certificate\n\nDeath Certificate अर्ज module पुढील step मध्ये Firebase सोबत जोडता येईल."
+    );
+
+};
+
+
+/* ================= SECURITY DISPLAY ================= */
+
+function escapeHTML(value){
+
+    if(value === undefined ||
+       value === null){
+
+        return "";
+
+    }
+
+
+    return String(value)
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+
+}
 
 </script>
 
