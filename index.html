@@ -316,6 +316,13 @@ footer{
     margin-bottom:15px;
 }
 
+#recaptcha-container{
+    margin:15px auto;
+    display:flex;
+    justify-content:center;
+    min-height:78px;
+}
+
 #adminDashboard{
     display:none;
     min-height:100vh;
@@ -451,12 +458,6 @@ footer{
     color:#856404;
 }
 
-#recaptcha-container{
-    margin:15px auto;
-    display:flex;
-    justify-content:center;
-}
-
 @media(max-width:600px){
 
     .grid,
@@ -500,6 +501,7 @@ footer{
 </head>
 
 <body>
+
 
 <!-- ================= WELCOME ================= -->
 
@@ -759,9 +761,7 @@ onclick="sendOTP()">
 
 </button>
 
-<div
-id="recaptcha-container">
-</div>
+<div id="recaptcha-container"></div>
 
 <input
 type="text"
@@ -1251,8 +1251,7 @@ id="adminDashboard">
 </p>
 
 
-<div
-class="stats">
+<div class="stats">
 
 <div class="stat">
 
@@ -1346,8 +1345,6 @@ onclick="loadIdeas()">
 </div>
 
 
-<!-- ADMIN COMPLAINTS -->
-
 <div
 id="adminComplaintData"
 class="admin-data">
@@ -1367,8 +1364,6 @@ style="margin-top:15px;">
 
 </div>
 
-
-<!-- ADMIN IDEAS -->
 
 <div
 id="adminIdeasData"
@@ -1403,7 +1398,9 @@ onclick="adminLogout()">
 </div>
 
 
-<!-- ================= FIREBASE ================= -->
+<!-- ====================================================== -->
+<!-- ================= FIREBASE SCRIPT ==================== -->
+<!-- ====================================================== -->
 
 <script type="module">
 
@@ -1434,7 +1431,9 @@ import {
 from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
 
-/* ================= FIREBASE CONFIG ================= */
+/* ======================================================
+   FIREBASE CONFIG
+====================================================== */
 
 const firebaseConfig = {
 
@@ -1459,16 +1458,23 @@ const firebaseConfig = {
 };
 
 
-/* ================= INITIALIZE ================= */
+/* ======================================================
+   INITIALIZE FIREBASE
+====================================================== */
 
-const app = initializeApp(firebaseConfig);
+const app =
+initializeApp(firebaseConfig);
 
-const auth = getAuth(app);
+const auth =
+getAuth(app);
 
-const db = getFirestore(app);
+const db =
+getFirestore(app);
 
 
-/* ================= GLOBAL VARIABLES ================= */
+/* ======================================================
+   VARIABLES
+====================================================== */
 
 let confirmationResult = null;
 
@@ -1479,72 +1485,131 @@ window.citizenLoggedIn = false;
 window.currentUser = null;
 
 
-/* ================= AUTH STATE ================= */
+/* ======================================================
+   AUTH STATE
+====================================================== */
 
-onAuthStateChanged(auth, (user) => {
+onAuthStateChanged(
+    auth,
+    function(user){
 
-    window.currentUser = user;
+        window.currentUser = user;
 
-    if(user){
+        if(user){
 
-        if(user.phoneNumber){
+            if(user.phoneNumber){
 
-            window.citizenLoggedIn = true;
+                window.citizenLoggedIn = true;
 
-            updateCitizenStatus(true);
+                updateCitizenStatus(true);
+
+            }
+
+        }else{
+
+            window.citizenLoggedIn = false;
+
+            updateCitizenStatus(false);
 
         }
 
-    }else{
-
-        window.citizenLoggedIn = false;
-
-        updateCitizenStatus(false);
-
     }
+);
 
-});
 
+/* ======================================================
+   WELCOME
+====================================================== */
 
-/* ================= WELCOME ================= */
+window.enterWebsite =
+function(){
 
-window.enterWebsite = function(){
-
-    document.getElementById(
-        "welcomeScreen"
-    ).style.display = "none";
+    document
+    .getElementById("welcomeScreen")
+    .style.display = "none";
 
 };
 
 
-/* ================= PAGE ================= */
+/* ======================================================
+   PAGE OPEN
+====================================================== */
 
-window.openPage = function(id){
+window.openPage =
+function(id){
 
     closePages();
 
-    document.getElementById(id)
+    document
+    .getElementById(id)
     .style.display = "block";
 
 };
 
 
-window.closePages = function(){
+/* ======================================================
+   PAGE CLOSE
+====================================================== */
+
+window.closePages =
+function(){
 
     document
     .querySelectorAll(".page")
-    .forEach(page => {
+    .forEach(
+        function(page){
 
-        page.style.display = "none";
+            page.style.display =
+            "none";
 
-    });
+        }
+    );
 
 };
 
 
-/* ================= COMPLAINT OPEN ================= */
+/* ======================================================
+   ADMIN LOGIN BOX
+====================================================== */
 
-window.openComplaint = function(){
+window.showAdminLogin =
+function(){
+
+    document
+    .getElementById("adminLogin")
+    .style.display = "block";
+
+    document
+    .getElementById("citizenLogin")
+    .style.display = "none";
+
+};
+
+
+/* ======================================================
+   CITIZEN LOGIN BOX
+====================================================== */
+
+window.showCitizenLogin =
+function(){
+
+    document
+    .getElementById("citizenLogin")
+    .style.display = "block";
+
+    document
+    .getElementById("adminLogin")
+    .style.display = "none";
+
+};
+
+
+/* ======================================================
+   OPEN COMPLAINT
+====================================================== */
+
+window.openComplaint =
+function(){
 
     if(!window.citizenLoggedIn){
 
@@ -1554,9 +1619,9 @@ window.openComplaint = function(){
 
         showCitizenLogin();
 
-        document.getElementById(
-            "citizenLogin"
-        ).scrollIntoView({
+        document
+        .getElementById("citizenLogin")
+        .scrollIntoView({
             behavior:"smooth"
         });
 
@@ -1571,54 +1636,27 @@ window.openComplaint = function(){
 };
 
 
-/* ================= ADMIN LOGIN BOX ================= */
+/* ======================================================
+   ADMIN LOGIN
+====================================================== */
 
-window.showAdminLogin = function(){
-
-    document.getElementById(
-        "adminLogin"
-    ).style.display = "block";
-
-    document.getElementById(
-        "citizenLogin"
-    ).style.display = "none";
-
-};
-
-
-/* ================= CITIZEN LOGIN BOX ================= */
-
-window.showCitizenLogin = function(){
-
-    document.getElementById(
-        "citizenLogin"
-    ).style.display = "block";
-
-    document.getElementById(
-        "adminLogin"
-    ).style.display = "none";
-
-};
-
-
-/* ================= ADMIN LOGIN ================= */
-
-window.adminLogin = async function(){
+window.adminLogin =
+async function(){
 
     const email =
-        document
-        .getElementById("adminEmail")
-        .value
-        .trim();
+    document
+    .getElementById("adminEmail")
+    .value
+    .trim();
 
     const password =
-        document
-        .getElementById("adminPassword")
-        .value;
+    document
+    .getElementById("adminPassword")
+    .value;
 
     const message =
-        document
-        .getElementById("adminMessage");
+    document
+    .getElementById("adminMessage");
 
 
     if(!email || !password){
@@ -1626,7 +1664,8 @@ window.adminLogin = async function(){
         message.innerHTML =
         "⚠️ Email आणि Password भरा.";
 
-        message.style.color = "red";
+        message.style.color =
+        "red";
 
         return;
 
@@ -1636,7 +1675,8 @@ window.adminLogin = async function(){
     message.innerHTML =
     "⏳ Login होत आहे...";
 
-    message.style.color = "#176b3a";
+    message.style.color =
+    "#176b3a";
 
 
     try{
@@ -1651,7 +1691,8 @@ window.adminLogin = async function(){
         message.innerHTML =
         "✅ Admin Login Successful!";
 
-        message.style.color = "green";
+        message.style.color =
+        "green";
 
 
         document
@@ -1676,74 +1717,80 @@ window.adminLogin = async function(){
 
         console.error(error);
 
-        let text =
-        "❌ Login Failed";
+        message.innerHTML =
+        "❌ Email किंवा Password चुकीचा आहे.";
 
-        if(error.code ===
-        "auth/invalid-credential"){
-
-            text =
-            "❌ Email किंवा Password चुकीचा आहे.";
-
-        }
-
-        if(error.code ===
-        "auth/user-not-found"){
-
-            text =
-            "❌ हा Admin User Firebase मध्ये नाही.";
-
-        }
-
-        if(error.code ===
-        "auth/wrong-password"){
-
-            text =
-            "❌ Password चुकीचा आहे.";
-
-        }
-
-        message.innerHTML = text;
-
-        message.style.color = "red";
+        message.style.color =
+        "red";
 
     }
 
 };
 
 
-/* ================= CREATE RECAPTCHA ================= */
+/* ======================================================
+   CREATE RECAPTCHA
+====================================================== */
 
 function createRecaptcha(){
 
     if(recaptchaVerifier){
+
         return recaptchaVerifier;
+
     }
 
-    recaptchaVerifier = new RecaptchaVerifier(
+
+    recaptchaVerifier =
+    new RecaptchaVerifier(
         auth,
         "recaptcha-container",
         {
-            size: "normal"
+            size:"normal",
+
+            callback:
+            function(){
+
+                console.log(
+                    "reCAPTCHA verified"
+                );
+
+            },
+
+            "expired-callback":
+            function(){
+
+                console.log(
+                    "reCAPTCHA expired"
+                );
+
+            }
+
         }
     );
 
+
     return recaptchaVerifier;
+
 }
 
-/* ================= SEND OTP ================= */
 
-window.sendOTP = async function(){
+/* ======================================================
+   SEND OTP
+====================================================== */
+
+window.sendOTP =
+async function(){
 
     const phone =
-        document
-        .getElementById("citizenPhone")
-        .value
-        .trim();
+    document
+    .getElementById("citizenPhone")
+    .value
+    .trim();
 
     const message =
-        document
-        .getElementById("citizenMessage");
+    document
+    .getElementById("citizenMessage");
 
 
     if(!/^[6-9][0-9]{9}$/.test(phone)){
@@ -1751,7 +1798,8 @@ window.sendOTP = async function(){
         message.innerHTML =
         "⚠️ योग्य 10 अंकी Mobile Number टाका.";
 
-        message.style.color = "red";
+        message.style.color =
+        "red";
 
         return;
 
@@ -1759,41 +1807,56 @@ window.sendOTP = async function(){
 
 
     message.innerHTML =
-    "⏳ reCAPTCHA आणि OTP तयार होत आहे...";
+    "⏳ reCAPTCHA तयार होत आहे...";
 
-    message.style.color = "#176b3a";
+    message.style.color =
+    "#176b3a";
 
 
     try{
 
+        const appVerifier =
         createRecaptcha();
 
-        await recaptchaVerifier.render();
+
+        await appVerifier.render();
+
+
+        message.innerHTML =
+        "⏳ OTP पाठवत आहे...";
 
 
         confirmationResult =
         await signInWithPhoneNumber(
             auth,
             "+91" + phone,
-            recaptchaVerifier
+            appVerifier
         );
 
 
         message.innerHTML =
         "✅ OTP पाठवला आहे. Mobile वर आलेला OTP टाका.";
 
-        message.style.color = "green";
+        message.style.color =
+        "green";
 
 
     }catch(error){
 
-        console.error(error);
+        console.error(
+            "FULL FIREBASE ERROR:",
+            error
+        );
+
 
         message.innerHTML =
         "❌ OTP पाठवता आला नाही.<br>" +
+        error.code +
+        "<br>" +
         error.message;
 
-        message.style.color = "red";
+        message.style.color =
+        "red";
 
 
         if(recaptchaVerifier){
@@ -1804,7 +1867,8 @@ window.sendOTP = async function(){
 
             }catch(e){}
 
-            recaptchaVerifier = null;
+            recaptchaVerifier =
+            null;
 
         }
 
@@ -1813,19 +1877,22 @@ window.sendOTP = async function(){
 };
 
 
-/* ================= VERIFY OTP ================= */
+/* ======================================================
+   VERIFY OTP
+====================================================== */
 
-window.verifyOTP = async function(){
+window.verifyOTP =
+async function(){
 
     const otp =
-        document
-        .getElementById("otp")
-        .value
-        .trim();
+    document
+    .getElementById("otp")
+    .value
+    .trim();
 
     const message =
-        document
-        .getElementById("citizenMessage");
+    document
+    .getElementById("citizenMessage");
 
 
     if(!confirmationResult){
@@ -1833,7 +1900,8 @@ window.verifyOTP = async function(){
         message.innerHTML =
         "⚠️ आधी Send OTP दाबा.";
 
-        message.style.color = "red";
+        message.style.color =
+        "red";
 
         return;
 
@@ -1845,7 +1913,8 @@ window.verifyOTP = async function(){
         message.innerHTML =
         "⚠️ 6 अंकी OTP टाका.";
 
-        message.style.color = "red";
+        message.style.color =
+        "red";
 
         return;
 
@@ -1855,20 +1924,23 @@ window.verifyOTP = async function(){
     try{
 
         const result =
-        await confirmationResult.confirm(otp);
+        await confirmationResult
+        .confirm(otp);
 
 
         window.currentUser =
         result.user;
 
 
-        window.citizenLoggedIn = true;
+        window.citizenLoggedIn =
+        true;
 
 
         message.innerHTML =
         "✅ Citizen Login Successful!";
 
-        message.style.color = "green";
+        message.style.color =
+        "green";
 
 
         updateCitizenStatus(true);
@@ -1889,6 +1961,10 @@ window.verifyOTP = async function(){
         .innerHTML = "";
 
 
+        recaptchaVerifier =
+        null;
+
+
         updateComplaintStatus();
 
 
@@ -1904,23 +1980,27 @@ window.verifyOTP = async function(){
         message.innerHTML =
         "❌ OTP चुकीचा किंवा Expired आहे.";
 
-        message.style.color = "red";
+        message.style.color =
+        "red";
 
     }
 
 };
 
 
-/* ================= CITIZEN STATUS ================= */
+/* ======================================================
+   CITIZEN STATUS
+====================================================== */
 
 function updateCitizenStatus(logged){
 
     const status =
-        document.getElementById(
-            "citizenStatus"
-        );
+    document
+    .getElementById("citizenStatus");
 
-    if(!status) return;
+
+    if(!status)
+    return;
 
 
     if(logged){
@@ -1944,14 +2024,21 @@ function updateCitizenStatus(logged){
 }
 
 
+/* ======================================================
+   COMPLAINT LOGIN STATUS
+====================================================== */
+
 function updateComplaintStatus(){
 
     const notice =
-        document.getElementById(
-            "complaintLoginNotice"
-        );
+    document
+    .getElementById(
+        "complaintLoginNotice"
+    );
 
-    if(!notice) return;
+
+    if(!notice)
+    return;
 
 
     if(window.citizenLoggedIn){
@@ -1975,9 +2062,12 @@ function updateComplaintStatus(){
 }
 
 
-/* ================= SUBMIT COMPLAINT ================= */
+/* ======================================================
+   SUBMIT COMPLAINT
+====================================================== */
 
-window.submitComplaint = async function(){
+window.submitComplaint =
+async function(){
 
     if(!window.citizenLoggedIn){
 
@@ -1989,45 +2079,39 @@ window.submitComplaint = async function(){
 
         showCitizenLogin();
 
-        document
-        .getElementById("citizenLogin")
-        .scrollIntoView({
-            behavior:"smooth"
-        });
-
         return;
 
     }
 
 
     const name =
-        document
-        .getElementById("cname")
-        .value
-        .trim();
+    document
+    .getElementById("cname")
+    .value
+    .trim();
 
     const mobile =
-        document
-        .getElementById("cmobile")
-        .value
-        .trim();
+    document
+    .getElementById("cmobile")
+    .value
+    .trim();
 
     const village =
-        document
-        .getElementById("cvillage")
-        .value
-        .trim();
+    document
+    .getElementById("cvillage")
+    .value
+    .trim();
 
     const type =
-        document
-        .getElementById("ctype")
-        .value;
+    document
+    .getElementById("ctype")
+    .value;
 
     const desc =
-        document
-        .getElementById("cdesc")
-        .value
-        .trim();
+    document
+    .getElementById("cdesc")
+    .value
+    .trim();
 
 
     if(!name ||
@@ -2056,17 +2140,19 @@ window.submitComplaint = async function(){
 
 
     const id =
-        "SG-" +
-        Math.floor(
-            100000 +
-            Math.random() * 900000
-        );
+    "SG-" +
+    Math.floor(
+        100000 +
+        Math.random() *
+        900000
+    );
 
 
     const result =
-        document.getElementById(
-            "complaintResult"
-        );
+    document
+    .getElementById(
+        "complaintResult"
+    );
 
 
     result.innerHTML =
@@ -2076,7 +2162,10 @@ window.submitComplaint = async function(){
     try{
 
         await addDoc(
-            collection(db,"complaints"),
+            collection(
+                db,
+                "complaints"
+            ),
             {
 
                 complaintId:id,
@@ -2095,13 +2184,17 @@ window.submitComplaint = async function(){
 
                 uid:
                 window.currentUser
-                ? window.currentUser.uid
-                : "",
+                ?
+                window.currentUser.uid
+                :
+                "",
 
                 phone:
                 window.currentUser
-                ? window.currentUser.phoneNumber
-                : "",
+                ?
+                window.currentUser.phoneNumber
+                :
+                "",
 
                 createdAt:
                 serverTimestamp()
@@ -2128,7 +2221,7 @@ window.submitComplaint = async function(){
 
             <p>
             हा ID जपून ठेवा.
-            Track Complaint मध्ये हा ID वापरा.
+            Track Complaint मध्ये वापरा.
             </p>
 
         </div>
@@ -2170,20 +2263,26 @@ window.submitComplaint = async function(){
 };
 
 
-/* ================= TRACK COMPLAINT ================= */
+/* ======================================================
+   TRACK COMPLAINT
+====================================================== */
 
-window.trackNow = async function(){
+window.trackNow =
+async function(){
 
     const id =
-        document
-        .getElementById("trackId")
-        .value
-        .trim()
-        .toUpperCase();
+    document
+    .getElementById("trackId")
+    .value
+    .trim()
+    .toUpperCase();
+
 
     const result =
-        document
-        .getElementById("trackResult");
+    document
+    .getElementById(
+        "trackResult"
+    );
 
 
     if(!id){
@@ -2202,28 +2301,25 @@ window.trackNow = async function(){
 
     try{
 
-        const q =
-        query(
-            collection(db,"complaints"),
-            orderBy(
-                "createdAt",
-                "desc"
+        const snapshot =
+        await getDocs(
+            collection(
+                db,
+                "complaints"
             )
         );
 
 
-        const snapshot =
-        await getDocs(q);
-
-
-        let found = null;
+        let found =
+        null;
 
 
         snapshot.forEach(
-            (docSnap)=>{
+            function(docSnap){
 
                 const data =
                 docSnap.data();
+
 
                 if(
                     data.complaintId === id
@@ -2239,13 +2335,26 @@ window.trackNow = async function(){
 
         if(found){
 
-            let statusIcon = "🟡";
+            let icon =
+            "🟡";
 
-            if(found.status === "Resolved")
-                statusIcon = "🟢";
 
-            if(found.status === "In Progress")
-                statusIcon = "🔵";
+            if(found.status ===
+            "Resolved"){
+
+                icon =
+                "🟢";
+
+            }
+
+
+            if(found.status ===
+            "In Progress"){
+
+                icon =
+                "🔵";
+
+            }
 
 
             result.innerHTML = `
@@ -2258,33 +2367,33 @@ window.trackNow = async function(){
 
                 <p>
                 <b>Complaint ID:</b>
-                ${found.complaintId}
+                ${escapeHTML(found.complaintId)}
                 </p>
 
                 <p>
                 <b>नाव:</b>
-                ${found.name}
+                ${escapeHTML(found.name)}
                 </p>
 
                 <p>
                 <b>गाव:</b>
-                ${found.village}
+                ${escapeHTML(found.village)}
                 </p>
 
                 <p>
                 <b>Type:</b>
-                ${found.type}
+                ${escapeHTML(found.type)}
                 </p>
 
                 <p>
                 <b>Problem:</b>
-                ${found.description}
+                ${escapeHTML(found.description)}
                 </p>
 
                 <p>
                 <b>Status:</b>
-                ${statusIcon}
-                ${found.status}
+                ${icon}
+                ${escapeHTML(found.status)}
                 </p>
 
             </div>
@@ -2327,18 +2436,27 @@ window.trackNow = async function(){
 };
 
 
-/* ================= ADMIN COMPLAINTS ================= */
+/* ======================================================
+   ADMIN COMPLAINTS
+====================================================== */
 
-window.showAdminComplaints = async function(){
-
-    document
-    .getElementById("adminComplaintData")
-    .style.display = "block";
-
+window.showAdminComplaints =
+async function(){
 
     document
-    .getElementById("adminIdeasData")
-    .style.display = "none";
+    .getElementById(
+        "adminComplaintData"
+    )
+    .style.display =
+    "block";
+
+
+    document
+    .getElementById(
+        "adminIdeasData"
+    )
+    .style.display =
+    "none";
 
 
     await loadComplaints();
@@ -2346,14 +2464,17 @@ window.showAdminComplaints = async function(){
 };
 
 
-/* ================= LOAD COMPLAINTS ================= */
+/* ======================================================
+   LOAD COMPLAINTS
+====================================================== */
 
 async function loadComplaints(){
 
     const list =
-        document.getElementById(
-            "complaintList"
-        );
+    document
+    .getElementById(
+        "complaintList"
+    );
 
 
     list.innerHTML =
@@ -2362,25 +2483,26 @@ async function loadComplaints(){
 
     try{
 
-        const q =
-        query(
-            collection(db,"complaints"),
-            orderBy(
-                "createdAt",
-                "desc"
+        const snapshot =
+        await getDocs(
+            collection(
+                db,
+                "complaints"
             )
         );
 
 
-        const snapshot =
-        await getDocs(q);
+        let total =
+        0;
+
+        let pending =
+        0;
+
+        let resolved =
+        0;
 
 
-        let total = 0;
-
-        let pending = 0;
-
-        let resolved = 0;
+        list.innerHTML = "";
 
 
         if(snapshot.empty){
@@ -2388,128 +2510,155 @@ async function loadComplaints(){
             list.innerHTML =
             "<p>अजून कोणतीही Complaint नाही.</p>";
 
-        }else{
-
-            list.innerHTML = "";
-
-
-            snapshot.forEach(
-                (docSnap)=>{
-
-                    const data =
-                    docSnap.data();
-
-
-                    total++;
-
-
-                    if(data.status === "Pending")
-                        pending++;
-
-
-                    if(data.status === "Resolved")
-                        resolved++;
-
-
-                    const div =
-                    document.createElement(
-                        "div"
-                    );
-
-                    div.className =
-                    "complaint-item";
-
-
-                    div.innerHTML = `
-
-                    <h4>
-                    📝 ${data.complaintId || "N/A"}
-                    </h4>
-
-                    <p>
-                    <b>नाव:</b>
-                    ${escapeHTML(data.name)}
-                    </p>
-
-                    <p>
-                    <b>Mobile:</b>
-                    ${escapeHTML(data.mobile)}
-                    </p>
-
-                    <p>
-                    <b>गाव:</b>
-                    ${escapeHTML(data.village)}
-                    </p>
-
-                    <p>
-                    <b>Type:</b>
-                    ${escapeHTML(data.type)}
-                    </p>
-
-                    <p>
-                    <b>Problem:</b>
-                    ${escapeHTML(data.description)}
-                    </p>
-
-                    <p>
-                    <b>Current Status:</b>
-                    ${escapeHTML(data.status || "Pending")}
-                    </p>
-
-                    <select
-                    class="status-select"
-                    id="status-${docSnap.id}">
-
-                    <option
-                    ${data.status==="Pending"?"selected":""}>
-                    Pending
-                    </option>
-
-                    <option
-                    ${data.status==="In Progress"?"selected":""}>
-                    In Progress
-                    </option>
-
-                    <option
-                    ${data.status==="Resolved"?"selected":""}>
-                    Resolved
-                    </option>
-
-                    </select>
-
-                    <button
-                    class="blue"
-                    style="margin-top:10px;"
-                    onclick="updateComplaintStatusAdmin('${docSnap.id}')">
-
-                    💾 Update Status
-
-                    </button>
-
-                    `;
-
-
-                    list.appendChild(div);
-
-                }
-            );
-
         }
 
 
-        document
-        .getElementById("totalCount")
-        .innerText = total;
+        snapshot.forEach(
+            function(docSnap){
+
+                const data =
+                docSnap.data();
+
+
+                total++;
+
+
+                if(
+                    data.status ===
+                    "Pending"
+                ){
+
+                    pending++;
+
+                }
+
+
+                if(
+                    data.status ===
+                    "Resolved"
+                ){
+
+                    resolved++;
+
+                }
+
+
+                const div =
+                document.createElement(
+                    "div"
+                );
+
+
+                div.className =
+                "complaint-item";
+
+
+                div.innerHTML = `
+
+                <h4>
+                📝 ${escapeHTML(
+                    data.complaintId ||
+                    "N/A"
+                )}
+                </h4>
+
+                <p>
+                <b>नाव:</b>
+                ${escapeHTML(data.name)}
+                </p>
+
+                <p>
+                <b>Mobile:</b>
+                ${escapeHTML(data.mobile)}
+                </p>
+
+                <p>
+                <b>गाव:</b>
+                ${escapeHTML(data.village)}
+                </p>
+
+                <p>
+                <b>Type:</b>
+                ${escapeHTML(data.type)}
+                </p>
+
+                <p>
+                <b>Problem:</b>
+                ${escapeHTML(data.description)}
+                </p>
+
+                <p>
+                <b>Status:</b>
+                ${escapeHTML(
+                    data.status ||
+                    "Pending"
+                )}
+                </p>
+
+                <select
+                class="status-select"
+                id="status-${docSnap.id}">
+
+                <option
+                ${data.status==="Pending"
+                ?"selected":""}>
+                Pending
+                </option>
+
+                <option
+                ${data.status==="In Progress"
+                ?"selected":""}>
+                In Progress
+                </option>
+
+                <option
+                ${data.status==="Resolved"
+                ?"selected":""}>
+                Resolved
+                </option>
+
+                </select>
+
+                <button
+                class="blue"
+                style="margin-top:10px;"
+                onclick="updateComplaintStatusAdmin('${docSnap.id}')">
+
+                💾 Update Status
+
+                </button>
+
+                `;
+
+
+                list.appendChild(div);
+
+            }
+        );
 
 
         document
-        .getElementById("pendingCount")
-        .innerText = pending;
+        .getElementById(
+            "totalCount"
+        )
+        .innerText =
+        total;
 
 
         document
-        .getElementById("resolvedCount")
-        .innerText = resolved;
+        .getElementById(
+            "pendingCount"
+        )
+        .innerText =
+        pending;
+
+
+        document
+        .getElementById(
+            "resolvedCount"
+        )
+        .innerText =
+        resolved;
 
 
     }catch(error){
@@ -2533,22 +2682,22 @@ async function loadComplaints(){
 }
 
 
-/* ================= UPDATE STATUS ================= */
+/* ======================================================
+   UPDATE COMPLAINT STATUS
+====================================================== */
 
 window.updateComplaintStatusAdmin =
 async function(docId){
 
     const select =
-        document.getElementById(
-            "status-" + docId
-        );
+    document
+    .getElementById(
+        "status-" + docId
+    );
 
 
-    if(!select) return;
-
-
-    const newStatus =
-        select.value;
+    if(!select)
+    return;
 
 
     try{
@@ -2561,7 +2710,8 @@ async function(docId){
             ),
             {
 
-                status:newStatus,
+                status:
+                select.value,
 
                 updatedAt:
                 serverTimestamp()
@@ -2592,21 +2742,24 @@ async function(docId){
 };
 
 
-/* ================= IDEA ================= */
+/* ======================================================
+   SUBMIT IDEA
+====================================================== */
 
-window.submitIdea = async function(){
+window.submitIdea =
+async function(){
 
     const name =
-        document
-        .getElementById("ideaName")
-        .value
-        .trim();
+    document
+    .getElementById("ideaName")
+    .value
+    .trim();
 
     const idea =
-        document
-        .getElementById("ideaText")
-        .value
-        .trim();
+    document
+    .getElementById("ideaText")
+    .value
+    .trim();
 
 
     if(!name || !idea){
@@ -2621,9 +2774,10 @@ window.submitIdea = async function(){
 
 
     const result =
-        document.getElementById(
-            "ideaResult"
-        );
+    document
+    .getElementById(
+        "ideaResult"
+    );
 
 
     result.innerHTML =
@@ -2633,7 +2787,10 @@ window.submitIdea = async function(){
     try{
 
         await addDoc(
-            collection(db,"ideas"),
+            collection(
+                db,
+                "ideas"
+            ),
             {
 
                 name:name,
@@ -2642,8 +2799,10 @@ window.submitIdea = async function(){
 
                 uid:
                 window.currentUser
-                ? window.currentUser.uid
-                : "",
+                ?
+                window.currentUser.uid
+                :
+                "",
 
                 createdAt:
                 serverTimestamp()
@@ -2674,11 +2833,16 @@ window.submitIdea = async function(){
 
 
         document
-        .getElementById("ideaName")
+        .getElementById(
+            "ideaName"
+        )
         .value = "";
 
+
         document
-        .getElementById("ideaText")
+        .getElementById(
+            "ideaText"
+        )
         .value = "";
 
 
@@ -2703,24 +2867,34 @@ window.submitIdea = async function(){
 };
 
 
-/* ================= LOAD IDEAS ================= */
+/* ======================================================
+   LOAD IDEAS
+====================================================== */
 
-window.loadIdeas = async function(){
-
-    document
-    .getElementById("adminIdeasData")
-    .style.display = "block";
-
+window.loadIdeas =
+async function(){
 
     document
-    .getElementById("adminComplaintData")
-    .style.display = "none";
+    .getElementById(
+        "adminIdeasData"
+    )
+    .style.display =
+    "block";
+
+
+    document
+    .getElementById(
+        "adminComplaintData"
+    )
+    .style.display =
+    "none";
 
 
     const list =
-        document.getElementById(
-            "ideaList"
-        );
+    document
+    .getElementById(
+        "ideaList"
+    );
 
 
     list.innerHTML =
@@ -2729,18 +2903,16 @@ window.loadIdeas = async function(){
 
     try{
 
-        const q =
-        query(
-            collection(db,"ideas"),
-            orderBy(
-                "createdAt",
-                "desc"
+        const snapshot =
+        await getDocs(
+            collection(
+                db,
+                "ideas"
             )
         );
 
 
-        const snapshot =
-        await getDocs(q);
+        list.innerHTML = "";
 
 
         if(snapshot.empty){
@@ -2753,11 +2925,8 @@ window.loadIdeas = async function(){
         }
 
 
-        list.innerHTML = "";
-
-
         snapshot.forEach(
-            (docSnap)=>{
+            function(docSnap){
 
                 const data =
                 docSnap.data();
@@ -2819,9 +2988,12 @@ window.loadIdeas = async function(){
 };
 
 
-/* ================= LOGOUT ================= */
+/* ======================================================
+   ADMIN LOGOUT
+====================================================== */
 
-window.adminLogout = async function(){
+window.adminLogout =
+async function(){
 
     try{
 
@@ -2829,38 +3001,40 @@ window.adminLogout = async function(){
 
 
         document
-        .getElementById("adminDashboard")
-        .style.display = "none";
+        .getElementById(
+            "adminDashboard"
+        )
+        .style.display =
+        "none";
 
 
         document
-        .getElementById("adminLogin")
-        .style.display = "block";
+        .getElementById(
+            "adminLogin"
+        )
+        .style.display =
+        "block";
 
 
         document
-        .getElementById("adminEmail")
+        .getElementById(
+            "adminEmail"
+        )
         .value = "";
 
 
         document
-        .getElementById("adminPassword")
+        .getElementById(
+            "adminPassword"
+        )
         .value = "";
 
 
         document
-        .getElementById("adminMessage")
+        .getElementById(
+            "adminMessage"
+        )
         .innerHTML = "";
-
-
-        document
-        .getElementById("adminComplaintData")
-        .style.display = "none";
-
-
-        document
-        .getElementById("adminIdeasData")
-        .style.display = "none";
 
 
         alert(
@@ -2872,42 +3046,49 @@ window.adminLogout = async function(){
 
         console.error(error);
 
-        alert(
-            "Logout Error: " +
-            error.message
-        );
-
     }
 
 };
 
 
-/* ================= CERTIFICATES ================= */
+/* ======================================================
+   BIRTH
+====================================================== */
 
-window.birth = function(){
+window.birth =
+function(){
 
     alert(
-        "🍼 Birth Certificate\n\nBirth Certificate अर्ज module पुढील step मध्ये Firebase सोबत जोडता येईल."
+        "🍼 Birth Certificate अर्ज module पुढील step मध्ये Firebase सोबत जोडता येईल."
     );
 
 };
 
 
-window.death = function(){
+/* ======================================================
+   DEATH
+====================================================== */
+
+window.death =
+function(){
 
     alert(
-        "⚰️ Death Certificate\n\nDeath Certificate अर्ज module पुढील step मध्ये Firebase सोबत जोडता येईल."
+        "⚰️ Death Certificate अर्ज module पुढील step मध्ये Firebase सोबत जोडता येईल."
     );
 
 };
 
 
-/* ================= SECURITY DISPLAY ================= */
+/* ======================================================
+   ESCAPE HTML
+====================================================== */
 
 function escapeHTML(value){
 
-    if(value === undefined ||
-       value === null){
+    if(
+        value === undefined ||
+        value === null
+    ){
 
         return "";
 
