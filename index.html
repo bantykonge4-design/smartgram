@@ -1717,43 +1717,19 @@ window.adminLogin = async function(){
 function createRecaptcha(){
 
     if(recaptchaVerifier){
-
-        try{
-
-            recaptchaVerifier.clear();
-
-        }catch(e){}
-
-        recaptchaVerifier = null;
-
+        return recaptchaVerifier;
     }
 
-
-    recaptchaVerifier =
-    new RecaptchaVerifier(
+    recaptchaVerifier = new RecaptchaVerifier(
         auth,
         "recaptcha-container",
         {
-            size:"normal",
-            callback:function(){
-
-                console.log(
-                    "reCAPTCHA verified"
-                );
-
-            },
-            "expired-callback":function(){
-
-                console.log(
-                    "reCAPTCHA expired"
-                );
-
-            }
+            size: "normal"
         }
     );
 
+    return recaptchaVerifier;
 }
-
 
 /* ================= SEND OTP ================= */
 
