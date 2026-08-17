@@ -71,6 +71,16 @@ button{
     color:white;
 }
 
+.blue{
+    background:#1976d2;
+    color:white;
+}
+
+.red{
+    background:#d32f2f;
+    color:white;
+}
+
 .close{
     background:#ddd;
     color:#222;
@@ -184,6 +194,15 @@ label{
     border-radius:10px;
 }
 
+.error{
+    margin-top:15px;
+    padding:15px;
+    background:#fff0f0;
+    border:2px solid #d32f2f;
+    border-radius:10px;
+    color:#b00020;
+}
+
 footer{
     background:#123d27;
     color:white;
@@ -277,6 +296,50 @@ footer{
 
 .login-buttons button{
     margin:5px;
+}
+
+.authbox{
+    display:none;
+    max-width:450px;
+    margin:25px auto;
+    background:#f5f7f6;
+    padding:20px;
+    border-radius:15px;
+    text-align:left;
+}
+
+.authbox h3{
+    text-align:center;
+    color:#176b3a;
+    margin-bottom:15px;
+}
+
+.authbox button{
+    margin-top:5px;
+}
+
+.auth-links{
+    text-align:center;
+    margin-top:15px;
+}
+
+.auth-links button{
+    background:none;
+    color:#176b3a;
+    padding:5px;
+    text-decoration:underline;
+}
+
+#userBar{
+    display:none;
+    background:#e8f5e9;
+    padding:12px;
+    text-align:center;
+    border-bottom:1px solid #b7d9bd;
+}
+
+#userBar b{
+    color:#176b3a;
 }
 
 #adminDashboard{
@@ -397,6 +460,7 @@ footer{
 
 <body>
 
+
 <!-- ================= WELCOME ================= -->
 
 <div id="welcomeScreen">
@@ -438,6 +502,27 @@ footer{
 </div>
 
 
+<!-- ================= USER BAR ================= -->
+
+<div id="userBar">
+
+    👤 Login:
+    <b id="loggedUserName">Citizen</b>
+
+    &nbsp; | &nbsp;
+
+    <button
+    class="red"
+    style="padding:7px 12px;"
+    onclick="citizenLogout()">
+
+    Logout
+
+    </button>
+
+</div>
+
+
 <!-- ================= HEADER ================= -->
 
 <header>
@@ -464,10 +549,11 @@ footer{
         आणि गावाच्या विकासात सहभागी व्हा.
     </p>
 
-    <button class="mainbtn"
-            onclick="openPage('complaint')">
+    <button
+    class="mainbtn"
+    onclick="openComplaint()">
 
-        📝 समस्या नोंदवा
+    📝 समस्या नोंदवा
 
     </button>
 
@@ -483,7 +569,7 @@ footer{
 <div class="grid">
 
 <div class="card"
-onclick="openPage('complaint')">
+onclick="openComplaint()">
 
 <div class="icon">📝</div>
 
@@ -578,7 +664,8 @@ onclick="openPage('certificates')">
 
 <div class="login-buttons">
 
-<button class="green"
+<button
+class="green"
 onclick="showAdminLogin()">
 
 🔐 Admin Login
@@ -586,6 +673,7 @@ onclick="showAdminLogin()">
 </button>
 
 <button
+class="blue"
 onclick="showCitizenLogin()">
 
 👤 Citizen Login
@@ -593,64 +681,23 @@ onclick="showCitizenLogin()">
 </button>
 
 </div>
-<div id="citizenCreate"
-style="display:none;max-width:450px;margin:25px auto;">
 
-<h3>📝 Create Citizen Account</h3>
-
-<input
-type="text"
-id="createName"
-placeholder="पूर्ण नाव">
-
-<input
-type="tel"
-id="createMobile"
-placeholder="मोबाइल नंबर"
-maxlength="10">
-
-<input
-type="email"
-id="createEmail"
-placeholder="Email Address">
-
-<input
-type="password"
-id="createPassword"
-placeholder="Password">
-
-<button
-class="green"
-onclick="createCitizenAccount()">
-
-✅ Create Account
-
-</button>
-
-<button
-onclick="showCitizenLogin()">
-
-Already have account? Login
-
-</button>
-
-<p id="createMessage"
-style="margin-top:15px;">
-</p>
-
-</div>
 
 <!-- ADMIN LOGIN -->
 
 <div id="adminLogin"
-style="display:none;max-width:450px;margin:25px auto;">
+class="authbox">
 
 <h3>🔐 Admin Login</h3>
+
+<label>Email</label>
 
 <input
 type="email"
 id="adminEmail"
 placeholder="Admin Email">
+
+<label>Password</label>
 
 <input
 type="password"
@@ -659,9 +706,10 @@ placeholder="Password">
 
 <button
 class="green"
+style="width:100%;"
 onclick="adminLogin()">
 
-Login
+🔐 Login
 
 </button>
 
@@ -675,14 +723,18 @@ style="margin-top:15px;">
 <!-- CITIZEN LOGIN -->
 
 <div id="citizenLogin"
-style="display:none;max-width:450px;margin:25px auto;">
+class="authbox">
 
 <h3>👤 Citizen Login</h3>
+
+<label>Email Address</label>
 
 <input
 type="email"
 id="citizenEmail"
-placeholder="Email Address">
+placeholder="example@gmail.com">
+
+<label>Password</label>
 
 <input
 type="password"
@@ -691,21 +743,93 @@ placeholder="Password">
 
 <button
 class="green"
+style="width:100%;"
 onclick="citizenLogin()">
 
 🔐 Login
 
 </button>
-<br>
+
+<div class="auth-links">
+
+<p>
+Account नाही?
+</p>
+
+<button onclick="showCreateAccount()">
+➕ Create Citizen Account
+</button>
+
+</div>
+
+<p id="citizenMessage"
+style="margin-top:15px;">
+</p>
+
+</div>
+
+
+<!-- CREATE ACCOUNT -->
+
+<div id="createAccount"
+class="authbox">
+
+<h3>➕ Create Citizen Account</h3>
+
+<label>पूर्ण नाव</label>
+
+<input
+type="text"
+id="createName"
+placeholder="तुमचे पूर्ण नाव">
+
+<label>मोबाइल नंबर</label>
+
+<input
+type="tel"
+id="createMobile"
+maxlength="10"
+placeholder="10 अंकी मोबाइल नंबर">
+
+<label>Email Address</label>
+
+<input
+type="email"
+id="createEmail"
+placeholder="example@gmail.com">
+
+<label>Password</label>
+
+<input
+type="password"
+id="createPassword"
+placeholder="कमीत कमी 6 अक्षरे">
+
+<label>Confirm Password</label>
+
+<input
+type="password"
+id="createPassword2"
+placeholder="Password पुन्हा टाका">
 
 <button
-onclick="showCitizenCreate()"
-style="margin-top:10px;">
+class="green"
+style="width:100%;"
+onclick="createCitizenAccount()">
 
-📝 Create New Account
+✅ Create Account
 
 </button>
-<p id="citizenMessage"
+
+<div class="auth-links">
+
+<button onclick="showCitizenLogin()">
+← Login कडे जा
+</button>
+
+</div>
+
+<p id="createMessage"
 style="margin-top:15px;">
 </p>
 
@@ -1268,43 +1392,28 @@ class="admin-data">
 </h3>
 
 <div class="info">
-
 <h3>सरपंच</h3>
-
 <p>श्री केशव ज्ञानदेवराव जटाळे</p>
-
 </div>
 
 <div class="info">
-
 <h3>उपसरपंच</h3>
-
 <p>सौ कविता पंकज इंगोले</p>
-
 </div>
 
 <div class="info">
-
 <h3>ग्रामसेवक</h3>
-
 <p>श्री संजय पाचरणे</p>
-
 </div>
 
 <div class="info">
-
 <h3>तलाठी</h3>
-
 <p>श्री अमोल भुरकडे</p>
-
 </div>
 
 <div class="info">
-
 <h3>पोलिस पाटील</h3>
-
 <p>श्री दत्ता भोयर</p>
-
 </div>
 
 </div>
@@ -1323,37 +1432,34 @@ onclick="adminLogout()">
 </div>
 
 
-<!-- ================= JAVASCRIPT ================= -->
+<!-- ================= NORMAL JAVASCRIPT ================= -->
 
 <script>
 
-let citizenLoggedIn = false;
+window.citizenLoggedIn = false;
 
 
 /* WELCOME */
 
 function enterWebsite(){
 
-    document.getElementById(
-        "welcomeScreen"
-    ).style.display = "none";
+    document.getElementById("welcomeScreen")
+    .style.display = "none";
 
 }
 
 
-/* PAGE OPEN */
+/* PAGE */
 
 function openPage(id){
 
     closePages();
 
     document.getElementById(id)
-        .style.display = "block";
+    .style.display = "block";
 
 }
 
-
-/* PAGE CLOSE */
 
 function closePages(){
 
@@ -1367,32 +1473,85 @@ function closePages(){
 }
 
 
-/* ADMIN LOGIN BOX */
+/* COMPLAINT OPEN */
 
-function showAdminLogin(){
+function openComplaint(){
 
-    document.getElementById(
-        "adminLogin"
-    ).style.display = "block";
+    if(!window.citizenLoggedIn){
 
-    document.getElementById(
-        "citizenLogin"
-    ).style.display = "none";
+        alert(
+            "🔒 आधी Citizen Login करा."
+        );
+
+        showCitizenLogin();
+
+        document.getElementById("citizenLogin")
+        .scrollIntoView({
+            behavior:"smooth"
+        });
+
+        return;
+    }
+
+    openPage("complaint");
 
 }
 
 
-/* CITIZEN LOGIN BOX */
+/* ADMIN LOGIN BOX */
+
+function showAdminLogin(){
+
+    document.getElementById("adminLogin")
+    .style.display = "block";
+
+    document.getElementById("citizenLogin")
+    .style.display = "none";
+
+    document.getElementById("createAccount")
+    .style.display = "none";
+
+    document.getElementById("adminLogin")
+    .scrollIntoView({
+        behavior:"smooth"
+    });
+
+}
+
+
+/* CITIZEN LOGIN */
 
 function showCitizenLogin(){
 
-    document.getElementById(
-        "citizenLogin"
-    ).style.display = "block";
+    document.getElementById("citizenLogin")
+    .style.display = "block";
 
-    document.getElementById(
-        "adminLogin"
-    ).style.display = "none";
+    document.getElementById("createAccount")
+    .style.display = "none";
+
+    document.getElementById("adminLogin")
+    .style.display = "none";
+
+    document.getElementById("citizenLogin")
+    .scrollIntoView({
+        behavior:"smooth"
+    });
+
+}
+
+
+/* CREATE ACCOUNT BOX */
+
+function showCreateAccount(){
+
+    document.getElementById("createAccount")
+    .style.display = "block";
+
+    document.getElementById("citizenLogin")
+    .style.display = "none";
+
+    document.getElementById("adminLogin")
+    .style.display = "none";
 
 }
 
@@ -1404,16 +1563,10 @@ function submitComplaint(){
     if(!window.citizenLoggedIn){
 
         alert(
-            "🔒 कृपया Citizen Login करा. Login केल्यानंतरच समस्या नोंदवता येईल."
+            "🔒 कृपया Citizen Login करा."
         );
 
-        document.getElementById(
-            "complaint"
-        ).style.display = "none";
-
-        document.getElementById(
-            "citizenLogin"
-        ).style.display = "block";
+        showCitizenLogin();
 
         return;
     }
@@ -1534,9 +1687,9 @@ function submitComplaint(){
 function trackNow(){
 
     let id =
-        document.getElementById(
-            "trackId"
-        ).value.trim().toUpperCase();
+        document.getElementById("trackId")
+        .value.trim()
+        .toUpperCase();
 
 
     let complaints =
@@ -1548,13 +1701,11 @@ function trackNow(){
 
 
     let data =
-        complaints.find(
-            function(item){
+        complaints.find(function(item){
 
-                return item.id === id;
+            return item.id === id;
 
-            }
-        );
+        });
 
 
     if(data){
@@ -1613,11 +1764,11 @@ function trackNow(){
             "trackResult"
         ).innerHTML = `
 
-        <p style="color:red;margin-top:20px;">
+        <div class="error">
 
         ❌ Complaint ID सापडली नाही.
 
-        </p>
+        </div>
 
         `;
 
@@ -1703,28 +1854,16 @@ function submitIdea(){
 
 function showAdminComplaints(){
 
+    hideAdminSections();
+
     document.getElementById(
         "adminComplaintData"
     ).style.display = "block";
-
-    document.getElementById(
-        "adminNoticeData"
-    ).style.display = "none";
-
-    document.getElementById(
-        "adminIdeaData"
-    ).style.display = "none";
-
-    document.getElementById(
-        "adminOfficialData"
-    ).style.display = "none";
 
     loadComplaints();
 
 }
 
-
-/* LOAD COMPLAINTS */
 
 function loadComplaints(){
 
@@ -1812,7 +1951,7 @@ function loadComplaints(){
         </button>
 
         <button
-        class="green"
+        class="blue"
         onclick="updateComplaintStatus(${index},'In Progress')">
 
         🔵 In Progress
@@ -1839,8 +1978,6 @@ function loadComplaints(){
 }
 
 
-/* UPDATE COMPLAINT STATUS */
-
 function updateComplaintStatus(index,status){
 
     let complaints =
@@ -1861,7 +1998,6 @@ function updateComplaintStatus(index,status){
             JSON.stringify(complaints)
         );
 
-
         loadComplaints();
 
         alert(
@@ -1873,7 +2009,7 @@ function updateComplaintStatus(index,status){
 }
 
 
-/* ADMIN NOTICES */
+/* NOTICES */
 
 function showNoticeManagement(){
 
@@ -1980,7 +2116,8 @@ function loadNotices(){
     }
 
 
-    list.innerHTML = notices.map(function(n,index){
+    list.innerHTML =
+        notices.map(function(n,index){
 
         return `
 
@@ -2035,7 +2172,7 @@ function deleteNotice(index){
 }
 
 
-/* ADMIN IDEAS */
+/* IDEAS ADMIN */
 
 function showIdeasManagement(){
 
@@ -2076,7 +2213,8 @@ function loadIdeas(){
     }
 
 
-    list.innerHTML = ideas.map(function(item,index){
+    list.innerHTML =
+        ideas.map(function(item){
 
         return `
 
@@ -2110,7 +2248,7 @@ function showOfficialsManagement(){
 }
 
 
-/* HIDE ADMIN SECTIONS */
+/* HIDE */
 
 function hideAdminSections(){
 
@@ -2133,51 +2271,12 @@ function hideAdminSections(){
 }
 
 
-/* ADMIN LOGOUT */
-
-function adminLogout(){
-
-    document.getElementById(
-        "adminDashboard"
-    ).style.display = "none";
-
-
-    document.getElementById(
-        "adminLogin"
-    ).style.display = "block";
-
-
-    document.getElementById(
-        "adminEmail"
-    ).value = "";
-
-
-    document.getElementById(
-        "adminPassword"
-    ).value = "";
-
-
-    document.getElementById(
-        "adminMessage"
-    ).innerHTML = "";
-
-
-    hideAdminSections();
-
-
-    alert(
-        "Admin Logout Successful!"
-    );
-
-}
-
-
 /* BIRTH */
 
 function birth(){
 
     alert(
-        "Birth Certificate Demo पुढील module मध्ये पूर्ण करता येईल."
+        "Birth Certificate module पुढील टप्प्यात जोडता येईल."
     );
 
 }
@@ -2188,7 +2287,7 @@ function birth(){
 function death(){
 
     alert(
-        "Death Certificate Demo पुढील module मध्ये पूर्ण करता येईल."
+        "Death Certificate module पुढील टप्प्यात जोडता येईल."
     );
 
 }
@@ -2200,17 +2299,26 @@ function death(){
 
 <script type="module">
 
-import { initializeApp }
-from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+import {
+    initializeApp
+}
+from
+"https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+
 
 import {
     getAuth,
+    createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
     onAuthStateChanged,
-    signOut
+    signOut,
+    updateProfile
 }
-from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+from
+"https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
 
+
+/* ================= FIREBASE CONFIG ================= */
 
 const firebaseConfig = {
 
@@ -2235,17 +2343,274 @@ const firebaseConfig = {
 };
 
 
+/* ================= INITIALIZE ================= */
+
 const app =
     initializeApp(firebaseConfig);
-
 
 const auth =
     getAuth(app);
 
 
+/* ================= CREATE CITIZEN ACCOUNT ================= */
+
+window.createCitizenAccount =
+async function(){
+
+    const name =
+        document.getElementById(
+            "createName"
+        ).value.trim();
+
+
+    const mobile =
+        document.getElementById(
+            "createMobile"
+        ).value.trim();
+
+
+    const email =
+        document.getElementById(
+            "createEmail"
+        ).value.trim();
+
+
+    const password =
+        document.getElementById(
+            "createPassword"
+        ).value;
+
+
+    const password2 =
+        document.getElementById(
+            "createPassword2"
+        ).value;
+
+
+    const message =
+        document.getElementById(
+            "createMessage"
+        );
+
+
+    message.innerHTML = "";
+
+
+    /* VALIDATION */
+
+    if(!name ||
+       !mobile ||
+       !email ||
+       !password ||
+       !password2){
+
+        message.innerHTML =
+            "⚠️ कृपया सर्व माहिती भरा.";
+
+        message.style.color = "red";
+
+        return;
+
+    }
+
+
+    if(!/^[0-9]{10}$/.test(mobile)){
+
+        message.innerHTML =
+            "⚠️ योग्य 10 अंकी Mobile Number टाका.";
+
+        message.style.color = "red";
+
+        return;
+
+    }
+
+
+    if(password.length < 6){
+
+        message.innerHTML =
+            "⚠️ Password कमीत कमी 6 अक्षरांचा असावा.";
+
+        message.style.color = "red";
+
+        return;
+
+    }
+
+
+    if(password !== password2){
+
+        message.innerHTML =
+            "⚠️ दोन्ही Password सारखे नाहीत.";
+
+        message.style.color = "red";
+
+        return;
+
+    }
+
+
+    try{
+
+        /* CREATE FIREBASE USER */
+
+        const result =
+            await createUserWithEmailAndPassword(
+                auth,
+                email,
+                password
+            );
+
+
+        /* SAVE NAME IN FIREBASE PROFILE */
+
+        await updateProfile(
+            result.user,
+            {
+                displayName:name
+            }
+        );
+
+
+        /* SAVE MOBILE FOR THIS DEMO */
+
+        localStorage.setItem(
+            "smartgramMobile_" + result.user.uid,
+            mobile
+        );
+
+
+        localStorage.setItem(
+            "smartgramName_" + result.user.uid,
+            name
+        );
+
+
+        window.citizenLoggedIn =
+            true;
+
+
+        document.getElementById(
+            "loggedUserName"
+        ).innerText = name;
+
+
+        document.getElementById(
+            "userBar"
+        ).style.display = "block";
+
+
+        document.getElementById(
+            "createAccount"
+        ).style.display = "none";
+
+
+        message.innerHTML =
+            "✅ Account Successfully Created!";
+
+        message.style.color =
+            "green";
+
+
+        alert(
+            "✅ Citizen Account तयार झाले!"
+        );
+
+
+        /* CLEAR */
+
+        document.getElementById(
+            "createName"
+        ).value = "";
+
+        document.getElementById(
+            "createMobile"
+        ).value = "";
+
+        document.getElementById(
+            "createEmail"
+        ).value = "";
+
+        document.getElementById(
+            "createPassword"
+        ).value = "";
+
+        document.getElementById(
+            "createPassword2"
+        ).value = "";
+
+
+        /* SHOW LOGIN */
+
+        setTimeout(function(){
+
+            showCitizenLogin();
+
+        },500);
+
+
+    }
+    catch(error){
+
+        console.error(
+            "CREATE ACCOUNT ERROR:",
+            error
+        );
+
+
+        let msg =
+            "❌ Account तयार करता आले नाही.";
+
+
+        if(
+            error.code ===
+            "auth/email-already-in-use"
+        ){
+
+            msg =
+            "❌ हा Email आधीपासून वापरलेला आहे.";
+
+        }
+
+        else if(
+            error.code ===
+            "auth/invalid-email"
+        ){
+
+            msg =
+            "❌ Email चुकीचा आहे.";
+
+        }
+
+        else if(
+            error.code ===
+            "auth/weak-password"
+        ){
+
+            msg =
+            "❌ Password खूप weak आहे.";
+
+        }
+
+
+        message.innerHTML =
+            msg +
+            "<br><small>" +
+            error.code +
+            "</small>";
+
+        message.style.color =
+            "red";
+
+    }
+
+};
+
+
 /* ================= CITIZEN LOGIN ================= */
 
-window.citizenLogin = async function(){
+window.citizenLogin =
+async function(){
 
     const email =
         document.getElementById(
@@ -2280,15 +2645,41 @@ window.citizenLogin = async function(){
 
     try{
 
-        await signInWithEmailAndPassword(
-            auth,
-            email,
-            password
-        );
+        const result =
+            await signInWithEmailAndPassword(
+                auth,
+                email,
+                password
+            );
 
 
         window.citizenLoggedIn =
             true;
+
+
+        const user =
+            result.user;
+
+
+        let name =
+            user.displayName ||
+            user.email;
+
+
+        document.getElementById(
+            "loggedUserName"
+        ).innerText = name;
+
+
+        document.getElementById(
+            "userBar"
+        ).style.display = "block";
+
+
+        document.getElementById(
+            "citizenLogin"
+        ).style.display =
+            "none";
 
 
         message.innerHTML =
@@ -2298,16 +2689,9 @@ window.citizenLogin = async function(){
             "green";
 
 
-        document.getElementById(
-            "citizenLogin"
-        ).style.display =
-            "none";
-
-
         alert(
             "✅ Citizen Login Successful!"
         );
-
 
     }
     catch(error){
@@ -2318,9 +2702,36 @@ window.citizenLogin = async function(){
         );
 
 
+        let msg =
+            "❌ Login Failed.";
+
+
+        if(
+            error.code ===
+            "auth/invalid-credential"
+        ){
+
+            msg =
+            "❌ Email किंवा Password चुकीचा आहे.";
+
+        }
+
+        else if(
+            error.code ===
+            "auth/user-not-found"
+        ){
+
+            msg =
+            "❌ हा Account सापडला नाही.";
+
+        }
+
+
         message.innerHTML =
-            "❌ Login Failed<br>" +
-            error.message;
+            msg +
+            "<br><small>" +
+            error.code +
+            "</small>";
 
         message.style.color =
             "red";
@@ -2332,7 +2743,8 @@ window.citizenLogin = async function(){
 
 /* ================= ADMIN LOGIN ================= */
 
-window.adminLogin = async function(){
+window.adminLogin =
+async function(){
 
     const email =
         document.getElementById(
@@ -2367,11 +2779,40 @@ window.adminLogin = async function(){
 
     try{
 
-        await signInWithEmailAndPassword(
-            auth,
-            email,
-            password
-        );
+        const result =
+            await signInWithEmailAndPassword(
+                auth,
+                email,
+                password
+            );
+
+
+        const user =
+            result.user;
+
+
+        /*
+        IMPORTANT:
+        खालील email तुझा ADMIN EMAIL ठेव.
+        */
+
+        const ADMIN_EMAIL =
+            "admin@gogari.com";
+
+
+        if(user.email !== ADMIN_EMAIL){
+
+            await signOut(auth);
+
+            message.innerHTML =
+                "❌ हा Admin Account नाही.";
+
+            message.style.color =
+                "red";
+
+            return;
+
+        }
 
 
         message.innerHTML =
@@ -2393,59 +2834,33 @@ window.adminLogin = async function(){
             "block";
 
 
+        document.getElementById(
+            "userBar"
+        ).style.display =
+            "none";
+
+
+        alert(
+            "✅ Admin Login Successful!"
+        );
+
     }
     catch(error){
 
         console.error(
-            "Admin Login Error:",
+            "ADMIN LOGIN ERROR:",
             error
         );
 
 
         message.innerHTML =
-            "❌ Login Failed<br>" +
+            "❌ Admin Login Failed<br>" +
             error.message;
 
         message.style.color =
             "red";
 
     }
-
-};
-
-
-/* ================= SHOW ADMIN ================= */
-
-window.showAdminLogin = function(){
-
-    document.getElementById(
-        "adminLogin"
-    ).style.display =
-        "block";
-
-
-    document.getElementById(
-        "citizenLogin"
-    ).style.display =
-        "none";
-
-};
-
-
-/* ================= SHOW CITIZEN ================= */
-
-window.showCitizenLogin = function(){
-
-    document.getElementById(
-        "citizenLogin"
-    ).style.display =
-        "block";
-
-
-    document.getElementById(
-        "adminLogin"
-    ).style.display =
-        "none";
 
 };
 
@@ -2458,13 +2873,31 @@ onAuthStateChanged(
 
         if(user){
 
+            window.citizenLoggedIn =
+                true;
+
+
+            let name =
+                user.displayName ||
+                user.email;
+
+
+            document.getElementById(
+                "loggedUserName"
+            ).innerText =
+                name;
+
+
+            document.getElementById(
+                "userBar"
+            ).style.display =
+                "block";
+
+
             console.log(
                 "Firebase User:",
                 user.email
             );
-
-            window.citizenLoggedIn =
-                true;
 
         }
         else{
@@ -2472,19 +2905,61 @@ onAuthStateChanged(
             window.citizenLoggedIn =
                 false;
 
+
+            document.getElementById(
+                "userBar"
+            ).style.display =
+                "none";
+
         }
 
     }
 );
 
 
-/* ================= ADMIN LOGOUT ================= */
+/* ================= CITIZEN LOGOUT ================= */
 
-window.adminLogout = async function(){
+window.citizenLogout =
+async function(){
 
     try{
 
         await signOut(auth);
+
+
+        window.citizenLoggedIn =
+            false;
+
+
+        document.getElementById(
+            "userBar"
+        ).style.display =
+            "none";
+
+
+        alert(
+            "✅ Citizen Logout Successful!"
+        );
+
+    }
+    catch(error){
+
+        console.error(error);
+
+    }
+
+};
+
+
+/* ================= ADMIN LOGOUT ================= */
+
+window.adminLogout =
+async function(){
+
+    try{
+
+        await signOut(auth);
+
 
         window.citizenLoggedIn =
             false;
@@ -2503,32 +2978,7 @@ window.adminLogout = async function(){
 
 
         alert(
-            "Admin Logout Successful!"
-        );
-
-    }
-    catch(error){
-
-        console.error(error);
-
-    }
-
-};
-
-
-/* ================= CITIZEN LOGOUT ================= */
-
-window.citizenLogout = async function(){
-
-    try{
-
-        await signOut(auth);
-
-        window.citizenLoggedIn =
-            false;
-
-        alert(
-            "Citizen Logout Successful!"
+            "✅ Admin Logout Successful!"
         );
 
     }
