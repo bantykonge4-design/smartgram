@@ -593,7 +593,52 @@ onclick="showCitizenLogin()">
 </button>
 
 </div>
+<div id="citizenCreate"
+style="display:none;max-width:450px;margin:25px auto;">
 
+<h3>📝 Create Citizen Account</h3>
+
+<input
+type="text"
+id="createName"
+placeholder="पूर्ण नाव">
+
+<input
+type="tel"
+id="createMobile"
+placeholder="मोबाइल नंबर"
+maxlength="10">
+
+<input
+type="email"
+id="createEmail"
+placeholder="Email Address">
+
+<input
+type="password"
+id="createPassword"
+placeholder="Password">
+
+<button
+class="green"
+onclick="createCitizenAccount()">
+
+✅ Create Account
+
+</button>
+
+<button
+onclick="showCitizenLogin()">
+
+Already have account? Login
+
+</button>
+
+<p id="createMessage"
+style="margin-top:15px;">
+</p>
+
+</div>
 
 <!-- ADMIN LOGIN -->
 
@@ -651,7 +696,15 @@ onclick="citizenLogin()">
 🔐 Login
 
 </button>
+<br>
 
+<button
+onclick="showCitizenCreate()"
+style="margin-top:10px;">
+
+📝 Create New Account
+
+</button>
 <p id="citizenMessage"
 style="margin-top:15px;">
 </p>
