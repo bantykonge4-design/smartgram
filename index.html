@@ -7,9 +7,6 @@
 
 <title>SmartGram Gogari | Digital Village</title>
 
-<meta name="description"
-content="SmartGram Gogari – ग्रामपंचायत, नागरिक सेवा, तक्रार नोंदणी आणि गावाची माहिती.">
-
 <style>
 
 *{
@@ -42,12 +39,11 @@ header p{
 .hero{
     background:white;
     text-align:center;
-    padding:45px 20px;
+    padding:40px 20px;
 }
 
 .hero h2{
     color:#176b3a;
-    font-size:27px;
     margin-bottom:12px;
 }
 
@@ -60,19 +56,13 @@ header p{
 button{
     border:0;
     border-radius:8px;
-    padding:12px 20px;
+    padding:12px 18px;
     cursor:pointer;
     font-weight:bold;
 }
 
-.mainbtn,
 .green{
     background:#176b3a;
-    color:white;
-}
-
-.blue{
-    background:#1976d2;
     color:white;
 }
 
@@ -81,10 +71,14 @@ button{
     color:white;
 }
 
-.close{
+.gray{
     background:#ddd;
     color:#222;
-    margin-left:5px;
+}
+
+.blue{
+    background:#1976d2;
+    color:white;
 }
 
 .services{
@@ -101,7 +95,7 @@ button{
     max-width:900px;
     margin:auto;
     display:grid;
-    grid-template-columns:1fr 1fr;
+    grid-template-columns:repeat(2,1fr);
     gap:15px;
 }
 
@@ -112,11 +106,6 @@ button{
     border-radius:15px;
     box-shadow:0 3px 10px #0002;
     cursor:pointer;
-    transition:.2s;
-}
-
-.card:hover{
-    transform:translateY(-2px);
 }
 
 .card .icon{
@@ -132,6 +121,53 @@ button{
 .card p{
     font-size:13px;
     color:#666;
+}
+
+.login-section{
+    background:white;
+    padding:35px 15px;
+    text-align:center;
+}
+
+.login-section h2{
+    color:#176b3a;
+    margin-bottom:20px;
+}
+
+.login-box{
+    display:none;
+    max-width:450px;
+    margin:20px auto;
+    padding:25px;
+    background:#f5f7f6;
+    border-radius:15px;
+}
+
+.login-box h3{
+    color:#176b3a;
+    margin-bottom:15px;
+}
+
+input,
+select,
+textarea{
+    width:100%;
+    padding:12px;
+    margin:8px 0 15px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    font-size:15px;
+}
+
+label{
+    font-weight:bold;
+    display:block;
+    text-align:left;
+}
+
+.message{
+    margin-top:15px;
+    line-height:1.5;
 }
 
 .page{
@@ -159,21 +195,6 @@ button{
     margin-bottom:20px;
 }
 
-input,
-select,
-textarea{
-    width:100%;
-    padding:12px;
-    margin:8px 0 15px;
-    border:1px solid #ccc;
-    border-radius:8px;
-    font-size:15px;
-}
-
-label{
-    font-weight:bold;
-}
-
 .info{
     background:#f5f7f6;
     padding:18px;
@@ -183,7 +204,7 @@ label{
 
 .info h3{
     color:#176b3a;
-    margin-bottom:7px;
+    margin-bottom:8px;
 }
 
 .success{
@@ -194,21 +215,9 @@ label{
     border-radius:10px;
 }
 
-.error{
-    margin-top:15px;
-    padding:15px;
-    background:#fff0f0;
-    border:2px solid #d32f2f;
-    border-radius:10px;
-    color:#b00020;
-}
-
-footer{
-    background:#123d27;
-    color:white;
-    text-align:center;
-    padding:20px;
-    margin-top:20px;
+.close{
+    margin-top:10px;
+    background:#ddd;
 }
 
 #welcomeScreen{
@@ -225,11 +234,9 @@ footer{
 }
 
 .welcome-photo img{
-    display:block;
-    width:180px;
-    height:230px;
+    width:170px;
+    height:210px;
     object-fit:cover;
-    margin:0 auto;
     border-radius:18px;
     border:5px solid #176b3a;
 }
@@ -241,19 +248,12 @@ footer{
 }
 
 .welcome-content h2{
-    color:#222;
     margin-top:10px;
-    font-size:26px;
 }
 
 .welcome-content h3{
     color:#555;
     margin-top:8px;
-}
-
-.welcome-content p{
-    color:#666;
-    margin-top:7px;
 }
 
 .welcome-line{
@@ -263,83 +263,12 @@ footer{
     margin:15px auto;
 }
 
-.welcome-content h4{
-    font-size:20px;
-    color:#176b3a;
-}
-
-.welcome-text{
-    max-width:500px;
-    line-height:1.6;
-}
-
 .welcome-content button{
     margin-top:20px;
     background:#176b3a;
     color:white;
     padding:14px 30px;
-    border-radius:10px;
     font-size:17px;
-}
-
-.login-section{
-    text-align:center;
-    padding:30px 15px;
-    background:white;
-    margin-top:20px;
-}
-
-.login-section h2{
-    color:#176b3a;
-    margin-bottom:20px;
-}
-
-.login-buttons button{
-    margin:5px;
-}
-
-.authbox{
-    display:none;
-    max-width:450px;
-    margin:25px auto;
-    background:#f5f7f6;
-    padding:20px;
-    border-radius:15px;
-    text-align:left;
-}
-
-.authbox h3{
-    text-align:center;
-    color:#176b3a;
-    margin-bottom:15px;
-}
-
-.authbox button{
-    margin-top:5px;
-}
-
-.auth-links{
-    text-align:center;
-    margin-top:15px;
-}
-
-.auth-links button{
-    background:none;
-    color:#176b3a;
-    padding:5px;
-    text-decoration:underline;
-}
-
-#userBar{
-    display:none;
-    background:#e8f5e9;
-    padding:12px;
-    text-align:center;
-    border-bottom:1px solid #b7d9bd;
-}
-
-#userBar b{
-    color:#176b3a;
 }
 
 #adminDashboard{
@@ -359,32 +288,28 @@ footer{
 }
 
 .dashboard-box h2{
-    text-align:center;
     color:#176b3a;
+    text-align:center;
 }
 
 .dashboard-box > p{
     text-align:center;
-    color:#555;
+    color:#666;
     margin:10px 0 25px;
 }
 
 .dashboard-grid{
     display:grid;
-    grid-template-columns:1fr 1fr;
+    grid-template-columns:repeat(2,1fr);
     gap:15px;
 }
 
 .dashboard-card{
     background:#f5f7f6;
     padding:25px;
-    border-radius:12px;
     text-align:center;
+    border-radius:12px;
     cursor:pointer;
-}
-
-.dashboard-card:hover{
-    background:#e9f3ed;
 }
 
 .dashboard-card .icon{
@@ -396,28 +321,20 @@ footer{
     margin:10px 0;
 }
 
-.logout{
-    margin-top:25px;
-    width:100%;
-    padding:14px;
-    background:#d32f2f;
-    color:white;
-    font-size:16px;
-}
-
 .admin-data{
     display:none;
     margin-top:20px;
     padding:20px;
-    background:white;
+    background:#f5f7f6;
     border-radius:12px;
 }
 
 .complaint-item{
-    background:#f5f7f6;
+    background:white;
     padding:15px;
     border-radius:10px;
-    margin-bottom:10px;
+    margin-bottom:12px;
+    box-shadow:0 2px 8px #0001;
 }
 
 .status-buttons{
@@ -427,6 +344,21 @@ footer{
 .status-buttons button{
     margin:3px;
     padding:8px 12px;
+}
+
+.logout{
+    width:100%;
+    margin-top:25px;
+    background:#d32f2f;
+    color:white;
+    padding:14px;
+}
+
+footer{
+    background:#123d27;
+    color:white;
+    text-align:center;
+    padding:20px;
 }
 
 @media(max-width:600px){
@@ -447,10 +379,6 @@ footer{
 
     .welcome-content h1{
         font-size:32px;
-    }
-
-    .welcome-content h2{
-        font-size:23px;
     }
 
 }
@@ -485,40 +413,18 @@ footer{
 
         <div class="welcome-line"></div>
 
-        <h4>आपले हार्दिक स्वागत आहे 🙏</h4>
+        <h3>आपले हार्दिक स्वागत आहे 🙏</h3>
 
-        <p class="welcome-text">
-            आपल्या गावातील नागरिक सेवा,
-            समस्या नोंदणी आणि गाव विकासासाठी
-            SmartGram डिजिटल व्यासपीठ.
+        <p style="margin-top:10px;">
+        नागरिक सेवा, समस्या नोंदणी आणि गाव विकासासाठी
+        SmartGram डिजिटल व्यासपीठ.
         </p>
 
         <button onclick="enterWebsite()">
-            प्रवेश करा →
+        प्रवेश करा →
         </button>
 
     </div>
-
-</div>
-
-
-<!-- ================= USER BAR ================= -->
-
-<div id="userBar">
-
-    👤 Login:
-    <b id="loggedUserName">Citizen</b>
-
-    &nbsp; | &nbsp;
-
-    <button
-    class="red"
-    style="padding:7px 12px;"
-    onclick="citizenLogout()">
-
-    Logout
-
-    </button>
 
 </div>
 
@@ -527,11 +433,11 @@ footer{
 
 <header>
 
-    <h1>🌾 SmartGram</h1>
+<h1>🌾 SmartGram</h1>
 
-    <p>
-        Digital Village Grievance & Development System
-    </p>
+<p>
+Digital Village Grievance & Development System
+</p>
 
 </header>
 
@@ -540,22 +446,21 @@ footer{
 
 <section class="hero">
 
-    <h2>
-        आपल्या गावासाठी डिजिटल व्यासपीठ
-    </h2>
+<h2>
+आपल्या गावासाठी डिजिटल व्यासपीठ
+</h2>
 
-    <p>
-        गावातील समस्या नोंदवा, अधिकृत माहिती मिळवा
-        आणि गावाच्या विकासात सहभागी व्हा.
-    </p>
+<p>
+गावातील समस्या नोंदवा, अधिकृत माहिती मिळवा
+आणि गावाच्या विकासात सहभागी व्हा.
+</p>
 
-    <button
-    class="mainbtn"
-    onclick="openComplaint()">
+<button class="green"
+onclick="openPage('complaint')">
 
-    📝 समस्या नोंदवा
+📝 समस्या नोंदवा
 
-    </button>
+</button>
 
 </section>
 
@@ -569,7 +474,7 @@ footer{
 <div class="grid">
 
 <div class="card"
-onclick="openComplaint()">
+onclick="openPage('complaint')">
 
 <div class="icon">📝</div>
 
@@ -662,10 +567,7 @@ onclick="openPage('certificates')">
 
 <h2>🔐 SmartGram Login</h2>
 
-<div class="login-buttons">
-
-<button
-class="green"
+<button class="green"
 onclick="showAdminLogin()">
 
 🔐 Admin Login
@@ -673,24 +575,21 @@ onclick="showAdminLogin()">
 </button>
 
 <button
-class="blue"
 onclick="showCitizenLogin()">
 
 👤 Citizen Login
 
 </button>
 
-</div>
-
 
 <!-- ADMIN LOGIN -->
 
 <div id="adminLogin"
-class="authbox">
+class="login-box">
 
 <h3>🔐 Admin Login</h3>
 
-<label>Email</label>
+<label>Admin Email</label>
 
 <input
 type="email"
@@ -706,15 +605,14 @@ placeholder="Password">
 
 <button
 class="green"
-style="width:100%;"
 onclick="adminLogin()">
 
-🔐 Login
+Login
 
 </button>
 
 <p id="adminMessage"
-style="margin-top:15px;">
+class="message">
 </p>
 
 </div>
@@ -723,16 +621,16 @@ style="margin-top:15px;">
 <!-- CITIZEN LOGIN -->
 
 <div id="citizenLogin"
-class="authbox">
+class="login-box">
 
 <h3>👤 Citizen Login</h3>
 
-<label>Email Address</label>
+<label>Email</label>
 
 <input
 type="email"
 id="citizenEmail"
-placeholder="example@gmail.com">
+placeholder="Email Address">
 
 <label>Password</label>
 
@@ -743,27 +641,22 @@ placeholder="Password">
 
 <button
 class="green"
-style="width:100%;"
 onclick="citizenLogin()">
 
 🔐 Login
 
 </button>
 
-<div class="auth-links">
+<button
+class="blue"
+onclick="showCreateAccount()">
 
-<p>
-Account नाही?
-</p>
+➕ Create Account
 
-<button onclick="showCreateAccount()">
-➕ Create Citizen Account
 </button>
 
-</div>
-
 <p id="citizenMessage"
-style="margin-top:15px;">
+class="message">
 </p>
 
 </div>
@@ -772,65 +665,64 @@ style="margin-top:15px;">
 <!-- CREATE ACCOUNT -->
 
 <div id="createAccount"
-class="authbox">
+class="login-box">
 
-<h3>➕ Create Citizen Account</h3>
+<h3>➕ Citizen Create Account</h3>
 
 <label>पूर्ण नाव</label>
 
 <input
 type="text"
-id="createName"
+id="regName"
 placeholder="तुमचे पूर्ण नाव">
 
-<label>मोबाइल नंबर</label>
+<label>मोबाईल नंबर</label>
 
 <input
 type="tel"
-id="createMobile"
-maxlength="10"
-placeholder="10 अंकी मोबाइल नंबर">
+id="regMobile"
+placeholder="10 अंकी Mobile Number"
+maxlength="10">
 
-<label>Email Address</label>
+<label>Email</label>
 
 <input
 type="email"
-id="createEmail"
-placeholder="example@gmail.com">
+id="regEmail"
+placeholder="तुमचा Email">
 
 <label>Password</label>
 
 <input
 type="password"
-id="createPassword"
+id="regPassword"
 placeholder="कमीत कमी 6 अक्षरे">
 
 <label>Confirm Password</label>
 
 <input
 type="password"
-id="createPassword2"
+id="regPassword2"
 placeholder="Password पुन्हा टाका">
 
 <button
 class="green"
-style="width:100%;"
 onclick="createCitizenAccount()">
 
 ✅ Create Account
 
 </button>
 
-<div class="auth-links">
+<button
+class="gray"
+onclick="showCitizenLogin()">
 
-<button onclick="showCitizenLogin()">
-← Login कडे जा
+⬅️ Back to Login
+
 </button>
 
-</div>
-
-<p id="createMessage"
-style="margin-top:15px;">
+<p id="registerMessage"
+class="message">
 </p>
 
 </div>
@@ -843,7 +735,6 @@ style="margin-top:15px;">
 <footer>
 
 © 2026 SmartGram<br>
-
 Digital Village Development Initiative
 
 </footer>
@@ -857,6 +748,10 @@ Digital Village Development Initiative
 
 <h2>📝 ग्राम समस्या नोंदणी</h2>
 
+<p id="complaintLoginInfo"
+style="text-align:center;margin-bottom:15px;">
+</p>
+
 <label>नाव</label>
 
 <input
@@ -867,7 +762,8 @@ placeholder="तुमचे पूर्ण नाव">
 
 <input
 id="cmobile"
-placeholder="10 अंकी मोबाइल नंबर">
+placeholder="10 अंकी मोबाइल नंबर"
+maxlength="10">
 
 <label>गाव</label>
 
@@ -981,13 +877,7 @@ onclick="closePages()">
 9767767809
 </p>
 
-<p>
-<b>ग्रामपंचायत:</b>
-गोगरी
-</p>
-
 </div>
-
 
 <div class="info">
 
@@ -998,13 +888,7 @@ onclick="closePages()">
 सौ कविता पंकज इंगोले
 </p>
 
-<p>
-<b>ग्रामपंचायत:</b>
-गोगरी
-</p>
-
 </div>
-
 
 <div class="info">
 
@@ -1015,13 +899,7 @@ onclick="closePages()">
 श्री संजय पाचरणे
 </p>
 
-<p>
-<b>ग्रामपंचायत:</b>
-गोगरी
-</p>
-
 </div>
-
 
 <div class="info">
 
@@ -1037,13 +915,7 @@ onclick="closePages()">
 8806105501
 </p>
 
-<p>
-<b>गाव:</b>
-गोगरी, ता. मंगरुळपीर
-</p>
-
 </div>
-
 
 <div class="info">
 
@@ -1054,13 +926,7 @@ onclick="closePages()">
 श्री दत्ता भोयर
 </p>
 
-<p>
-<b>गाव:</b>
-गोगरी
-</p>
-
 </div>
-
 
 <button
 class="close"
@@ -1084,10 +950,7 @@ onclick="closePages()">
 <h2>🗺️ Village Map</h2>
 
 <p style="text-align:center;margin-bottom:15px;">
-
-गोगरी, ता. मंगरूळपीर,
-जि. वाशिम
-
+गोगरी, ता. मंगरूळपीर, जि. वाशिम
 </p>
 
 <iframe
@@ -1120,22 +983,10 @@ onclick="closePages()">
 
 <h2>📢 Village Notices</h2>
 
-<div class="info">
-
-<h3>📌 ग्रामपंचायत सूचना</h3>
+<div id="publicNoticeList">
 
 <p>
-गावातील नवीन सूचना येथे प्रकाशित केली जाईल.
-</p>
-
-</div>
-
-<div class="info">
-
-<h3>📢 नागरिकांसाठी सूचना</h3>
-
-<p>
-नागरिकांनी नियमितपणे सूचना तपासाव्यात.
+अजून कोणतीही सूचना उपलब्ध नाही.
 </p>
 
 </div>
@@ -1160,10 +1011,6 @@ onclick="closePages()">
 <div class="pagebox">
 
 <h2>💡 Village Ideas</h2>
-
-<p style="margin-bottom:15px;">
-गावाच्या विकासासाठी तुमची कल्पना द्या.
-</p>
 
 <label>तुमचे नाव</label>
 
@@ -1210,31 +1057,27 @@ onclick="closePages()">
 
 <h2>📄 Certificate Services</h2>
 
-<div class="info"
-onclick="birth()"
-style="cursor:pointer;">
+<div class="info">
 
 <h3>🍼 Birth Certificate</h3>
 
 <p>
-जन्म प्रमाणपत्रासाठी अर्ज करा.
+जन्म प्रमाणपत्रासाठी अर्ज करण्यासाठी
+ग्रामपंचायतीशी संपर्क करा.
 </p>
 
 </div>
 
-
-<div class="info"
-onclick="death()"
-style="cursor:pointer;">
+<div class="info">
 
 <h3>⚰️ Death Certificate</h3>
 
 <p>
-मृत्यू प्रमाणपत्रासाठी अर्ज करा.
+मृत्यू प्रमाणपत्रासाठी अर्ज करण्यासाठी
+ग्रामपंचायतीशी संपर्क करा.
 </p>
 
 </div>
-
 
 <button
 class="close"
@@ -1263,6 +1106,19 @@ onclick="closePages()">
 ग्रामपंचायत गोगरी – Admin Panel
 </p>
 
+<div style="
+background:#effff0;
+padding:12px;
+border-radius:8px;
+margin-bottom:20px;
+text-align:center;
+">
+
+<strong>Admin:</strong>
+<span id="loggedAdminEmail"></span>
+
+</div>
+
 
 <div class="dashboard-grid">
 
@@ -1273,9 +1129,7 @@ onclick="showAdminComplaints()">
 
 <h3>Complaints</h3>
 
-<p>
-नागरिकांच्या तक्रारी पाहा
-</p>
+<p>नागरिकांच्या तक्रारी पाहा</p>
 
 </div>
 
@@ -1287,9 +1141,7 @@ onclick="showOfficialsManagement()">
 
 <h3>Village Officials</h3>
 
-<p>
-अधिकाऱ्यांची माहिती manage करा
-</p>
+<p>अधिकाऱ्यांची माहिती</p>
 
 </div>
 
@@ -1301,9 +1153,7 @@ onclick="showNoticeManagement()">
 
 <h3>Notices</h3>
 
-<p>
-गावातील सूचना add करा
-</p>
+<p>गावातील सूचना add करा</p>
 
 </div>
 
@@ -1315,14 +1165,14 @@ onclick="showIdeasManagement()">
 
 <h3>Village Ideas</h3>
 
-<p>
-नागरिकांच्या कल्पना पाहा
-</p>
+<p>नागरिकांच्या कल्पना पाहा</p>
 
 </div>
 
 </div>
 
+
+<!-- ADMIN COMPLAINT -->
 
 <div id="adminComplaintData"
 class="admin-data">
@@ -1337,6 +1187,8 @@ style="margin-top:15px;">
 
 </div>
 
+
+<!-- ADMIN NOTICE -->
 
 <div id="adminNoticeData"
 class="admin-data">
@@ -1370,6 +1222,8 @@ style="margin-top:15px;">
 </div>
 
 
+<!-- ADMIN IDEAS -->
+
 <div id="adminIdeaData"
 class="admin-data">
 
@@ -1383,6 +1237,8 @@ style="margin-top:15px;">
 
 </div>
 
+
+<!-- ADMIN OFFICIALS -->
 
 <div id="adminOfficialData"
 class="admin-data">
@@ -1423,7 +1279,7 @@ class="admin-data">
 class="logout"
 onclick="adminLogout()">
 
-🚪 Logout
+🚪 Admin Logout
 
 </button>
 
@@ -1432,1563 +1288,1643 @@ onclick="adminLogout()">
 </div>
 
 
-<!-- ================= NORMAL JAVASCRIPT ================= -->
-
-<script>
-
-window.citizenLoggedIn = false;
-
-
-/* WELCOME */
-
-function enterWebsite(){
-
-    document.getElementById("welcomeScreen")
-    .style.display = "none";
-
-}
-
-
-/* PAGE */
-
-function openPage(id){
-
-    closePages();
-
-    document.getElementById(id)
-    .style.display = "block";
-
-}
-
-
-function closePages(){
-
-    document.querySelectorAll(".page")
-    .forEach(function(page){
-
-        page.style.display = "none";
-
-    });
-
-}
-
-
-/* COMPLAINT OPEN */
-
-function openComplaint(){
-
-    if(!window.citizenLoggedIn){
-
-        alert(
-            "🔒 आधी Citizen Login करा."
-        );
-
-        showCitizenLogin();
-
-        document.getElementById("citizenLogin")
-        .scrollIntoView({
-            behavior:"smooth"
-        });
-
-        return;
-    }
-
-    openPage("complaint");
-
-}
-
-
-/* ADMIN LOGIN BOX */
-
-function showAdminLogin(){
-
-    document.getElementById("adminLogin")
-    .style.display = "block";
-
-    document.getElementById("citizenLogin")
-    .style.display = "none";
-
-    document.getElementById("createAccount")
-    .style.display = "none";
-
-    document.getElementById("adminLogin")
-    .scrollIntoView({
-        behavior:"smooth"
-    });
-
-}
-
-
-/* CITIZEN LOGIN */
-
-function showCitizenLogin(){
-
-    document.getElementById("citizenLogin")
-    .style.display = "block";
-
-    document.getElementById("createAccount")
-    .style.display = "none";
-
-    document.getElementById("adminLogin")
-    .style.display = "none";
-
-    document.getElementById("citizenLogin")
-    .scrollIntoView({
-        behavior:"smooth"
-    });
-
-}
-
-
-/* CREATE ACCOUNT BOX */
-
-function showCreateAccount(){
-
-    document.getElementById("createAccount")
-    .style.display = "block";
-
-    document.getElementById("citizenLogin")
-    .style.display = "none";
-
-    document.getElementById("adminLogin")
-    .style.display = "none";
-
-}
-
-
-/* COMPLAINT */
-
-function submitComplaint(){
-
-    if(!window.citizenLoggedIn){
-
-        alert(
-            "🔒 कृपया Citizen Login करा."
-        );
-
-        showCitizenLogin();
-
-        return;
-    }
-
-
-    let name =
-        document.getElementById("cname")
-        .value.trim();
-
-    let mobile =
-        document.getElementById("cmobile")
-        .value.trim();
-
-    let village =
-        document.getElementById("cvillage")
-        .value.trim();
-
-    let type =
-        document.getElementById("ctype")
-        .value;
-
-    let desc =
-        document.getElementById("cdesc")
-        .value.trim();
-
-
-    if(!name || !mobile || !village || !desc){
-
-        alert("कृपया सर्व माहिती भरा.");
-
-        return;
-
-    }
-
-
-    if(!/^[0-9]{10}$/.test(mobile)){
-
-        alert(
-            "कृपया योग्य 10 अंकी Mobile Number टाका."
-        );
-
-        return;
-
-    }
-
-
-    let id =
-        "SG-" +
-        Math.floor(
-            100000 +
-            Math.random() * 900000
-        );
-
-
-    let data = {
-
-        id:id,
-        name:name,
-        mobile:mobile,
-        village:village,
-        type:type,
-        desc:desc,
-        status:"Pending",
-        date:new Date().toLocaleString()
-
-    };
-
-
-    let complaints =
-        JSON.parse(
-            localStorage.getItem(
-                "smartgramComplaints"
-            ) || "[]"
-        );
-
-
-    complaints.push(data);
-
-
-    localStorage.setItem(
-        "smartgramComplaints",
-        JSON.stringify(complaints)
-    );
-
-
-    document.getElementById(
-        "complaintResult"
-    ).innerHTML = `
-
-        <div class="success">
-
-            <h3>
-            ✅ समस्या यशस्वीरित्या नोंदवली!
-            </h3>
-
-            <p>Complaint ID:</p>
-
-            <h2>${id}</h2>
-
-            <p>
-            हा ID Track Complaint साठी जपून ठेवा.
-            </p>
-
-        </div>
-
-    `;
-
-
-    document.getElementById("cname").value = "";
-    document.getElementById("cmobile").value = "";
-    document.getElementById("cdesc").value = "";
-
-}
-
-
-/* TRACK */
-
-function trackNow(){
-
-    let id =
-        document.getElementById("trackId")
-        .value.trim()
-        .toUpperCase();
-
-
-    let complaints =
-        JSON.parse(
-            localStorage.getItem(
-                "smartgramComplaints"
-            ) || "[]"
-        );
-
-
-    let data =
-        complaints.find(function(item){
-
-            return item.id === id;
-
-        });
-
-
-    if(data){
-
-        document.getElementById(
-            "trackResult"
-        ).innerHTML = `
-
-        <div class="success">
-
-            <h3>✅ Complaint Found</h3>
-
-            <p>
-            <b>Complaint ID:</b>
-            ${data.id}
-            </p>
-
-            <p>
-            <b>नाव:</b>
-            ${data.name}
-            </p>
-
-            <p>
-            <b>गाव:</b>
-            ${data.village}
-            </p>
-
-            <p>
-            <b>Type:</b>
-            ${data.type}
-            </p>
-
-            <p>
-            <b>Problem:</b>
-            ${data.desc}
-            </p>
-
-            <p>
-            <b>Status:</b>
-            🟡 ${data.status}
-            </p>
-
-            <p>
-            <b>Date:</b>
-            ${data.date || "-"}
-            </p>
-
-        </div>
-
-        `;
-
-    }
-    else{
-
-        document.getElementById(
-            "trackResult"
-        ).innerHTML = `
-
-        <div class="error">
-
-        ❌ Complaint ID सापडली नाही.
-
-        </div>
-
-        `;
-
-    }
-
-}
-
-
-/* IDEA */
-
-function submitIdea(){
-
-    let name =
-        document.getElementById(
-            "ideaName"
-        ).value.trim();
-
-
-    let idea =
-        document.getElementById(
-            "ideaText"
-        ).value.trim();
-
-
-    if(!name || !idea){
-
-        alert(
-            "कृपया नाव आणि कल्पना भरा."
-        );
-
-        return;
-
-    }
-
-
-    let ideas =
-        JSON.parse(
-            localStorage.getItem(
-                "smartgramIdeas"
-            ) || "[]"
-        );
-
-
-    ideas.push({
-
-        name:name,
-        idea:idea,
-        date:new Date().toLocaleString()
-
-    });
-
-
-    localStorage.setItem(
-        "smartgramIdeas",
-        JSON.stringify(ideas)
-    );
-
-
-    document.getElementById(
-        "ideaResult"
-    ).innerHTML = `
-
-    <div class="success">
-
-        <h3>✅ Idea Submitted!</h3>
-
-        <p>
-        धन्यवाद ${name}!
-        </p>
-
-        <p>
-        तुमची कल्पना नोंदवली आहे.
-        </p>
-
-    </div>
-
-    `;
-
-}
-
-
-/* ADMIN COMPLAINTS */
-
-function showAdminComplaints(){
-
-    hideAdminSections();
-
-    document.getElementById(
-        "adminComplaintData"
-    ).style.display = "block";
-
-    loadComplaints();
-
-}
-
-
-function loadComplaints(){
-
-    let complaints =
-        JSON.parse(
-            localStorage.getItem(
-                "smartgramComplaints"
-            ) || "[]"
-        );
-
-
-    let list =
-        document.getElementById(
-            "complaintList"
-        );
-
-
-    if(complaints.length === 0){
-
-        list.innerHTML =
-            "<p>अजून कोणतीही तक्रार नाही.</p>";
-
-        return;
-
-    }
-
-
-    list.innerHTML = "";
-
-
-    complaints.forEach(function(data,index){
-
-        let item =
-            document.createElement("div");
-
-        item.className =
-            "complaint-item";
-
-
-        item.innerHTML = `
-
-        <p>
-        <b>Complaint ID:</b>
-        ${data.id}
-        </p>
-
-        <p>
-        <b>नाव:</b>
-        ${data.name}
-        </p>
-
-        <p>
-        <b>Mobile:</b>
-        ${data.mobile}
-        </p>
-
-        <p>
-        <b>गाव:</b>
-        ${data.village}
-        </p>
-
-        <p>
-        <b>Type:</b>
-        ${data.type}
-        </p>
-
-        <p>
-        <b>Problem:</b>
-        ${data.desc}
-        </p>
-
-        <p>
-        <b>Status:</b>
-        ${data.status}
-        </p>
-
-        <div class="status-buttons">
-
-        <button
-        class="green"
-        onclick="updateComplaintStatus(${index},'Pending')">
-
-        🟡 Pending
-
-        </button>
-
-        <button
-        class="blue"
-        onclick="updateComplaintStatus(${index},'In Progress')">
-
-        🔵 In Progress
-
-        </button>
-
-        <button
-        class="green"
-        onclick="updateComplaintStatus(${index},'Resolved')">
-
-        🟢 Resolved
-
-        </button>
-
-        </div>
-
-        `;
-
-
-        list.appendChild(item);
-
-    });
-
-}
-
-
-function updateComplaintStatus(index,status){
-
-    let complaints =
-        JSON.parse(
-            localStorage.getItem(
-                "smartgramComplaints"
-            ) || "[]"
-        );
-
-
-    if(complaints[index]){
-
-        complaints[index].status =
-            status;
-
-        localStorage.setItem(
-            "smartgramComplaints",
-            JSON.stringify(complaints)
-        );
-
-        loadComplaints();
-
-        alert(
-            "Complaint Status Updated!"
-        );
-
-    }
-
-}
-
-
-/* NOTICES */
-
-function showNoticeManagement(){
-
-    hideAdminSections();
-
-    document.getElementById(
-        "adminNoticeData"
-    ).style.display = "block";
-
-    loadNotices();
-
-}
-
-
-function addNotice(){
-
-    let title =
-        document.getElementById(
-            "noticeTitle"
-        ).value.trim();
-
-
-    let text =
-        document.getElementById(
-            "noticeText"
-        ).value.trim();
-
-
-    if(!title || !text){
-
-        alert(
-            "कृपया Notice Title आणि Text भरा."
-        );
-
-        return;
-
-    }
-
-
-    let notices =
-        JSON.parse(
-            localStorage.getItem(
-                "smartgramNotices"
-            ) || "[]"
-        );
-
-
-    notices.push({
-
-        title:title,
-        text:text,
-        date:new Date().toLocaleString()
-
-    });
-
-
-    localStorage.setItem(
-        "smartgramNotices",
-        JSON.stringify(notices)
-    );
-
-
-    document.getElementById(
-        "noticeTitle"
-    ).value = "";
-
-    document.getElementById(
-        "noticeText"
-    ).value = "";
-
-
-    loadNotices();
-
-    alert(
-        "✅ Notice Successfully Added!"
-    );
-
-}
-
-
-function loadNotices(){
-
-    let notices =
-        JSON.parse(
-            localStorage.getItem(
-                "smartgramNotices"
-            ) || "[]"
-        );
-
-
-    let list =
-        document.getElementById(
-            "noticeList"
-        );
-
-
-    if(notices.length === 0){
-
-        list.innerHTML =
-            "<p>अजून Notice नाही.</p>";
-
-        return;
-
-    }
-
-
-    list.innerHTML =
-        notices.map(function(n,index){
-
-        return `
-
-        <div class="info">
-
-            <h3>📢 ${n.title}</h3>
-
-            <p>${n.text}</p>
-
-            <small>${n.date}</small>
-
-            <br><br>
-
-            <button
-            class="close"
-            onclick="deleteNotice(${index})">
-
-            Delete
-
-            </button>
-
-        </div>
-
-        `;
-
-    }).join("");
-
-}
-
-
-function deleteNotice(index){
-
-    let notices =
-        JSON.parse(
-            localStorage.getItem(
-                "smartgramNotices"
-            ) || "[]"
-        );
-
-
-    notices.splice(index,1);
-
-
-    localStorage.setItem(
-        "smartgramNotices",
-        JSON.stringify(notices)
-    );
-
-
-    loadNotices();
-
-}
-
-
-/* IDEAS ADMIN */
-
-function showIdeasManagement(){
-
-    hideAdminSections();
-
-    document.getElementById(
-        "adminIdeaData"
-    ).style.display = "block";
-
-    loadIdeas();
-
-}
-
-
-function loadIdeas(){
-
-    let ideas =
-        JSON.parse(
-            localStorage.getItem(
-                "smartgramIdeas"
-            ) || "[]"
-        );
-
-
-    let list =
-        document.getElementById(
-            "ideaList"
-        );
-
-
-    if(ideas.length === 0){
-
-        list.innerHTML =
-            "<p>अजून कोणतीही Idea नाही.</p>";
-
-        return;
-
-    }
-
-
-    list.innerHTML =
-        ideas.map(function(item){
-
-        return `
-
-        <div class="info">
-
-            <h3>💡 ${item.name}</h3>
-
-            <p>${item.idea}</p>
-
-            <small>${item.date}</small>
-
-        </div>
-
-        `;
-
-    }).join("");
-
-}
-
-
-/* OFFICIALS */
-
-function showOfficialsManagement(){
-
-    hideAdminSections();
-
-    document.getElementById(
-        "adminOfficialData"
-    ).style.display = "block";
-
-}
-
-
-/* HIDE */
-
-function hideAdminSections(){
-
-    document.getElementById(
-        "adminComplaintData"
-    ).style.display = "none";
-
-    document.getElementById(
-        "adminNoticeData"
-    ).style.display = "none";
-
-    document.getElementById(
-        "adminIdeaData"
-    ).style.display = "none";
-
-    document.getElementById(
-        "adminOfficialData"
-    ).style.display = "none";
-
-}
-
-
-/* BIRTH */
-
-function birth(){
-
-    alert(
-        "Birth Certificate module पुढील टप्प्यात जोडता येईल."
-    );
-
-}
-
-
-/* DEATH */
-
-function death(){
-
-    alert(
-        "Death Certificate module पुढील टप्प्यात जोडता येईल."
-    );
-
-}
-
-</script>
-
-
 <!-- ================= FIREBASE ================= -->
 
 <script type="module">
 
-import {
-    initializeApp
-}
-from
-"https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
-
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
 
 import {
-    getAuth,
-    createUserWithEmailAndPassword,
-    signInWithEmailAndPassword,
-    onAuthStateChanged,
-    signOut,
-    updateProfile
+
+getAuth,
+createUserWithEmailAndPassword,
+signInWithEmailAndPassword,
+onAuthStateChanged,
+signOut,
+updateProfile
+
 }
-from
-"https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
 
 
-/* ================= FIREBASE CONFIG ================= */
+/* =================================================
+   FIREBASE CONFIG
+================================================= */
 
 const firebaseConfig = {
 
-    apiKey:
-    "AIzaSyD6I-lrYAUCbaOyUx7n6W0BHJmOyCgJOoo",
+apiKey:
+"AIzaSyD6I-lrYAUCbaOyUx7n6W0BHJmOyCgJOoo",
 
-    authDomain:
-    "gogari-smartgram.firebaseapp.com",
+authDomain:
+"gogari-smartgram.firebaseapp.com",
 
-    projectId:
-    "gogari-smartgram",
+projectId:
+"gogari-smartgram",
 
-    storageBucket:
-    "gogari-smartgram.firebasestorage.app",
+storageBucket:
+"gogari-smartgram.firebasestorage.app",
 
-    messagingSenderId:
-    "160318195171",
+messagingSenderId:
+"160318195171",
 
-    appId:
-    "1:160318195171:web:e62ab30c7ec3d4bc338cd6"
+appId:
+"1:160318195171:web:e62ab30c7ec3d4bc338cd6"
 
 };
 
-
-/* ================= INITIALIZE ================= */
 
 const app =
-    initializeApp(firebaseConfig);
+initializeApp(firebaseConfig);
 
 const auth =
-    getAuth(app);
+getAuth(app);
 
 
-/* ================= CREATE CITIZEN ACCOUNT ================= */
+/* =================================================
+   ADMIN SETTINGS
+================================================= */
 
-window.createCitizenAccount =
-async function(){
+const ADMIN_EMAIL =
+"admin@smartgram.com";
 
-    const name =
-        document.getElementById(
-            "createName"
-        ).value.trim();
 
+/* =================================================
+   WELCOME
+================================================= */
 
-    const mobile =
-        document.getElementById(
-            "createMobile"
-        ).value.trim();
+window.enterWebsite = function(){
 
-
-    const email =
-        document.getElementById(
-            "createEmail"
-        ).value.trim();
-
-
-    const password =
-        document.getElementById(
-            "createPassword"
-        ).value;
-
-
-    const password2 =
-        document.getElementById(
-            "createPassword2"
-        ).value;
-
-
-    const message =
-        document.getElementById(
-            "createMessage"
-        );
-
-
-    message.innerHTML = "";
-
-
-    /* VALIDATION */
-
-    if(!name ||
-       !mobile ||
-       !email ||
-       !password ||
-       !password2){
-
-        message.innerHTML =
-            "⚠️ कृपया सर्व माहिती भरा.";
-
-        message.style.color = "red";
-
-        return;
-
-    }
-
-
-    if(!/^[0-9]{10}$/.test(mobile)){
-
-        message.innerHTML =
-            "⚠️ योग्य 10 अंकी Mobile Number टाका.";
-
-        message.style.color = "red";
-
-        return;
-
-    }
-
-
-    if(password.length < 6){
-
-        message.innerHTML =
-            "⚠️ Password कमीत कमी 6 अक्षरांचा असावा.";
-
-        message.style.color = "red";
-
-        return;
-
-    }
-
-
-    if(password !== password2){
-
-        message.innerHTML =
-            "⚠️ दोन्ही Password सारखे नाहीत.";
-
-        message.style.color = "red";
-
-        return;
-
-    }
-
-
-    try{
-
-        /* CREATE FIREBASE USER */
-
-        const result =
-            await createUserWithEmailAndPassword(
-                auth,
-                email,
-                password
-            );
-
-
-        /* SAVE NAME IN FIREBASE PROFILE */
-
-        await updateProfile(
-            result.user,
-            {
-                displayName:name
-            }
-        );
-
-
-        /* SAVE MOBILE FOR THIS DEMO */
-
-        localStorage.setItem(
-            "smartgramMobile_" + result.user.uid,
-            mobile
-        );
-
-
-        localStorage.setItem(
-            "smartgramName_" + result.user.uid,
-            name
-        );
-
-
-        window.citizenLoggedIn =
-            true;
-
-
-        document.getElementById(
-            "loggedUserName"
-        ).innerText = name;
-
-
-        document.getElementById(
-            "userBar"
-        ).style.display = "block";
-
-
-        document.getElementById(
-            "createAccount"
-        ).style.display = "none";
-
-
-        message.innerHTML =
-            "✅ Account Successfully Created!";
-
-        message.style.color =
-            "green";
-
-
-        alert(
-            "✅ Citizen Account तयार झाले!"
-        );
-
-
-        /* CLEAR */
-
-        document.getElementById(
-            "createName"
-        ).value = "";
-
-        document.getElementById(
-            "createMobile"
-        ).value = "";
-
-        document.getElementById(
-            "createEmail"
-        ).value = "";
-
-        document.getElementById(
-            "createPassword"
-        ).value = "";
-
-        document.getElementById(
-            "createPassword2"
-        ).value = "";
-
-
-        /* SHOW LOGIN */
-
-        setTimeout(function(){
-
-            showCitizenLogin();
-
-        },500);
-
-
-    }
-    catch(error){
-
-        console.error(
-            "CREATE ACCOUNT ERROR:",
-            error
-        );
-
-
-        let msg =
-            "❌ Account तयार करता आले नाही.";
-
-
-        if(
-            error.code ===
-            "auth/email-already-in-use"
-        ){
-
-            msg =
-            "❌ हा Email आधीपासून वापरलेला आहे.";
-
-        }
-
-        else if(
-            error.code ===
-            "auth/invalid-email"
-        ){
-
-            msg =
-            "❌ Email चुकीचा आहे.";
-
-        }
-
-        else if(
-            error.code ===
-            "auth/weak-password"
-        ){
-
-            msg =
-            "❌ Password खूप weak आहे.";
-
-        }
-
-
-        message.innerHTML =
-            msg +
-            "<br><small>" +
-            error.code +
-            "</small>";
-
-        message.style.color =
-            "red";
-
-    }
+document.getElementById(
+"welcomeScreen"
+).style.display="none";
 
 };
 
 
-/* ================= CITIZEN LOGIN ================= */
+/* =================================================
+   PAGE
+================================================= */
 
-window.citizenLogin =
-async function(){
+window.openPage = function(id){
 
-    const email =
-        document.getElementById(
-            "citizenEmail"
-        ).value.trim();
+closePages();
 
+document.getElementById(id)
+.style.display="block";
 
-    const password =
-        document.getElementById(
-            "citizenPassword"
-        ).value;
+if(id==="notices"){
 
+loadPublicNotices();
 
-    const message =
-        document.getElementById(
-            "citizenMessage"
-        );
+}
 
+if(id==="complaint"){
 
-    if(!email || !password){
+updateComplaintLoginInfo();
 
-        message.innerHTML =
-            "⚠️ Email आणि Password भरा.";
-
-        message.style.color =
-            "red";
-
-        return;
-
-    }
-
-
-    try{
-
-        const result =
-            await signInWithEmailAndPassword(
-                auth,
-                email,
-                password
-            );
-
-
-        window.citizenLoggedIn =
-            true;
-
-
-        const user =
-            result.user;
-
-
-        let name =
-            user.displayName ||
-            user.email;
-
-
-        document.getElementById(
-            "loggedUserName"
-        ).innerText = name;
-
-
-        document.getElementById(
-            "userBar"
-        ).style.display = "block";
-
-
-        document.getElementById(
-            "citizenLogin"
-        ).style.display =
-            "none";
-
-
-        message.innerHTML =
-            "✅ Citizen Login Successful!";
-
-        message.style.color =
-            "green";
-
-
-        alert(
-            "✅ Citizen Login Successful!"
-        );
-
-    }
-    catch(error){
-
-        console.error(
-            "Citizen Login Error:",
-            error
-        );
-
-
-        let msg =
-            "❌ Login Failed.";
-
-
-        if(
-            error.code ===
-            "auth/invalid-credential"
-        ){
-
-            msg =
-            "❌ Email किंवा Password चुकीचा आहे.";
-
-        }
-
-        else if(
-            error.code ===
-            "auth/user-not-found"
-        ){
-
-            msg =
-            "❌ हा Account सापडला नाही.";
-
-        }
-
-
-        message.innerHTML =
-            msg +
-            "<br><small>" +
-            error.code +
-            "</small>";
-
-        message.style.color =
-            "red";
-
-    }
+}
 
 };
 
 
-/* ================= ADMIN LOGIN ================= */
+window.closePages = function(){
 
-window.adminLogin =
-async function(){
+document.querySelectorAll(".page")
+.forEach(function(page){
 
-    const email =
-        document.getElementById(
-            "adminEmail"
-        ).value.trim();
+page.style.display="none";
 
-
-    const password =
-        document.getElementById(
-            "adminPassword"
-        ).value;
-
-
-    const message =
-        document.getElementById(
-            "adminMessage"
-        );
-
-
-    if(!email || !password){
-
-        message.innerHTML =
-            "⚠️ Email आणि Password भरा.";
-
-        message.style.color =
-            "red";
-
-        return;
-
-    }
-
-
-    try{
-
-        const result =
-            await signInWithEmailAndPassword(
-                auth,
-                email,
-                password
-            );
-
-
-        const user =
-            result.user;
-
-
-        /*
-        IMPORTANT:
-        खालील email तुझा ADMIN EMAIL ठेव.
-        */
-
-        const ADMIN_EMAIL =
-            "admin@gogari.com";
-
-
-        if(user.email !== ADMIN_EMAIL){
-
-            await signOut(auth);
-
-            message.innerHTML =
-                "❌ हा Admin Account नाही.";
-
-            message.style.color =
-                "red";
-
-            return;
-
-        }
-
-
-        message.innerHTML =
-            "✅ Admin Login Successful!";
-
-        message.style.color =
-            "green";
-
-
-        document.getElementById(
-            "adminLogin"
-        ).style.display =
-            "none";
-
-
-        document.getElementById(
-            "adminDashboard"
-        ).style.display =
-            "block";
-
-
-        document.getElementById(
-            "userBar"
-        ).style.display =
-            "none";
-
-
-        alert(
-            "✅ Admin Login Successful!"
-        );
-
-    }
-    catch(error){
-
-        console.error(
-            "ADMIN LOGIN ERROR:",
-            error
-        );
-
-
-        message.innerHTML =
-            "❌ Admin Login Failed<br>" +
-            error.message;
-
-        message.style.color =
-            "red";
-
-    }
+});
 
 };
 
 
-/* ================= AUTH STATE ================= */
+/* =================================================
+   LOGIN BOX
+================================================= */
 
-onAuthStateChanged(
-    auth,
-    function(user){
+window.showAdminLogin = function(){
 
-        if(user){
+document.getElementById(
+"adminLogin"
+).style.display="block";
 
-            window.citizenLoggedIn =
-                true;
+document.getElementById(
+"citizenLogin"
+).style.display="none";
 
+document.getElementById(
+"createAccount"
+).style.display="none";
 
-            let name =
-                user.displayName ||
-                user.email;
-
-
-            document.getElementById(
-                "loggedUserName"
-            ).innerText =
-                name;
+};
 
 
-            document.getElementById(
-                "userBar"
-            ).style.display =
-                "block";
+window.showCitizenLogin = function(){
+
+document.getElementById(
+"citizenLogin"
+).style.display="block";
+
+document.getElementById(
+"adminLogin"
+).style.display="none";
+
+document.getElementById(
+"createAccount"
+).style.display="none";
+
+};
 
 
-            console.log(
-                "Firebase User:",
-                user.email
-            );
+window.showCreateAccount = function(){
 
-        }
-        else{
+document.getElementById(
+"createAccount"
+).style.display="block";
 
-            window.citizenLoggedIn =
-                false;
+document.getElementById(
+"citizenLogin"
+).style.display="none";
+
+document.getElementById(
+"adminLogin"
+).style.display="none";
+
+};
 
 
-            document.getElementById(
-                "userBar"
-            ).style.display =
-                "none";
+/* =================================================
+   CREATE CITIZEN ACCOUNT
+================================================= */
 
-        }
+window.createCitizenAccount = async function(){
 
-    }
+const name =
+document.getElementById("regName")
+.value.trim();
+
+const mobile =
+document.getElementById("regMobile")
+.value.trim();
+
+const email =
+document.getElementById("regEmail")
+.value.trim();
+
+const password =
+document.getElementById("regPassword")
+.value;
+
+const password2 =
+document.getElementById("regPassword2")
+.value;
+
+const message =
+document.getElementById("registerMessage");
+
+
+if(!name || !mobile || !email || !password || !password2){
+
+message.innerHTML =
+"⚠️ सर्व माहिती भरा.";
+
+message.style.color="red";
+
+return;
+
+}
+
+
+if(!/^[0-9]{10}$/.test(mobile)){
+
+message.innerHTML =
+"⚠️ योग्य 10 अंकी Mobile Number टाका.";
+
+message.style.color="red";
+
+return;
+
+}
+
+
+if(password.length < 6){
+
+message.innerHTML =
+"⚠️ Password कमीत कमी 6 अक्षरांचा असावा.";
+
+message.style.color="red";
+
+return;
+
+}
+
+
+if(password !== password2){
+
+message.innerHTML =
+"⚠️ दोन्ही Password सारखे नाहीत.";
+
+message.style.color="red";
+
+return;
+
+}
+
+
+try{
+
+const userCredential =
+await createUserWithEmailAndPassword(
+auth,
+email,
+password
 );
 
 
-/* ================= CITIZEN LOGOUT ================= */
-
-window.citizenLogout =
-async function(){
-
-    try{
-
-        await signOut(auth);
+const user =
+userCredential.user;
 
 
-        window.citizenLoggedIn =
-            false;
+/* PROFILE NAME */
+
+await updateProfile(user,{
+
+displayName:name
+
+});
 
 
-        document.getElementById(
-            "userBar"
-        ).style.display =
-            "none";
+/* MOBILE LOCAL STORAGE */
+
+localStorage.setItem(
+"smartgramUserMobile_" + user.uid,
+mobile
+);
+
+localStorage.setItem(
+"smartgramUserName_" + user.uid,
+name
+);
 
 
-        alert(
-            "✅ Citizen Logout Successful!"
-        );
+message.innerHTML =
+"✅ Account Successfully Created!";
 
-    }
-    catch(error){
+message.style.color="green";
 
-        console.error(error);
 
-    }
+alert(
+"✅ Citizen Account तयार झाले!"
+);
+
+
+document.getElementById(
+"regName"
+).value="";
+
+document.getElementById(
+"regMobile"
+).value="";
+
+document.getElementById(
+"regEmail"
+).value="";
+
+document.getElementById(
+"regPassword"
+).value="";
+
+document.getElementById(
+"regPassword2"
+).value="";
+
+
+showCitizenLogin();
+
+}
+catch(error){
+
+console.error(
+"CREATE ACCOUNT ERROR:",
+error
+);
+
+
+let msg =
+"❌ Account तयार करता आले नाही.";
+
+
+if(error.code==="auth/email-already-in-use"){
+
+msg =
+"❌ हा Email आधीच वापरला आहे.";
+
+}
+
+else if(error.code==="auth/invalid-email"){
+
+msg =
+"❌ Email चुकीचा आहे.";
+
+}
+
+else if(error.code==="auth/weak-password"){
+
+msg =
+"❌ Password कमजोर आहे.";
+
+}
+
+
+message.innerHTML=msg;
+
+message.style.color="red";
+
+}
 
 };
 
 
-/* ================= ADMIN LOGOUT ================= */
+/* =================================================
+   CITIZEN LOGIN
+================================================= */
 
-window.adminLogout =
-async function(){
+window.citizenLogin = async function(){
 
-    try{
+const email =
+document.getElementById(
+"citizenEmail"
+).value.trim();
 
-        await signOut(auth);
+const password =
+document.getElementById(
+"citizenPassword"
+).value;
 
-
-        window.citizenLoggedIn =
-            false;
-
-
-        document.getElementById(
-            "adminDashboard"
-        ).style.display =
-            "none";
-
-
-        document.getElementById(
-            "adminLogin"
-        ).style.display =
-            "block";
+const message =
+document.getElementById(
+"citizenMessage"
+);
 
 
-        alert(
-            "✅ Admin Logout Successful!"
-        );
+if(!email || !password){
 
-    }
-    catch(error){
+message.innerHTML =
+"⚠️ Email आणि Password भरा.";
 
-        console.error(error);
+message.style.color="red";
 
-    }
+return;
+
+}
+
+
+try{
+
+const result =
+await signInWithEmailAndPassword(
+auth,
+email,
+password
+);
+
+
+const user =
+result.user;
+
+
+/*
+   ADMIN EMAIL CITIZEN LOGIN
+   मधून वापरता येणार नाही
+*/
+
+if(user.email.toLowerCase() ===
+ADMIN_EMAIL.toLowerCase()){
+
+await signOut(auth);
+
+message.innerHTML =
+"❌ हा Admin Account आहे. Admin Login वापरा.";
+
+message.style.color="red";
+
+return;
+
+}
+
+
+window.citizenLoggedIn=true;
+
+
+message.innerHTML =
+"✅ Citizen Login Successful!";
+
+message.style.color="green";
+
+
+document.getElementById(
+"citizenLogin"
+).style.display="none";
+
+
+alert(
+"✅ Citizen Login Successful!"
+);
+
+
+updateComplaintInfo();
+
+}
+catch(error){
+
+console.error(
+"CITIZEN LOGIN ERROR:",
+error
+);
+
+
+let msg =
+"❌ Login Failed.";
+
+
+if(error.code==="auth/invalid-credential"){
+
+msg =
+"❌ Email किंवा Password चुकीचा आहे.";
+
+}
+
+else if(error.code==="auth/user-not-found"){
+
+msg =
+"❌ हा Account सापडला नाही.";
+
+}
+
+else if(error.code==="auth/wrong-password"){
+
+msg =
+"❌ Password चुकीचा आहे.";
+
+}
+
+
+message.innerHTML=msg;
+
+message.style.color="red";
+
+}
 
 };
+
+
+/* =================================================
+   ADMIN LOGIN
+================================================= */
+
+window.adminLogin = async function(){
+
+const email =
+document.getElementById(
+"adminEmail"
+).value.trim();
+
+const password =
+document.getElementById(
+"adminPassword"
+).value;
+
+const message =
+document.getElementById(
+"adminMessage"
+);
+
+
+if(!email || !password){
+
+message.innerHTML =
+"⚠️ Admin Email आणि Password भरा.";
+
+message.style.color="red";
+
+return;
+
+}
+
+
+/*
+   IMPORTANT:
+   Only this email can open Admin Dashboard.
+*/
+
+if(email.toLowerCase() !==
+ADMIN_EMAIL.toLowerCase()){
+
+message.innerHTML =
+"❌ हा Admin Email नाही.";
+
+message.style.color="red";
+
+return;
+
+}
+
+
+try{
+
+const result =
+await signInWithEmailAndPassword(
+auth,
+email,
+password
+);
+
+
+const user =
+result.user;
+
+
+if(user.email.toLowerCase() !==
+ADMIN_EMAIL.toLowerCase()){
+
+await signOut(auth);
+
+throw new Error(
+"Unauthorized Admin"
+);
+
+}
+
+
+message.innerHTML =
+"✅ Admin Login Successful!";
+
+message.style.color="green";
+
+
+document.getElementById(
+"adminLogin"
+).style.display="none";
+
+
+document.getElementById(
+"adminDashboard"
+).style.display="block";
+
+
+document.getElementById(
+"loggedAdminEmail"
+).innerText =
+user.email;
+
+
+alert(
+"✅ Admin Dashboard उघडले!"
+);
+
+}
+catch(error){
+
+console.error(
+"ADMIN LOGIN ERROR:",
+error
+);
+
+
+message.innerHTML =
+"❌ Admin Login Failed.<br>" +
+"Email किंवा Password तपासा.";
+
+message.style.color="red";
+
+}
+
+};
+
+
+/* =================================================
+   AUTH STATE
+================================================= */
+
+onAuthStateChanged(
+auth,
+function(user){
+
+if(!user){
+
+window.citizenLoggedIn=false;
+
+return;
+
+}
+
+
+if(user.email.toLowerCase() ===
+ADMIN_EMAIL.toLowerCase()){
+
+window.citizenLoggedIn=false;
+
+}
+else{
+
+window.citizenLoggedIn=true;
+
+}
+
+updateComplaintInfo();
+
+}
+);
+
+
+/* =================================================
+   COMPLAINT LOGIN INFO
+================================================= */
+
+function updateComplaintInfo(){
+
+const box =
+document.getElementById(
+"complaintLoginInfo"
+);
+
+if(!box)return;
+
+
+if(window.citizenLoggedIn){
+
+const user=auth.currentUser;
+
+box.innerHTML =
+"✅ तुम्ही Citizen म्हणून Login आहात.";
+
+box.style.color="green";
+
+if(user){
+
+const name =
+user.displayName || "";
+
+const mobile =
+localStorage.getItem(
+"smartgramUserMobile_" + user.uid
+) || "";
+
+
+if(name){
+
+document.getElementById(
+"cname"
+).value=name;
+
+}
+
+if(mobile){
+
+document.getElementById(
+"cmobile"
+).value=mobile;
+
+}
+
+}
+
+}
+else{
+
+box.innerHTML =
+"🔒 Complaint करण्यासाठी Citizen Login आवश्यक आहे.";
+
+box.style.color="red";
+
+}
+
+}
+
+
+function updateComplaintLoginInfo(){
+
+setTimeout(
+updateComplaintInfo,
+100
+);
+
+}
+
+
+/* =================================================
+   SUBMIT COMPLAINT
+================================================= */
+
+window.submitComplaint = function(){
+
+if(!window.citizenLoggedIn){
+
+alert(
+"🔒 आधी Citizen Login करा."
+);
+
+closePages();
+
+showCitizenLogin();
+
+return;
+
+}
+
+
+const user =
+auth.currentUser;
+
+
+if(!user){
+
+alert(
+"कृपया पुन्हा Citizen Login करा."
+);
+
+return;
+
+}
+
+
+const name =
+document.getElementById("cname")
+.value.trim();
+
+const mobile =
+document.getElementById("cmobile")
+.value.trim();
+
+const village =
+document.getElementById("cvillage")
+.value.trim();
+
+const type =
+document.getElementById("ctype")
+.value;
+
+const desc =
+document.getElementById("cdesc")
+.value.trim();
+
+
+if(!name || !mobile || !village || !desc){
+
+alert(
+"⚠️ कृपया सर्व माहिती भरा."
+);
+
+return;
+
+}
+
+
+if(!/^[0-9]{10}$/.test(mobile)){
+
+alert(
+"⚠️ योग्य 10 अंकी Mobile Number टाका."
+);
+
+return;
+
+}
+
+
+const id =
+"SG-" +
+Math.floor(
+100000 +
+Math.random()*900000
+);
+
+
+const data={
+
+id:id,
+
+uid:user.uid,
+
+name:name,
+
+mobile:mobile,
+
+village:village,
+
+type:type,
+
+desc:desc,
+
+status:"Pending",
+
+date:new Date().toLocaleString("mr-IN")
+
+};
+
+
+let complaints =
+JSON.parse(
+localStorage.getItem(
+"smartgramComplaints"
+) || "[]"
+);
+
+
+complaints.push(data);
+
+
+localStorage.setItem(
+"smartgramComplaints",
+JSON.stringify(complaints)
+);
+
+
+document.getElementById(
+"complaintResult"
+).innerHTML=`
+
+<div class="success">
+
+<h3>
+✅ समस्या यशस्वीरित्या नोंदवली!
+</h3>
+
+<p>
+<b>Complaint ID:</b>
+</p>
+
+<h2>${id}</h2>
+
+<p>
+हा ID Track Complaint साठी जपून ठेवा.
+</p>
+
+</div>
+
+`;
+
+
+document.getElementById(
+"cdesc"
+).value="";
+
+
+alert(
+"✅ Complaint Registered!"
+);
+
+};
+
+
+/* =================================================
+   TRACK COMPLAINT
+================================================= */
+
+window.trackNow=function(){
+
+const id =
+document.getElementById(
+"trackId"
+).value.trim().toUpperCase();
+
+
+const complaints =
+JSON.parse(
+localStorage.getItem(
+"smartgramComplaints"
+) || "[]"
+);
+
+
+const data =
+complaints.find(
+item => item.id === id
+);
+
+
+const result =
+document.getElementById(
+"trackResult"
+);
+
+
+if(!data){
+
+result.innerHTML=`
+
+<p style="
+color:red;
+margin-top:20px;
+">
+
+❌ Complaint ID सापडली नाही.
+
+</p>
+
+`;
+
+return;
+
+}
+
+
+result.innerHTML=`
+
+<div class="success">
+
+<h3>
+✅ Complaint Found
+</h3>
+
+<p>
+<b>Complaint ID:</b>
+${data.id}
+</p>
+
+<p>
+<b>नाव:</b>
+${data.name}
+</p>
+
+<p>
+<b>Mobile:</b>
+${data.mobile}
+</p>
+
+<p>
+<b>गाव:</b>
+${data.village}
+</p>
+
+<p>
+<b>Type:</b>
+${data.type}
+</p>
+
+<p>
+<b>Problem:</b>
+${data.desc}
+</p>
+
+<p>
+<b>Status:</b>
+🟡 ${data.status}
+</p>
+
+<p>
+<b>Date:</b>
+${data.date}
+</p>
+
+</div>
+
+`;
+
+};
+
+
+/* =================================================
+   IDEA
+================================================= */
+
+window.submitIdea=function(){
+
+const name =
+document.getElementById(
+"ideaName"
+).value.trim();
+
+const idea =
+document.getElementById(
+"ideaText"
+).value.trim();
+
+
+if(!name || !idea){
+
+alert(
+"कृपया नाव आणि कल्पना भरा."
+);
+
+return;
+
+}
+
+
+let ideas =
+JSON.parse(
+localStorage.getItem(
+"smartgramIdeas"
+) || "[]"
+);
+
+
+ideas.push({
+
+name:name,
+
+idea:idea,
+
+date:new Date().toLocaleString("mr-IN")
+
+});
+
+
+localStorage.setItem(
+"smartgramIdeas",
+JSON.stringify(ideas)
+);
+
+
+document.getElementById(
+"ideaResult"
+).innerHTML=`
+
+<div class="success">
+
+<h3>
+✅ Idea Submitted!
+</h3>
+
+<p>
+धन्यवाद ${name}!
+</p>
+
+<p>
+तुमची कल्पना नोंदवली आहे.
+</p>
+
+</div>
+
+`;
+
+};
+
+
+/* =================================================
+   ADMIN COMPLAINTS
+================================================= */
+
+window.showAdminComplaints=function(){
+
+hideAdminSections();
+
+document.getElementById(
+"adminComplaintData"
+).style.display="block";
+
+loadComplaints();
+
+};
+
+
+function loadComplaints(){
+
+const complaints =
+JSON.parse(
+localStorage.getItem(
+"smartgramComplaints"
+) || "[]"
+);
+
+
+const list =
+document.getElementById(
+"complaintList"
+);
+
+
+if(complaints.length===0){
+
+list.innerHTML=
+"<p>अजून कोणतीही तक्रार नाही.</p>";
+
+return;
+
+}
+
+
+list.innerHTML="";
+
+
+complaints.forEach(
+function(data,index){
+
+const item =
+document.createElement("div");
+
+item.className=
+"complaint-item";
+
+
+item.innerHTML=`
+
+<p>
+<b>Complaint ID:</b>
+${data.id}
+</p>
+
+<p>
+<b>नाव:</b>
+${data.name}
+</p>
+
+<p>
+<b>Mobile:</b>
+${data.mobile}
+</p>
+
+<p>
+<b>गाव:</b>
+${data.village}
+</p>
+
+<p>
+<b>Type:</b>
+${data.type}
+</p>
+
+<p>
+<b>Problem:</b>
+${data.desc}
+</p>
+
+<p>
+<b>Status:</b>
+${data.status}
+</p>
+
+<div class="status-buttons">
+
+<button
+class="green"
+onclick="updateComplaintStatus(${index},'Pending')">
+
+🟡 Pending
+
+</button>
+
+<button
+class="blue"
+onclick="updateComplaintStatus(${index},'In Progress')">
+
+🔵 In Progress
+
+</button>
+
+<button
+class="green"
+onclick="updateComplaintStatus(${index},'Resolved')">
+
+🟢 Resolved
+
+</button>
+
+</div>
+
+`;
+
+list.appendChild(item);
+
+});
+
+}
+
+
+/* =================================================
+   STATUS
+================================================= */
+
+window.updateComplaintStatus=
+function(index,status){
+
+const complaints =
+JSON.parse(
+localStorage.getItem(
+"smartgramComplaints"
+) || "[]"
+);
+
+
+if(complaints[index]){
+
+complaints[index].status=status;
+
+
+localStorage.setItem(
+"smartgramComplaints",
+JSON.stringify(complaints)
+);
+
+
+loadComplaints();
+
+
+alert(
+"✅ Complaint Status Updated!"
+);
+
+}
+
+};
+
+
+/* =================================================
+   NOTICE MANAGEMENT
+================================================= */
+
+window.showNoticeManagement=function(){
+
+hideAdminSections();
+
+document.getElementById(
+"adminNoticeData"
+).style.display="block";
+
+loadNotices();
+
+};
+
+
+window.addNotice=function(){
+
+const title =
+document.getElementById(
+"noticeTitle"
+).value.trim();
+
+const text =
+document.getElementById(
+"noticeText"
+).value.trim();
+
+
+if(!title || !text){
+
+alert(
+"कृपया Notice Title आणि Text भरा."
+);
+
+return;
+
+}
+
+
+let notices =
+JSON.parse(
+localStorage.getItem(
+"smartgramNotices"
+) || "[]"
+);
+
+
+notices.push({
+
+title:title,
+
+text:text,
+
+date:new Date().toLocaleString("mr-IN")
+
+});
+
+
+localStorage.setItem(
+"smartgramNotices",
+JSON.stringify(notices)
+);
+
+
+document.getElementById(
+"noticeTitle"
+).value="";
+
+document.getElementById(
+"noticeText"
+).value="";
+
+
+loadNotices();
+
+loadPublicNotices();
+
+
+alert(
+"✅ Notice Successfully Added!"
+);
+
+};
+
+
+function loadNotices(){
+
+const notices =
+JSON.parse(
+localStorage.getItem(
+"smartgramNotices"
+) || "[]"
+);
+
+
+const list =
+document.getElementById(
+"noticeList"
+);
+
+
+if(notices.length===0){
+
+list.innerHTML=
+"<p>अजून Notice नाही.</p>";
+
+return;
+
+}
+
+
+list.innerHTML=
+notices.map(
+function(n,index){
+
+return `
+
+<div class="info">
+
+<h3>
+📢 ${n.title}
+</h3>
+
+<p>
+${n.text}
+</p>
+
+<small>
+${n.date}
+</small>
+
+<br><br>
+
+<button
+class="red"
+onclick="deleteNotice(${index})">
+
+Delete
+
+</button>
+
+</div>
+
+`;
+
+}
+).join("");
+
+}
+
+
+window.deleteNotice=function(index){
+
+let notices =
+JSON.parse(
+localStorage.getItem(
+"smartgramNotices"
+) || "[]"
+);
+
+
+notices.splice(index,1);
+
+
+localStorage.setItem(
+"smartgramNotices",
+JSON.stringify(notices)
+);
+
+
+loadNotices();
+
+loadPublicNotices();
+
+};
+
+
+/* =================================================
+   PUBLIC NOTICES
+================================================= */
+
+function loadPublicNotices(){
+
+const notices =
+JSON.parse(
+localStorage.getItem(
+"smartgramNotices"
+) || "[]"
+);
+
+
+const list =
+document.getElementById(
+"publicNoticeList"
+);
+
+
+if(notices.length===0){
+
+list.innerHTML=
+"<p>अजून कोणतीही सूचना उपलब्ध नाही.</p>";
+
+return;
+
+}
+
+
+list.innerHTML=
+notices.map(
+function(n){
+
+return `
+
+<div class="info">
+
+<h3>
+📢 ${n.title}
+</h3>
+
+<p>
+${n.text}
+</p>
+
+<small>
+${n.date}
+</small>
+
+</div>
+
+`;
+
+}
+).join("");
+
+}
+
+
+/* =================================================
+   ADMIN IDEAS
+================================================= */
+
+window.showIdeasManagement=function(){
+
+hideAdminSections();
+
+document.getElementById(
+"adminIdeaData"
+).style.display="block";
+
+loadIdeas();
+
+};
+
+
+function loadIdeas(){
+
+const ideas =
+JSON.parse(
+localStorage.getItem(
+"smartgramIdeas"
+) || "[]"
+);
+
+
+const list =
+document.getElementById(
+"ideaList"
+);
+
+
+if(ideas.length===0){
+
+list.innerHTML=
+"<p>अजून कोणतीही Idea नाही.</p>";
+
+return;
+
+}
+
+
+list.innerHTML=
+ideas.map(
+function(item){
+
+return `
+
+<div class="info">
+
+<h3>
+💡 ${item.name}
+</h3>
+
+<p>
+${item.idea}
+</p>
+
+<small>
+${item.date}
+</small>
+
+</div>
+
+`;
+
+}
+).join("");
+
+}
+
+
+/* =================================================
+   OFFICIALS
+================================================= */
+
+window.showOfficialsManagement=function(){
+
+hideAdminSections();
+
+document.getElementById(
+"adminOfficialData"
+).style.display="block";
+
+};
+
+
+/* =================================================
+   HIDE ADMIN DATA
+================================================= */
+
+function hideAdminSections(){
+
+document.getElementById(
+"adminComplaintData"
+).style.display="none";
+
+document.getElementById(
+"adminNoticeData"
+).style.display="none";
+
+document.getElementById(
+"adminIdeaData"
+).style.display="none";
+
+document.getElementById(
+"adminOfficialData"
+).style.display="none";
+
+}
+
+
+/* =================================================
+   ADMIN LOGOUT
+================================================= */
+
+window.adminLogout=async function(){
+
+try{
+
+await signOut(auth);
+
+document.getElementById(
+"adminDashboard"
+).style.display="none";
+
+document.getElementById(
+"adminLogin"
+).style.display="block";
+
+hideAdminSections();
+
+alert(
+"✅ Admin Logout Successful!"
+);
+
+}
+catch(error){
+
+console.error(error);
+
+}
+
+};
+
+
+/* =================================================
+   START
+================================================= */
+
+console.log(
+"SmartGram Firebase System Ready"
+);
 
 </script>
 
