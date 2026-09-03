@@ -563,7 +563,16 @@ onclick="openPage('certificates')">
 <p>जन्म / मृत्यू अर्ज</p>
 
 </div>
+<div class="card"
+onclick="openPage('voterlist')">
 
+<div class="icon">🗳️</div>
+
+<h3>मतदार यादी</h3>
+
+<p>गावची मतदार यादी</p>
+
+</div>
 </div>
 
 </section>
@@ -2964,6 +2973,48 @@ console.log(
 );
 
 </script>
+<!-- ================= VOTER LIST ================= -->
 
+<div class="page" id="voterlist">
+
+<div class="pagebox">
+
+<h2>🗳️ मतदार यादी</h2>
+
+<p style="text-align:center;margin-bottom:20px;">
+गोगरी, ता. मंगरूळपीर, जि. वाशिम
+</p>
+
+<a
+href="voter-list.pdf"
+target="_blank"
+style="
+display:block;
+background:#176b3a;
+color:white;
+text-align:center;
+padding:14px;
+border-radius:8px;
+text-decoration:none;
+font-weight:bold;
+">
+
+📄 मतदार यादी पाहा
+
+</a>
+
+<br>
+
+<button
+class="close"
+onclick="closePages()">
+
+❌ बंद करा
+
+</button>
+
+</div>
+
+</div>
 </body>
 </html>
